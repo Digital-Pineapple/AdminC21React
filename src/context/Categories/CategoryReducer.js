@@ -24,7 +24,7 @@ const CategoryReducer = (state, action) => {
         ...state,
         ErrorsAPI: [],
         categories: state.categories.map((category) => {
-          if (category._id === action.payload._id) {
+          if (category.id === action.payload.id) {
             category = action.payload;
           }
           return category;

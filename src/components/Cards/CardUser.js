@@ -31,7 +31,7 @@ export default function CardUser({ user }) {
         <label>
           <b>Rol</b>
         </label>
-        <Typography>{user.roles[0].name}</Typography>
+        <Typography>{user.roles ? user.roles[0]?.name : "N/A"}</Typography>
       </CardContent>
       <CardActions>
         <IconButton size="small">

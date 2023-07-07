@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
     marginLeft: "5%",
   },
 }));
-const TotalUsers = () => {
+const TotalUsers = ({ total_users }) => {
   const classes = useStyles();
   return (
     <Card
@@ -56,7 +56,7 @@ const TotalUsers = () => {
             borderColor: "green",
           }}
         >
-          13
+          {total_users}
         </Typography>
       </div>
     </Card>

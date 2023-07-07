@@ -26,6 +26,7 @@ import AddService from "../PropertyDetails/AddService";
 import PropertiesContext from "../../context/Properties/PropertiesContext";
 import AttachFileMultimedia from "../../containers/Properties/AddMultimedia";
 import image from "../../assets/img/default.png";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const useStyles = makeStyles({
   titleProduct: {
     color: "white",
@@ -91,8 +92,8 @@ const CardProperty = ({ property }) => {
   };
   const [addreesProperty, saveAddressProperty] = useState(null);
   const [IframePropertyModal, OpenIframeProperty] = useState(false);
-  const handleClickOpenIframe = (address) => {
-    saveAddressProperty(address);
+  const handleClickOpenIframe = (id) => {
+    saveAddressProperty(id);
     OpenIframeProperty(true);
   };
   const handleClickCloseIframe = () => {
@@ -188,20 +189,20 @@ const CardProperty = ({ property }) => {
               display="flex"
               justifyContent="space-between"
             >
-              {/* <Tooltip title="Editar Propiedad" placement="top">
-                <IconButton>
-                  <EditIcon sx={{ color: "black" }} />
-                </IconButton>
-              </Tooltip> */}
+              <Tooltip title="Editar Propiedad" placement="top">
+                <Link to={`/EditProperty/${property.id}`}>
+                  <IconButton>
+                    <EditIcon sx={{ color: "black" }} />
+                  </IconButton>
+                </Link>
+              </Tooltip>
               <Tooltip title="Detalle de Propiedad" placement="top">
                 <IconButton onClick={() => handleClickOpenDetail(property.id)}>
                   <VisibilityIcon sx={{ color: "black" }} />
                 </IconButton>
               </Tooltip>
               <Tooltip title="Ubicación de Propiedad" placement="top">
-                <IconButton
-                  onClick={() => handleClickOpenIframe(property.address)}
-                >
+                <IconButton onClick={() => handleClickOpenIframe(property.id)}>
                   <PlaceIcon sx={{ color: "black" }} />
                 </IconButton>
               </Tooltip>

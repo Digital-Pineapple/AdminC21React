@@ -59,12 +59,8 @@ const ServicesState = ({ children }) => {
       });
   };
   const ChangeService = (data) => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    //formData.append("typeCategory", data.typeCategory);
-    //formData.append("brand", category.brand);
     let url = `/services/${data.id}`;
-    MethodPut(url, formData)
+    MethodPut(url, data)
       .then((res) => {
         Swal.fire({
           title: "Servicio Modificado",
@@ -76,7 +72,7 @@ const ServicesState = ({ children }) => {
         });
         dispatch({
           type: UPDATE_SERVICE,
-          payload: res.data.category,
+          payload: res.data.data,
         });
       })
       .catch((error) => {

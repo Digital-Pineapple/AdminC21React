@@ -113,10 +113,9 @@ const PropertiesState = ({ children }) => {
         let url = `/property/images/${data.property_id}`;
         MethodPost(url, formData, { headerConfig })
           .then((res) => {
-            console.log(res, "la respuesta");
             Swal.fire({
               title: "Agregado",
-              text: res.data.message,
+              text: "La imagen se ha agregado correctamente!",
               showConfirmButton: false,
               timer: 1000,
               icon: "success",
@@ -194,7 +193,7 @@ const PropertiesState = ({ children }) => {
           .then((res) => {
             Swal.fire({
               title: "Publicado",
-              text: res.data.message,
+              text: "La propiedad se ha publicado correctamente!",
               icon: "success",
               timer: 1500,
               showConfirmButton: false,
@@ -233,7 +232,7 @@ const PropertiesState = ({ children }) => {
           .then((res) => {
             Swal.fire({
               title: "Pendiente",
-              text: res.data.message,
+              text: "La propiedad ha regresado a status pendiente!",
               icon: "success",
               timer: 1500,
               showConfirmButton: false,

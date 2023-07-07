@@ -389,12 +389,12 @@ export default function Header() {
   );
 
   const modules = [
-    { route: "/", name: "Inicio" },
+    // { route: "/", name: "Inicio" },
     { route: "/Categories", name: "Categorias" },
     { route: "/Services", name: "Servicios" },
     { route: "/Properties", name: "Propiedades" },
     { route: "/Users", name: "Usuarios" },
-    { route: "/Perfil", name: "Perfil" },
+    // { route: "/Perfil", name: "Perfil" },
   ];
 
   return (
@@ -558,7 +558,7 @@ export default function Header() {
                   sx={{
                     backgroundColor: "#E5BA73",
                     color: "white",
-                    margin: 2,
+                    margin: 1,
                     fontWeight: "bold",
                     fontSize: "25px",
                     padding: 3,

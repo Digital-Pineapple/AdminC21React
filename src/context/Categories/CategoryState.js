@@ -59,14 +59,8 @@ const CategoryState = ({ children }) => {
       });
   };
   const ChangeCategory = (data) => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("imageWeb", data.imageWeb);
-    formData.append("imageMobile", data.imageMobile);
-    //formData.append("typeCategory", data.typeCategory);
-    //formData.append("brand", category.brand);
     let url = `/categories/${data.id}`;
-    MethodPut(url, formData)
+    MethodPut(url, data)
       .then((res) => {
         Swal.fire({
           title: "Categoria Modificada",
@@ -78,7 +72,7 @@ const CategoryState = ({ children }) => {
         });
         dispatch({
           type: UPDATE_CATEGORY,
-          payload: res.data.category,
+          payload: res.data.data,
         });
       })
       .catch((error) => {

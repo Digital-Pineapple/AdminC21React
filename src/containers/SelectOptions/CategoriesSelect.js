@@ -16,26 +16,51 @@ const CategoriesSelect = (props) => {
   const detectarCambiosCategory = (value) => {
     props.detectarCambiosCategory(value);
   };
+  const categorySelect = props.category_id
+    ? categories.filter((cat) => cat.id === props.category_id)
+    : [];
+
+  console.log(categorySelect);
   return (
     <>
       <label>Selecciona categoría</label>
-      <Select
-        fullwith
-        styles={selectStyles}
-        onChange={(value) => detectarCambiosCategory(value)}
-        //className="basic-single"
-        classNamePrefix="select"
-        name="account"
-        placeholder="Selecciona categoría"
-        // options={nuevoArreglo}
-        options={categories.map((category) => {
-          let attribute = {
-            label: category.name,
-            value: category.id,
-          };
-          return attribute;
-        })}
-      />
+      {props.category_id ? (
+        <Select
+          fullwith
+          styles={selectStyles}
+          onChange={(value) => detectarCambiosCategory(value)}
+          //className="basic-single"
+          classNamePrefix="select"
+          name="account"
+          placeholder="Selecciona categoría"
+          defaultValue={categorySelect.id}
+          options={categories.map((category) => {
+            let attribute = {
+              label: category.name,
+              value: category.id,
+            };
+            return attribute;
+          })}
+        />
+      ) : (
+        <Select
+          fullwith
+          styles={selectStyles}
+          onChange={(value) => detectarCambiosCategory(value)}
+          //className="basic-single"
+          classNamePrefix="select"
+          name="account"
+          placeholder="Selecciona categoría"
+          // options={nuevoArreglo}
+          options={categories.map((category) => {
+            let attribute = {
+              label: category.name,
+              value: category.id,
+            };
+            return attribute;
+          })}
+        />
+      )}
     </>
   );
 };

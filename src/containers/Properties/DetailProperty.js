@@ -68,7 +68,16 @@ export default function DetailProperty({ id, modal, handleClose }) {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cerrar</Button>
+          <Button
+            onClick={handleClose}
+            sx={{
+              backgroundColor: "red",
+              color: "white",
+              "&:hover": { backgroundColor: "red", color: "white" },
+            }}
+          >
+            Cerrar
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
