@@ -1,6 +1,6 @@
 import axios from "axios";
 const clientAxios = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: process.env.REACT_APP_BACKEND_URL,
 });
 
 export default clientAxios;

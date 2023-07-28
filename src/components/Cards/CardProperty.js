@@ -156,7 +156,7 @@ const CardProperty = ({ property }) => {
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Box sx={{ pt: "100%", position: "relative" }}>
-                {images.length > 0 ? (
+                {images && images.length > 0 ? (
                   <ModalImage
                     className={classes.imgproduct}
                     small={images[0].url}

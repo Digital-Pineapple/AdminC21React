@@ -23,7 +23,6 @@ const DashboardState = ({ children }) => {
     let url = "/countProperty";
     MethodGet(url)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: TOTAL_PROPERTIES,
           payload: res.data.count,
