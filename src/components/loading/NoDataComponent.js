@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
@@ -20,23 +20,25 @@ export default function NoDataComponent() {
   const classes = useStyles();
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "row",
-        marginLeft: 60,
-        marginTop: 10,
-      }}
-    >
-      <div>
-        <img
-          src={require("../../assets/gif/NoData.gif")}
-          alt="spinner"
-          className={classes.imgbuilding}
-        />
-      </div>
-    </Box>
+    <Grid container spacing={2}>
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={12}
+        xl={12}
+        display="flex"
+        justifyContent="center"
+      >
+        <div>
+          <img
+            src={require("../../assets/gif/NoData.gif")}
+            alt="spinner"
+            className={classes.imgbuilding}
+          />
+        </div>
+      </Grid>
+    </Grid>
   );
 }

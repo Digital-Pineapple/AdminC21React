@@ -27,7 +27,7 @@ const PropertiesState = ({ children }) => {
   };
   const [state, dispatch] = useReducer(PropertiesReducer, initialState);
   const GetPropertiesPublish = () => {
-    let url = "/properties";
+    let url = "/propertiesAdmin";
     MethodGet(url)
       .then((res) => {
         dispatch({

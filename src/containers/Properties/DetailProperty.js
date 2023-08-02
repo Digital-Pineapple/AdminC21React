@@ -18,7 +18,7 @@ export default function DetailProperty({ id, modal, handleClose }) {
   const { address, details, images, rules, owner, category } = property;
   const [services, saveServices] = useState([]);
   useEffect(() => {
-    let url = `/properties/${id}`;
+    let url = `/showAdmin/${id}`;
     MethodGet(url)
       .then((res) => {
         saveProperty(res.data.data);
@@ -62,7 +62,7 @@ export default function DetailProperty({ id, modal, handleClose }) {
             </Grid>
             {images && (
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <MultimediaProperty images={images} />
+                <MultimediaProperty images={images} property_id={property.id} />
               </Grid>
             )}
           </Grid>

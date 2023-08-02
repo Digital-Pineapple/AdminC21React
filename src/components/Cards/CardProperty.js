@@ -121,6 +121,9 @@ const CardProperty = ({ property }) => {
   const { PublishProperty, BackPendingProperty } =
     useContext(PropertiesContext);
 
+  const firstImage = images[0].url;
+  const url_image = `https://mibien.s3.us-east-2.amazonaws.com/${firstImage}`;
+
   return (
     <>
       <Card className={classes.card}>
@@ -159,8 +162,8 @@ const CardProperty = ({ property }) => {
                 {images && images.length > 0 ? (
                   <ModalImage
                     className={classes.imgproduct}
-                    small={images[0].url}
-                    large={images[0].url}
+                    small={url_image}
+                    large={url_image}
                     alt={property.name}
                   />
                 ) : (
