@@ -120,10 +120,7 @@ const CardProperty = ({ property }) => {
   const classes = useStyles();
   const { PublishProperty, BackPendingProperty } =
     useContext(PropertiesContext);
-
-  const firstImage = images[0].url;
-  const url_image = `https://mibien.s3.us-east-2.amazonaws.com/${firstImage}`;
-
+  console.log(images, "las imagesnes pendientes");
   return (
     <>
       <Card className={classes.card}>
@@ -159,11 +156,18 @@ const CardProperty = ({ property }) => {
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Box sx={{ pt: "100%", position: "relative" }}>
-                {images && images.length > 0 ? (
+                {images === undefined ? (
                   <ModalImage
                     className={classes.imgproduct}
-                    small={url_image}
-                    large={url_image}
+                    small={image}
+                    large={image}
+                    alt={property.name}
+                  />
+                ) : images.length > 0 ? (
+                  <ModalImage
+                    className={classes.imgproduct}
+                    small={`https://mibien.s3.us-east-2.amazonaws.com/${images[0].url}`}
+                    large={`https://mibien.s3.us-east-2.amazonaws.com/${images[0].url}`}
                     alt={property.name}
                   />
                 ) : (
