@@ -177,7 +177,7 @@ const CardProperty = ({ property }) => {
                     large={image}
                     alt={property.name}
                   />
-                )}
+                )}    
               </Box>
             </Grid>
           </Grid>
