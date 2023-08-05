@@ -34,7 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "testAdminCent": "aws s3 sync build/ s3://testadmin.mibien.mx"
+    "deploy": "aws s3 sync build/ s3://testadmin.mibien.mx"
   },
   "eslintConfig": {
     "extends": [
