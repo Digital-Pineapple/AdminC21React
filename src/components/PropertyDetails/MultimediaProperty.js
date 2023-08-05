@@ -8,7 +8,7 @@ const MultimediaProperty = ({ images, property_id }) => {
   images.map((img, index) =>
     // const adjustedIndex = index + 1;
     new_images.push({
-      url: `https://mibien.s3.us-east-2.amazonaws.com/local/properties/${property_id}_${
+      url: `https://mibien.s3.us-east-2.amazonaws.com/production/properties/${property_id}_${
         index + 1
       }`,
     })

@@ -556,10 +556,10 @@ export default function AddProperty({ modal, handleClose }) {
                 variant="outlined"
                 type="text"
                 label="No_Int"
-                name="no_int"
-                error={errors.no_int ? true : false}
-                helperText={errors?.no_int?.message}
-                {...register("no_int", {
+                name="number_int"
+                error={errors.number_int ? true : false}
+                helperText={errors?.number_int?.message}
+                {...register("number_int", {
                   required: {
                     value: false,
                     message: "La calle de la propiedad es requerida",
