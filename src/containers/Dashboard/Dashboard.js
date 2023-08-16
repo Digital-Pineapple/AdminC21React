@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Layout from "../../components/layout/Layout";
-import { Grid, Typography } from "@mui/material";
 import TotalUsers from "../../components/Dashboard/TotalUsers";
 import PropertiesSold from "../../components/Dashboard/PropertiesSold";
 import PropertiesRent from "../../components/Dashboard/PropertiesRent";
 import CardProperties from "../../components/Dashboard/CardProperties";
 import DashboardContext from "../../context/Dashboard/DashboardContext";
-import { useContext } from "react";
+import Graphics from "../../components/Dashboard/Graphics";
+import Logout from "../../components/Dashboard/Logout";
+import { Grid, Typography } from "@mui/material";
+
 const Dashboard = () => {
   const {
     total_properties,
@@ -69,9 +71,17 @@ const Dashboard = () => {
           justifyContent="start"
         >
           <Typography variant="h4" fontWeight="bold" fontFamily="monospace">
-            Resumen de tendencias
+            Resumen de Tendencias
           </Typography>
         </Grid>
+      </Grid>
+
+      <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
+        <Graphics />
+      </Grid>
+      <br/><br/> 
+      <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
+        <Logout />
       </Grid>
     </Layout>
   );

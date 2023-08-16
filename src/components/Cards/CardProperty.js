@@ -196,16 +196,16 @@ const CardProperty = ({ property }) => {
               display="flex"
               justifyContent="space-between"
             >
-              <Tooltip title="Editar Propiedad" placement="top">
+              {/* <Tooltip title="Editar Propiedad" placement="top">
                 <Link to={`/EditProperty/${property.id}`}>
                   <IconButton>
-                    <EditIcon sx={{ color: "black" }} />
+                    <EditIcon sx={{ color: "orange" }} />
                   </IconButton>
                 </Link>
-              </Tooltip>
+              </Tooltip> */}
               <Tooltip title="Detalle de Propiedad" placement="top">
                 <IconButton onClick={() => handleClickOpenDetail(property.id)}>
-                  <VisibilityIcon sx={{ color: "black" }} />
+                  <VisibilityIcon sx={{ color: "blue" }} />
                 </IconButton>
               </Tooltip>
               <Tooltip title="Ubicación de Propiedad" placement="top">
@@ -219,16 +219,23 @@ const CardProperty = ({ property }) => {
                     <IconButton
                       onClick={() => handleOpenMultimedia(property.id)}
                     >
-                      <AddPhotoAlternateIcon sx={{ color: "black" }} />
+                      <AddPhotoAlternateIcon sx={{ color: "green" }} />
                     </IconButton>
                   </Tooltip>
                   <Tooltip title="Agregar Servicios" placement="top">
                     <IconButton
                       onClick={() => handleClickOpenAddService(property.id)}
                     >
-                      <SettingsIcon sx={{ color: "black" }} />
+                      <SettingsIcon sx={{ color: "grey" }} />
                     </IconButton>
                   </Tooltip>
+                  {/* <Tooltip title="Eliminar Propiedad" placement="top">
+                    <IconButton
+                      onClick={() => BackPendingProperty(property.id)}
+                    >
+                      <DeleteIcon sx={{ color: "red" }} />
+                    </IconButton>
+                  </Tooltip> */}
                 </>
               )}
               {/* {property.status === 3 && (
@@ -241,14 +248,14 @@ const CardProperty = ({ property }) => {
               {property.status === 3 && (
                 <Tooltip title="Eliminar Propiedad" placement="top">
                   <IconButton onClick={() => BackPendingProperty(property.id)}>
-                    <DeleteIcon sx={{ color: " black" }} />
+                    <DeleteIcon sx={{ color: "red" }} />
                   </IconButton>
                 </Tooltip>
               )}
               {property.status === 2 && (
                 <Tooltip title="Publicar Propiedad" placement="top">
                   <IconButton onClick={() => PublishProperty(property.id)}>
-                    <CheckCircleOutlineIcon sx={{ color: " green" }} />
+                    <CheckCircleOutlineIcon sx={{ color: "rgb(46, 255, 75)" }} />
                   </IconButton>
                 </Tooltip>
               )}
