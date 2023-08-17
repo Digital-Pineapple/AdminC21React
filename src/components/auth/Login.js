@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     margin: "auto",
   },
   backgroundLogin: {
-    height: "98vh",
+    height: "100%",
     width: "100%",
     backgroundImage: `url(${image})`,
     backgroundRepeat: "no-repeat",
@@ -208,13 +208,13 @@ const Login = () => {
               >
                 Iniciar Sesion
               </Button>
-              <Grid container justifyContent="flex-end">
+              {/* <Grid container justifyContent="flex-end">
                 <Grid item>
                   <Link to="/Olvide-mi-Acceso">
                     ¿Has olvidado la contraseña?
                   </Link>
                 </Grid>
-              </Grid>
+              </Grid> */}
             </Box>
           </Box>
 
