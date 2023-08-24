@@ -1,42 +1,55 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Select from "react-select";
-const OptionsSelect = (props) => {
+const Options = ({ detectarCambios, rules }) => {
   const selectStyles = {
     menu: (base) => ({
       ...base,
       zIndex: 100,
     }),
   };
+  const [Rules, setRules] = useState();
+
   const options = [
     { value: 1, name: "venta" },
     { value: 2, name: "Renta" },
     { value: 3, name: "Ambos" },
   ];
-  const detectarCambiosOption = (value) => {
-    props.detectarCambiosOption(value);
+
+  const handleCategoryChange = (selected) => {
+    setRules(selected);
+    detectarCambios(selected ? selected.value : null);
   };
+
+  const selectedOption = options.find((cat) => cat.value === rules);
+  useEffect(() => {
+    if (selectedOption) {
+      setRules({
+        label: selectedOption.name,
+        value: selectedOption.value,
+      });
+    } else {
+      setRules(null);
+    }
+  }, [rules]);
+  const selectOptions = options.map((options) => ({
+    label: options.name,
+    value: options.value,
+  }));
   return (
     <>
-      <label>Selecciona opcion</label>
+      <label>Selecciona servicio</label>
       <Select
         fullwith
         styles={selectStyles}
-        onChange={(value) => detectarCambiosOption(value)}
-        //className="basic-single"
+        onChange={handleCategoryChange}
+        value={Rules}
         classNamePrefix="select"
         name="account"
-        placeholder="Selecciona una opcion"
-        // options={nuevoArreglo}
-        options={options.map((option) => {
-          let attribute = {
-            label: option.name,
-            value: option.value,
-          };
-          return attribute;
-        })}
+        placeholder="Selecciona servicio"
+        options={selectOptions}
       />
     </>
   );
 };
 
-export default OptionsSelect;
+export default Options;

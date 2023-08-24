@@ -196,13 +196,13 @@ const CardProperty = ({ property }) => {
               display="flex"
               justifyContent="space-between"
             >
-              {/* <Tooltip title="Editar Propiedad" placement="top">
+              <Tooltip title="Editar Propiedad" placement="top">
                 <Link to={`/EditProperty/${property.id}`}>
                   <IconButton>
                     <EditIcon sx={{ color: "orange" }} />
                   </IconButton>
                 </Link>
-              </Tooltip> */}
+              </Tooltip>
               <Tooltip title="Detalle de Propiedad" placement="top">
                 <IconButton onClick={() => handleClickOpenDetail(property.id)}>
                   <VisibilityIcon sx={{ color: "blue" }} />

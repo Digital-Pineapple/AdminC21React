@@ -56,7 +56,7 @@ export default function Bars() {
         },
         scales: {
             y: {
-                min: -25,
+                min: -10,
                 max: 50
             },
             x: {
