@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { useHistory } from 'react-router-dom'; 
 import PropertiesReducer from "./PropertiesReducer";
 import MethodGet, {
   MethodDelete,
@@ -54,18 +55,16 @@ const PropertiesState = ({ children }) => {
   };
 
   const AddProperty = (data) => {
-    console.log(data, "la data en el state");
     let url = "/properties";
     MethodPost(url, data)
       .then((res) => {
-        console.log(res.data.data);
         dispatch({
           type: ADD_PROPERTY,
           payload: res.data.data,
         });
         Swal.fire({
           title: "Registrado",
-          text: res.data.message,
+          text: "La propiedad se ha registrado correctamente!",
           icon: "success",
           timer: 1500,
           showConfirmButton: false,
@@ -83,20 +82,36 @@ const PropertiesState = ({ children }) => {
       });
   };
   const UpdateProperty = (data) => {
-    let url = "";
-    MethodPut(url, data)
+    let url = "/update/p/"+data.id;
+    MethodPost(url, data)
       .then((res) => {
+        Swal.fire({
+          title: "Editado",
+          text: "La propiedad se ha editado correctamente!",
+          icon: "success",
+          timer: 1000,
+          showConfirmButton: false,
+        });
         dispatch({
           type: UPDATE_PROPERTY,
-          payload: res.data.data,
+          payload: res.data,
         });
+        setTimeout(() => {
+          window.location.href = '/Properties';
+        }, 1000);
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: error.response.data.message,
+          timer: 5000,
+          showConfirmButton: false,
+        });
       });
   };
   const AddMultimediaProperty = (data) => {
-    console.log(data, "en el state");
     Swal.fire({
       title: "Agregar Imagen",
       text: "¿Estas seguro de Agregar esta imagen como fotos de la propiedad?",
@@ -149,12 +164,12 @@ const PropertiesState = ({ children }) => {
       cancelButtonText: "No, cancelar",
     }).then((result) => {
       if (result.value) {
-        let url = `//${id}`;
+        let url = `/properties/${id}`;
         MethodDelete(url)
           .then((res) => {
             Swal.fire({
               title: "Eliminado",
-              text: res.data.message,
+              text: "La propiedad se ha eliminado correctamente!",
               icon: "success",
               timer: 1500,
               showConfirmButton: false,

@@ -1,73 +1,59 @@
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import MethodGet from "../../config/service";
 
 const SelectMunicipality = (props) => {
   const [municipalities, setMunicipalities] = useState([]);
-  const [selectedMunicipality, setSelectedMunicipality] = useState(props.state);
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedMunicipalityId, setSelectedMunicipalityId] = useState("");
 
   useEffect(() => {
-    if (props.state_id !== undefined) {
-      setSelectedMunicipality(props.state_id);
+    setSelectedState(props.state_id || props.state);
+    if (selectedState !== "") {
+      let url = `/states/municipalities/${selectedState}`;
+      MethodGet(url)
+        .then((res) => {
+          setMunicipalities(res.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
+  }, [props.state_id, selectedState]);
 
-    let url = `/states/municipalities/${selectedMunicipality}`;
-    MethodGet(url)
-      .then((res) => {
-        setMunicipalities(res.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [props.state_id]);
-
-  const selectStyles = {
-    menu: (base) => ({
-      ...base,
-      zIndex: 100,
-    }),
-  };
-
-  const handleChange = (selected) => {
-    setSelectedMunicipality(selected);
-    props.detectarCambiosMunicipality(selected ? selected.value : null);
-  };
-
-  const selectedOption = municipalities.find(
-    (municipality) => municipality.id === props.municipality_id
-  );
   useEffect(() => {
-    if (selectedOption) {
-      console.log(selectedOption);
-      setSelectedMunicipality({
-        label: selectedOption.name,
-        value: selectedOption.id,
-      });
-    } else {
-      setSelectedMunicipality(null);
+    if (municipalities.length > 0) {
+      setSelectedMunicipalityId(props.municipality_id || "");
+      props.detectarCambiosMunicipality(props.municipality_id);
     }
-  }, [selectedOption]);
+  }, [municipalities, props.municipality_id]);
 
-  console.log(selectedMunicipality);
-  const selectOptions = municipalities.map((municipality) => ({
-    label: municipality.name,
-    value: municipality.id,
-  }));
+  const handleChange = (event) => {
+    const selectedId = event.target.value;
+    setSelectedMunicipalityId(selectedId);
+    props.detectarCambiosMunicipality(selectedId);
+  };
 
   return (
-    <>
-      <label>Selecciona un municipio</label>
-      <Select
-        fullWidth
-        styles={selectStyles}
-        onChange={handleChange}
-        value={selectedMunicipality}
-        classNamePrefix="select"
-        name="account"
-        placeholder="Selecciona un municipio"
-        options={selectOptions}
-      />
-    </>
+    <div>
+      <FormControl fullWidth>
+        <InputLabel id="state-select-label">Selecciona un municipio</InputLabel>
+        <Select
+          labelId="state-select-label"
+          id="state-select"
+          value={selectedMunicipalityId}
+          onChange={handleChange}
+          label="Selecciona un municipio"
+          name="municipality_id"
+        >
+          {municipalities.map((municipality) => (
+            <MenuItem key={municipality.id} value={municipality.id}>
+              {municipality.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
   );
 };
 

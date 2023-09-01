@@ -1,54 +1,56 @@
-import React, { useContext, useEffect, useState } from "react";
-import Select from "react-select";
-const Options = ({ detectarCambios, rules }) => {
-  const selectStyles = {
-    menu: (base) => ({
-      ...base,
-      zIndex: 100,
-    }),
-  };
-  const [Rules, setRules] = useState();
+import React, { useState, useEffect } from "react";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
+const Options = ({ detectarCambios, rules }) => {
+  const [Rules, setRules] = useState(null);
+
+  // Definición de las opciones disponibles
   const options = [
-    { value: 1, name: "venta" },
-    { value: 2, name: "Renta" },
-    { value: 3, name: "Ambos" },
+    { value: 1, name: "Renta" },
+    { value: 2, name: "Venta" },
   ];
 
-  const handleCategoryChange = (selected) => {
-    setRules(selected);
-    detectarCambios(selected ? selected.value : null);
+  // Maneja el cambio de selección
+  const handleServiceChange = (event) => {
+    const selectedValue = event.target.value;
+    const selectedOption = options.find(
+      (option) => option.value === selectedValue
+    );
+
+    // Actualiza el estado con la opción seleccionada
+    setRules(selectedOption ? selectedOption : null);
+
+    // Llama a la función detectarCambios para notificar el cambio
+    detectarCambios(selectedValue);
   };
 
-  const selectedOption = options.find((cat) => cat.value === rules);
+  // Efecto para establecer la opción seleccionada cuando cambia la regla
   useEffect(() => {
-    if (selectedOption) {
-      setRules({
-        label: selectedOption.name,
-        value: selectedOption.value,
-      });
-    } else {
-      setRules(null);
-    }
+    const selectedOption = options.find((option) => option.value === rules);
+    setRules(selectedOption ? selectedOption : null);
+    detectarCambios(rules);
   }, [rules]);
-  const selectOptions = options.map((options) => ({
-    label: options.name,
-    value: options.value,
-  }));
+
   return (
-    <>
-      <label>Selecciona servicio</label>
-      <Select
-        fullwith
-        styles={selectStyles}
-        onChange={handleCategoryChange}
-        value={Rules}
-        classNamePrefix="select"
-        name="account"
-        placeholder="Selecciona servicio"
-        options={selectOptions}
-      />
-    </>
+    <div>
+      <FormControl fullWidth>
+        <InputLabel id="parking-options-label">Selecciona servicio</InputLabel>
+        <Select
+          labelId="parking-options-label"
+          id="parking-options-select"
+          value={Rules ? Rules.value : ""}
+          onChange={handleServiceChange}
+          label="Selecciona servicio"
+          name="account"
+        >
+          {options.map((option) => (
+            <MenuItem value={option.value} key={option.value}>
+              {option.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
   );
 };
 

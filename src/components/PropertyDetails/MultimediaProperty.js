@@ -13,7 +13,6 @@ const MultimediaProperty = ({ images, property_id }) => {
       }`,
     })
   );
-  console.log(new_images, "las imagenes");
   return (
     <Grid container spacing={2}>
       <Box sx={{ width: "100%", display: "flex", paddingTop: 4, p: 3 }}>

@@ -56,7 +56,6 @@ export default function AddUser({ modal, handleClose }) {
   const detectarCambiosRole = (value) => {
     saveRole(value.value);
   };
-  console.log(role, "el rol");
   const {
     register,
     formState: { errors },

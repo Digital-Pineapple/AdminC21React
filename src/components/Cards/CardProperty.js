@@ -13,6 +13,7 @@ import React, { useContext } from "react";
 import ModalImage from "react-modal-image-responsive";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CancelIcon from '@mui/icons-material/Cancel';
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
@@ -27,6 +28,7 @@ import PropertiesContext from "../../context/Properties/PropertiesContext";
 import AttachFileMultimedia from "../../containers/Properties/AddMultimedia";
 import image from "../../assets/img/default.png";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Delete } from "@mui/icons-material";
 const useStyles = makeStyles({
   titleProduct: {
     color: "white",
@@ -78,10 +80,12 @@ const useStyles = makeStyles({
 });
 
 const CardProperty = ({ property }) => {
-  const { images, address } = property;
 
+  const {images, address } = property;
   const [detailProperty, openDetailProperty] = useState(false);
   const [id_property, saveProperty] = useState(null);
+  const {DeleteProperty } = React.useContext(PropertiesContext);
+
   const handleClickOpenDetail = (id) => {
     openDetailProperty(true);
     saveProperty(id);
@@ -120,7 +124,6 @@ const CardProperty = ({ property }) => {
   const classes = useStyles();
   const { PublishProperty, BackPendingProperty } =
     useContext(PropertiesContext);
-  console.log(images, "las imagesnes pendientes");
   return (
     <>
       <Card className={classes.card}>
@@ -229,13 +232,12 @@ const CardProperty = ({ property }) => {
                       <SettingsIcon sx={{ color: "grey" }} />
                     </IconButton>
                   </Tooltip>
-                  {/* <Tooltip title="Eliminar Propiedad" placement="top">
-                    <IconButton
-                      onClick={() => BackPendingProperty(property.id)}
-                    >
+                  
+                  <Tooltip title="Eliminar Propiedad" placement="top">
+                    <IconButton size="small" onClick={() => DeleteProperty(property.id)}>
                       <DeleteIcon sx={{ color: "red" }} />
                     </IconButton>
-                  </Tooltip> */}
+                  </Tooltip>
                 </>
               )}
               {/* {property.status === 3 && (
@@ -246,9 +248,9 @@ const CardProperty = ({ property }) => {
                 </Tooltip>
               )} */}
               {property.status === 3 && (
-                <Tooltip title="Eliminar Propiedad" placement="top">
+                <Tooltip title="Deshacer publicación" placement="top">
                   <IconButton onClick={() => BackPendingProperty(property.id)}>
-                    <DeleteIcon sx={{ color: "red" }} />
+                    <CancelIcon sx={{ color: "red" }} />
                   </IconButton>
                 </Tooltip>
               )}

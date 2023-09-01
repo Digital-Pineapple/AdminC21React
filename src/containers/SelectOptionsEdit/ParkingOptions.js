@@ -1,17 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
-export default function ParkingOptions(props) {
+const ParkingOptions = ({ detectarCambios, parking }) => {
+  const [Parking, setParking] = useState(null);
+
+  // Definición de las opciones disponibles
   const options = [
-    { value: 0, name: "No" },
-    { value: 1, name: "Si" },
+    { value: 0, name: "No cuenta con estacionamiento" },
+    { value: 1, name: "Si cuenta con estacionamiento" },
   ];
 
-  const detectarCambiosParking = (e) => {
-    props.detectarCambiosParking(e);
+  // Maneja el cambio de la selección
+  const handleParkingChange = (event) => {
+    const selectedValue = event.target.value;
+    const selectedOption = options.find(
+      (option) => option.value === selectedValue
+    );
+
+    // Actualiza el estado con la opción seleccionada
+    setParking(selectedOption ? selectedOption : null);
+
+    // Llama a la función detectarCambios para notificar el cambio
+    detectarCambios(selectedValue);
   };
 
-  console.log(props.parking, "propss");
+  // Efecto para establecer la opción seleccionada cuando cambia la regla
+  useEffect(() => {
+    const selectedOption = options.find((option) => option.value === parking);
+    setParking(selectedOption ? selectedOption : null);
+    //detectarCambios(parking);
+  }, [parking]);
 
   return (
     <div>
@@ -23,9 +41,10 @@ export default function ParkingOptions(props) {
         <Select
           labelId="parking-options-label"
           id="parking-options-select"
+          value={Parking ? Parking.value : ""}
+          onChange={handleParkingChange}
           label="¿Cuenta con estacionamiento?"
-          value={props.parking || null}
-          onChange={detectarCambiosParking}
+          name="account"
         >
           {options.map((option) => (
             <MenuItem value={option.value} key={option.value}>
@@ -36,4 +55,6 @@ export default function ParkingOptions(props) {
       </FormControl>
     </div>
   );
-}
+};
+
+export default ParkingOptions;

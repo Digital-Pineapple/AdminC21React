@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     margin: "auto",
   },
   backgroundLogin: {
-    height: "100vh",
+    height: "150vh",
     width: "100%",
     backgroundImage: `url(${image})`,
     backgroundRepeat: "no-repeat",

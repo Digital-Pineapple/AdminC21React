@@ -1,68 +1,67 @@
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import MethodGet from "../../config/service";
 
 const SelectState = (props) => {
-  const [states, saveStates] = useState([]);
-  const [selectState, setSelectState] = useState();
+  const { detectarCambiosState, address } = props;
+
+  const [states, setStates] = useState([]);
+  const [selectedState, setSelectedState] = useState("");
 
   useEffect(() => {
-    let url = "/states";
-    MethodGet(url)
-      .then((res) => {
-        saveStates(res.data.data);
-        console.log(res.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const fetchData = async () => {
+      try {
+        const response = await MethodGet("/states");
+        setStates(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const selectStyles = {
-    menu: (base) => ({
-      ...base,
-      zIndex: 100,
-    }),
-  };
-
-  const handleChange = (selected) => {
-    setSelectState(selected);
-    props.detectarCambiosState(selected ? selected.value : null);
-  };
-
-  const selectedOption = states.find((cat) => cat.id === props.address.id);
   useEffect(() => {
-    if (selectedOption) {
-      console.log(selectedOption);
-      setSelectState({
-        label: selectedOption.name,
-        value: selectedOption.id,
-      });
-    } else {
-      setSelectState(null);
+    if (address && address.id) {
+      const selectedOption = states.find((state) => state.id === address.id);
+      if (selectedOption) {
+        setSelectedState(selectedOption.id);
+        detectarCambiosState(selectedOption.id);
+      } else {
+        setSelectedState("");
+      }
     }
-  }, [selectedOption]);
+  }, [address, states]);
 
-  console.log(selectState);
-  const selectOptions = states.map((options) => ({
-    label: options.name,
-    value: options.id,
-  }));
+  const handleChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedState(selectedValue);
+
+    detectarCambiosState(selectedValue);
+  };
+
+  const selectOptions = states.map((state) => (
+    <MenuItem key={state.id} value={state.id}>
+      {state.name}
+    </MenuItem>
+  ));
 
   return (
-    <>
-      <label>Selecciona un estado</label>
-      <Select
-        fullwith
-        styles={selectStyles}
-        onChange={handleChange}
-        value={selectState}
-        classNamePrefix="select"
-        name="account"
-        placeholder="Selecciona un estado"
-        options={selectOptions}
-      />
-    </>
+    <div>
+      <FormControl fullWidth>
+        <InputLabel id="state-select-label">Selecciona un Estado</InputLabel>
+        <Select
+          labelId="state-select-label"
+          id="state-select"
+          value={selectedState}
+          onChange={handleChange}
+          label="Selecciona un Estado"
+          name="state_id"
+        >
+          {selectOptions}
+        </Select>
+      </FormControl>
+    </div>
   );
 };
 

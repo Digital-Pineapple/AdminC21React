@@ -13,52 +13,67 @@ import Options from "../SelectOptionsEdit/Options";
 import SelectMunicipality from "../SelectOptionsEdit/SelectMunicipality";
 import SelectState from "../SelectOptionsEdit/SelectState";
 import ParkingOptions from "../SelectOptionsEdit/ParkingOptions";
+import PropertiesContext from "../../context/Properties/PropertiesContext";
 import OptionsWashRoom from "../SelectOptionsEdit/OptionsWahsroom";
 import FractionamientOptions from "../SelectOptionsEdit/FractionamientOptions";
-import { useEffect, useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import MethodGet from "../../config/service";
 const EditProperty = (props) => {
+  const { UpdateProperty } = useContext(PropertiesContext);
   const { id } = props.match.params;
   const [property, saveProperty] = useState([]);
+
+  //Select de Categorias
   const [category, saveCategory] = useState(null);
   const detectarCambiosCategory = (value) => {
-    saveCategory(value.value);
+    saveCategory(value);
   };
 
+  //Select de Servicios
   const [option, saveOption] = useState(null);
   const detectarCambiosOption = (value) => {
     saveOption(value);
   };
 
+  //Select de Estacionamineto
   const [parking, saveParking] = useState(null);
-  const detectarCambiosParking = (e) => {
-    saveParking(e.target.value);
-    console.log(e.target.value, "estacionamiento");
+  const detectarCambiosParking = (value) => {
+    saveParking(value);
   };
 
-
+  //Select de Cuarto de Lavado
   const [selectedValueWashRoom, setSelectedValueWashRoom] = useState("si");
   const handleChangeWashRoom = (event) => {
     setSelectedValueWashRoom(event.target.value);
   };
 
+  //Select de Remodelacion
+  const [remodel, saveRemodel] = useState(null);
+  const detectarCambiosRemodel = (value) => {
+    saveRemodel(value);
+  };
+
+  //Select de Fraccionamiento
   const [selectedValueFractionamient, setSelectedValueFractionamient] =
     useState("si");
   const handleChangeFractionamient = (event) => {
     setSelectedValueFractionamient(event.target.value);
   };
 
-  const [States, saveState] = useState();
+  //Select de Estados
+  const [States, saveState] = useState(null);
   const detectarCambiosState = (value) => {
-    console.log(value);
     saveState(value);
   };
 
+  //Select de Municipios
   const [municipality, saveMunicipality] = useState(null);
   const detectarCambiosMunicipality = (value) => {
     saveMunicipality(value);
   };
 
+  //Mapa de Propiedades
+  const [cargando, spinnerCargando] = useState(true);
   const [map, setMap] = useState(null);
   const handleHtmlMap = ({ target }) => {
     setTimeout(() => {
@@ -71,31 +86,61 @@ const EditProperty = (props) => {
     MethodGet(url)
       .then((res) => {
         saveProperty(res.data.data);
-        saveParking(property.details.parking);
-        console.log(res.data.data, "los datos");
       })
       .catch((error) => {
         console.log(error);
       });
   }, [id]);
 
-  const {
-    description,
-    user_id,
-    category_id,
-    status,
-    tipo,
-    address,
-    rules,
-    state_id,
-  } = property;
+  useEffect(() => {
+    setTimeout(() => {
+      setMap(property?.address?.iframe);
+    }, 1000);
+  }, [property]);
 
+  const { description, category_id, address, rules, details, status } =
+    property;
   const {
     register,
     formState: { errors },
     handleSubmit,
     setValue,
   } = useForm();
+
+  const reset = () => {
+    saveState(null);
+    saveMunicipality(null);
+    saveCategory(null);
+    saveOption(null);
+    setMap(null);
+    setValue("name", "", { shouldDirty: true });
+    setValue("description", "", { shouldDirty: true });
+    setValue("final_price", "", { shouldDirty: true });
+    setValue("age", "", { shouldDirty: true });
+    setValue("rooms", "", { shouldDirty: true });
+    setValue("bathroom", "", { shouldDirty: true });
+    setValue("size", "", { shouldDirty: true });
+    setValue("size_total", "", { shouldDirty: true });
+    setValue("postal_code", "", { shouldDirty: true });
+    setValue("colony", "", { shouldDirty: true });
+    setValue("street_name", "", { shouldDirty: true });
+    setValue("number_building", "", { shouldDirty: true });
+    setValue("no_int", "", { shouldDirty: true });
+  };
+
+  const onSubmit = (data, e) => {
+    data.id = id;
+    data.status = status;
+    data.category_id = category;
+    data.rule_id = option;
+    data.state_id = States;
+    data.municipality_id = municipality;
+    data.parking = parking;
+    data.remodel = remodel;
+    data.iframe = map;
+    UpdateProperty(data);
+    reset();
+  };
 
   return (
     <Grid container spacing={2} sx={{ marginTop: 1, padding: 2 }}>
@@ -117,8 +162,7 @@ const EditProperty = (props) => {
       </Grid>
       {/**Formulario */}
       <form
-        onSubmit={handleSubmit}
-        autoComplete="off"
+        onSubmit={handleSubmit(onSubmit)}
         onKeyDown={(e) => {
           if (e.code === "Enter" || e.code === "NumpadEnter")
             e.preventDefault();
@@ -136,17 +180,18 @@ const EditProperty = (props) => {
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
               <TextField
+                multiline
                 fullWidth
-                defaultValue={property.name}
-                label="Nombre de la propiedad"
-                name="name"
                 variant="outlined"
+                name="name"
+                label="Nombre de la propiedad"
+                defaultValue={property.name}
                 error={errors.name ? true : false}
                 helperText={errors?.name?.message}
                 {...register("name", {
                   required: {
                     value: true,
-                    message: "Este campo es requerido",
+                    message: "El nombre de la propiedad es requerida",
                   },
                 })}
               />
@@ -155,21 +200,23 @@ const EditProperty = (props) => {
               <CategoriesSelect
                 detectarCambiosCategory={detectarCambiosCategory}
                 category_id={category_id}
+                ºº
               />
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
               <Options
                 detectarCambios={detectarCambiosOption}
-                rules={rules[0].id}
+                rules={rules[0].detail.service_id}
               />
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
               <TextField
                 fullWidth
-                defaultValue={property.rules[0].detail.final_price}
+                variant="outlined"
+                type="number"
                 label="Precio"
                 name="final_price"
-                variant="outlined"
+                defaultValue={property.rules[0].detail.final_price}
                 error={errors.final_price ? true : false}
                 helperText={errors?.final_price?.message}
                 {...register("final_price", {
@@ -189,7 +236,6 @@ const EditProperty = (props) => {
                 rows={2}
                 name="description"
                 defaultValue={description}
-                placeholder="Escribe una breve descripcion del inmueble"
                 error={errors.description ? true : false}
                 helperText={errors?.description?.message}
                 {...register("description", {
@@ -211,10 +257,11 @@ const EditProperty = (props) => {
             <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
               <TextField
                 fullWidth
-                defaultValue={property.details.age}
-                label="Años de antiguedad"
-                name="age"
                 variant="outlined"
+                type="number"
+                name="age"
+                label="Años de antiguedad"
+                defaultValue={property.details.age}
                 error={errors.age ? true : false}
                 helperText={errors?.age?.message}
                 {...register("age", {
@@ -229,10 +276,11 @@ const EditProperty = (props) => {
             <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
               <TextField
                 fullWidth
-                defaultValue={property.details.rooms}
-                label="Numero de recamaras"
-                name="rooms"
                 variant="outlined"
+                type="number"
+                name="rooms"
+                label="Numero de recamaras"
+                defaultValue={property.details.rooms}
                 error={errors.rooms ? true : false}
                 helperText={errors?.rooms?.message}
                 {...register("rooms", {
@@ -247,10 +295,11 @@ const EditProperty = (props) => {
             <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
               <TextField
                 fullWidth
-                defaultValue={property.details.bathroom}
-                label="Baños completos"
-                name="bathroom"
                 variant="outlined"
+                type="number"
+                name="bathroom"
+                label="Baños completos"
+                defaultValue={property.details.bathroom}
                 error={errors.bathroom ? true : false}
                 helperText={errors?.bathroom?.message}
                 {...register("bathroom", {
@@ -265,10 +314,11 @@ const EditProperty = (props) => {
             <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
               <TextField
                 fullWidth
-                defaultValue={property.details.size}
-                label="Metros construidos"
-                name="size"
                 variant="outlined"
+                type="number"
+                name="size"
+                label="Metros construidos"
+                defaultValue={property.details.size}
                 error={errors.size ? true : false}
                 helperText={errors?.size?.message}
                 {...register("size", {
@@ -283,10 +333,11 @@ const EditProperty = (props) => {
             <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
               <TextField
                 fullWidth
-                defaultValue={property.details.size_total}
+                variant="outlined"
+                type="number"
                 label="Metros totales"
                 name="size_total"
-                variant="outlined"
+                defaultValue={property.details.size_total}
                 error={errors.size_total ? true : false}
                 helperText={errors?.size_total?.message}
                 {...register("size_total", {
@@ -301,24 +352,27 @@ const EditProperty = (props) => {
 
             <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
               <ParkingOptions
-                detectarCambiosParking={detectarCambiosParking}
-                parking={parking}
+                detectarCambios={detectarCambiosParking}
+                parking={details.parking}
               />
             </Grid>
 
-            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            {/* <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
               <OptionsWashRoom />
-            </Grid>
+            </Grid> */}
 
             <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-              <RemodelOptions />
+              <RemodelOptions
+                detectarCambios={detectarCambiosRemodel}
+                remodel={details.remodel}
+              />
             </Grid>
 
-            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            {/* <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
               <FractionamientOptions />
-            </Grid>
+            </Grid> */}
 
-            {selectedValueFractionamient === "si" && (
+            {/* {selectedValueFractionamient === "si" && (
               <>
                 <Grid
                   item
@@ -402,7 +456,8 @@ const EditProperty = (props) => {
                   />
                 </Grid>
               </>
-            )}
+            )} */}
+
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Divider>
                 <Chip
@@ -414,10 +469,11 @@ const EditProperty = (props) => {
             <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
               <TextField
                 fullWidth
-                defaultValue={property.address.street_name}
-                label="Calle"
-                name="street_name"
                 variant="outlined"
+                type="text"
+                name="street_name"
+                label="Calle"
+                defaultValue={property.address.street_name}
                 error={errors.street_name ? true : false}
                 helperText={errors?.street_name?.message}
                 {...register("street_name", {
@@ -431,16 +487,17 @@ const EditProperty = (props) => {
             <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
               <TextField
                 fullWidth
-                defaultValue={property.address.number_building}
+                variant="outlined"
+                type="text"
                 label="No_Ext"
                 name="number_building"
-                variant="outlined"
+                defaultValue={property.address.number_building}
                 error={errors.number_building ? true : false}
                 helperText={errors?.number_building?.message}
                 {...register("number_building", {
                   required: {
-                    value: false,
-                    message: "La calle de la propiedad es requerida",
+                    value: true,
+                    message: "El numero eexterior es requerido",
                   },
                 })}
               />
@@ -448,16 +505,17 @@ const EditProperty = (props) => {
             <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
               <TextField
                 fullWidth
-                defaultValue={property.address.number_int}
-                label="No_Int"
-                name="no_int"
                 variant="outlined"
+                type="text"
+                label="No_Int"
+                name="number_int"
+                defaultValue={property.address.number_int}
                 error={errors.number_int ? true : false}
                 helperText={errors?.number_int?.message}
                 {...register("number_int", {
                   required: {
-                    value: false,
-                    message: "La calle de la propiedad es requerida",
+                    value: true,
+                    message: "El numero interior es requerido",
                   },
                 })}
               />
@@ -465,25 +523,25 @@ const EditProperty = (props) => {
             <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
               <TextField
                 fullWidth
-                defaultValue={property.address.colony}
+                variant="outlined"
+                type="text"
                 label="Colonia"
                 name="colony"
-                variant="outlined"
+                defaultValue={property.address.colony}
                 error={errors.colony ? true : false}
                 helperText={errors?.colony?.message}
                 {...register("colony", {
                   required: {
-                    value: false,
+                    value: true,
                     message: "La colonia de la propiedad es requerida",
                   },
                 })}
               />
             </Grid>
             <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
-              {console.log(property.address.state.id)}
               <SelectState
                 detectarCambiosState={detectarCambiosState}
-                address={property.address.state}
+                address={address.state}
               />
             </Grid>
 
@@ -491,18 +549,19 @@ const EditProperty = (props) => {
               <SelectMunicipality
                 detectarCambiosMunicipality={detectarCambiosMunicipality}
                 state_id={States}
-                state={property.address.state.id}
-                municipality_id={property.address.municipality_id}
+                state={address.state.id}
+                municipality_id={address.municipality_id}
               />
             </Grid>
 
             <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
               <TextField
                 fullWidth
-                defaultValue={property.address.postal_code}
+                variant="outlined"
+                type="text"
                 label="Codigo Postal"
                 name="postal_code"
-                variant="outlined"
+                defaultValue={property.address.postal_code}
                 error={errors.postal_code ? true : false}
                 helperText={errors?.postal_code?.message}
                 {...register("postal_code", {
@@ -515,14 +574,14 @@ const EditProperty = (props) => {
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
               <TextField
-                defaultValue={property.address.iframe}
-                label="Iframe Mapa"
-                name="direction_maps"
-                variant="outlined"
                 multiline
                 rows={6}
                 fullWidth
+                variant="outlined"
                 onChange={handleHtmlMap}
+                label="Iframe Mapa"
+                name="direction_maps"
+                defaultValue={property.address.iframe}
               />
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
@@ -549,7 +608,7 @@ const EditProperty = (props) => {
                   "&:hover": { background: "#D7A86E", color: "white" },
                 }}
               >
-                Guardar{" "}
+                Guardar
               </Button>
             </Grid>
           </Grid>
