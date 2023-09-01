@@ -28,7 +28,7 @@ const ParkingOptions = ({ detectarCambios, parking }) => {
   useEffect(() => {
     const selectedOption = options.find((option) => option.value === parking);
     setParking(selectedOption ? selectedOption : null);
-    //detectarCambios(parking);
+    detectarCambios(parking);
   }, [parking]);
 
   return (

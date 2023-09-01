@@ -28,7 +28,7 @@ const RemodelOptions = ({ detectarCambios, remodel }) => {
   useEffect(() => {
     const selectedOption = options.find((option) => option.value === remodel);
     setRemodel(selectedOption ? selectedOption : null);
-    //detectarCambios(remodel);
+    detectarCambios(remodel);
   }, [remodel]);
 
   return (
