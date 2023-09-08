@@ -373,7 +373,7 @@ export default function AddProperty({ modal, handleClose }) {
                 />
               </Grid>
             )}
-            <Grid
+            {/* <Grid
               item
               xs={12}
               sm={12}
@@ -388,7 +388,7 @@ export default function AddProperty({ modal, handleClose }) {
                 selectedValueWashRoom={selectedValueWashRoom}
                 handleChangeWashRoom={handleChangeWashRoom}
               />
-            </Grid>
+            </Grid> */}
             <Grid
               item
               xs={12}
@@ -406,7 +406,7 @@ export default function AddProperty({ modal, handleClose }) {
               />
             </Grid>
 
-            <Grid
+            {/* <Grid
               item
               xs={12}
               sm={12}
@@ -506,7 +506,8 @@ export default function AddProperty({ modal, handleClose }) {
                   />
                 </Grid>
               </>
-            )}
+            )} */}
+            
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Divider>
                 <Chip
@@ -544,8 +545,8 @@ export default function AddProperty({ modal, handleClose }) {
                 helperText={errors?.number_building?.message}
                 {...register("number_building", {
                   required: {
-                    value: false,
-                    message: "La calle de la propiedad es requerida",
+                    value: true,
+                    message: "El numero eexterior es requerido",
                   },
                 })}
               />
@@ -561,8 +562,8 @@ export default function AddProperty({ modal, handleClose }) {
                 helperText={errors?.number_int?.message}
                 {...register("number_int", {
                   required: {
-                    value: false,
-                    message: "La calle de la propiedad es requerida",
+                    value: true,
+                    message: "El numero interior es requerido",
                   },
                 })}
               />
@@ -578,7 +579,7 @@ export default function AddProperty({ modal, handleClose }) {
                 helperText={errors?.colony?.message}
                 {...register("colony", {
                   required: {
-                    value: false,
+                    value: true,
                     message: "La colonia de la propiedad es requerida",
                   },
                 })}
