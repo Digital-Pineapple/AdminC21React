@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import * as Yup from "yup";
-import { makeStyles } from "@mui/styles";
+import { makeStyles, styled } from "@mui/styles";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import image from "../../assets/img/bg.jpg";
@@ -83,7 +83,6 @@ const Login = () => {
 
   return (
     <div className={classes.backgroundLogin}>
-      {/* <AlertaInternet isOnline={isOnline} /> */}
       <Grid container justifyContent="center">
         <div
           sx={{
@@ -99,15 +98,10 @@ const Login = () => {
               m: 5,
               padding: 4,
               position: "relative",
-              marginTop: 25,
+              marginTop: 10,
             }}
             className={classes.caja}
           >
-            {/* {!logos.logo ? (
-              <></>
-            ) : (
-            )} */}
-
             <Box
               sx={{
                 display: "flex",
@@ -121,6 +115,15 @@ const Login = () => {
                 className={classes.logo}
               />
             </Box>
+            <div
+                style={{
+                  textAlign: "center",
+                  color: "white",
+                  marginBottom: "20px",
+                }}
+              >
+                Inicia Secion
+              </div>
             <Box
               component="form"
               onSubmit={formik.handleSubmit}
@@ -179,16 +182,6 @@ const Login = () => {
                       label="Contraseña"
                     />
                   </FormControl>
-                  {/* <TextField
-                    fullWidth
-                    name="password"
-                    label="Contraseña"
-                    type="password"
-                    id="password"
-                    autoComplete="new-password"
-                    onChange={(event)=>{formik.handleChange(event)}}
-                    error={formik.errors?.password ? true : false}
-                  /> */}
                 </Grid>
               </Grid>
               <Button
@@ -206,19 +199,34 @@ const Login = () => {
                   },
                 }}
               >
-                Iniciar Sesion
+                Ingresar
               </Button>
-              {/* <Grid container justifyContent="flex-end">
-                <Grid item>
-                  <Link to="/Olvide-mi-Acceso">
-                    ¿Has olvidado la contraseña?
-                  </Link>
-                </Grid>
-              </Grid> */}
+              <Link to="/registrarme">
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#D7A86E",
+                    color: "white",
+                    fontWeight: "bold",
+                    mt: 0,
+                    mb: 6,
+                    "&:hover": {
+                      backgroundColor: "#D7A86E",
+                    },
+                  }}
+                >
+                  Registrarme
+                </Button>
+              </Link>
+              <Link to="/Olvide-mi-Acceso">
+                <div style={{ textAlign: "center", color: "white" }}>
+                  ¿Has olvidado la contraseña?
+                </div>
+              </Link>
             </Box>
           </Box>
-
-          {/* <Copyright /> */}
         </div>
       </Grid>
     </div>

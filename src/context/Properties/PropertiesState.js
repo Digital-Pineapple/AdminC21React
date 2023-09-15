@@ -16,6 +16,7 @@ import {
   GET_ALL_PROPERTIES_PUBLISH,
   PUBLISH_PROPERTY,
   UPDATE_PROPERTY,
+  SHOW_ERRORS_API,
 } from "../../types";
 import Swal from "sweetalert2";
 import PropertiesContext from "./PropertiesContext";
@@ -106,8 +107,9 @@ const PropertiesState = ({ children }) => {
           title: "Error",
           icon: "error",
           text: error.response.data.message,
-          timer: 5000,
-          showConfirmButton: false,
+        });
+        dispatch({
+          type: SHOW_ERRORS_API,
         });
       });
   };

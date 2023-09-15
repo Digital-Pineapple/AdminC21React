@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { PublicRouter } from "./PublicRoute";
 import Login from "../components/auth/Login";
+import Register from "../components/auth/Register";
 import AdminRoutes from "./AdminRoutes";
 import { PrivateRouter } from "./PrivateRoute";
 import AuthContext from "../context/auth/AuthContext";
@@ -37,6 +38,12 @@ const AppRouter = () => {
             exact
             path="/iniciar-sesion"
             component={Login}
+            isAuthenticated={autenticado}
+          />
+          <PublicRouter
+            exact
+            path="/registrarme"
+            component={Register}
             isAuthenticated={autenticado}
           />
           <PrivateRouter

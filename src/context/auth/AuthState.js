@@ -3,6 +3,8 @@ import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
 import MethodGet, { MethodPost, MethodPut } from "../../config/service";
 import headerConfig from "../../config/imageHeaders";
+import { useHistory } from "react-router-dom";
+
 
 /**Importar componente token headers */
 import tokenAuth from "../../config/TokenAuth";
@@ -57,6 +59,37 @@ const AuthState = (props) => {
           payload: res.data,
         });
         usuarioAutenticado();
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: error.response.data.message,
+        });
+        dispatch({
+          type: SHOW_ERRORS_API,
+        });
+      });
+  };
+
+  const AddUser = (datos) => {
+    let url = "/register";
+    MethodPost(url, datos)
+      .then((res) => {
+        console.log(res);
+        dispatch({
+          type: types,
+          payload: res.data.data,
+        });
+        Swal.fire({
+          title: "Registrado",
+          text: "Usuario registrado correctamente, Ininia Secion Ahora",
+          icon: "success",
+        });
+        usuarioAutenticado();
+        setTimeout(() => {
+          window.location.href = '/Properties';
+        }, 5000);
       })
       .catch((error) => {
         Swal.fire({
@@ -149,6 +182,7 @@ const AuthState = (props) => {
         cerrarSesion,
         ChangePasswordUser,
         ChangePhoto,
+        AddUser,
       }}
     >
       {props.children}

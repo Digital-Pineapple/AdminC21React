@@ -32,6 +32,9 @@ const Logout = () => {
 
           console.log("Logout successful:", response.data);
           history.push("/iniciar-sesion");
+          
+          // Recargar la página
+          window.location.reload();
         } catch (error) {
           console.error("Error logging out:", error);
           console.error("Error response:", error.response.data);
