@@ -147,7 +147,7 @@ const Register = () => {
                   marginBottom: "20px",
                 }}
               >
-                ¡Registrate gratis!
+                ¡Regístrate gratis!
               </div>
 
               <Grid container spacing={2}>
@@ -156,7 +156,7 @@ const Register = () => {
                     type="text"
                     fullWidth
                     name="name"
-                    label="Nombre"
+                    label="Nombre:"
                     error={errors.name ? true : false}
                     helperText={errors?.name?.message}
                     {...register("name", {
@@ -176,7 +176,7 @@ const Register = () => {
                     type="email"
                     fullWidth
                     name="email"
-                    label="Correo Electronico"
+                    label="Correo Electronico:"
                     error={errors.email ? true : false}
                     helperText={errors?.email?.message}
                     {...register("email", {
@@ -215,7 +215,7 @@ const Register = () => {
                         </InputAdornment>
                       )
                     }}
-                    label="Contraseña"
+                    label="Contraseña:"
                     error={errors.password ? true : false}
                     helperText={errors?.password?.message}
                     {...register("password", {
@@ -258,7 +258,7 @@ const Register = () => {
                         </InputAdornment>
                       )
                     }}
-                    label="Confirma la Contraseña"
+                    label="Confirma la Contraseña:"
                     error={errors.password_confirmation ? true : false}
                     helperText={errors?.password_confirmation?.message}
                     {...register("password_confirmation", {

@@ -69,7 +69,7 @@ export default function Bars() {
         labels: meses,
         datasets: [
             {
-                label: 'Beneficios',
+                label: 'Total:',
                 data: beneficios,
                 backgroundColor: 'rgb(215, 168, 110)'
             }

@@ -83,7 +83,7 @@ const AuthState = (props) => {
         });
         Swal.fire({
           title: "Registrado",
-          text: "Usuario registrado correctamente, Ininia Secion Ahora",
+          text: "Usuario registrado correctamente, Inicia sesión Ahora",
           icon: "success",
         });
         usuarioAutenticado();

@@ -122,7 +122,7 @@ const Login = () => {
                   marginBottom: "20px",
                 }}
               >
-                Inicia Secion
+                Inicia sesión
               </div>
             <Box
               component="form"
@@ -138,7 +138,7 @@ const Login = () => {
                   <TextField
                     fullWidth
                     id="email"
-                    label="Correo Electronico"
+                    label="Correo Electronico:"
                     name="email"
                     autoComplete="off"
                     onChange={formik.handleChange}
@@ -151,7 +151,7 @@ const Login = () => {
                       htmlFor="password"
                       error={formik.errors?.password ? true : false}
                     >
-                      Contraseña
+                      Contraseña:
                     </InputLabel>
                     <OutlinedInput
                       error={formik.errors?.password ? true : false}
@@ -179,7 +179,7 @@ const Login = () => {
                           </IconButton>
                         </InputAdornment>
                       }
-                      label="Contraseña"
+                      label="Contraseña:"
                     />
                   </FormControl>
                 </Grid>
@@ -220,11 +220,11 @@ const Login = () => {
                   Registrarme
                 </Button>
               </Link>
-              <Link to="/Olvide-mi-Acceso">
+              {/* <Link to="/Olvide-mi-Acceso">
                 <div style={{ textAlign: "center", color: "white" }}>
                   ¿Has olvidado la contraseña?
                 </div>
-              </Link>
+              </Link> */}
             </Box>
           </Box>
         </div>
