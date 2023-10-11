@@ -10,7 +10,6 @@ const OptionsSelect = (props) => {
   const options = [
     { value: 1, name: "venta" },
     { value: 2, name: "Renta" },
-    { value: 3, name: "Ambos" },
   ];
   const detectarCambiosOption = (value) => {
     props.detectarCambiosOption(value);

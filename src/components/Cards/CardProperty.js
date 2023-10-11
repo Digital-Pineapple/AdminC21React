@@ -233,11 +233,11 @@ const CardProperty = ({ property }) => {
                     </IconButton>
                   </Tooltip>
                   
-                  <Tooltip title="Eliminar Propiedad" placement="top">
+                  {/* <Tooltip title="Eliminar Propiedad" placement="top">
                     <IconButton size="small" onClick={() => DeleteProperty(property.id)}>
                       <DeleteIcon sx={{ color: "red" }} />
                     </IconButton>
-                  </Tooltip>
+                  </Tooltip> */}
                 </>
               )}
               {/* {property.status === 3 && (
