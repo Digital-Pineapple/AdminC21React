@@ -103,6 +103,34 @@ const AuthState = (props) => {
       });
   };
 
+  const NewUser = (datos) => {
+    let url = "/register";
+    MethodPost(url, datos)
+      .then((res) => {
+        console.log(res);
+        dispatch({
+          type: types,
+          payload: res.data.data,
+        });
+        Swal.fire({
+          title: "Registrado",
+          text: "Usuario registrado correctamente",
+          icon: "success",
+        });
+        usuarioAutenticado();
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: error.response.data.message,
+        });
+        dispatch({
+          type: SHOW_ERRORS_API,
+        });
+      });
+  };
+
   //cuando el usuario Ccambia de contraseña
   const ChangePasswordUser = (datos) => {
     let url = "/admin/auth/changePassword";
@@ -183,6 +211,7 @@ const AuthState = (props) => {
         ChangePasswordUser,
         ChangePhoto,
         AddUser,
+        NewUser,
       }}
     >
       {props.children}

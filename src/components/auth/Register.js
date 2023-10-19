@@ -11,7 +11,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import * as Yup from "yup";
 import { makeStyles } from "@mui/styles";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -19,7 +18,7 @@ import image from "../../assets/img/bg.jpg";
 import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import AuthContext from "../../context/auth/AuthContext";
-import { useFormik } from "formik";
+import RolesSelect from "../../containers/SelectOptions/RolesSelect";
 
 const useStyles = makeStyles({
   textlogin: {
@@ -67,6 +66,7 @@ const Register = () => {
     setValue("password_confirmation", "", { shouldDirty: true });
   };
   const onSubmit = (data, e) => {
+    data.role_id = role;
     AddUser(data);
     reset();
   };
@@ -97,6 +97,12 @@ const Register = () => {
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+
+  const [role, saveRole] = React.useState(null);
+  const detectarCambiosRole = (value) => {
+    saveRole(value);
+    console.log(value);
   };
 
   return (
@@ -156,7 +162,7 @@ const Register = () => {
                     type="text"
                     fullWidth
                     name="name"
-                    label="Nombre:"
+                    label="Nombre Completo:"
                     error={errors.name ? true : false}
                     helperText={errors?.name?.message}
                     {...register("name", {
@@ -192,12 +198,15 @@ const Register = () => {
                   />
                 </Grid>
                 <Grid item xs={12} md={12} lg={12} xl={12}>
+                  <RolesSelect detectarCambiosRole={detectarCambiosRole} />
+                </Grid>
+                <Grid item xs={12} md={12} lg={12} xl={12}>
                   <TextField
                     type={passwordValues.showPassword ? "text" : "password"}
                     id="password"
                     fullWidth
                     name="password"
-                    InputProps={{ 
+                    InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
                           <IconButton
@@ -213,7 +222,7 @@ const Register = () => {
                             )}
                           </IconButton>
                         </InputAdornment>
-                      )
+                      ),
                     }}
                     label="Contraseña:"
                     error={errors.password ? true : false}
@@ -229,7 +238,7 @@ const Register = () => {
                       },
                       maxLength: {
                         value: 255,
-                        message: "Maximo 255 caracteres",
+                        message: "Maximo 50 caracteres",
                       },
                     })}
                   />
@@ -237,15 +246,19 @@ const Register = () => {
 
                 <Grid item xs={12} md={12} lg={12} xl={12}>
                   <TextField
-                    type={confirmPasswordValues.showPassword ? "text" : "password"}
+                    type={
+                      confirmPasswordValues.showPassword ? "text" : "password"
+                    }
                     fullWidth
                     name="password_confirmation"
-                    InputProps={{ 
+                    InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
                           <IconButton
                             aria-label="toggle password visibility"
-                            onClick={() => handleClickShowPassword("password_confirmation")}
+                            onClick={() =>
+                              handleClickShowPassword("password_confirmation")
+                            }
                             onMouseDown={handleMouseDownPassword}
                             edge="end"
                           >
@@ -256,7 +269,7 @@ const Register = () => {
                             )}
                           </IconButton>
                         </InputAdornment>
-                      )
+                      ),
                     }}
                     label="Confirma la Contraseña:"
                     error={errors.password_confirmation ? true : false}
@@ -271,8 +284,8 @@ const Register = () => {
                         message: "Minimo 8 caracteres",
                       },
                       maxLength: {
-                        value: 255,
-                        message: "Maximo 255 caracteres",
+                        value: 50,
+                        message: "Maximo 50 caracteres",
                       },
                     })}
                   />

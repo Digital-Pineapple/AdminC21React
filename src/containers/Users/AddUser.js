@@ -1,6 +1,8 @@
-import * as React from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import InputAdornment from "@mui/material/InputAdornment";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -11,7 +13,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Grid, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import RolesSelect from "../SelectOptions/RolesSelect";
-import UsersContext from "../../context/Users/UsersContext";
+import AuthContext from "../../context/auth/AuthContext";
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -50,11 +52,11 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function AddUser({ modal, handleClose }) {
-  const { AddUser } = React.useContext(UsersContext);
+export default function NewUser({ modal, handleClose }) {
+  const { NewUser } = React.useContext(AuthContext);
   const [role, saveRole] = React.useState(null);
   const detectarCambiosRole = (value) => {
-    saveRole(value.value);
+    saveRole(value);
   };
   const {
     register,
@@ -66,17 +68,41 @@ export default function AddUser({ modal, handleClose }) {
     setValue("name", "", { shouldDirty: true });
   };
   const onSubmit = (data, e) => {
-    data.rol = role;
-    console.log(data, "la data");
-    AddUser(data);
+    data.role_id = role;
+    NewUser(data);
     handleClose();
     reset();
   };
+
+  const [passwordValues, setPasswordValues] = useState({
+    password: "",
+    showPassword: false,
+  });
+
+  const [confirmPasswordValues, setConfirmPasswordValues] = useState({
+    password: "",
+    showPassword: false,
+  });
+
+  const handleClickShowPassword = (field) => {
+    if (field === "password") {
+      setPasswordValues({
+        ...passwordValues,
+        showPassword: !passwordValues.showPassword,
+      });
+    } else if (field === "password_confirmation") {
+      setConfirmPasswordValues({
+        ...confirmPasswordValues,
+        showPassword: !confirmPasswordValues.showPassword,
+      });
+    }
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   return (
     <div>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Open dialog
-      </Button> */}
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -99,15 +125,11 @@ export default function AddUser({ modal, handleClose }) {
           <DialogContent dividers>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <RolesSelect detectarCambiosRole={detectarCambiosRole} />
-              </Grid>
-              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <TextField
                   type="text"
                   fullWidth
                   name="name"
-                  placeholder="Emmanuel"
-                  label="Nombre de usuario"
+                  label="Nombre Completo:"
                   error={errors.name ? true : false}
                   helperText={errors?.name?.message}
                   {...register("name", {
@@ -126,13 +148,12 @@ export default function AddUser({ modal, handleClose }) {
                   })}
                 />
               </Grid>
-              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <TextField
                   type="email"
                   fullWidth
                   name="email"
-                  placeholder="alguien@algo.com"
-                  label="Nombre de usuario"
+                  label="Correo Electronico:"
                   error={errors.email ? true : false}
                   helperText={errors?.email?.message}
                   {...register("email", {
@@ -144,11 +165,33 @@ export default function AddUser({ modal, handleClose }) {
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <RolesSelect detectarCambiosRole={detectarCambiosRole} />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <TextField
-                  type="password"
+                  type={passwordValues.showPassword ? "text" : "password"}
+                  id="password"
                   fullWidth
                   name="password"
-                  label="Contraseña"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={() => handleClickShowPassword("password")}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {passwordValues.showPassword ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                  label="Contraseña:"
                   error={errors.password ? true : false}
                   helperText={errors?.password?.message}
                   {...register("password", {
@@ -162,7 +205,53 @@ export default function AddUser({ modal, handleClose }) {
                     },
                     maxLength: {
                       value: 16,
-                      message: "Maximo 16 caracteres",
+                      message: "Maximo 50 caracteres",
+                    },
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <TextField
+                  type={
+                    confirmPasswordValues.showPassword ? "text" : "password"
+                  }
+                  fullWidth
+                  name="password_confirmation"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={() =>
+                            handleClickShowPassword("password_confirmation")
+                          }
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {confirmPasswordValues.showPassword ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                  label="Confirma la Contraseña::"
+                  error={errors.password_confirmation ? true : false}
+                  helperText={errors?.password_confirmation?.message}
+                  {...register("password_confirmation", {
+                    required: {
+                      value: true,
+                      message: "Es requerido Confirmar la contraseña",
+                    },
+                    minLength: {
+                      value: 8,
+                      message: "Minimo 8 caracteres",
+                    },
+                    maxLength: {
+                      value: 50,
+                      message: "Maximo 50 caracteres",
                     },
                   })}
                 />
