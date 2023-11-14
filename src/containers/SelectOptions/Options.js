@@ -1,40 +1,36 @@
-import React, { useContext, useEffect } from "react";
-import Select from "react-select";
+import React from "react";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+
 const OptionsSelect = (props) => {
-  const selectStyles = {
-    menu: (base) => ({
-      ...base,
-      zIndex: 100,
-    }),
-  };
   const options = [
-    { value: 1, name: "venta" },
-    { value: 2, name: "Renta" },
+    { value: 1, name: "Renta" },
+    { value: 2, name: "Venta" },
   ];
-  const detectarCambiosOption = (value) => {
-    props.detectarCambiosOption(value);
+
+  const detectarCambiosOption = (event) => {
+    props.detectarCambiosOption(event.target.value);
   };
+
   return (
-    <>
-      <label>Selecciona opcion</label>
-      <Select
-        fullwith
-        styles={selectStyles}
-        onChange={(value) => detectarCambiosOption(value)}
-        //className="basic-single"
-        classNamePrefix="select"
-        name="account"
-        placeholder="Selecciona una opcion"
-        // options={nuevoArreglo}
-        options={options.map((option) => {
-          let attribute = {
-            label: option.name,
-            value: option.value,
-          };
-          return attribute;
-        })}
-      />
-    </>
+    <div>
+      <FormControl fullWidth>
+        <InputLabel id="parking-options-label">Selecciona servicio</InputLabel>
+        <Select
+          labelId="parking-options-label"
+          id="parking-options-select"
+          value={props.selectedOption}
+          onChange={detectarCambiosOption}
+          label="Selecciona servicio"
+          name="account"
+        >
+          {options.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
   );
 };
 

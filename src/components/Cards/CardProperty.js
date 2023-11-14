@@ -8,6 +8,8 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import HomeIcon from '@mui/icons-material/Home'; 
+
 import { makeStyles } from "@mui/styles";
 import React, { useContext } from "react";
 import ModalImage from "react-modal-image-responsive";
@@ -24,6 +26,7 @@ import { useState } from "react";
 import IframeProperty from "../PropertyDetails/IframeProperty";
 import PlaceIcon from "@mui/icons-material/Place";
 import AddService from "../PropertyDetails/AddService";
+import AddView3D from "../PropertyDetails/AddView3D";
 import PropertiesContext from "../../context/Properties/PropertiesContext";
 import AttachFileMultimedia from "../../containers/Properties/AddMultimedia";
 import image from "../../assets/img/default.png";
@@ -112,6 +115,17 @@ const CardProperty = ({ property }) => {
     openAddServiceModal(false);
     saveProperty(null);
   };
+
+  const [AddView3DModal, openAddView3DModal] = useState(false);
+  const handleClickOpenAddView3D = (id) => {
+    openAddView3DModal(true);
+    saveProperty(id);
+  };
+  const handleCloseAddView3D = () => {
+    openAddView3DModal(false);
+    saveProperty(null);
+  };
+  
   const [modalMultimedia, openModalMultimedia] = useState(false);
   const handleOpenMultimedia = (id) => {
     openModalMultimedia(true);
@@ -232,6 +246,15 @@ const CardProperty = ({ property }) => {
                       <SettingsIcon sx={{ color: "grey" }} />
                     </IconButton>
                   </Tooltip>
+
+                  <Tooltip title="Agregar Vista 3D" placement="top">
+                    <IconButton
+                      onClick={() => handleClickOpenAddView3D(property.id)}
+                    >
+                      <HomeIcon sx={{ color: "orange" }} /> {/* Reemplaza SettingsIcon con HomeIcon */}
+
+                    </IconButton>
+                  </Tooltip>
                   
                   {/* <Tooltip title="Eliminar Propiedad" placement="top">
                     <IconButton size="small" onClick={() => DeleteProperty(property.id)}>
@@ -290,6 +313,13 @@ const CardProperty = ({ property }) => {
         <AddService
           modal={AddServiceModal}
           handleClose={handleCloseAddServiceProperty}
+          id={id_property}
+        />
+      )}
+      {id_property !== null && (
+        <AddView3D
+          modal={AddView3DModal}
+          handleClose={handleCloseAddView3D}
           id={id_property}
         />
       )}

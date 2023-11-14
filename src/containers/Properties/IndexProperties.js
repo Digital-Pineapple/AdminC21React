@@ -6,9 +6,6 @@ import AddProperty from "./AddProperty";
 
 const Properties = () => {
   const [modal, openModal] = useState(false);
-  const handleClickOpenModal = () => {
-    openModal(true);
-  };
   const handleClickCloseModal = () => {
     openModal(false);
   };
@@ -20,29 +17,6 @@ const Properties = () => {
           <Typography fontWeight="bold" fontFamily="monospace" variant="h4">
             Propiedades
           </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          xl={12}
-          display="flex"
-          justifyContent="end"
-          sx={{ margin: 1 }}
-        >
-          <Button
-            variant="contained"
-            // fullWidth
-            sx={{
-              backgroundColor: "#D7A86E",
-              "&:hover": { backgroundColor: "#D7A86E" },
-            }}
-            onClick={handleClickOpenModal}
-          >
-            Agregar
-          </Button>
         </Grid>
         <Grid container spacing={2} sx={{ padding: 1 }}>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>

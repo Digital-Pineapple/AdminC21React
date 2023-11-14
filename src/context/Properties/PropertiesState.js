@@ -67,9 +67,12 @@ const PropertiesState = ({ children }) => {
           title: "Registrado",
           text: "La propiedad se ha registrado correctamente!",
           icon: "success",
-          timer: 1500,
+          timer: 1000,
           showConfirmButton: false,
         });
+        setTimeout(() => {
+          window.location.href = '/Properties';
+        }, 1000);
       })
       .catch((error) => {
         console.log(error);
@@ -86,16 +89,16 @@ const PropertiesState = ({ children }) => {
     let url = "/update/p/"+data.id;
     MethodPost(url, data)
       .then((res) => {
+        dispatch({
+          type: UPDATE_PROPERTY,
+          payload: res.data,
+        });
         Swal.fire({
           title: "Editado",
           text: "La propiedad se ha editado correctamente!",
           icon: "success",
           timer: 1000,
           showConfirmButton: false,
-        });
-        dispatch({
-          type: UPDATE_PROPERTY,
-          payload: res.data,
         });
         setTimeout(() => {
           window.location.href = '/Properties';
@@ -107,9 +110,8 @@ const PropertiesState = ({ children }) => {
           title: "Error",
           icon: "error",
           text: error.response.data.message,
-        });
-        dispatch({
-          type: SHOW_ERRORS_API,
+          timer: 2000,
+          showConfirmButton: false,
         });
       });
   };

@@ -389,12 +389,13 @@ export default function Header() {
   );
 
   const modules = [
-    // { route: "/", name: "Inicio" },
+    { route: "/", name: "Inicio" },
     { route: "/Categories", name: "Categorias" },
     { route: "/Services", name: "Servicios" },
+    { route: "/CreateProperty", name: "Nueva Propiedad" },
     { route: "/Properties", name: "Propiedades" },
     { route: "/Users", name: "Usuarios" },
-    // { route: "/Perfil", name: "Perfil" },
+    /* { route: "/Perfil", name: "Perfil" }, */
   ];
 
   return (

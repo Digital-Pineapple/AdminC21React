@@ -45,6 +45,8 @@ const useStyles = makeStyles({
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
     backdropFilter: "blur(5px)",
     border: "1px solid rgba(20, 20, 20, 0.3)",
+    width: "50vh",
+    margin: "auto",
   },
   
 });
