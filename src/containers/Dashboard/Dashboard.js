@@ -75,12 +75,17 @@ const Dashboard = () => {
           </Typography>
         </Grid>
       </Grid>
-
-      <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
-        <Graphics />
+      <Grid
+        container
+        spacing={2}
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+          <Graphics />
+        </Grid>
       </Grid>
-      <br/><br/> 
-      <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
+
+      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
         <Logout />
       </Grid>
     </Layout>

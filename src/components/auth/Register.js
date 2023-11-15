@@ -59,18 +59,18 @@ const Register = () => {
     handleSubmit,
     setValue,
   } = useForm();
+
   const reset = () => {
     setValue("name", "", { shouldDirty: true });
-    setValue("lastname", "", { shouldDirty: true });
-    setValue("phone", "", { shouldDirty: true });
+    setValue("last_name", "", { shouldDirty: true });
+    setValue("phone_number", "", { shouldDirty: true });
     setValue("email", "", { shouldDirty: true });
     setValue("password", "", { shouldDirty: true });
     setValue("password_confirmation", "", { shouldDirty: true });
   };
-  const onSubmit = (data, e) => {
-    data.role_id = role;
-    AddUser(data);
-    reset();
+  const [role, saveRole] = React.useState(null);
+  const detectarCambiosRole = (value) => {
+    saveRole(value);
   };
 
   const [passwordValues, setPasswordValues] = useState({
@@ -100,11 +100,10 @@ const Register = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
-  const [role, saveRole] = React.useState(null);
-  const detectarCambiosRole = (value) => {
-    saveRole(value);
-    console.log(value);
+  const onSubmit = (data, e) => {
+    data.type_user = role;
+    AddUser(data);
+    reset();
   };
 
   return (
@@ -193,11 +192,11 @@ const Register = () => {
                   <TextField
                     type="text"
                     fullWidth
-                    name="lastname"
+                    name="last_name"
                     label="Apellido(s):"
-                    error={errors.lastname ? true : false}
-                    helperText={errors?.lastname?.message}
-                    {...register("lastname", {
+                    error={errors.last_name ? true : false}
+                    helperText={errors?.last_name?.message}
+                    {...register("last_name", {
                       required: {
                         value: true,
                         message: "El apellido es requerido",
@@ -216,11 +215,11 @@ const Register = () => {
                   <TextField
                     type="number"
                     fullWidth
-                    name="phone"
+                    name="phone_number"
                     label="Teléfono:"
-                    error={errors.phone ? true : false}
-                    helperText={errors?.phone?.message}
-                    {...register("phone", {
+                    error={errors.phone_number ? true : false}
+                    helperText={errors?.phone_number?.message}
+                    {...register("phone_number", {
                       required: {
                         value: true,
                         message: "El teléfono es requerido",

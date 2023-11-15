@@ -66,12 +66,9 @@ export default function NewUser({ modal, handleClose }) {
   } = useForm();
   const reset = () => {
     setValue("name", "", { shouldDirty: true });
-  };
-  const onSubmit = (data, e) => {
-    data.role_id = role;
-    NewUser(data);
-    handleClose();
-    reset();
+    setValue("last_name", "", { shouldDirty: true });
+    setValue("phone_number", "", { shouldDirty: true });
+    setValue("email", "", { shouldDirty: true });
   };
 
   const [passwordValues, setPasswordValues] = useState({
@@ -101,6 +98,13 @@ export default function NewUser({ modal, handleClose }) {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const onSubmit = (data, e) => {
+    data.type_user = role;
+    NewUser(data);
+    handleClose();
+    reset();
+  };
+
   return (
     <div>
       <BootstrapDialog
@@ -150,6 +154,54 @@ export default function NewUser({ modal, handleClose }) {
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <TextField
+                  type="text"
+                  fullWidth
+                  name="last_name"
+                  label="Apellido:"
+                  error={errors.last_name ? true : false}
+                  helperText={errors?.last_name?.message}
+                  {...register("last_name", {
+                    required: {
+                      value: true,
+                      message: "Este campo es requerido",
+                    },
+                    minLength: {
+                      value: 4,
+                      message: "Minimo 4 caracteres",
+                    },
+                    maxLength: {
+                      value: 255,
+                      message: "Maximo 255 caracteres",
+                    },
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <TextField
+                  type="number"
+                  fullWidth
+                  name="phone_number"
+                  label="Numero Telefonico:"
+                  error={errors.phone_number ? true : false}
+                  helperText={errors?.phone_number?.message}
+                  {...register("phone_number", {
+                    required: {
+                      value: true,
+                      message: "Este campo es requerido",
+                    },
+                    minLength: {
+                      value: 4,
+                      message: "Minimo 4 caracteres",
+                    },
+                    maxLength: {
+                      value: 255,
+                      message: "Maximo 255 caracteres",
+                    },
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <TextField
                   type="email"
                   fullWidth
                   name="email"
@@ -167,7 +219,8 @@ export default function NewUser({ modal, handleClose }) {
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <RolesSelect detectarCambiosRole={detectarCambiosRole} />
               </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+
+              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <TextField
                   type={passwordValues.showPassword ? "text" : "password"}
                   id="password"
@@ -210,7 +263,7 @@ export default function NewUser({ modal, handleClose }) {
                   })}
                 />
               </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <TextField
                   type={
                     confirmPasswordValues.showPassword ? "text" : "password"
@@ -237,7 +290,7 @@ export default function NewUser({ modal, handleClose }) {
                       </InputAdornment>
                     ),
                   }}
-                  label="Confirma la Contraseña::"
+                  label="Confirma la Contraseña:"
                   error={errors.password_confirmation ? true : false}
                   helperText={errors?.password_confirmation?.message}
                   {...register("password_confirmation", {
