@@ -40,8 +40,8 @@ const useStyles = makeStyles({
     overflowY: "none",
   },
   caja: {
-    background: "rgba(20, 20, 20, 0.20)",
-    borderRadius: "16px",
+    background: "rgba(20, 20, 20, 0.30)",
+    borderRadius: "20px",
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
     backdropFilter: "blur(5px)",
     border: "1px solid rgba(20, 20, 20, 0.3)",
@@ -99,9 +99,9 @@ const Login = () => {
             sx={{
               boxShadow: 3,
               m: 5,
-              padding: 4,
+              padding: 5,
               position: "relative",
-              marginTop: 10,
+              marginTop: 0,
             }}
             className={classes.caja}
           >
@@ -112,17 +112,27 @@ const Login = () => {
                 alignItems: "center",
               }}
             >
-              <img
+              {/* <img
                 src={require("../../assets/img/logo.png")}
                 alt=" "
                 className={classes.logo}
-              />
+              /> */}
+              <div
+                style={{
+                  textAlign: "center",
+                  color: "white",
+                  marginBottom: "10px",
+                  fontSize: "60px",
+                }}
+              >
+                MiBien
+              </div>
             </Box>
             <div
                 style={{
                   textAlign: "center",
                   color: "white",
-                  marginBottom: "20px",
+                  marginBottom: "25px",
                 }}
               >
                 Inicia sesión
@@ -192,13 +202,13 @@ const Login = () => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  backgroundColor: "#D7A86E",
+                  backgroundColor: "orange",
                   color: "white",
                   fontWeight: "bold",
                   mt: 3,
                   mb: 2,
                   "&:hover": {
-                    backgroundColor: "#D7A86E",
+                    backgroundColor: "orange",
                   },
                 }}
               >
@@ -210,13 +220,13 @@ const Login = () => {
                   fullWidth
                   variant="contained"
                   sx={{
-                    backgroundColor: "#D7A86E",
+                    backgroundColor: "orange",
                     color: "white",
                     fontWeight: "bold",
                     mt: 0,
                     mb: 6,
                     "&:hover": {
-                      backgroundColor: "#D7A86E",
+                      backgroundColor: "orange",
                     },
                   }}
                 >

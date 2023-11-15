@@ -40,8 +40,8 @@ const useStyles = makeStyles({
     overflowY: "none",
   },
   caja: {
-    background: "rgba(20, 20, 20, 0.20)",
-    borderRadius: "16px",
+    background: "rgba(20, 20, 20, 0.30)",
+    borderRadius: "20px",
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
     backdropFilter: "blur(5px)",
     border: "1px solid rgba(20, 20, 20, 0.3)",
@@ -61,6 +61,8 @@ const Register = () => {
   } = useForm();
   const reset = () => {
     setValue("name", "", { shouldDirty: true });
+    setValue("lastname", "", { shouldDirty: true });
+    setValue("phone", "", { shouldDirty: true });
     setValue("email", "", { shouldDirty: true });
     setValue("password", "", { shouldDirty: true });
     setValue("password_confirmation", "", { shouldDirty: true });
@@ -127,9 +129,9 @@ const Register = () => {
               sx={{
                 boxShadow: 3,
                 m: 5,
-                padding: 4,
+                padding: 5,
                 position: "relative",
-                marginTop: 13,
+                marginTop: 0,
               }}
               className={classes.caja}
             >
@@ -140,17 +142,27 @@ const Register = () => {
                   alignItems: "center",
                 }}
               >
-                <img
+                {/* <img
                   src={require("../../assets/img/logo.png")}
                   alt=" "
                   className={classes.logo}
-                />
+                /> */}
+                <div
+                  style={{
+                    textAlign: "center",
+                    color: "white",
+                    marginBottom: "10px",
+                    fontSize: "60px",
+                  }}
+                >
+                  MiBien
+                </div>
               </Box>
               <div
                 style={{
                   textAlign: "center",
                   color: "white",
-                  marginBottom: "20px",
+                  marginBottom: "30px",
                 }}
               >
                 ¡Regístrate gratis!
@@ -162,7 +174,7 @@ const Register = () => {
                     type="text"
                     fullWidth
                     name="name"
-                    label="Nombre Completo:"
+                    label="Nombre(s):"
                     error={errors.name ? true : false}
                     helperText={errors?.name?.message}
                     {...register("name", {
@@ -179,10 +191,53 @@ const Register = () => {
                 </Grid>
                 <Grid item xs={12} md={12} lg={12} xl={12}>
                   <TextField
+                    type="text"
+                    fullWidth
+                    name="lastname"
+                    label="Apellido(s):"
+                    error={errors.lastname ? true : false}
+                    helperText={errors?.lastname?.message}
+                    {...register("lastname", {
+                      required: {
+                        value: true,
+                        message: "El apellido es requerido",
+                      },
+                      maxLength: {
+                        value: 255,
+                        message: "Maximo 255 caracteres",
+                      },
+                    })}
+                  />
+                </Grid>
+                <Grid item xs={12} md={12} lg={12} xl={12}>
+                  <RolesSelect detectarCambiosRole={detectarCambiosRole} />
+                </Grid>
+                <Grid item xs={12} md={12} lg={12} xl={12}>
+                  <TextField
+                    type="number"
+                    fullWidth
+                    name="phone"
+                    label="Teléfono:"
+                    error={errors.phone ? true : false}
+                    helperText={errors?.phone?.message}
+                    {...register("phone", {
+                      required: {
+                        value: true,
+                        message: "El teléfono es requerido",
+                      },
+                      maxLength: {
+                        value: 10,
+                        message: "Maximo 10 caracteres",
+                      },
+                    })}
+                  />
+                </Grid>
+                <Grid item xs={12} md={12} lg={12} xl={12}>
+                  <TextField
                     type="email"
                     fullWidth
                     name="email"
-                    label="Correo Electronico:"
+                    label="Correo Electrónico:"
                     error={errors.email ? true : false}
                     helperText={errors?.email?.message}
                     {...register("email", {
@@ -196,9 +251,6 @@ const Register = () => {
                       },
                     })}
                   />
-                </Grid>
-                <Grid item xs={12} md={12} lg={12} xl={12}>
-                  <RolesSelect detectarCambiosRole={detectarCambiosRole} />
                 </Grid>
                 <Grid item xs={12} md={12} lg={12} xl={12}>
                   <TextField
@@ -296,13 +348,13 @@ const Register = () => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  backgroundColor: "#D7A86E",
+                  backgroundColor: "orange",
                   color: "white",
                   fontWeight: "bold",
                   mt: 3,
                   mb: 2,
                   "&:hover": {
-                    backgroundColor: "#D7A86E",
+                    backgroundColor: "orange",
                   },
                 }}
               >
@@ -314,13 +366,13 @@ const Register = () => {
                   fullWidth
                   variant="contained"
                   sx={{
-                    backgroundColor: "#D7A86E",
+                    backgroundColor: "orange",
                     color: "white",
                     fontWeight: "bold",
                     mt: 0,
                     mb: 6,
                     "&:hover": {
-                      backgroundColor: "#D7A86E",
+                      backgroundColor: "orange",
                     },
                   }}
                 >

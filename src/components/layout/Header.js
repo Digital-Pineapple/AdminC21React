@@ -407,7 +407,7 @@ export default function Header() {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Link to="/" className="brand-link">
+              {/* <Link to="/" className="brand-link">
                 <>
                   <img
                     src={require("../../assets/img/logo_trans.png")}
@@ -416,7 +416,15 @@ export default function Header() {
                     style={{ marginTop: -10 }}
                   />
                 </>
-              </Link>
+              </Link> */}
+              <Typography
+                fontWeight="bold"
+                fontFamily="monospace"
+                variant="h2"
+                style={{ marginTop: -10, padding: 30 }}
+              >
+                MiBien
+              </Typography>
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
