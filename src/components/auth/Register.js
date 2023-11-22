@@ -32,21 +32,27 @@ const useStyles = makeStyles({
     margin: "auto",
   },
   backgroundLogin: {
-    height: "150vh",
+    height: "100vh",
     width: "100%",
-    backgroundImage: `url(${image})`,
+    //backgroundImage: `url(${Image})`,
+    backgroundImage:
+      // "url(https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg)",
+      "url(https://source.unsplash.com/random/2560x1440)",
+    // backgroundImage:
+    //   "url(https://i.pinimg.com/564x/d3/1b/b8/d31bb87ec92c82e05f5afa30f03eae2a.jpg)",
     backgroundRepeat: "no-repeat",
     opacity: 1,
     overflowY: "none",
+    overflowX: "none",
   },
   caja: {
-    background: "rgba(20, 20, 20, 0.30)",
-    borderRadius: "20px",
+    background: "rgba(255, 255, 255, 0.46)",
+    borderRadius: "16px",
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-    backdropFilter: "blur(5px)",
-    border: "1px solid rgba(20, 20, 20, 0.3)",
-    width: "50vh",
+    backdropFilter: "blur(20px)",
+    border: "1px solid rgba(255, 255, 255, 0.3)",
     margin: "auto",
+    width: "45vh",
   },
 });
 
@@ -130,7 +136,7 @@ const Register = () => {
                 m: 5,
                 padding: 5,
                 position: "relative",
-                marginTop: 0,
+                marginTop: 4,
               }}
               className={classes.caja}
             >
@@ -152,6 +158,8 @@ const Register = () => {
                     color: "white",
                     marginBottom: "10px",
                     fontSize: "60px",
+                    fontFamily: "monospace",
+                    fontWeight: "bold",
                   }}
                 >
                   MiBien
@@ -161,7 +169,9 @@ const Register = () => {
                 style={{
                   textAlign: "center",
                   color: "white",
-                  marginBottom: "30px",
+                  marginBottom: "25px",
+                  fontFamily: "monospace",
+                  fontWeight: "bold",
                 }}
               >
                 ¡Regístrate gratis!
@@ -347,13 +357,13 @@ const Register = () => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  backgroundColor: "orange",
+                  backgroundColor: "#AE445A",
                   color: "white",
                   fontWeight: "bold",
                   mt: 3,
                   mb: 2,
                   "&:hover": {
-                    backgroundColor: "orange",
+                    backgroundColor: "#AE445A",
                   },
                 }}
               >
@@ -365,13 +375,13 @@ const Register = () => {
                   fullWidth
                   variant="contained"
                   sx={{
-                    backgroundColor: "orange",
+                    backgroundColor: "#AE445A",
                     color: "white",
                     fontWeight: "bold",
                     mt: 0,
-                    mb: 6,
+                    mb: 1,
                     "&:hover": {
-                      backgroundColor: "orange",
+                      backgroundColor: "#AE445A",
                     },
                   }}
                 >

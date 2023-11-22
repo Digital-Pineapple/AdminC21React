@@ -28,27 +28,29 @@ const useStyles = makeStyles({
     fontStyle: "oblique",
     letterSpacing: "1px",
   },
-  logo: {
-    margin: "auto",
-  },
   backgroundLogin: {
-    height: "150vh",
+    //backgroundColor: "#ec407a",
+    height: "100vh",
     width: "100%",
-    backgroundImage: `url(${image})`,
+    //backgroundImage: `url(${Image})`,
+    backgroundImage:
+      // "url(https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg)",
+      "url(https://source.unsplash.com/random/2560x1440)",
+    // backgroundImage:
+    //   "url(https://i.pinimg.com/564x/d3/1b/b8/d31bb87ec92c82e05f5afa30f03eae2a.jpg)",
     backgroundRepeat: "no-repeat",
     opacity: 1,
     overflowY: "none",
+    overflowX: "none",
+    //filter: "blur(4px)",
   },
   caja: {
-    background: "rgba(20, 20, 20, 0.30)",
-    borderRadius: "20px",
+    background: "rgba(255, 255, 255, 0.46)",
+    borderRadius: "16px",
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-    backdropFilter: "blur(5px)",
-    border: "1px solid rgba(20, 20, 20, 0.3)",
-    width: "50vh",
-    margin: "auto",
+    backdropFilter: "blur(20px)",
+    border: "1px solid rgba(255, 255, 255, 0.3)",
   },
-  
 });
 
 const Login = () => {
@@ -99,9 +101,9 @@ const Login = () => {
             sx={{
               boxShadow: 3,
               m: 5,
-              padding: 5,
+              padding: 4,
               position: "relative",
-              marginTop: 0,
+              marginTop: 5,
             }}
             className={classes.caja}
           >
@@ -112,31 +114,30 @@ const Login = () => {
                 alignItems: "center",
               }}
             >
-              {/* <img
-                src={require("../../assets/img/logo.png")}
-                alt=" "
-                className={classes.logo}
-              /> */}
               <div
                 style={{
                   textAlign: "center",
                   color: "white",
                   marginBottom: "10px",
                   fontSize: "60px",
+                  fontFamily: "monospace",
+                  fontWeight: "bold",
                 }}
               >
                 MiBien
               </div>
             </Box>
             <div
-                style={{
-                  textAlign: "center",
-                  color: "white",
-                  marginBottom: "25px",
-                }}
-              >
-                Inicia sesión
-              </div>
+              style={{
+                textAlign: "center",
+                color: "white",
+                marginBottom: "25px",
+                fontFamily: "monospace",
+                fontWeight: "bold",
+              }}
+            >
+              Inicia sesión
+            </div>
             <Box
               component="form"
               onSubmit={formik.handleSubmit}
@@ -202,17 +203,23 @@ const Login = () => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  backgroundColor: "orange",
+                  backgroundColor: "#AE445A",
                   color: "white",
                   fontWeight: "bold",
                   mt: 3,
                   mb: 2,
                   "&:hover": {
-                    backgroundColor: "orange",
+                    backgroundColor: "#AE445A",
                   },
                 }}
               >
-                Ingresar
+                <Typography
+                  fontFamily="monospace"
+                  fontWeight="bold"
+                  variant="subtitle1"
+                >
+                  Ingresar
+                </Typography>
               </Button>
               <Link to="/registrarme">
                 <Button
@@ -220,17 +227,23 @@ const Login = () => {
                   fullWidth
                   variant="contained"
                   sx={{
-                    backgroundColor: "orange",
+                    backgroundColor: "#AE445A",
                     color: "white",
                     fontWeight: "bold",
                     mt: 0,
                     mb: 6,
                     "&:hover": {
-                      backgroundColor: "orange",
+                      backgroundColor: "#AE445A",
                     },
                   }}
                 >
-                  Registrarme
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                  >
+                    Registrarme
+                  </Typography>
                 </Button>
               </Link>
               {/* <Link to="/Olvide-mi-Acceso">
