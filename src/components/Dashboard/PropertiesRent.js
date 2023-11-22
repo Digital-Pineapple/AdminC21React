@@ -16,7 +16,7 @@ const PropertiesRent = ({ total_properties_rent }) => {
   const classes = useStyles();
   return (
     <Card
-      style={{ backgroundColor: "#D7A86E" }}
+      style={{ backgroundColor: "#451952" }}
       sx={{
         boxShadow: 4,
         display: "flex",

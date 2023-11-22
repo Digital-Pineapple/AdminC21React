@@ -16,7 +16,7 @@ const PropertiesSold = ({ total_properties_sold }) => {
   const classes = useStyles();
   return (
     <Card
-      style={{ backgroundColor: "#D7A86E" }}
+      style={{ backgroundColor: "#451952" }}
       sx={{
         boxShadow: 4,
         display: "flex",

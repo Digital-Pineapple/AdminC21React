@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2";
 
 const Logout = () => {
   const history = useHistory();
@@ -32,7 +32,7 @@ const Logout = () => {
 
           console.log("Logout successful:", response.data);
           history.push("/iniciar-sesion");
-          
+
           // Recargar la página
           window.location.reload();
         } catch (error) {
@@ -44,19 +44,20 @@ const Logout = () => {
   };
 
   return (
-    <Button
-      onClick={handleLogout}
-      variant="contained"
-      size="large"
-      fullWidth
-      sx={{
-        backgroundColor: "#D7A86E",
-        color: "white",
-        "&:hover": { background: "#D7A86E", color: "white" },
-      }}
-    >
-      Cerrar Sesión
-    </Button>
+    // <Button
+    //   onClick={handleLogout}
+    //   variant="contained"
+    //   size="large"
+    //   fullWidth
+    //   sx={{
+    //     backgroundColor: "#D7A86E",
+    //     color: "white",
+    //     "&:hover": { background: "#D7A86E", color: "white" },
+    //   }}
+    // >
+    //   Cerrar Sesión
+    // </Button>
+    <></>
   );
 };
 

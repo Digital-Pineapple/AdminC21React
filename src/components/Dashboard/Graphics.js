@@ -71,7 +71,7 @@ export default function Bars() {
         //max: 50,
       },
       x: {
-        ticks: { color: "rgb(215, 168, 110)" },
+        ticks: { color: "#AE445A" },
       },
     },
   };
@@ -82,14 +82,14 @@ export default function Bars() {
       {
         label: "Total:",
         data: beneficios,
-        backgroundColor: "rgb(215, 168, 110)",
+        backgroundColor: "#AE445A",
       },
     ],
   };
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} sm={12} md={12} lg={12} xl={12} sx={{ margin: 2 }}>
+      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
         <Bar data={midata} options={misoptions} />
       </Grid>
     </Grid>
