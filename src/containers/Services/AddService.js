@@ -80,7 +80,7 @@ export default function AddService({ modal, handleClose }) {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          Agregar Categoria
+          Agregar Servicio
         </BootstrapDialogTitle>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -97,7 +97,7 @@ export default function AddService({ modal, handleClose }) {
                   type="text"
                   fullWidth
                   name="name"
-                  placeholder="Nombre del servicio"
+                  placeholder="Renta"
                   error={errors.name ? true : false}
                   helperText={errors?.name?.message}
                   {...register("name", {

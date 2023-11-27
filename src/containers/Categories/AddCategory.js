@@ -97,7 +97,7 @@ export default function AddCategory({ modal, handleClose }) {
                   type="text"
                   fullWidth
                   name="name"
-                  placeholder="casa"
+                  placeholder="Casa"
                   error={errors.name ? true : false}
                   helperText={errors?.name?.message}
                   {...register("name", {

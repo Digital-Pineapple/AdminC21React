@@ -71,7 +71,7 @@ export default function Bars() {
         //max: 50,
       },
       x: {
-        ticks: { color: "#AE445A" },
+        ticks: { color: "#662549" },
       },
     },
   };
@@ -82,7 +82,7 @@ export default function Bars() {
       {
         label: "Total:",
         data: beneficios,
-        backgroundColor: "#AE445A",
+        backgroundColor: "#451952",
       },
     ],
   };

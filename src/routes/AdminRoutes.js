@@ -4,6 +4,7 @@ import Dashboard from "../containers/Dashboard/Dashboard";
 import Categories from "../containers/Categories/Categories";
 import Services from "../containers/Services/Services";
 import Properties from "../containers/Properties/IndexProperties";
+import PropertiesPending from "../containers/Properties/IndexPropertiesPending";
 import CreateProperty from "../containers/Properties/CreateProperty";
 import Users from "../containers/Users/Users";
 import Perfil from "../containers/Users/Perfil";
@@ -14,6 +15,7 @@ const AdminRoutes = () => {
       <Route exact path="/" component={Dashboard} />
       <Route exact path="/Categories" component={Categories} />
       <Route exact path="/Services" component={Services} />
+      <Route exact path="/PropertiesPending" component={PropertiesPending} />
       <Route exact path="/Properties" component={Properties} />
       <Route exact path="/CreateProperty" component={CreateProperty} />
       <Route exact path="/EditProperty/:id" component={EditProperty} />

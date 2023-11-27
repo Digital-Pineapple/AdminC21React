@@ -33,7 +33,7 @@ export default function NoDataComponent() {
       >
         <div>
           <img
-            src={require("../../assets/gif/NoData.gif")}
+            src={require("../../assets/gif/noData.gif")}
             alt="spinner"
             className={classes.imgbuilding}
           />

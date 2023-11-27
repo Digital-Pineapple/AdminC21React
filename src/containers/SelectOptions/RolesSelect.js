@@ -13,9 +13,9 @@ const RolesSelect = (props) => {
   //     .catch((error) => console.log(error));
   // }, []);
   const array = [
-    { name: "Asesor", value: 3 },
+    { name: "Inquilino (Rentar/Comprar)", value: 4 },
+    { name: "Asesor (Broker)", value: 3 },
     { name: "Inmobiliaria", value: 2 },
-    { name: "Personal", value: 4 },
   ];
 
   const detectarCambiosRole = (value) => {

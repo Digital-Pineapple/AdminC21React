@@ -2,6 +2,7 @@ import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import AddService from "./AddService";
+import LoadingComponent from "../../components/loading/LoadingComponent";
 import ServicesContext from "../../context/Services/ServicesContext";
 
 import CardServices from "../../components/Cards/CardServices";
@@ -34,18 +35,22 @@ const Services = () => {
             fullWidth
             onClick={handleClickOpen}
             sx={{
-              backgroundColor: "#D7A86E",
-              "&:hover": { backgroundColor: "#D7A86E" },
+              backgroundColor: "#451952",
+              "&:hover": { backgroundColor: "#451952" },
             }}
           >
             Agregar
           </Button>
         </Grid>
-        {services.map((service) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-            <CardServices service={service} />
-          </Grid>
-        ))}
+        {services.length ? (
+          services.map((service) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+              <CardServices service={service} />
+            </Grid>
+          ))
+        ) : (
+          <LoadingComponent />
+        )}
       </Grid>
       {/* </Paper> */}
       <AddService modal={openModal} handleClose={handleClose} />

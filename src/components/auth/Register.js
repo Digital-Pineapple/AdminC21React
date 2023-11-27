@@ -52,7 +52,7 @@ const useStyles = makeStyles({
     backdropFilter: "blur(20px)",
     border: "1px solid rgba(255, 255, 255, 0.3)",
     margin: "auto",
-    width: "45vh",
+    width: "50vh",
   },
 });
 
@@ -261,7 +261,7 @@ const Register = () => {
                     })}
                   />
                 </Grid>
-                <Grid item xs={12} md={12} lg={12} xl={12}>
+                <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                   <TextField
                     type={passwordValues.showPassword ? "text" : "password"}
                     id="password"
@@ -304,8 +304,7 @@ const Register = () => {
                     })}
                   />
                 </Grid>
-
-                <Grid item xs={12} md={12} lg={12} xl={12}>
+                <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                   <TextField
                     type={
                       confirmPasswordValues.showPassword ? "text" : "password"

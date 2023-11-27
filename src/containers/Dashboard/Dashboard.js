@@ -83,7 +83,8 @@ const Dashboard = () => {
           md={6}
           lg={6}
           xl={6}
-          sx={{ display: "flex", justifyContent: "center", padding: 2 }}
+          display="flex"
+          justifyContent="start"
         >
           <Graphics />
         </Grid>

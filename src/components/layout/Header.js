@@ -7,7 +7,11 @@ import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
+import HouseIcon from "@mui/icons-material/House";
+import ApartmentIcon from "@mui/icons-material/Apartment";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Divider from "@mui/material/Divider";
+import AddIcon from "@mui/icons-material/Add";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -111,35 +115,72 @@ export default function Header({ children }) {
   }
   const AA = [
     { name: "Inicio", value: "/", icon: <HomeIcon /> },
-    { name: "categorias", value: "/Categories", icon: <CategoryIcon /> },
+    { name: "Categorias", value: "/Categories", icon: <CategoryIcon /> },
     { name: "Servicios", value: "/Services", icon: <SettingsIcon /> },
-    { name: "propiedades", value: "/Properties", icon: <LocationCityIcon /> },
-    { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> },
-    { name: "usuarios", value: "/Users", icon: <GroupIcon /> },
+    {
+      name: "Nueva Propiedad",
+      value: "/CreateProperty",
+      icon: <AddIcon />,
+    },
+    { name: "Por Aprobar", value: "/PropertiesPending", icon: <HouseIcon /> },
+    { name: "Propiedades", value: "/Properties", icon: <LocationCityIcon /> },
+    { name: "Usuarios", value: "/Users", icon: <GroupIcon /> },
+    { name: "Mi Perfil", value: "/Perfil", icon: <AccountCircleIcon /> },
+    /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const INM = [
     { name: "Inicio", value: "/", icon: <HomeIcon /> },
-    // { name: "categorias", value: "/Categories", icon: <CategoryIcon /> },
-    // { name: "Servicios", value: "/Services", icon: <SettingsIcon /> },
-    { name: "propiedades", value: "/Properties", icon: <LocationCityIcon /> },
-    { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> },
-    { name: "usuarios", value: "/Users", icon: <GroupIcon /> },
+    {
+      name: "Nueva Propiedad",
+      value: "/CreateProperty",
+      icon: <AddIcon />,
+    },
+    { name: "Por Aprobar", value: "/PropertiesPending", icon: <HouseIcon /> },
+
+    {
+      name: "Mis Propiedades",
+      value: "/Properties",
+      icon: <LocationCityIcon />,
+    },
+    { name: "Mis Usuarios", value: "/Users", icon: <GroupIcon /> },
+    { name: "Mi Perfil", value: "/Perfil", icon: <AccountCircleIcon /> },
+    /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const AS = [
     { name: "Inicio", value: "/", icon: <HomeIcon /> },
-    // { name: "categorias", value: "/Categories", icon: <CategoryIcon /> },
-    // { name: "Servicios", value: "/Services", icon: <SettingsIcon /> },
-    { name: "propiedades", value: "/Properties", icon: <LocationCityIcon /> },
-    { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> },
-    // { name: "usuarios", value: "/Users", icon: <GroupIcon /> },
+    {
+      name: "Nueva Propiedad",
+      value: "/CreateProperty",
+      icon: <AddIcon />,
+    },
+    { name: "Por Aprobar", value: "/PropertiesPending", icon: <HouseIcon /> },
+
+    {
+      name: "Mis Propiedades",
+      value: "/Properties",
+      icon: <LocationCityIcon />,
+    },
+    { name: "Mi Perfil", value: "/Perfil", icon: <AccountCircleIcon /> },
+
+    /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const IND = [
     { name: "Inicio", value: "/", icon: <HomeIcon /> },
-    // { name: "categorias", value: "/Categories", icon: <CategoryIcon /> },
-    // { name: "Servicios", value: "/Services", icon: <SettingsIcon /> },
-    { name: "propiedades", value: "/Properties", icon: <LocationCityIcon /> },
-    { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> },
-    // { name: "usuarios", value: "/Users", icon: <GroupIcon /> },
+    {
+      name: "Nueva Propiedad",
+      value: "/CreateProperty",
+      icon: <AddIcon />,
+    },
+    { name: "Por Aprobar", value: "/PropertiesPending", icon: <HouseIcon /> },
+
+    {
+      name: "Mis Propiedades",
+      value: "/Properties",
+      icon: <LocationCityIcon />,
+    },
+    { name: "Mi Perfil", value: "/Perfil", icon: <AccountCircleIcon /> },
+
+    /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const { cerrarSesion, usuario } = useContext(AuthContext);
   return (
@@ -192,6 +233,152 @@ export default function Header({ children }) {
         </DrawerHeader>
         <Divider />
         <List>
+          {usuario && usuario.type_user ? (
+            usuario.type_user === 1 ? (
+              AA.map((text, index) => (
+                <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                  <Link to={text.value} style={{ textDecoration: "none" }}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                          color: "#451952",
+                        }}
+                      >
+                        {text.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={text.name}
+                        sx={{
+                          opacity: open ? 1 : 0,
+                          color: "#662549",
+                          fontWeight: "bold",
+                        }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))
+            ) : usuario.type_user === 2 ? (
+              INM.map((text, index) => (
+                <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                  <Link to={text.value} style={{ textDecoration: "none" }}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                          color: "#451952",
+                        }}
+                      >
+                        {text.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={text.name}
+                        sx={{
+                          opacity: open ? 1 : 0,
+                          color: "#662549",
+                          fontWeight: "bold",
+                        }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))
+            ) : usuario.type_user === 3 ? (
+              AS.map((text, index) => (
+                <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                  <Link to={text.value} style={{ textDecoration: "none" }}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                          color: "#451952",
+                        }}
+                      >
+                        {text.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={text.name}
+                        sx={{
+                          opacity: open ? 1 : 0,
+                          color: "#662549",
+                          fontWeight: "bold",
+                        }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))
+            ) : usuario.type_user === 4 ? (
+              IND.map((text, index) => (
+                <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                  <Link to={text.value} style={{ textDecoration: "none" }}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                          color: "#451952",
+                        }}
+                      >
+                        {text.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={text.name}
+                        sx={{
+                          opacity: open ? 1 : 0,
+                          color: "#662549",
+                          fontWeight: "bold",
+                        }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))
+            ) : (
+              <ListItem>
+                <ListItemText />
+              </ListItem>
+            )
+          ) : (
+            <ListItem>
+              <ListItemText />
+            </ListItem>
+          )}
+        </List>
+
+        {/* <List>
           {usuario && usuario.type_user === 1
             ? AA.map((text, index) => (
                 <ListItem key={text} disablePadding sx={{ display: "block" }}>
@@ -208,6 +395,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
+                          color: "#451952",
                         }}
                       >
                         {text.icon}
@@ -240,6 +428,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
+                          color: "#451952",
                         }}
                       >
                         {text.icon}
@@ -272,6 +461,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
+                          color: "#451952",
                         }}
                       >
                         {text.icon}
@@ -304,6 +494,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
+                          color: "#451952",
                         }}
                       >
                         {text.icon}
@@ -320,7 +511,7 @@ export default function Header({ children }) {
                   </Link>
                 </ListItem>
               ))}
-        </List>
+        </List> */}
       </Drawer>
       {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}> */}
       <Grid container spacing={2}>

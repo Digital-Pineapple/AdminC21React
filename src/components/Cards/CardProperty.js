@@ -8,14 +8,14 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import HomeIcon from '@mui/icons-material/Home'; 
+import HomeIcon from "@mui/icons-material/Home";
 
 import { makeStyles } from "@mui/styles";
 import React, { useContext } from "react";
 import ModalImage from "react-modal-image-responsive";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import CancelIcon from '@mui/icons-material/Cancel';
+import CancelIcon from "@mui/icons-material/Cancel";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
@@ -83,11 +83,10 @@ const useStyles = makeStyles({
 });
 
 const CardProperty = ({ property }) => {
-
-  const {images, address } = property;
+  const { images, address } = property;
   const [detailProperty, openDetailProperty] = useState(false);
   const [id_property, saveProperty] = useState(null);
-  const {DeleteProperty } = React.useContext(PropertiesContext);
+  const { DeleteProperty } = React.useContext(PropertiesContext);
 
   const handleClickOpenDetail = (id) => {
     openDetailProperty(true);
@@ -125,7 +124,7 @@ const CardProperty = ({ property }) => {
     openAddView3DModal(false);
     saveProperty(null);
   };
-  
+
   const [modalMultimedia, openModalMultimedia] = useState(false);
   const handleOpenMultimedia = (id) => {
     openModalMultimedia(true);
@@ -142,7 +141,11 @@ const CardProperty = ({ property }) => {
     <>
       <Card className={classes.card}>
         {property.status === 2 ? (
-          <Alert icon={false} severity="info">
+          <Alert
+            icon={false}
+            severity="info"
+            sx={{ backgroundColor: "#662549", color: "white" }}
+          >
             <Typography
               fontWeight="bold"
               fontFamily="monospace"
@@ -153,7 +156,11 @@ const CardProperty = ({ property }) => {
           </Alert>
         ) : (
           property.status === 3 && (
-            <Alert icon={false} severity="success">
+            <Alert
+              icon={false}
+              severity="success"
+              sx={{ backgroundColor: "#451952", color: "white" }}
+            >
               <Typography
                 fontWeight="bold"
                 fontFamily="monospace"
@@ -194,7 +201,7 @@ const CardProperty = ({ property }) => {
                     large={image}
                     alt={property.name}
                   />
-                )}    
+                )}
               </Box>
             </Grid>
           </Grid>
@@ -251,16 +258,19 @@ const CardProperty = ({ property }) => {
                     <IconButton
                       onClick={() => handleClickOpenAddView3D(property.id)}
                     >
-                      <HomeIcon sx={{ color: "orange" }} /> {/* Reemplaza SettingsIcon con HomeIcon */}
-
+                      <HomeIcon sx={{ color: "orange" }} />{" "}
+                      {/* Reemplaza SettingsIcon con HomeIcon */}
                     </IconButton>
                   </Tooltip>
-                  
-                  {/* <Tooltip title="Eliminar Propiedad" placement="top">
-                    <IconButton size="small" onClick={() => DeleteProperty(property.id)}>
+
+                  <Tooltip title="Eliminar Propiedad" placement="top">
+                    <IconButton
+                      size="small"
+                      onClick={() => DeleteProperty(property.id)}
+                    >
                       <DeleteIcon sx={{ color: "red" }} />
                     </IconButton>
-                  </Tooltip> */}
+                  </Tooltip>
                 </>
               )}
               {/* {property.status === 3 && (
@@ -280,7 +290,9 @@ const CardProperty = ({ property }) => {
               {property.status === 2 && (
                 <Tooltip title="Publicar Propiedad" placement="top">
                   <IconButton onClick={() => PublishProperty(property.id)}>
-                    <CheckCircleOutlineIcon sx={{ color: "rgb(46, 255, 75)" }} />
+                    <CheckCircleOutlineIcon
+                      sx={{ color: "rgb(46, 255, 75)" }}
+                    />
                   </IconButton>
                 </Tooltip>
               )}

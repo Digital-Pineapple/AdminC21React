@@ -32,7 +32,14 @@ export default function CardServices({ service }) {
           title="green iguana"
         />
         <CardContent sx={{ marginTop: -15 }}>
-          <Typography fontWeight="bold" fontFamily="inherit" variant="h5">
+          <Typography
+            fontWeight="bold"
+            fontFamily="inherit"
+            variant="h5"
+            sx={{
+              color: "#662549",
+            }}
+          >
             {service.name}
           </Typography>
         </CardContent>

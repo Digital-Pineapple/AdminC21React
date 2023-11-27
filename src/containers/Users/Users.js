@@ -2,6 +2,7 @@ import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import TableUsers from "./TableUsers";
+import LoadingComponent from "../../components/loading/LoadingComponent";
 import UsersContext from "../../context/Users/UsersContext";
 import AddUser from "./AddUser";
 import CardUser from "../../components/Cards/CardUser";
@@ -34,18 +35,22 @@ const Users = () => {
               fullWidth
               onClick={handleClickOpen}
               sx={{
-                backgroundColor: "#D7A86E",
-                "&:hover": { backgroundColor: "#D7A86E" },
+                backgroundColor: "#451952",
+                "&:hover": { backgroundColor: "#451952" },
               }}
             >
               Agregar
             </Button>
           </Grid>
-          {users.map((user) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-              <CardUser user={user} />
-            </Grid>
-          ))}
+          {users.length ? (
+            users.map((user) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+                <CardUser user={user} />
+              </Grid>
+            ))
+          ) : (
+            <LoadingComponent />
+          )}
         </Grid>
       </Paper>
       <AddUser modal={openModal} handleClose={handleClose} />

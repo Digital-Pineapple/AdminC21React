@@ -7,7 +7,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import PropertiesPublish from "./PropertiesPublish";
 import PorpertiesPending from "./PorpertiesPending";
 export default function LabTabs() {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState("2");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -21,13 +21,13 @@ export default function LabTabs() {
             onChange={handleChange}
             textColor="white"
             aria-label="lab API tabs example"
-            sx={{ backgroundColor: "#451952", color: "white" }}
+            sx={{ backgroundColor: "#662549", color: "white" }}
           >
-            <Tab label="Mis Propiedades Publicadas" value="1" />
+            <Tab label="Mis Propiedades Por aprobar" value="2" />
           </TabList>
         </Box>
-        <TabPanel value="1">
-          <PropertiesPublish />
+        <TabPanel value="2">
+          <PorpertiesPending />
         </TabPanel>
       </TabContext>
     </Box>

@@ -116,7 +116,7 @@ export default function NewUser({ modal, handleClose }) {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          Registrar nuevo usuario
+          Registrar Nuevo Usuario
         </BootstrapDialogTitle>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -133,7 +133,7 @@ export default function NewUser({ modal, handleClose }) {
                   type="text"
                   fullWidth
                   name="name"
-                  label="Nombre Completo:"
+                  label="Nombre(s):"
                   error={errors.name ? true : false}
                   helperText={errors?.name?.message}
                   {...register("name", {
@@ -157,7 +157,7 @@ export default function NewUser({ modal, handleClose }) {
                   type="text"
                   fullWidth
                   name="last_name"
-                  label="Apellido:"
+                  label="Apellido(s):"
                   error={errors.last_name ? true : false}
                   helperText={errors?.last_name?.message}
                   {...register("last_name", {
@@ -177,11 +177,14 @@ export default function NewUser({ modal, handleClose }) {
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <RolesSelect detectarCambiosRole={detectarCambiosRole} />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <TextField
                   type="number"
                   fullWidth
                   name="phone_number"
-                  label="Numero Telefonico:"
+                  label="Telefono:"
                   error={errors.phone_number ? true : false}
                   helperText={errors?.phone_number?.message}
                   {...register("phone_number", {
@@ -215,9 +218,6 @@ export default function NewUser({ modal, handleClose }) {
                     },
                   })}
                 />
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <RolesSelect detectarCambiosRole={detectarCambiosRole} />
               </Grid>
 
               <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>

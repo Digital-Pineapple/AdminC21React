@@ -188,7 +188,6 @@ const PropertiesState = ({ children }) => {
               title: "Error",
               text: error.response.data.message,
               icon: "error",
-              timer: 2000,
               showConfirmButton: false,
             });
           });
@@ -237,7 +236,7 @@ const PropertiesState = ({ children }) => {
   const BackPendingProperty = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
-      text: "La propiedad seleccionada regresara a pendiente",
+      text: "La Propiedad Seleccionada Regresara a Pendiente",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

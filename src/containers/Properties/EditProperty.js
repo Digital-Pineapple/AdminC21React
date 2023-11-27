@@ -164,7 +164,7 @@ const EditProperty = (props) => {
                 <Divider>
                   <Chip
                     label="Datos Generales"
-                    sx={{ backgroundColor: "#D7A86E", color: "white" }}
+                    sx={{ backgroundColor: "#451952", color: "white" }}
                   />
                 </Divider>
               </Grid>
@@ -238,7 +238,7 @@ const EditProperty = (props) => {
                 <Divider>
                   <Chip
                     label="Detalles"
-                    sx={{ backgroundColor: "#D7A86E", color: "white" }}
+                    sx={{ backgroundColor: "#451952", color: "white" }}
                   />
                 </Divider>
               </Grid>
@@ -450,7 +450,7 @@ const EditProperty = (props) => {
                 <Divider>
                   <Chip
                     label="Dirección"
-                    sx={{ backgroundColor: "#D7A86E", color: "white" }}
+                    sx={{ backgroundColor: "#451952", color: "white" }}
                   />
                 </Divider>
               </Grid>
@@ -591,9 +591,9 @@ const EditProperty = (props) => {
                   size="large"
                   fullWidth
                   sx={{
-                    background: "#D7A86E",
+                    background: "#451952",
                     color: "white",
-                    "&:hover": { background: "#D7A86E", color: "white" },
+                    "&:hover": { background: "#451952", color: "white" },
                   }}
                 >
                   Guardar

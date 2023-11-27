@@ -19,7 +19,7 @@ export default function CardUser({ user }) {
         image={img}
         title="users"
       />
-      <CardContent sx={{ marginTop: -15 }}>
+      <CardContent sx={{ marginTop: -15, color: "#451952", }}>
         <label>
           <b>Nombre</b>
         </label>
