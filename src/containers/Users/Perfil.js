@@ -1,80 +1,154 @@
-import { Avatar, Box, Card, Grid, Paper, Typography, colors } from "@mui/material";
-import React from "react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardMedia,
+  Divider,
+  Grid,
+  IconButton,
+  Paper,
+  Typography,
+  colors,
+} from "@mui/material";
+import FlipCameraIosIcon from "@mui/icons-material/FlipCameraIos";
+import LockResetIcon from "@mui/icons-material/LockReset";
+import React, { useContext } from "react";
 import Layout from "../../components/layout/Layout";
 import logo from "../../assets/img/C21.webp";
+import AuthContext from "../../context/auth/AuthContext";
 const Perfil = () => {
+  const { usuario } = useContext(AuthContext);
+  console.log(usuario);
   return (
     <Layout>
       <Grid
         container
         spacing={2}
-        sx={{ padding: 2 }}
-        display="flex"
-        justifyContent="center"
+        sx={{ display: "flex", justifyContent: "center", marginTop: 4 }}
       >
-        <Grid item xs={9} sm={9} md={9} lg={9} xl={9}>
-          <Card sx={{ boxShadow: 4 }}>
-            <Grid container spacing={2} sx={{ padding: 2 }}>
+        <Grid item xs={10} sm={10} md={10} lg={10} xl={10}>
+          <Card boxShadow={25}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <Typography
-                  variant="h3"
-                  fontFamily="monospace"
                   fontWeight="bold"
-                  sx={{ display: "flex", justifyContent: "center", color: "#662549",  }}
+                  fontFamily="monospace"
+                  fontSize="55px"
+                  textAlign="center"
+                  sx={{ color: "#662549" }}
                 >
-                  Hola, USER
+                  Hola, {""} {usuario && usuario.name}
                 </Typography>
               </Grid>
-
+              <Grid item xs={12}>
+                <Divider />
+              </Grid>
               <Grid
                 item
                 xs={12}
                 sm={12}
-                md={6}
+                md={12}
                 lg={4}
                 xl={4}
-
-                display="flex"
-                justifyContent="center"
+                sx={{ margin: 2, display: "flex", justifyContent: "center" }}
               >
-                <Avatar
-                  sx={{ width: 250, height: 300 }}
-                  variant="square"
-                  src={logo}
-                />
+                <Card>
+                  <img src={logo} width={250} height={200} />
+                  <CardActions>
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      sx={{
+                        color: "white",
+                        backgroundColor: "#451952",
+                        "&:hover": {
+                          color: "white",
+                          backgroundColor: "#451952",
+                        },
+                      }}
+                    >
+                      Cambiar foto <FlipCameraIosIcon sx={{ marginLeft: 2 }} />
+                    </Button>
+                  </CardActions>
+                </Card>
               </Grid>
-              <Grid item xs={12} sm={6} md={6} lg={8} xl={8}>
-                <Paper>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={7}
+                xl={7}
+                sx={{ margin: 2 }}
+              >
+                <Card sx={{ padding: 4 }}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="h5"
+                    sx={{ color: "#AE445A" }}
+                  >
+                    Detalles de mi cuenta...
+                  </Typography>
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                       <Typography
-                        variant="h6"
                         fontFamily="monospace"
                         fontWeight="bold"
-                        noWrap
-                        component="div"
-                        sx={{color: "#662549"}}
+                        variant="subtitle1"
+                        sx={{ color: "#AE445A" }}
                       >
-                        Datos de Usuario
+                        Correo: {usuario.email}
                       </Typography>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                      NOMBRE
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <Typography
+                        fontFamily="monospace"
+                        fontWeight="bold"
+                        variant="subtitle1"
+                        sx={{ color: "#AE445A" }}
+                      >
+                        Telefono: {usuario.phone}
+                      </Typography>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                      APELLIDO
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <Typography
+                        fontFamily="monospace"
+                        fontWeight="bold"
+                        variant="subtitle1"
+                        sx={{ color: "#AE445A" }}
+                      >
+                        Mi perfil:{" "}
+                        {usuario.type_user === 1
+                          ? "SuperAdmin"
+                          : usuario.type_user === 2
+                          ? "Inmobiliaria"
+                          : usuario.type_user === 3
+                          ? "Asesor"
+                          : usuario.type_user === 4 && "Independiente"}
+                      </Typography>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                      CORREO ELECTRÓNICO
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                      CONTRASEÑA
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                      TELÉFONO CELULAR
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        sx={{
+                          color: "white",
+                          backgroundColor: "#451952",
+                          "&:hover": {
+                            color: "white",
+                            backgroundColor: "#451952",
+                          },
+                        }}
+                      >
+                        Cambiar contraseña{" "}
+                        <LockResetIcon sx={{ marginLeft: 2 }} />
+                      </Button>
                     </Grid>
                   </Grid>
-                </Paper>
+                </Card>
               </Grid>
             </Grid>
           </Card>

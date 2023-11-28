@@ -5,7 +5,6 @@ import MethodGet, { MethodPost, MethodPut } from "../../config/service";
 import headerConfig from "../../config/imageHeaders";
 import { useHistory } from "react-router-dom";
 
-
 /**Importar componente token headers */
 import tokenAuth from "../../config/TokenAuth";
 
@@ -36,6 +35,7 @@ const AuthState = (props) => {
 
     MethodGet("/user")
       .then(({ data }) => {
+        localStorage.setItem("type_user", data.type_user);
         dispatch({
           type: types.OBTENER_USUARIO,
           payload: data,
@@ -88,7 +88,7 @@ const AuthState = (props) => {
         });
         usuarioAutenticado();
         setTimeout(() => {
-          window.location.href = '/Properties';
+          window.location.href = "/Properties";
         }, 5000);
       })
       .catch((error) => {
@@ -192,6 +192,7 @@ const AuthState = (props) => {
 
   //Cierrra sesion del usuario
   const cerrarSesion = () => {
+    localStorage.removeItem("type_user");
     dispatch({
       type: types.CERRAR_SESION,
     });
