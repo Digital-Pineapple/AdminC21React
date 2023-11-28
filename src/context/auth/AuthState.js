@@ -36,6 +36,7 @@ const AuthState = (props) => {
     MethodGet("/user")
       .then(({ data }) => {
         localStorage.setItem("type_user", data.type_user);
+        localStorage.setItem("user_id", data.id);
         dispatch({
           type: types.OBTENER_USUARIO,
           payload: data,
@@ -193,6 +194,7 @@ const AuthState = (props) => {
   //Cierrra sesion del usuario
   const cerrarSesion = () => {
     localStorage.removeItem("type_user");
+    localStorage.removeItem("user_id");
     dispatch({
       type: types.CERRAR_SESION,
     });

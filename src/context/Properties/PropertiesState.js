@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { useHistory } from 'react-router-dom'; 
+import { useHistory } from "react-router-dom";
 import PropertiesReducer from "./PropertiesReducer";
 import MethodGet, {
   MethodDelete,
@@ -29,17 +29,33 @@ const PropertiesState = ({ children }) => {
   };
   const [state, dispatch] = useReducer(PropertiesReducer, initialState);
   const GetPropertiesPublish = () => {
-    let url = "/propertiesAdmin";
-    MethodGet(url)
-      .then((res) => {
-        dispatch({
-          type: GET_ALL_PROPERTIES_PUBLISH,
-          payload: res.data.data,
+    let user_id = localStorage.getItem("user_id");
+    let type_user = localStorage.getItem("type_user");
+    if (type_user === "1") {
+      let url = "/propertiesAdmin";
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: GET_ALL_PROPERTIES_PUBLISH,
+            payload: res.data.data,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    } else if (type_user === "2" || type_user === "3" || type_user === "4") {
+      let url = `/propertiesPerUser/${user_id}`;
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: GET_ALL_PROPERTIES_PUBLISH,
+            payload: res.data.data,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   const GetPropertiesPending = () => {
     let url = "/pending/properties";
@@ -71,7 +87,7 @@ const PropertiesState = ({ children }) => {
           showConfirmButton: false,
         });
         setTimeout(() => {
-          window.location.href = '/Properties';
+          window.location.href = "/Properties";
         }, 1000);
       })
       .catch((error) => {
@@ -86,7 +102,7 @@ const PropertiesState = ({ children }) => {
       });
   };
   const UpdateProperty = (data) => {
-    let url = "/update/p/"+data.id;
+    let url = "/update/p/" + data.id;
     MethodPost(url, data)
       .then((res) => {
         dispatch({
@@ -101,7 +117,7 @@ const PropertiesState = ({ children }) => {
           showConfirmButton: false,
         });
         setTimeout(() => {
-          window.location.href = '/Properties';
+          window.location.href = "/Properties";
         }, 1000);
       })
       .catch((error) => {
