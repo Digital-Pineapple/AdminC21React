@@ -198,6 +198,7 @@ const AuthState = (props) => {
     dispatch({
       type: types.CERRAR_SESION,
     });
+    window.location.reload();
   };
   return (
     <AuthContext.Provider

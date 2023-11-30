@@ -7,6 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
 import HouseIcon from "@mui/icons-material/House";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -114,71 +115,235 @@ export default function Header({ children }) {
     /**Componentes del menu */
   }
   const AA = [
-    { name: "Inicio", value: "/", icon: <HomeIcon /> },
-    { name: "Categorias", value: "/Categories", icon: <CategoryIcon /> },
-    { name: "Servicios", value: "/Services", icon: <SettingsIcon /> },
+    {
+      name: "Inicio",
+      value: "/",
+      icon: (
+        <Tooltip title="Inicio" placement="right">
+          <HomeIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Categorias",
+      value: "/Categories",
+      icon: (
+        <Tooltip title="Categorias" placement="right">
+          <CategoryIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Servicios",
+      value: "/Services",
+      icon: (
+        <Tooltip title="Servicios" placement="right">
+          <SettingsIcon />
+        </Tooltip>
+      ),
+    },
     {
       name: "Nueva Propiedad",
       value: "/CreateProperty",
-      icon: <AddIcon />,
+      icon: (
+        <Tooltip title="Nueva Propiedad" placement="right">
+          <AddIcon />
+        </Tooltip>
+      ),
     },
-    { name: "Por Aprobar", value: "/PropertiesPending", icon: <HouseIcon /> },
-    { name: "Propiedades", value: "/Properties", icon: <LocationCityIcon /> },
-    { name: "Usuarios", value: "/Users", icon: <GroupIcon /> },
-    { name: "Mi Perfil", value: "/Perfil", icon: <AccountCircleIcon /> },
+    {
+      name: "Por Aprobar",
+      value: "/PropertiesPending",
+      icon: (
+        <Tooltip title="Por Aprobar" placement="right">
+          <HouseIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Propiedades",
+      value: "/Properties",
+      icon: (
+        <Tooltip title="Propiedades" placement="right">
+          <LocationCityIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Usuarios",
+      value: "/Users",
+      icon: (
+        <Tooltip title="Usuarios" placement="right">
+          <GroupIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Mi Perfil",
+      value: "/Perfil",
+      icon: (
+        <Tooltip title="Mi Perfil" placement="right">
+          <AccountCircleIcon />
+        </Tooltip>
+      ),
+    },
     /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const INM = [
-    { name: "Inicio", value: "/", icon: <HomeIcon /> },
+    {
+      name: "Inicio",
+      value: "/",
+      icon: (
+        <Tooltip title="Inicio" placement="right">
+          <HomeIcon />
+        </Tooltip>
+      ),
+    },
     {
       name: "Nueva Propiedad",
       value: "/CreateProperty",
-      icon: <AddIcon />,
+      icon: (
+        <Tooltip title="Nueva Propiedad" placement="right">
+          <AddIcon />
+        </Tooltip>
+      ),
     },
-    { name: "Por Aprobar", value: "/PropertiesPending", icon: <HouseIcon /> },
+    {
+      name: "Por Aprobar",
+      value: "/PropertiesPending",
+      icon: (
+        <Tooltip title="Por Aprobar" placement="right">
+          <HouseIcon />
+        </Tooltip>
+      ),
+    },
 
     {
       name: "Mis Propiedades",
       value: "/Properties",
-      icon: <LocationCityIcon />,
+      icon: (
+        <Tooltip title="Mis Propiedades" placement="right">
+          <LocationCityIcon />
+        </Tooltip>
+      ),
     },
-    { name: "Mis Usuarios", value: "/Users", icon: <GroupIcon /> },
-    { name: "Mi Perfil", value: "/Perfil", icon: <AccountCircleIcon /> },
+    {
+      name: "Mis Usuarios",
+      value: "/Users",
+      icon: (
+        <Tooltip title="Mis Usuarios" placement="right">
+          <GroupIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Mi Perfil",
+      value: "/Perfil",
+      icon: (
+        <Tooltip title="Mi Perfil" placement="right">
+          <AccountCircleIcon />
+        </Tooltip>
+      ),
+    },
     /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const AS = [
-    { name: "Inicio", value: "/", icon: <HomeIcon /> },
+    {
+      name: "Inicio",
+      value: "/",
+      icon: (
+        <Tooltip title="Inicio" placement="right">
+          <HomeIcon />
+        </Tooltip>
+      ),
+    },
     {
       name: "Nueva Propiedad",
       value: "/CreateProperty",
-      icon: <AddIcon />,
+      icon: (
+        <Tooltip title="Nueva Propiedad" placement="right">
+          <AddIcon />{" "}
+        </Tooltip>
+      ),
     },
-    { name: "Por Aprobar", value: "/PropertiesPending", icon: <HouseIcon /> },
+    {
+      name: "Por Aprobar",
+      value: "/PropertiesPending",
+      icon: (
+        <Tooltip title="Por Aprobar" placement="right">
+          <HouseIcon />
+        </Tooltip>
+      ),
+    },
 
     {
       name: "Mis Propiedades",
       value: "/Properties",
-      icon: <LocationCityIcon />,
+      icon: (
+        <Tooltip title="Mis Propiedades" placement="right">
+          <LocationCityIcon />
+        </Tooltip>
+      ),
     },
-    { name: "Mi Perfil", value: "/Perfil", icon: <AccountCircleIcon /> },
+    {
+      name: "Mi Perfil",
+      value: "/Perfil",
+      icon: (
+        <Tooltip title="Mi Perfil" placement="right">
+          <AccountCircleIcon />
+        </Tooltip>
+      ),
+    },
 
     /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const IND = [
-    { name: "Inicio", value: "/", icon: <HomeIcon /> },
+    {
+      name: "Inicio",
+      value: "/",
+      icon: (
+        <Tooltip title="Inicio" placement="right">
+          <HomeIcon />
+        </Tooltip>
+      ),
+    },
     {
       name: "Nueva Propiedad",
       value: "/CreateProperty",
-      icon: <AddIcon />,
+      icon: (
+        <Tooltip title="Nueva Propiedad" placement="right">
+          <AddIcon />
+        </Tooltip>
+      ),
     },
-    { name: "Por Aprobar", value: "/PropertiesPending", icon: <HouseIcon /> },
+    {
+      name: "Por Aprobar",
+      value: "/PropertiesPending",
+      icon: (
+        <Tooltip title="Por Aprobar" placement="right">
+          <HouseIcon />
+        </Tooltip>
+      ),
+    },
 
     {
       name: "Mis Propiedades",
       value: "/Properties",
-      icon: <LocationCityIcon />,
+      icon: (
+        <Tooltip title="Mis Propiedades" placement="right">
+          <LocationCityIcon />
+        </Tooltip>
+      ),
     },
-    { name: "Mi Perfil", value: "/Perfil", icon: <AccountCircleIcon /> },
+    {
+      name: "Mi Perfil",
+      value: "/Perfil",
+      icon: (
+        <Tooltip title="Mi Perfil" placement="right">
+          <AccountCircleIcon />
+        </Tooltip>
+      ),
+    },
 
     /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
@@ -209,12 +374,16 @@ export default function Header({ children }) {
           >
             MiBien
           </Typography>
-          <IconButton sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <ExitToAppIcon
-              sx={{ color: "white", fontSize: 25 }}
-              onClick={() => cerrarSesion()}
-            />
-          </IconButton>
+          <Tooltip title="Cerrar Sesión">
+            <IconButton sx={{ display: "flex", justifyContent: "flex-end" }}>
+              <ExitToAppIcon
+                sx={{ color: "white", fontSize: 25 }}
+                onClick={() => cerrarSesion()}
+              >
+                cerrarSesion
+              </ExitToAppIcon>
+            </IconButton>
+          </Tooltip>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -377,141 +546,6 @@ export default function Header({ children }) {
             </ListItem>
           )}
         </List>
-
-        {/* <List>
-          {usuario && usuario.type_user === 1
-            ? AA.map((text, index) => (
-                <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                  <Link to={text.value} style={{ textDecoration: "none" }}>
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                          color: "#451952",
-                        }}
-                      >
-                        {text.icon}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={text.name}
-                        sx={{
-                          opacity: open ? 1 : 0,
-                          color: "#662549",
-                          fontWeight: "bold",
-                        }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              ))
-            : usuario.type_user === 2
-            ? INM.map((text, index) => (
-                <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                  <Link to={text.value} style={{ textDecoration: "none" }}>
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                          color: "#451952",
-                        }}
-                      >
-                        {text.icon}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={text.name}
-                        sx={{
-                          opacity: open ? 1 : 0,
-                          color: "#662549",
-                          fontWeight: "bold",
-                        }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              ))
-            : usuario.type_user === 3
-            ? AS.map((text, index) => (
-                <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                  <Link to={text.value} style={{ textDecoration: "none" }}>
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                          color: "#451952",
-                        }}
-                      >
-                        {text.icon}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={text.name}
-                        sx={{
-                          opacity: open ? 1 : 0,
-                          color: "#662549",
-                          fontWeight: "bold",
-                        }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              ))
-            : usuario.type_user === 4 &&
-              IND.map((text, index) => (
-                <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                  <Link to={text.value} style={{ textDecoration: "none" }}>
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                          color: "#451952",
-                        }}
-                      >
-                        {text.icon}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={text.name}
-                        sx={{
-                          opacity: open ? 1 : 0,
-                          color: "#662549",
-                          fontWeight: "bold",
-                        }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              ))}
-        </List> */}
       </Drawer>
       {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}> */}
       <Grid container spacing={2}>

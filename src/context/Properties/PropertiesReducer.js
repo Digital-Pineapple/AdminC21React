@@ -4,6 +4,7 @@ import {
   ADD_PROPERTY,
   ADD_SERVICE_PROPERTY,
   BACK_PENDING_PROPERTY,
+  CLEAN_PROPERTIES,
   DELETE_PROPERTY,
   DETAIL_PROPERTY,
   GET_ALL_PROPERTIES_PENDING,
@@ -20,13 +21,20 @@ const PropertiesReducer = (state, action) => {
       return {
         ...state,
         properties: action.payload,
-        success: false,
+        success: true,
         ErrorsApi: [],
       };
     case GET_ALL_PROPERTIES_PUBLISH:
       return {
         ...state,
         properties: action.payload,
+        success: true,
+        ErrorsApi: [],
+      };
+    case CLEAN_PROPERTIES:
+      return {
+        ...state,
+        properties: [],
         success: false,
         ErrorsApi: [],
       };

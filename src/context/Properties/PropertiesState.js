@@ -17,6 +17,7 @@ import {
   PUBLISH_PROPERTY,
   UPDATE_PROPERTY,
   SHOW_ERRORS_API,
+  CLEAN_PROPERTIES,
 } from "../../types";
 import Swal from "sweetalert2";
 import PropertiesContext from "./PropertiesContext";
@@ -29,6 +30,9 @@ const PropertiesState = ({ children }) => {
   };
   const [state, dispatch] = useReducer(PropertiesReducer, initialState);
   const GetPropertiesPublish = () => {
+    dispatch({
+      type:CLEAN_PROPERTIES
+    })
     let user_id = localStorage.getItem("user_id");
     let type_user = localStorage.getItem("type_user");
     if (type_user === "1") {
@@ -58,17 +62,36 @@ const PropertiesState = ({ children }) => {
     }
   };
   const GetPropertiesPending = () => {
-    let url = "/pending/properties";
-    MethodGet(url)
-      .then((res) => {
-        dispatch({
-          type: GET_ALL_PROPERTIES_PENDING,
-          payload: res.data.data,
+    dispatch({
+      type:CLEAN_PROPERTIES
+    })
+    let user_id = localStorage.getItem("user_id");
+    let type_user = localStorage.getItem("type_user");
+    if (type_user === "1") {
+      let url = "/pending/properties";
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: GET_ALL_PROPERTIES_PENDING,
+            payload: res.data.data,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    } else if (type_user === "2" || type_user === "3" || type_user === "4") {
+      let url = `/pending/propertiesuser/${user_id}`;
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: GET_ALL_PROPERTIES_PUBLISH,
+            payload: res.data.data,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   const AddProperty = (data) => {
