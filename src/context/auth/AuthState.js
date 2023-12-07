@@ -18,6 +18,7 @@ const AuthState = (props) => {
     token: localStorage.getItem("token"),
     autenticado: false,
     usuario: {},
+    User: {},
     cargando: false,
     success: false,
     directions: [],
@@ -134,15 +135,13 @@ const AuthState = (props) => {
 
   //cuando el usuario Ccambia de contraseña
   const ChangePasswordUser = (datos) => {
-    let url = "/admin/auth/changePassword";
+    let url = "/resetPassword";
     MethodPost(url, datos)
       .then((res) => {
         Swal.fire({
           title: "Contraseña!",
           text: "Modificada Correctamente",
           icon: "success",
-          timer: 1000,
-          showConfirmButton: false,
         });
         dispatch({
           type: types.USER_CHANGEPASSWORD,
@@ -162,16 +161,14 @@ const AuthState = (props) => {
 
   //Cambiar Imagen de Perfil
   const ChangePhoto = (datos) => {
-    let url = "/admin/auth/update-profile-image";
+    let url = "/profile/image/update";
     const formData = new FormData();
     formData.append("profileImage", datos.image);
-    MethodPut(url, formData, { headerConfig })
+    MethodPost(url, formData, { headerConfig })
       .then((res) => {
         Swal.fire({
           title: "Usuario!!",
           text: res.data.message,
-          timer: 3000,
-          showConfirmButton: false,
           icon: "success",
         });
         dispatch({

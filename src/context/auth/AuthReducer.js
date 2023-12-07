@@ -8,6 +8,7 @@ export default (state, action) => {
       };
     case types.LOGIN_EXITOSO:
       localStorage.setItem("token", action.payload.access_token);
+      localStorage.setItem("usuaio", JSON.stringify(action.payload.data));
       return {
         ...state,
         autenticado: true,

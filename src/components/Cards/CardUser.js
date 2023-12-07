@@ -19,7 +19,7 @@ export default function CardUser({ user }) {
         image={img}
         title="users"
       />
-      <CardContent sx={{ marginTop: -15, color: "#451952", }}>
+      <CardContent sx={{ marginTop: -15, color: "#451952" }}>
         <label>
           <b>Nombre</b>
         </label>
@@ -28,10 +28,6 @@ export default function CardUser({ user }) {
           <b>Correo</b>
         </label>
         <Typography>{user.email}</Typography>
-        <label>
-          <b>Rol</b>
-        </label>
-        <Typography>{user.roles ? user.roles[0]?.name : "N/A"}</Typography>
       </CardContent>
       <CardActions>
         <IconButton size="small">

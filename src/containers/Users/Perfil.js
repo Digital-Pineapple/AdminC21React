@@ -16,11 +16,36 @@ import FlipCameraIosIcon from "@mui/icons-material/FlipCameraIos";
 import LockResetIcon from "@mui/icons-material/LockReset";
 import React, { useContext } from "react";
 import Layout from "../../components/layout/Layout";
+import { useState } from "react";
 import logo from "../../assets/img/C21.webp";
+import ResetPassword from "./ResetPassword";
 import AuthContext from "../../context/auth/AuthContext";
+import AttachFileMultimedia from "./AddMultimediaUser";
+
 const Perfil = () => {
-  const { usuario } = useContext(AuthContext);
-  console.log(usuario);
+  //const { User } = useContext(AuthContext);
+  const User = JSON.parse(localStorage.getItem("usuaio"));
+  console.log(User);
+  const [id_property, saveProperty] = useState(null);
+
+  const [modalMultimedia, openModalMultimedia] = useState(false);
+  const handleOpenMultimedia = (id) => {
+    openModalMultimedia(true);
+    saveProperty(id);
+  };
+  const handleCloseMultimedia = () => {
+    openModalMultimedia(false);
+    saveProperty(null);
+  };
+
+  const [openModal, setOpenModal] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpenModal(true);
+  };
+  const handleClose = () => {
+    setOpenModal(false);
+  };
+
   return (
     <Layout>
       <Grid
@@ -35,11 +60,11 @@ const Perfil = () => {
                 <Typography
                   fontWeight="bold"
                   fontFamily="monospace"
-                  fontSize="55px"
+                  fontSize="40px"
                   textAlign="center"
                   sx={{ color: "#662549" }}
                 >
-                  Hola, {""} {usuario && usuario.name}
+                  Hola de nuevo, {""} {User && User.name}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -55,9 +80,11 @@ const Perfil = () => {
                 sx={{ margin: 2, display: "flex", justifyContent: "center" }}
               >
                 <Card>
-                  <img src={logo} width={250} height={200} />
+                  <img src={User.image} width={250} height={200} />
+
                   <CardActions>
                     <Button
+                      onClick={() => handleOpenMultimedia(User.id)}
                       fullWidth
                       variant="contained"
                       sx={{
@@ -69,7 +96,10 @@ const Perfil = () => {
                         },
                       }}
                     >
-                      Cambiar foto <FlipCameraIosIcon sx={{ marginLeft: 2 }} />
+                      Cambiar foto{" "}
+                      <FlipCameraIosIcon
+                        sx={{ marginLeft: 2 }}
+                      ></FlipCameraIosIcon>
                     </Button>
                   </CardActions>
                 </Card>
@@ -100,7 +130,7 @@ const Perfil = () => {
                         variant="subtitle1"
                         sx={{ color: "#AE445A" }}
                       >
-                        Correo: {usuario.email}
+                        Nombre(s): {User.name}
                       </Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -110,7 +140,7 @@ const Perfil = () => {
                         variant="subtitle1"
                         sx={{ color: "#AE445A" }}
                       >
-                        Telefono: {usuario.phone}
+                        Apellido(s): {User.last_name}
                       </Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -120,18 +150,41 @@ const Perfil = () => {
                         variant="subtitle1"
                         sx={{ color: "#AE445A" }}
                       >
-                        Mi perfil:{" "}
-                        {usuario.type_user === 1
-                          ? "SuperAdmin"
-                          : usuario.type_user === 2
+                        Soy:{" "}
+                        {User.type_user === 1
+                          ? "Admin"
+                          : User.type_user === 2
                           ? "Inmobiliaria"
-                          : usuario.type_user === 3
-                          ? "Asesor"
-                          : usuario.type_user === 4 && "Independiente"}
+                          : User.type_user === 3
+                          ? "Asesor (Broker)"
+                          : User.type_user === 4 &&
+                            "Inquilino (Rentar/Comprar)"}
                       </Typography>
                     </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <Typography
+                        fontFamily="monospace"
+                        fontWeight="bold"
+                        variant="subtitle1"
+                        sx={{ color: "#AE445A" }}
+                      >
+                        Telefono: {User.phone_number}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <Typography
+                        fontFamily="monospace"
+                        fontWeight="bold"
+                        variant="subtitle1"
+                        sx={{ color: "#AE445A" }}
+                      >
+                        Correo Electrónico: {User.email}
+                      </Typography>
+                    </Grid>
+
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                       <Button
+                        onClick={handleClickOpen}
                         fullWidth
                         variant="contained"
                         sx={{
@@ -152,6 +205,14 @@ const Perfil = () => {
               </Grid>
             </Grid>
           </Card>
+          {id_property !== null && (
+            <AttachFileMultimedia
+              open={modalMultimedia}
+              handleClose={handleCloseMultimedia}
+              id={id_property}
+            />
+          )}
+          <ResetPassword modal={openModal} handleClose={handleClose} />
         </Grid>
       </Grid>
     </Layout>

@@ -6,6 +6,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useDebounce } from "use-debounce";
 import { useState } from "react";
 import PropertiesContext from "../../context/Properties/PropertiesContext";
+import AuthContext from "../../context/auth/AuthContext";
+
 import { useContext, useEffect } from "react";
 import { Box, Grid, IconButton, InputLabel, Tooltip } from "@mui/material";
 import { makeStyles } from "@mui/styles";
@@ -30,13 +32,13 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
   const [debouncedFile] = useDebounce(image.image, 500);
   const handleChangeImage = (e) => {
     saveImage({
-      ...image,
+      image,
       urlPhoto: URL.createObjectURL(e.target.files[0]),
       image: e.target.files[0],
     });
   };
 
-  const { AddMultimediaProperty } = useContext(PropertiesContext);
+  const { ChangePhoto } = useContext(AuthContext);
 
   useEffect(() => {
     ExistImage();
@@ -47,7 +49,7 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
       var data = {};
       data.property_id = id;
       data.image = image.image;
-      AddMultimediaProperty(data);
+      ChangePhoto(data);
     }
   };
 
@@ -58,9 +60,6 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">
-        {"Adjunta foto de la propiedad"}
-      </DialogTitle>
       <DialogContent>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -88,7 +87,7 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
               onChange={handleChangeImage}
             />
             <InputLabel sx={{ textAlign: "center" }}>
-              Selecciona imagen :
+              Selecciona imagen:
               <label htmlFor="icon-button-file-first">
                 <IconButton
                   color="primary"
