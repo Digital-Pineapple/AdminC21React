@@ -4,12 +4,13 @@ import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
+import MailIcon from '@mui/icons-material/Mail';
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import HouseIcon from "@mui/icons-material/House";
-import ApartmentIcon from "@mui/icons-material/Apartment";
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Divider from "@mui/material/Divider";
 import AddIcon from "@mui/icons-material/Add";
@@ -166,6 +167,15 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Propiedades" placement="right">
           <LocationCityIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Visitas de Propiedades",
+      value: "/Visit",
+      icon: (
+        <Tooltip title="Visitas de Propiedades" placement="right">
+          <MailIcon />
         </Tooltip>
       ),
     },

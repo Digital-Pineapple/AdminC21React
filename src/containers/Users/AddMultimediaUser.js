@@ -1,17 +1,14 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import { useDebounce } from "use-debounce";
 import { useState } from "react";
-import PropertiesContext from "../../context/Properties/PropertiesContext";
 import AuthContext from "../../context/auth/AuthContext";
-
 import { useContext, useEffect } from "react";
 import { Box, Grid, IconButton, InputLabel, Tooltip } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+
 const useStyles = makeStyles({
   input: {
     display: "none",
@@ -22,6 +19,7 @@ const useStyles = makeStyles({
     objectFit: "cover",
   },
 });
+
 export default function AttachFileMultimedia({ open, handleClose, id }) {
   const classes = useStyles();
   const [image, saveImage] = useState({
@@ -72,7 +70,7 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
             >
               <div>
                 <img
-                  src={image.urlPhoto}
+                  src={image.urlPhoto }
                   className={classes.logoimagen}
                   alt="agrega evidencia"
                 />

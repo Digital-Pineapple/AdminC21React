@@ -45,6 +45,7 @@ const Perfil = () => {
   const handleClose = () => {
     setOpenModal(false);
   };
+  console.log(User, "dataaaaa");
 
   return (
     <Layout>
@@ -196,7 +197,7 @@ const Perfil = () => {
                           },
                         }}
                       >
-                        Cambiar contraseña{" "}
+                        Cambiar mi contraseña{" "}
                         <LockResetIcon sx={{ marginLeft: 2 }} />
                       </Button>
                     </Grid>

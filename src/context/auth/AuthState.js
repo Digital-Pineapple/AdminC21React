@@ -139,7 +139,7 @@ const AuthState = (props) => {
     MethodPost(url, datos)
       .then((res) => {
         Swal.fire({
-          title: "Contraseña!",
+          title: "¡ Contraseña !",
           text: "Modificada Correctamente",
           icon: "success",
         });
@@ -160,15 +160,17 @@ const AuthState = (props) => {
   };
 
   //Cambiar Imagen de Perfil
-  const ChangePhoto = (datos) => {
+  const ChangePhoto = (data) => {
     let url = "/profile/image/update";
     const formData = new FormData();
-    formData.append("profileImage", datos.image);
+    formData.append("file", data.image);
+    formData.append("image", data.image);
+
     MethodPost(url, formData, { headerConfig })
       .then((res) => {
         Swal.fire({
-          title: "Usuario!!",
-          text: res.data.message,
+          title: "¡ Foto !",
+          text: "Modificada Correctamente",
           icon: "success",
         });
         dispatch({

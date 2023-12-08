@@ -111,7 +111,7 @@ export default function ChangePasswordUser({ modal, handleClose }) {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          Nueva Contraseña
+          Cambiar mi contraseña
         </BootstrapDialogTitle>
         <form
           onSubmit={handleSubmit(onSubmit)}
