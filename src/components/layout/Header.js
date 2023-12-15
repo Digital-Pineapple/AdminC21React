@@ -238,6 +238,15 @@ export default function Header({ children }) {
       ),
     },
     {
+      name: "Visitas de Propiedades",
+      value: "/Visit",
+      icon: (
+        <Tooltip title="Visitas de Propiedades" placement="right">
+          <MailIcon />
+        </Tooltip>
+      ),
+    },
+    {
       name: "Mis Usuarios",
       value: "/Users",
       icon: (
@@ -285,13 +294,21 @@ export default function Header({ children }) {
         </Tooltip>
       ),
     },
-
     {
       name: "Mis Propiedades",
       value: "/Properties",
       icon: (
         <Tooltip title="Mis Propiedades" placement="right">
           <LocationCityIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Visitas de Propiedades",
+      value: "/Visit",
+      icon: (
+        <Tooltip title="Visitas de Propiedades" placement="right">
+          <MailIcon />
         </Tooltip>
       ),
     },
@@ -342,6 +359,15 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Mis Propiedades" placement="right">
           <LocationCityIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Visitas de Propiedades",
+      value: "/Visit",
+      icon: (
+        <Tooltip title="Visitas de Propiedades" placement="right">
+          <MailIcon />
         </Tooltip>
       ),
     },

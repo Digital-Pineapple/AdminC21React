@@ -7,6 +7,7 @@ import ServicesState from "./context/Services/ServicesState";
 import UsersState from "./context/Users/UsersState";
 import PropertiesState from "./context/Properties/PropertiesState";
 import DashboardState from "./context/Dashboard/DashboardState";
+import VisitState from "./context/Visits/VisitState";
 function AdminApp() {
   return (
     <AuthState>
@@ -14,9 +15,11 @@ function AdminApp() {
         <CategoryState>
           <ServicesState>
             <PropertiesState>
-              <DashboardState>
-                <AppRouter />
-              </DashboardState>
+              <VisitState>
+                <DashboardState>
+                  <AppRouter />
+                </DashboardState>
+              </VisitState>
             </PropertiesState>
           </ServicesState>
         </CategoryState>

@@ -5,7 +5,7 @@ import Categories from "../containers/Categories/Categories";
 import Services from "../containers/Services/Services";
 import Properties from "../containers/Properties/IndexProperties";
 import PropertiesPending from "../containers/Properties/IndexPropertiesPending";
-import VisitProperty from "../containers/Properties/VisitProperty";
+import VisitProperty from "../containers/Visits/VisitProperty";
 import CreateProperty from "../containers/Properties/CreateProperty";
 import Users from "../containers/Users/Users";
 import Perfil from "../containers/Users/Perfil";
