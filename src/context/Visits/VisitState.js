@@ -33,7 +33,7 @@ const VisitState = ({ children }) => {
         .then((res) => {
           dispatch({
             type: GET_ALL_VISITS,
-            payload: res.data.data[0].bookings,
+            payload: res.data.data,
           });
         })
         .catch((error) => {
@@ -68,6 +68,7 @@ const VisitState = ({ children }) => {
               type: DELETE_VISITS,
               payload: id,
             });
+            window.location.reload();
           })
           .catch((error) => {
             Swal.fire({
@@ -77,7 +78,6 @@ const VisitState = ({ children }) => {
               showConfirmButton: false,
             });
           });
-        window.location.reload();
       }
     });
   };

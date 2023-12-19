@@ -45,7 +45,7 @@ const Perfil = () => {
   const handleClose = () => {
     setOpenModal(false);
   };
-  console.log(User, "dataaaaa");
+  console.log(User, "userssss");
 
   return (
     <Layout>
@@ -81,6 +81,7 @@ const Perfil = () => {
                 sx={{ margin: 2, display: "flex", justifyContent: "center" }}
               >
                 <Card>
+                  {console.log(User.image)}
                   <img src={User.image} width={250} height={200} />
 
                   <CardActions>

@@ -11,7 +11,6 @@ import bg from "../../assets/img/visit.png";
 
 export default function CardVisit({ visit }) {
   const { DeleteVisit } = React.useContext(VisitContext);
-  console.log(visit, "visit");
 
   return (
     <>
@@ -25,24 +24,27 @@ export default function CardVisit({ visit }) {
           <label>
             <b>Nombre</b>
           </label>
-          <Typography>{visit.name}</Typography>
+          <Typography>{visit.bookings[0].name}</Typography>
           <label>
             <b>Telefono</b>
           </label>
-          <Typography>{visit.phone}</Typography>
+          <Typography>{visit.bookings[0].phone}</Typography>
           <label>
             <b>Correo Electronico</b>
           </label>
-          <Typography>{visit.email}</Typography>
+          <Typography>{visit.bookings[0].email}</Typography>
           <label>
             <b>Mensaje</b>
           </label>
-          <Typography>{visit.message}</Typography>
+          <Typography>{visit.bookings[0].message}</Typography>
           <label>
             <b>Propiedad</b>
           </label>
-          <Typography>{visit.property_id}</Typography>
-          <IconButton size="small" onClick={() => DeleteVisit(visit.id)}>
+          <Typography>{visit.name}</Typography>
+          <IconButton
+            size="small"
+            onClick={() => DeleteVisit(visit.bookings[0].id)}
+          >
             <DeleteIcon sx={{ color: "red" }} />
           </IconButton>
         </CardContent>
