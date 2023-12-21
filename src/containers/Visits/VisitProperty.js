@@ -16,7 +16,7 @@ const VisitProperty = () => {
       <Grid container spacing={2} sx={{ padding: 2 }}>
         <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
           <Typography fontWeight="bold" fontFamily="monospace" variant="h4">
-            Visitas Agendadas
+            Visitas Agendadas de mis Propiedades
           </Typography>
         </Grid>
         {success && visits.length ? (

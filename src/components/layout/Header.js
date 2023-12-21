@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import MailIcon from '@mui/icons-material/Mail';
+import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
@@ -171,11 +171,11 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas de Propiedades",
+      name: "Visitas Agendadas",
       value: "/Visit",
       icon: (
-        <Tooltip title="Visitas de Propiedades" placement="right">
-          <MailIcon />
+        <Tooltip title="Visitas Agendadas" placement="right">
+          <PermContactCalendarIcon />
         </Tooltip>
       ),
     },
@@ -238,11 +238,11 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas de Propiedades",
+      name: "Visitas Agendadas",
       value: "/Visit",
       icon: (
-        <Tooltip title="Visitas de Propiedades" placement="right">
-          <MailIcon />
+        <Tooltip title="Visitas Agendadas" placement="right">
+          <PermContactCalendarIcon />
         </Tooltip>
       ),
     },
@@ -304,11 +304,11 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas de Propiedades",
+      name: "Visitas Agendadas",
       value: "/Visit",
       icon: (
-        <Tooltip title="Visitas de Propiedades" placement="right">
-          <MailIcon />
+        <Tooltip title="Visitas Agendadas" placement="right">
+          <PermContactCalendarIcon />
         </Tooltip>
       ),
     },
@@ -363,11 +363,11 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas de Propiedades",
+      name: "Visitas Agendadas",
       value: "/Visit",
       icon: (
-        <Tooltip title="Visitas de Propiedades" placement="right">
-          <MailIcon />
+        <Tooltip title="Visitas Agendadas" placement="right">
+          <PermContactCalendarIcon />
         </Tooltip>
       ),
     },
