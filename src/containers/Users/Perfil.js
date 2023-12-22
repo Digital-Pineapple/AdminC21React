@@ -25,7 +25,6 @@ import AttachFileMultimedia from "./AddMultimediaUser";
 const Perfil = () => {
   //const { User } = useContext(AuthContext);
   const User = JSON.parse(localStorage.getItem("usuaio"));
-  console.log(User);
   const [id_property, saveProperty] = useState(null);
 
   const [modalMultimedia, openModalMultimedia] = useState(false);
@@ -44,8 +43,13 @@ const Perfil = () => {
   };
   const handleClose = () => {
     setOpenModal(false);
+
+    setTimeout(() => {
+      let xd = JSON.parse(localStorage.getItem("usuaio"));
+      xd.image = `https://mibien.s3.us-east-2.amazonaws.com/profile/${User.id}`;
+      localStorage.setItem("usuaio", JSON.stringify(xd));
+    }, 1000);
   };
-  console.log(User, "userssss");
 
   return (
     <Layout>
@@ -81,8 +85,14 @@ const Perfil = () => {
                 sx={{ margin: 2, display: "flex", justifyContent: "center" }}
               >
                 <Card>
-                  {console.log(User.image)}
-                  <img src={User.image} width={250} height={200} />
+                  <img
+                    src={
+                      `https://mibien.s3.us-east-2.amazonaws.com/profile/${User.id}` ||
+                      User.image
+                    }
+                    width={250}
+                    height={200}
+                  />
 
                   <CardActions>
                     <Button

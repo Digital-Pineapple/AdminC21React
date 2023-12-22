@@ -96,6 +96,7 @@ const PropertiesCreate = () => {
     setValue("age", "", { shouldDirty: true });
     setValue("rooms", "", { shouldDirty: true });
     setValue("bathroom", "", { shouldDirty: true });
+    setValue("half_bath", "", { shouldDirty: true });
     setValue("size", "", { shouldDirty: true });
     setValue("size_total", "", { shouldDirty: true });
     setValue("parking_places", "", { shouldDirty: true });
@@ -167,73 +168,6 @@ const PropertiesCreate = () => {
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Divider>
                 <Chip
-                  label="Datos Generales"
-                  sx={{ backgroundColor: "#451952", color: "white" }}
-                />
-              </Divider>
-            </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-              <TextField
-                fullWidth
-                variant="outlined"
-                name="name"
-                label="Nombre de la propiedad"
-                error={errors.name ? true : false}
-                helperText={errors?.name?.message}
-                {...register("name", {
-                  required: {
-                    value: true,
-                    message: "El nombre de la propiedad es requerida",
-                  },
-                })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-              <CategoriesSelect
-                detectarCambiosCategory={detectarCambiosCategory}
-              />
-            </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-              <OptionsSelect detectarCambiosOption={detectarCambiosOption} />
-            </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-              <TextField
-                fullWidth
-                variant="outlined"
-                type="number"
-                label="Precio"
-                name="final_price"
-                error={errors.final_price ? true : false}
-                helperText={errors?.final_price?.message}
-                {...register("final_price", {
-                  required: {
-                    value: true,
-                    message: "El precio de la propiedad es requerido",
-                  },
-                })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <TextField
-                id="outlined-multiline-static"
-                label="Descripcion del lugar"
-                multiline
-                fullWidth
-                rows={8}
-                name="description"
-                error={errors.description ? true : false}
-                helperText={errors?.description?.message}
-                {...register("description", {
-                  required: {
-                    value: true,
-                    message: "La descripcion de la propiedad es requerida",
-                  },
-                })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <Divider>
-                <Chip
                   label="Detalles"
                   sx={{ backgroundColor: "#451952", color: "white" }}
                 />
@@ -289,6 +223,24 @@ const PropertiesCreate = () => {
                     value: true,
                     message:
                       "El numero de baños completos de la propiedad es requerida",
+                  },
+                })}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
+              <TextField
+                fullWidth
+                variant="outlined"
+                type="number"
+                name="half_bath"
+                label="Medios Baños"
+                error={errors.half_bath ? true : false}
+                helperText={errors?.half_bath?.message}
+                {...register("half_bath", {
+                  required: {
+                    value: true,
+                    message:
+                      "El numero de medios baños de la propiedad es requerida",
                   },
                 })}
               />
@@ -364,22 +316,6 @@ const PropertiesCreate = () => {
                 />
               </Grid>
             )}
-            {/* <Grid
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={2}
-              xl={2}
-              display="flex"
-              justifyContent="center"
-            >
-              <OptionsWashRoom
-                setSelectedValueWashRoom={selectedValueWashRoom}
-                selectedValueWashRoom={selectedValueWashRoom}
-                handleChangeWashRoom={handleChangeWashRoom}
-              />
-            </Grid> */}
             <Grid
               item
               xs={12}
@@ -396,109 +332,73 @@ const PropertiesCreate = () => {
                 handleChangeRemodel={handleChangeRemodel}
               />
             </Grid>
-
-            {/* <Grid
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={3}
-              xl={3}
-              display="flex"
-              justifyContent="center"
-            >
-              <FractionamientOptions
-                selectedValueFractionamient={selectedValueFractionamient}
-                setSelectedValueFractionamient={setSelectedValueFractionamient}
-                handleChangeFractionamient={handleChangeFractionamient}
+            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+              <Divider>
+                <Chip
+                  label="Datos Generales"
+                  sx={{ backgroundColor: "#451952", color: "white" }}
+                />
+              </Divider>
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+              <TextField
+                fullWidth
+                variant="outlined"
+                name="name"
+                label="Nombre de la propiedad"
+                error={errors.name ? true : false}
+                helperText={errors?.name?.message}
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "El nombre de la propiedad es requerida",
+                  },
+                })}
               />
             </Grid>
-            {selectedValueFractionamient === "si" && (
-              <>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={4}
-                  lg={4}
-                  xl={4}
-                  display="flex"
-                  justifyContent="center"
-                >
-                  <TextField
-                    fullWidth
-                    variant="outlined"
-                    type="text"
-                    name="name_fractionamient"
-                    label="Nombre Fraccionamiento"
-                    error={errors.name_fractionamient ? true : false}
-                    helperText={errors?.name_fractionamient?.message}
-                    {...register("name_fractionamient", {
-                      required: {
-                        value: true,
-                        message:
-                          "El nombre del fraccionamiento de la propiedad es requerida",
-                      },
-                    })}
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={4}
-                  lg={4}
-                  xl={4}
-                  display="flex"
-                  justifyContent="center"
-                >
-                  <TextField
-                    fullWidth
-                    variant="outlined"
-                    type="text"
-                    name="lote"
-                    label="Lote de la casa"
-                    error={errors.lote ? true : false}
-                    helperText={errors?.lote?.message}
-                    {...register("lote", {
-                      required: {
-                        value: true,
-                        message:
-                          "El numero de lote de la propiedad es requerida",
-                      },
-                    })}
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={4}
-                  lg={4}
-                  xl={4}
-                  display="flex"
-                  justifyContent="center"
-                >
-                  <TextField
-                    fullWidth
-                    variant="outlined"
-                    type="text"
-                    name="apple_house"
-                    label="Manzana de la casa"
-                    error={errors.apple_house ? true : false}
-                    helperText={errors?.apple_house?.message}
-                    {...register("apple_house", {
-                      required: {
-                        value: true,
-                        message:
-                          "El numero de manzana de la propiedad es requerida",
-                      },
-                    })}
-                  />
-                </Grid>
-              </>
-            )} */}
-
+            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+              <CategoriesSelect
+                detectarCambiosCategory={detectarCambiosCategory}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+              <OptionsSelect detectarCambiosOption={detectarCambiosOption} />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+              <TextField
+                fullWidth
+                variant="outlined"
+                type="number"
+                label="Precio"
+                name="final_price"
+                error={errors.final_price ? true : false}
+                helperText={errors?.final_price?.message}
+                {...register("final_price", {
+                  required: {
+                    value: true,
+                    message: "El precio de la propiedad es requerido",
+                  },
+                })}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+              <TextField
+                id="outlined-multiline-static"
+                label="Descripcion del lugar"
+                multiline
+                fullWidth
+                rows={8}
+                name="description"
+                error={errors.description ? true : false}
+                helperText={errors?.description?.message}
+                {...register("description", {
+                  required: {
+                    value: true,
+                    message: "La descripcion de la propiedad es requerida",
+                  },
+                })}
+              />
+            </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Divider>
                 <Chip
@@ -507,7 +407,6 @@ const PropertiesCreate = () => {
                 />
               </Divider>
             </Grid>
-
             <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
               <TextField
                 fullWidth

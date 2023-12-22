@@ -159,35 +159,47 @@ const AuthState = (props) => {
       });
   };
 
-  //Cambiar Imagen de Perfil
+  // Cambiar Imagen de Perfil
   const ChangePhoto = (data) => {
-    let url = "/profile/image/update";
-    const formData = new FormData();
-    formData.append("file", data.image);
-    formData.append("image", data.image);
+    Swal.fire({
+      title: "Agregar Imagen",
+      text: "¿Estás seguro de agregar esta imagen?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, Aceptar",
+      cancelButtonText: "No, cancelar",
+    }).then((result) => {
+      if (result.value) {
+        let url = "/profile/image/update";
+        const formData = new FormData();
+        formData.append("image", data.image);
 
-    MethodPost(url, formData, { headerConfig })
-      .then((res) => {
-        Swal.fire({
-          title: "¡ Foto !",
-          text: "Modificada Correctamente",
-          icon: "success",
-        });
-        dispatch({
-          type: types.USER_CHANGEPHOTO,
-          payload: res.data,
-        });
-      })
-      .catch((error) => {
-        Swal.fire({
-          title: "Error",
-          icon: "error",
-          text: error.response.data.message,
-        });
-        dispatch({
-          type: SHOW_ERRORS_API,
-        });
-      });
+        MethodPost(url, formData, { headerConfig })
+          .then((res) => {
+            Swal.fire({
+              title: "¡Foto!",
+              text: "Modificada Correctamente",
+              icon: "success",
+            });
+            dispatch({
+              type: types.USER_CHANGEPHOTO,
+              payload: res.data,
+            });
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Error",
+              icon: "error",
+              text: error.response.data.message,
+            });
+            dispatch({
+              type: SHOW_ERRORS_API,
+            });
+          });
+      }
+    });
   };
 
   //Cierrra sesion del usuario

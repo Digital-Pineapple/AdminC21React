@@ -34,6 +34,9 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
       urlPhoto: URL.createObjectURL(e.target.files[0]),
       image: e.target.files[0],
     });
+    let xd = JSON.parse(localStorage.getItem("usuaio"));
+    xd.image = URL.createObjectURL(e.target.files[0]);
+    localStorage.setItem("usuaio", JSON.stringify(xd));
   };
 
   const { ChangePhoto } = useContext(AuthContext);
@@ -70,7 +73,7 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
             >
               <div>
                 <img
-                  src={image.urlPhoto }
+                  src={image.urlPhoto}
                   className={classes.logoimagen}
                   alt="agrega evidencia"
                 />

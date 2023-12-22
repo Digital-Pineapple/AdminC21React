@@ -120,6 +120,7 @@ const EditProperty = (props) => {
     setValue("age", "", { shouldDirty: true });
     setValue("rooms", "", { shouldDirty: true });
     setValue("bathroom", "", { shouldDirty: true });
+    setValue("half_bath", "", { shouldDirty: true });
     setValue("size", "", { shouldDirty: true });
     setValue("size_total", "", { shouldDirty: true });
     setValue("postal_code", "", { shouldDirty: true });
@@ -160,6 +161,141 @@ const EditProperty = (props) => {
         >
           {property && property.name && (
             <Grid container spacing={2} sx={{ padding: 2 }}>
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <Divider>
+                  <Chip
+                    label="Detalles"
+                    sx={{ backgroundColor: "#451952", color: "white" }}
+                  />
+                </Divider>
+              </Grid>
+              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  type="number"
+                  name="age"
+                  label="Años de antiguedad"
+                  defaultValue={property.details.age}
+                  error={errors.age ? true : false}
+                  helperText={errors?.age?.message}
+                  {...register("age", {
+                    required: {
+                      value: true,
+                      message:
+                        "Los años de antiguedad de la propiedad es requerida",
+                    },
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  type="number"
+                  name="rooms"
+                  label="Numero de recamaras"
+                  defaultValue={property.details.rooms}
+                  error={errors.rooms ? true : false}
+                  helperText={errors?.rooms?.message}
+                  {...register("rooms", {
+                    required: {
+                      value: true,
+                      message:
+                        "El numero de recamaras de la propiedad es requerida",
+                    },
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  type="number"
+                  name="bathroom"
+                  label="Baños completos"
+                  defaultValue={property.details.bathroom}
+                  error={errors.bathroom ? true : false}
+                  helperText={errors?.bathroom?.message}
+                  {...register("bathroom", {
+                    required: {
+                      value: true,
+                      message:
+                        "El numero de baños completos de la propiedad es requerida",
+                    },
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  type="number"
+                  name="half_bath"
+                  label="Medios Baños"
+                  defaultValue={property.details.half_bath}
+                  error={errors.half_bath ? true : false}
+                  helperText={errors?.half_bath?.message}
+                  {...register("half_bath", {
+                    required: {
+                      value: true,
+                      message:
+                        "El numero de medios baños de la propiedad es requerida",
+                    },
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  type="number"
+                  name="size"
+                  label="Metros construidos"
+                  defaultValue={property.details.size}
+                  error={errors.size ? true : false}
+                  helperText={errors?.size?.message}
+                  {...register("size", {
+                    required: {
+                      value: true,
+                      message:
+                        "El numero de metros construidos de la propiedad es requerida",
+                    },
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  type="number"
+                  label="Metros totales"
+                  name="size_total"
+                  defaultValue={property.details.size_total}
+                  error={errors.size_total ? true : false}
+                  helperText={errors?.size_total?.message}
+                  {...register("size_total", {
+                    required: {
+                      value: true,
+                      message:
+                        "El numero de metros completos de la propiedad es requerida",
+                    },
+                  })}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+                <ParkingOptions
+                  detectarCambios={detectarCambiosParking}
+                  parking={details.parking}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+                <RemodelOptions
+                  detectarCambios={detectarCambiosRemodel}
+                  remodel={details.remodel}
+                />
+              </Grid>
+
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <Divider>
                   <Chip
@@ -234,218 +370,6 @@ const EditProperty = (props) => {
                   })}
                 />
               </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <Divider>
-                  <Chip
-                    label="Detalles"
-                    sx={{ backgroundColor: "#451952", color: "white" }}
-                  />
-                </Divider>
-              </Grid>
-              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  type="number"
-                  name="age"
-                  label="Años de antiguedad"
-                  defaultValue={property.details.age}
-                  error={errors.age ? true : false}
-                  helperText={errors?.age?.message}
-                  {...register("age", {
-                    required: {
-                      value: true,
-                      message:
-                        "Los años de antiguedad de la propiedad es requerida",
-                    },
-                  })}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  type="number"
-                  name="rooms"
-                  label="Numero de recamaras"
-                  defaultValue={property.details.rooms}
-                  error={errors.rooms ? true : false}
-                  helperText={errors?.rooms?.message}
-                  {...register("rooms", {
-                    required: {
-                      value: true,
-                      message:
-                        "El numero de recamaras de la propiedad es requerida",
-                    },
-                  })}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  type="number"
-                  name="bathroom"
-                  label="Baños completos"
-                  defaultValue={property.details.bathroom}
-                  error={errors.bathroom ? true : false}
-                  helperText={errors?.bathroom?.message}
-                  {...register("bathroom", {
-                    required: {
-                      value: true,
-                      message:
-                        "El numero de baños completos de la propiedad es requerida",
-                    },
-                  })}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  type="number"
-                  name="size"
-                  label="Metros construidos"
-                  defaultValue={property.details.size}
-                  error={errors.size ? true : false}
-                  helperText={errors?.size?.message}
-                  {...register("size", {
-                    required: {
-                      value: true,
-                      message:
-                        "El numero de metros construidos de la propiedad es requerida",
-                    },
-                  })}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  type="number"
-                  label="Metros totales"
-                  name="size_total"
-                  defaultValue={property.details.size_total}
-                  error={errors.size_total ? true : false}
-                  helperText={errors?.size_total?.message}
-                  {...register("size_total", {
-                    required: {
-                      value: true,
-                      message:
-                        "El numero de metros completos de la propiedad es requerida",
-                    },
-                  })}
-                />
-              </Grid>
-
-              <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-                <ParkingOptions
-                  detectarCambios={detectarCambiosParking}
-                  parking={details.parking}
-                />
-              </Grid>
-
-              {/* <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-              <OptionsWashRoom />
-            </Grid> */}
-
-              <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-                <RemodelOptions
-                  detectarCambios={detectarCambiosRemodel}
-                  remodel={details.remodel}
-                />
-              </Grid>
-
-              {/* <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-              <FractionamientOptions />
-            </Grid> */}
-
-              {/* {selectedValueFractionamient === "si" && (
-              <>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={4}
-                  lg={4}
-                  xl={4}
-                  display="flex"
-                  justifyContent="center"
-                >
-                  <TextField
-                    fullWidth
-                    variant="outlined"
-                    type="text"
-                    name="name_fractionamient"
-                    label="Nombre Fraccionamiento"
-                    error={errors.name_fractionamient ? true : false}
-                    helperText={errors?.name_fractionamient?.message}
-                    {...register("name_fractionamient", {
-                      required: {
-                        value: true,
-                        message:
-                          "El nombre del fraccionamiento de la propiedad es requerida",
-                      },
-                    })}
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={4}
-                  lg={4}
-                  xl={4}
-                  display="flex"
-                  justifyContent="center"
-                >
-                  <TextField
-                    fullWidth
-                    variant="outlined"
-                    type="text"
-                    name="lote"
-                    label="Lote de la casa"
-                    error={errors.lote ? true : false}
-                    helperText={errors?.lote?.message}
-                    {...register("lote", {
-                      required: {
-                        value: true,
-                        message:
-                          "El numero de lote de la propiedad es requerida",
-                      },
-                    })}
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={4}
-                  lg={4}
-                  xl={4}
-                  display="flex"
-                  justifyContent="center"
-                >
-                  <TextField
-                    fullWidth
-                    variant="outlined"
-                    type="text"
-                    name="apple_house"
-                    label="Manzana de la casa"
-                    error={errors.apple_house ? true : false}
-                    helperText={errors?.apple_house?.message}
-                    {...register("apple_house", {
-                      required: {
-                        value: true,
-                        message:
-                          "El numero de manzana de la propiedad es requerida",
-                      },
-                    })}
-                  />
-                </Grid>
-              </>
-            )} */}
-
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <Divider>
                   <Chip
