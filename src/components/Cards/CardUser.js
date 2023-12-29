@@ -19,20 +19,40 @@ export default function CardUser({ user }) {
         image={img}
         title="users"
       />
-      <CardContent sx={{ marginTop: -15, color: "#451952" }}>
-        <label>
-          <b>Nombre</b>
-        </label>
-        <Typography>{user.name}</Typography>
-        <label>
-          <b>Correo</b>
-        </label>
-        <Typography>{user.email}</Typography>
+      <CardContent sx={{ marginTop: -15 }}>
+        <Typography
+          sx={{
+            color: "#662549",
+          }}
+        >
+          Nombre
+        </Typography>
+        <b>{user.name}</b>
+
+        <Typography
+          sx={{
+            color: "#662549",
+          }}
+        >
+          {" "}
+          Correo
+        </Typography>
+        <b>{user.email}</b>
+
+        <Typography
+          sx={{
+            color: "#662549",
+          }}
+        >
+          {" "}
+          Tipo de Usuario
+        </Typography>
+        <b>Admin</b>
       </CardContent>
       <CardActions>
-        <IconButton size="small">
+        {/* <IconButton size="small">
           <EditIcon sx={{ color: "#0277bd" }} />
-        </IconButton>
+        </IconButton> */}
         <IconButton size="small" onClick={() => DeleteUsers(user.id)}>
           <DeleteIcon sx={{ color: "red" }} />
         </IconButton>

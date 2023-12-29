@@ -34,9 +34,9 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
       urlPhoto: URL.createObjectURL(e.target.files[0]),
       image: e.target.files[0],
     });
-    let xd = JSON.parse(localStorage.getItem("usuaio"));
-    xd.image = URL.createObjectURL(e.target.files[0]);
-    localStorage.setItem("usuaio", JSON.stringify(xd));
+    let img = JSON.parse(localStorage.getItem("usuaio"));
+    img.image = URL.createObjectURL(e.target.files[0]);
+    localStorage.setItem("usuaio", JSON.stringify(img));
   };
 
   const { ChangePhoto } = useContext(AuthContext);

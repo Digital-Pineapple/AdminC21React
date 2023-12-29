@@ -157,12 +157,12 @@ const Register = () => {
                     textAlign: "center",
                     color: "white",
                     marginBottom: "10px",
-                    fontSize: "60px",
+                    fontSize: "40px",
                     fontFamily: "monospace",
                     fontWeight: "bold",
                   }}
                 >
-                  MiBien
+                  Yo Comparto
                 </div>
               </Box>
               <div

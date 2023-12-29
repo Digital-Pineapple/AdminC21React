@@ -93,6 +93,7 @@ const PropertiesCreate = () => {
     setValue("name", "", { shouldDirty: true });
     setValue("description", "", { shouldDirty: true });
     setValue("final_price", "", { shouldDirty: true });
+    setValue("commission", "", { shouldDirty: true });
     setValue("age", "", { shouldDirty: true });
     setValue("rooms", "", { shouldDirty: true });
     setValue("bathroom", "", { shouldDirty: true });
@@ -378,6 +379,20 @@ const PropertiesCreate = () => {
                     value: true,
                     message: "El precio de la propiedad es requerido",
                   },
+                })}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+              <TextField
+                fullWidth
+                variant="outlined"
+                type="number"
+                label="Comisión compartida de la propiedad"
+                name="commission"
+                error={errors.commission ? true : false}
+                helperText={errors?.commission?.message}
+                {...register("commission", {
+                  required: {},
                 })}
               />
             </Grid>

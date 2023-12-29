@@ -10,50 +10,73 @@ import VisitContext from "../../context/Visits/VisitContext";
 import bg from "../../assets/img/visit.png";
 
 export default function CardVisit({ visit }) {
+  console.log(visit, "la visita");
   const { DeleteVisit } = React.useContext(VisitContext);
 
   return (
-    <div>
+    <>
       {visit.bookings.map((item) => (
-        <Card sx={{ maxWidth: "auto", marginTop: 3 }}>
-          <CardMedia
-            sx={{ height: "auto", opacity: "0.6" }}
-            image={bg}
-            title="green iguana"
+        <Card sx={{ maxWidth: "auto" }}>
+          <CardMedia sx={{ height: 130, opacity: "0.7" }} image={bg} />
+          <CardContent>
+            <Typography
+              sx={{
+                color: "#662549",
+              }}
+            >
+              Nombre:
+            </Typography>{" "}
+            <b>{item.name}</b>
+            <Typography
+              sx={{
+                color: "#662549",
+              }}
+            >
+              Telefono:
+            </Typography>
+            <b>{item.phone}</b>
+            <Typography
+              sx={{
+                color: "#662549",
+              }}
+            >
+              Correo Electronico:
+            </Typography>
+            <b>{item.email}</b>
+            <Typography
+              sx={{
+                color: "#662549",
+              }}
+            >
+              Fecha:
+            </Typography>
+            <b>{item.datetime}</b>
+            <Typography
+              sx={{
+                color: "#662549",
+              }}
+            >
+              Mensaje:
+            </Typography>
+            <b>{item.message}</b>
+            <Typography
+              sx={{
+                color: "#662549",
+              }}
+            >
+              {" "}
+              Propiedad
+            </Typography>
+            <b>{visit.name}</b>
+          </CardContent>
+          <IconButton
+            size="small"
+            onClick={() => DeleteVisit(visit.bookings[0].id)}
           >
-            <CardContent>
-              <label>
-                <b>Nombre</b>
-              </label>
-              <Typography>{item.name}</Typography>
-              <label>
-                <b>Telefono</b>
-              </label>
-              <Typography>{item.phone}</Typography>
-              <label>
-                <b>Correo Electronico</b>
-              </label>
-              <Typography>{item.email}</Typography>
-              <label>
-                <b>Mensaje</b>
-              </label>
-              <Typography>{item.message}</Typography>
-              <label>
-                <b>Propiedad</b>
-              </label>
-              <Typography>{visit.name}</Typography>
-            </CardContent>
-            <CardActions>
-              <IconButton
-                size="small"
-                onClick={() => DeleteVisit(visit.bookings[0].id)}
-              >
-                <DeleteIcon sx={{ color: "red" }} />
-              </IconButton>
-            </CardActions>
-          </CardMedia>
+            <DeleteIcon sx={{ color: "red" }} />
+          </IconButton>
         </Card>
       ))}
-    </div>
+    </>
   );
 }

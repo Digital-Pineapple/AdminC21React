@@ -31,8 +31,8 @@ const PropertiesState = ({ children }) => {
   const [state, dispatch] = useReducer(PropertiesReducer, initialState);
   const GetPropertiesPublish = () => {
     dispatch({
-      type:CLEAN_PROPERTIES
-    })
+      type: CLEAN_PROPERTIES,
+    });
     let user_id = localStorage.getItem("user_id");
     let type_user = localStorage.getItem("type_user");
     if (type_user === "1") {
@@ -61,10 +61,35 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
+  const GetPropertiesPublishSearch = () => {
+    dispatch({
+      type: CLEAN_PROPERTIES,
+    });
+    let type_user = localStorage.getItem("type_user");
+    if (
+      type_user === "1" ||
+      type_user === "2" ||
+      type_user === "3" ||
+      type_user === "4"
+    ) {
+      let url = "/propertiesAdmin";
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: GET_ALL_PROPERTIES_PUBLISH,
+            payload: res.data.data,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
   const GetPropertiesPending = () => {
     dispatch({
-      type:CLEAN_PROPERTIES
-    })
+      type: CLEAN_PROPERTIES,
+    });
     let user_id = localStorage.getItem("user_id");
     let type_user = localStorage.getItem("type_user");
     if (type_user === "1") {
@@ -320,6 +345,7 @@ const PropertiesState = ({ children }) => {
         success: state.success,
         GetPropertiesPending,
         GetPropertiesPublish,
+        GetPropertiesPublishSearch,
         AddProperty,
         UpdateProperty,
         DeleteProperty,

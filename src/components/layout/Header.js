@@ -4,13 +4,13 @@ import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import HouseIcon from "@mui/icons-material/House";
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import SearchIcon from '@mui/icons-material/Search';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Divider from "@mui/material/Divider";
 import AddIcon from "@mui/icons-material/Add";
@@ -21,11 +21,10 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import HomeIcon from "@mui/icons-material/Home";
 import CategoryIcon from "@mui/icons-material/Category";
 import SettingsIcon from "@mui/icons-material/Settings";
-import LocationCityIcon from "@mui/icons-material/LocationCity";
+import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
 import GroupIcon from "@mui/icons-material/Group";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AuthContext from "../../context/auth/AuthContext";
-import SearchIcon from "@mui/icons-material/Search";
 import {
   Grid,
   ListItem,
@@ -162,11 +161,20 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Propiedades",
+      name: "Aprobados",
       value: "/Properties",
       icon: (
-        <Tooltip title="Propiedades" placement="right">
-          <LocationCityIcon />
+        <Tooltip title="Aprobados" placement="right">
+          <HolidayVillageIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Buscar Propiedades",
+      value: "/SearchProperties",
+      icon: (
+        <Tooltip title="Buscar Propiedades" placement="right">
+          <SearchIcon />
         </Tooltip>
       ),
     },
@@ -175,7 +183,7 @@ export default function Header({ children }) {
       value: "/Visit",
       icon: (
         <Tooltip title="Visitas Agendadas" placement="right">
-          <PermContactCalendarIcon />
+          <CalendarMonthIcon />
         </Tooltip>
       ),
     },
@@ -197,7 +205,6 @@ export default function Header({ children }) {
         </Tooltip>
       ),
     },
-    /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const INM = [
     {
@@ -227,13 +234,21 @@ export default function Header({ children }) {
         </Tooltip>
       ),
     },
-
     {
-      name: "Mis Propiedades",
+      name: "Aprobados",
       value: "/Properties",
       icon: (
-        <Tooltip title="Mis Propiedades" placement="right">
-          <LocationCityIcon />
+        <Tooltip title="Aprobados" placement="right">
+          <HolidayVillageIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Buscar Propiedades",
+      value: "/SearchProperties",
+      icon: (
+        <Tooltip title="Buscar Propiedades" placement="right">
+          <SearchIcon />
         </Tooltip>
       ),
     },
@@ -242,7 +257,7 @@ export default function Header({ children }) {
       value: "/Visit",
       icon: (
         <Tooltip title="Visitas Agendadas" placement="right">
-          <PermContactCalendarIcon />
+          <CalendarMonthIcon />
         </Tooltip>
       ),
     },
@@ -264,7 +279,6 @@ export default function Header({ children }) {
         </Tooltip>
       ),
     },
-    /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const AS = [
     {
@@ -295,11 +309,20 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Mis Propiedades",
+      name: "Aprobados",
       value: "/Properties",
       icon: (
-        <Tooltip title="Mis Propiedades" placement="right">
-          <LocationCityIcon />
+        <Tooltip title="Aprobados" placement="right">
+          <HolidayVillageIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Buscar Propiedades",
+      value: "/SearchProperties",
+      icon: (
+        <Tooltip title="Buscar Propiedades" placement="right">
+          <SearchIcon />
         </Tooltip>
       ),
     },
@@ -308,7 +331,7 @@ export default function Header({ children }) {
       value: "/Visit",
       icon: (
         <Tooltip title="Visitas Agendadas" placement="right">
-          <PermContactCalendarIcon />
+          <CalendarMonthIcon />
         </Tooltip>
       ),
     },
@@ -321,8 +344,6 @@ export default function Header({ children }) {
         </Tooltip>
       ),
     },
-
-    /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const IND = [
     {
@@ -352,13 +373,21 @@ export default function Header({ children }) {
         </Tooltip>
       ),
     },
-
     {
-      name: "Mis Propiedades",
+      name: "Aprobados",
       value: "/Properties",
       icon: (
-        <Tooltip title="Mis Propiedades" placement="right">
-          <LocationCityIcon />
+        <Tooltip title="Aprobados" placement="right">
+          <HolidayVillageIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Buscar Propiedades",
+      value: "/SearchProperties",
+      icon: (
+        <Tooltip title="Buscar Propiedades" placement="right">
+          <SearchIcon />
         </Tooltip>
       ),
     },
@@ -367,7 +396,7 @@ export default function Header({ children }) {
       value: "/Visit",
       icon: (
         <Tooltip title="Visitas Agendadas" placement="right">
-          <PermContactCalendarIcon />
+          <CalendarMonthIcon />
         </Tooltip>
       ),
     },
@@ -380,8 +409,6 @@ export default function Header({ children }) {
         </Tooltip>
       ),
     },
-
-    /* { name: "Buscar Propiedades", value: "/Properties", icon: <SearchIcon /> }, */
   ];
   const { cerrarSesion, usuario } = useContext(AuthContext);
   return (
@@ -402,13 +429,13 @@ export default function Header({ children }) {
             <MenuIcon />
           </IconButton>
           <Typography
-            variant="h3"
+            variant="h4"
             fontFamily="monospace"
             fontWeight="bold"
             noWrap
             component="div"
           >
-            MiBien
+            Yo Comparto
           </Typography>
           <Tooltip title="Cerrar Sesión">
             <IconButton sx={{ display: "flex", justifyContent: "flex-end" }}>

@@ -130,7 +130,7 @@ const Perfil = () => {
                     fontFamily="monospace"
                     fontWeight="bold"
                     variant="h5"
-                    sx={{ color: "#AE445A" }}
+                    sx={{ color: "#662549" }}
                   >
                     Detalles de mi cuenta...
                   </Typography>
@@ -140,7 +140,7 @@ const Perfil = () => {
                         fontFamily="monospace"
                         fontWeight="bold"
                         variant="subtitle1"
-                        sx={{ color: "#AE445A" }}
+                        sx={{ color: "#662549" }}
                       >
                         Nombre(s): {User.name}
                       </Typography>
@@ -150,7 +150,7 @@ const Perfil = () => {
                         fontFamily="monospace"
                         fontWeight="bold"
                         variant="subtitle1"
-                        sx={{ color: "#AE445A" }}
+                        sx={{ color: "#662549" }}
                       >
                         Apellido(s): {User.last_name}
                       </Typography>
@@ -160,7 +160,7 @@ const Perfil = () => {
                         fontFamily="monospace"
                         fontWeight="bold"
                         variant="subtitle1"
-                        sx={{ color: "#AE445A" }}
+                        sx={{ color: "#662549" }}
                       >
                         Soy:{" "}
                         {User.type_user === 1
@@ -178,7 +178,7 @@ const Perfil = () => {
                         fontFamily="monospace"
                         fontWeight="bold"
                         variant="subtitle1"
-                        sx={{ color: "#AE445A" }}
+                        sx={{ color: "#662549" }}
                       >
                         Telefono: {User.phone_number}
                       </Typography>
@@ -188,7 +188,7 @@ const Perfil = () => {
                         fontFamily="monospace"
                         fontWeight="bold"
                         variant="subtitle1"
-                        sx={{ color: "#AE445A" }}
+                        sx={{ color: "#662549" }}
                       >
                         Correo Electrónico: {User.email}
                       </Typography>

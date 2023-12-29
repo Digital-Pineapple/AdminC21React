@@ -63,7 +63,6 @@ export default function AddService({ modal, handleClose, id }) {
               label="Nombre del servicio"
               type="text"
               fullWidth
-              placeholder="internet"
               variant="outlined"
               error={errors.name ? true : false}
               helperText={errors?.name?.message}
