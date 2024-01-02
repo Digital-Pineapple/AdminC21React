@@ -25,7 +25,7 @@ export default function CardUser({ user }) {
             color: "#662549",
           }}
         >
-          Nombre
+          Nombre(s):
         </Typography>
         <b>{user.name}</b>
 
@@ -35,7 +35,7 @@ export default function CardUser({ user }) {
           }}
         >
           {" "}
-          Correo
+          Correo Electronico:
         </Typography>
         <b>{user.email}</b>
 
@@ -45,9 +45,9 @@ export default function CardUser({ user }) {
           }}
         >
           {" "}
-          Tipo de Usuario
+          Tipo de Usuario:
         </Typography>
-        <b>Admin</b>
+        <b></b>
       </CardContent>
       <CardActions>
         {/* <IconButton size="small">
