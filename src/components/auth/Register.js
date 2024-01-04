@@ -32,14 +32,9 @@ const useStyles = makeStyles({
     margin: "auto",
   },
   backgroundLogin: {
-    height: "100vh",
+    height: "auto",
     width: "100%",
-    //backgroundImage: `url(${Image})`,
-    backgroundImage:
-      // "url(https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg)",
-      "url(https://source.unsplash.com/random/2560x1440)",
-    // backgroundImage:
-    //   "url(https://i.pinimg.com/564x/d3/1b/b8/d31bb87ec92c82e05f5afa30f03eae2a.jpg)",
+    backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
     backgroundRepeat: "no-repeat",
     opacity: 1,
     overflowY: "none",
@@ -147,15 +142,10 @@ const Register = () => {
                   alignItems: "center",
                 }}
               >
-                {/* <img
-                  src={require("../../assets/img/logo.png")}
-                  alt=" "
-                  className={classes.logo}
-                /> */}
                 <div
                   style={{
                     textAlign: "center",
-                    color: "white",
+                    color: "black",
                     marginBottom: "10px",
                     fontSize: "40px",
                     fontFamily: "monospace",
@@ -168,7 +158,7 @@ const Register = () => {
               <div
                 style={{
                   textAlign: "center",
-                  color: "white",
+                  color: "black",
                   marginBottom: "25px",
                   fontFamily: "monospace",
                   fontWeight: "bold",

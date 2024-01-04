@@ -29,20 +29,13 @@ const useStyles = makeStyles({
     letterSpacing: "1px",
   },
   backgroundLogin: {
-    //backgroundColor: "#ec407a",
     height: "100vh",
     width: "100%",
-    //backgroundImage: `url(${Image})`,
-    backgroundImage:
-      // "url(https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg)",
-      "url(https://source.unsplash.com/random/2560x1440)",
-    // backgroundImage:
-    //   "url(https://i.pinimg.com/564x/d3/1b/b8/d31bb87ec92c82e05f5afa30f03eae2a.jpg)",
+    backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
     backgroundRepeat: "no-repeat",
     opacity: 1,
     overflowY: "none",
     overflowX: "none",
-    //filter: "blur(4px)",
   },
   caja: {
     background: "rgba(255, 255, 255, 0.46)",
@@ -55,7 +48,6 @@ const useStyles = makeStyles({
 
 const Login = () => {
   const classes = useStyles();
-  //Contraseña
   const [values, setValues] = useState({
     password: "",
     showPassword: false,
@@ -117,7 +109,7 @@ const Login = () => {
               <div
                 style={{
                   textAlign: "center",
-                  color: "white",
+                  color: "black",
                   marginBottom: "10px",
                   fontSize: "40px",
                   fontFamily: "monospace",
@@ -130,7 +122,7 @@ const Login = () => {
             <div
               style={{
                 textAlign: "center",
-                color: "white",
+                color: "black",
                 marginBottom: "25px",
                 fontFamily: "monospace",
                 fontWeight: "bold",
@@ -246,11 +238,11 @@ const Login = () => {
                   </Typography>
                 </Button>
               </Link>
-              {/* <Link to="/Olvide-mi-Acceso">
-                <div style={{ textAlign: "center", color: "white" }}>
-                  ¿Has olvidado la contraseña?
+              <Link to="/Olvide-mi-Acceso">
+                <div style={{ textAlign: "center" }}>
+                  ¿Olvidaste tu contraseña?
                 </div>
-              </Link> */}
+              </Link>
             </Box>
           </Box>
         </div>
