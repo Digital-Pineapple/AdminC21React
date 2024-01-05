@@ -254,14 +254,13 @@ const CardProperty = ({ property }) => {
                     </IconButton>
                   </Tooltip>
 
-                  <Tooltip title="Agregar Vista 3D" placement="top">
+                  {/* <Tooltip title="Agregar Vista 3D" placement="top">
                     <IconButton
                       onClick={() => handleClickOpenAddView3D(property.id)}
                     >
                       <HomeIcon sx={{ color: "orange" }} />{" "}
-                      {/* Reemplaza SettingsIcon con HomeIcon */}
                     </IconButton>
-                  </Tooltip>
+                  </Tooltip> */}
 
                   <Tooltip title="Eliminar Propiedad" placement="top">
                     <IconButton

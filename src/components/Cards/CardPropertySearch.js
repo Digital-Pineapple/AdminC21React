@@ -118,7 +118,7 @@ const CardProperty = ({ property }) => {
             <Alert
               icon={false}
               severity="success"
-              sx={{ backgroundColor: "#451952", color: "white" }}
+              sx={{ backgroundColor: "#AE445A", color: "white" }}
             >
               <Typography
                 fontWeight="bold"
