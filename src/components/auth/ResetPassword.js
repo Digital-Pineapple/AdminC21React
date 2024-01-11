@@ -47,7 +47,7 @@ const useStyles = makeStyles({
 
 const ResetPassword = () => {
   const classes = useStyles();
-  
+
   const {
     register,
     formState: { errors },
@@ -163,6 +163,25 @@ const ResetPassword = () => {
                 Enviar
               </Typography>
             </Button>
+            <Link to="iniciar-sesion">
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{
+                  backgroundColor: "#AE445A",
+                  color: "white",
+                  fontWeight: "bold",
+                  mt: 0,
+                  mb: 1,
+                  "&:hover": {
+                    backgroundColor: "#AE445A",
+                  },
+                }}
+              >
+                Regresar recordé mi acceso
+              </Button>
+            </Link>
           </Box>
         </div>
       </Grid>

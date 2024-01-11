@@ -47,7 +47,16 @@ export default function CardUser({ user }) {
           {" "}
           Tipo de Usuario:
         </Typography>
-        <b></b>
+        <b>
+          {" "}
+          {user.type_user === 1
+            ? "Admin"
+            : user.type_user === 2
+            ? "Inmobiliaria"
+            : user.type_user === 3
+            ? "Asesor (Broker)"
+            : user.type_user === 4 && "Inquilino (Rentar/Comprar)"}
+        </b>
       </CardContent>
       <CardActions>
         {/* <IconButton size="small">

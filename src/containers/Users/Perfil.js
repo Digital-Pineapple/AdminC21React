@@ -46,7 +46,7 @@ const Perfil = () => {
 
     setTimeout(() => {
       let xd = JSON.parse(localStorage.getItem("usuaio"));
-      xd.image = `https://mibien.s3.us-east-2.amazonaws.com/profile/${User.id}`;
+      xd.image = `https://mibien.s3.us-east-2.amazonaws.com/production/profile/${User.id}`;
       localStorage.setItem("usuaio", JSON.stringify(xd));
     }, 1000);
   };
@@ -87,7 +87,7 @@ const Perfil = () => {
                 <Card>
                   <img
                     src={
-                      `https://mibien.s3.us-east-2.amazonaws.com/profile/${User.id}` ||
+                      `https://mibien.s3.us-east-2.amazonaws.com/production/profile/${User.id}` ||
                       User.image
                     }
                     width={250}
