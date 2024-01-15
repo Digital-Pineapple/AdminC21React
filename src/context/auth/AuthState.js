@@ -182,6 +182,10 @@ const AuthState = (props) => {
               title: "¡Foto!",
               text: "Modificada Correctamente",
               icon: "success",
+            }).then((result) => {
+              if (result.value) {
+                window.location.reload();
+              }
             });
             dispatch({
               type: types.USER_CHANGEPHOTO,

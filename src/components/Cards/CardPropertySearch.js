@@ -145,8 +145,8 @@ const CardProperty = ({ property }) => {
                 ) : images.length > 0 ? (
                   <ModalImage
                     className={classes.imgproduct}
-                    small={`https://mibien.s3.us-east-2.amazonaws.com${images[0].url}`}
-                    large={`https://mibien.s3.us-east-2.amazonaws.com${images[0].url}`}
+                    small={`https://mibien.s3.us-east-2.amazonaws.com/${images[0].url}`}
+                    large={`https://mibien.s3.us-east-2.amazonaws.com/${images[0].url}`}
                     alt={property.name}
                   />
                 ) : (

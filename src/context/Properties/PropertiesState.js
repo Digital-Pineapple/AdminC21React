@@ -10,6 +10,7 @@ import headerConfig from "../../config/imageHeaders";
 import {
   ADD_MULTIMEDIA_PROPERTY,
   ADD_PROPERTY,
+  GET_PROPERTY,
   BACK_PENDING_PROPERTY,
   DELETE_PROPERTY,
   GET_ALL_PROPERTIES_PENDING,
@@ -144,6 +145,27 @@ const PropertiesState = ({ children }) => {
           title: "Error",
           icon: "error",
           text: error.response.data.message,
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      });
+  };
+  
+  const SearchProperties = (data) => {
+    let url = `/properties?name=${data.name}`;
+    MethodGet(url)
+      .then((res) => {
+        dispatch({
+          type: GET_PROPERTY,
+          payload: res.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: 'FALLO',
           timer: 2000,
           showConfirmButton: false,
         });
@@ -347,6 +369,7 @@ const PropertiesState = ({ children }) => {
         GetPropertiesPublish,
         GetPropertiesPublishSearch,
         AddProperty,
+        SearchProperties,
         UpdateProperty,
         DeleteProperty,
         PublishProperty,

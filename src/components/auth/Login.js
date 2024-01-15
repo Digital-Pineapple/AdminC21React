@@ -238,11 +238,11 @@ const Login = () => {
                   </Typography>
                 </Button>
               </Link>
-              <Link to="/Olvide-mi-Acceso">
+              {/* <Link to="/Olvide-mi-Acceso">
                 <div style={{ textAlign: "center" }}>
                   ¿Olvidaste tu contraseña?
                 </div>
-              </Link>
+              </Link> */}
             </Box>
           </Box>
         </div>

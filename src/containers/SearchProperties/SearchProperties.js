@@ -41,12 +41,12 @@ export default function SearchProperties() {
                     spacing={4}
                     sx={{ display: "flex", justifyContent: "center" }}
                   >
-                    <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                    {/* <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
                       <SearchService />
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
                       <SearchCategory />
-                    </Grid>
+                    </Grid> */}
                     <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
                       <SearchName />
                     </Grid>

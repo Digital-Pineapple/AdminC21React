@@ -9,6 +9,7 @@ import {
   DETAIL_PROPERTY,
   GET_ALL_PROPERTIES_PENDING,
   GET_ALL_PROPERTIES_PUBLISH,
+  GET_PROPERTY,
   PUBLISH_PROPERTY,
   UPDATE_MULTIMEDIA_PROPERTY,
   UPDATE_PROPERTY,
@@ -36,6 +37,13 @@ const PropertiesReducer = (state, action) => {
         ...state,
         properties: [],
         success: false,
+        ErrorsApi: [],
+      };
+    case GET_PROPERTY:
+      return {
+        ...state,
+        properties: action.payload,
+        success: true,
         ErrorsApi: [],
       };
     case ADD_PROPERTY:

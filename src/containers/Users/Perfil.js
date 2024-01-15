@@ -19,11 +19,9 @@ import Layout from "../../components/layout/Layout";
 import { useState } from "react";
 import logo from "../../assets/img/C21.webp";
 import ResetPassword from "./ResetPassword";
-import AuthContext from "../../context/auth/AuthContext";
 import AttachFileMultimedia from "./AddMultimediaUser";
 
 const Perfil = () => {
-  //const { User } = useContext(AuthContext);
   const User = JSON.parse(localStorage.getItem("usuaio"));
   const [id_property, saveProperty] = useState(null);
 
@@ -43,12 +41,6 @@ const Perfil = () => {
   };
   const handleClose = () => {
     setOpenModal(false);
-
-    setTimeout(() => {
-      let xd = JSON.parse(localStorage.getItem("usuaio"));
-      xd.image = `https://mibien.s3.us-east-2.amazonaws.com/production/profile/${User.id}`;
-      localStorage.setItem("usuaio", JSON.stringify(xd));
-    }, 1000);
   };
 
   return (
@@ -87,8 +79,10 @@ const Perfil = () => {
                 <Card>
                   <img
                     src={
-                      `https://mibien.s3.us-east-2.amazonaws.com/production/profile/${User.id}` ||
-                      User.image
+                      User.image.includes("blob") ||
+                      User.image.includes("www.pacifictrellisfruit")
+                        ? User.image
+                        : `https://mibien.s3.us-east-2.amazonaws.com/production/profile/${User.id}`
                     }
                     width={250}
                     height={200}
@@ -222,6 +216,7 @@ const Perfil = () => {
               open={modalMultimedia}
               handleClose={handleCloseMultimedia}
               id={id_property}
+              id_User={User.id}
             />
           )}
           <ResetPassword modal={openModal} handleClose={handleClose} />
