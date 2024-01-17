@@ -150,10 +150,14 @@ const PropertiesState = ({ children }) => {
         });
       });
   };
-  
+
   const SearchProperties = (data) => {
-    let url = `/properties?name=${data.name}`;
-    MethodGet(url)
+    let url = `/properties`;
+    MethodGet(url, {
+      name: data.name,
+      categorias: data.category,
+      tipos: data.service,
+    })
       .then((res) => {
         dispatch({
           type: GET_PROPERTY,
@@ -165,7 +169,7 @@ const PropertiesState = ({ children }) => {
         Swal.fire({
           title: "Error",
           icon: "error",
-          text: 'FALLO',
+          text: "FALLO",
           timer: 2000,
           showConfirmButton: false,
         });

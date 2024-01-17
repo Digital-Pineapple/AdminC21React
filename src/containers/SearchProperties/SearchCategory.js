@@ -1,11 +1,13 @@
-import * as React from "react";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import ListItemText from "@mui/material/ListItemText";
-import Select from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
+import React, { useState } from "react";
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  Checkbox,
+  MenuItem,
+  ListItemText,
+  OutlinedInput,
+} from "@mui/material";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,23 +21,23 @@ const MenuProps = {
 };
 
 const names = [
-  "Casa",
-  "Departamento",
-  "Bodega",
-  "Local Comercial",
-  "Terreno/Lote",
-  "Nave",
+  { id: 1, name: "Casa" },
+  { id: 2, name: "Departamento" },
+  { id: 3, name: "Bodega" },
+  { id: 4, name: "Local Comercial" },
+  { id: 5, name: "Terreno/Lote" },
+  { id: 6, name: "Nave" },
 ];
 
-export default function SearchCategory() {
-  const [personName, setPersonName] = React.useState([]);
+const SearchCategory = ({ cambio }) => {
+  const [personName, setcategory] = useState([]);
 
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(typeof value === "string" ? value.split(",") : value);
+    const { value } = event.target;
+    setcategory(typeof value === "string" ? value.split(",") : value);
+    cambio(value);
   };
+  //console.log(personName, "category");
 
   return (
     <div>
@@ -53,13 +55,15 @@ export default function SearchCategory() {
           MenuProps={MenuProps}
         >
           {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
+            <MenuItem key={name.id} value={name.name}>
+              <Checkbox checked={personName.includes(name.name)} />
+              <ListItemText primary={name.name} />
             </MenuItem>
           ))}
         </Select>
       </FormControl>
     </div>
   );
-}
+};
+
+export default SearchCategory;

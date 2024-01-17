@@ -10,13 +10,33 @@ import { Grid } from "@mui/material";
 import SearchService from "./SearchService";
 import SearchCategory from "./SearchCategory";
 import SearchName from "./SearchName";
+import PropertiesContext from "../../context/Properties/PropertiesContext";
+import { useContext } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function SearchProperties() {
   const [value, setValue] = React.useState("3");
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const [name, setname] = useState();
+
+  const [service, setservice] = useState();
+  console.log(service, "el serviceee");
+
+  const [category, setcategory] = useState();
+  console.log(category, "la category");
+
+  const { SearchProperties } = useContext(PropertiesContext);
+  useEffect(() => {
+    let data = {};
+    data.name = name ?? "";
+    data.service = service ?? "";
+    data.category = category ?? "";
+    SearchProperties(data);
+  }, [name, category, service]);
 
   return (
     <Layout>
@@ -41,14 +61,14 @@ export default function SearchProperties() {
                     spacing={4}
                     sx={{ display: "flex", justifyContent: "center" }}
                   >
-                    {/* <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                      <SearchService />
+                    <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                      <SearchService cambio={setservice} />
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                      <SearchCategory />
-                    </Grid> */}
+                      <SearchCategory cambio={setcategory} />
+                    </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                      <SearchName />
+                      <SearchName cambio={setname} />
                     </Grid>
                   </Grid>
                   <TabsProperties />

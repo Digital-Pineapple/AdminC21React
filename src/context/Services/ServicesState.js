@@ -121,8 +121,7 @@ const ServicesState = ({ children }) => {
               title: "Error",
               text: error.response.data.message,
               icon: "error",
-              timer: 2000,
-              showConfirmButton: false,
+              showConfirmButton: true,
             });
           });
       }

@@ -34,7 +34,7 @@ const CategoryReducer = (state, action) => {
       return {
         ...state,
         categories: state.categories.filter(
-          (category) => category._id !== action.payload
+          (category) => category.id !== action.payload
         ),
       };
     default:

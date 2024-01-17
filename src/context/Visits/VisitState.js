@@ -62,20 +62,20 @@ const VisitState = ({ children }) => {
               title: "Eliminado",
               text: res.data.message,
               icon: "success",
-              showConfirmButton: true,
+              timer: 1500,
+              showConfirmButton: false,
             });
             dispatch({
               type: DELETE_VISITS,
               payload: id,
             });
-            window.location.reload();
           })
           .catch((error) => {
             Swal.fire({
               title: "Error",
               text: error.response.data.message,
               icon: "error",
-              showConfirmButton: false,
+              showConfirmButton: true,
             });
           });
       }

@@ -18,17 +18,24 @@ const MenuProps = {
   },
 };
 
-const names = ["Renta", "Venta", "Preventa"];
+const names = [
+  { id: 1, name: "Renta" },
+  { id: 2, name: "Venta" },
+  { id: 3, name: "Preventa" },
+];
 
-export default function SearchService() {
-  const [personName, setPersonName] = React.useState([]);
+export default function SearchService({ cambio }) {
+  const [personName, setservice] = React.useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setPersonName(typeof value === "string" ? value.split(",") : value);
+
+    setservice(value);
+    cambio(value);
   };
+  //console.log(personName, "service");
 
   return (
     <div>
@@ -47,9 +54,9 @@ export default function SearchService() {
           MenuProps={MenuProps}
         >
           {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
+            <MenuItem key={name.id} value={name.name}>
+              <Checkbox checked={personName.indexOf(name.name) > -1} />
+              <ListItemText primary={name.name} />
             </MenuItem>
           ))}
         </Select>
