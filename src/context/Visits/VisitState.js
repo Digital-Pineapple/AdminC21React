@@ -58,17 +58,20 @@ const VisitState = ({ children }) => {
         let url = `/visitDestroy/${id}`;
         MethodDelete(url)
           .then((res) => {
-            Swal.fire({
-              title: "Eliminado",
-              text: res.data.message,
-              icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
-            });
             dispatch({
               type: DELETE_VISITS,
               payload: id,
             });
+            Swal.fire({
+              title: "Eliminado",
+              text: res.data.message,
+              icon: "success",
+              timer: 1000,
+              showConfirmButton: false,
+            });
+            setTimeout(() => {
+              window.location.href = "/Visit";
+            }, 1000);
           })
           .catch((error) => {
             Swal.fire({

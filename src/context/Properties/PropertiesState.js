@@ -136,7 +136,7 @@ const PropertiesState = ({ children }) => {
           showConfirmButton: false,
         });
         setTimeout(() => {
-          window.location.href = "/Properties";
+          window.location.href = "/PropertiesPending";
         }, 1000);
       })
       .catch((error) => {
@@ -145,8 +145,6 @@ const PropertiesState = ({ children }) => {
           title: "Error",
           icon: "error",
           text: error.response.data.message,
-          timer: 2000,
-          showConfirmButton: false,
         });
       });
   };
@@ -229,6 +227,9 @@ const PropertiesState = ({ children }) => {
               timer: 1000,
               icon: "success",
             });
+            setTimeout(() => {
+              window.location.href = "/PropertiesPending";
+            }, 1000);
             dispatch({
               type: ADD_MULTIMEDIA_PROPERTY,
               payload: res.data.data,
@@ -237,10 +238,8 @@ const PropertiesState = ({ children }) => {
           .catch((error) => {
             Swal.fire({
               title: "Error",
-              text: error.response.data.message,
               icon: "error",
-              showConfirmButton: false,
-              timer: 1500,
+              text: error.response.data.message,
             });
           });
       }

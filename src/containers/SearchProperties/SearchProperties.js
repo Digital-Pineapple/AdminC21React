@@ -22,14 +22,11 @@ export default function SearchProperties() {
   };
 
   const [name, setname] = useState();
-
   const [service, setservice] = useState();
-  console.log(service, "el serviceee");
-
   const [category, setcategory] = useState();
-  console.log(category, "la category");
 
   const { SearchProperties } = useContext(PropertiesContext);
+
   useEffect(() => {
     let data = {};
     data.name = name ?? "";
@@ -37,6 +34,8 @@ export default function SearchProperties() {
     data.category = category ?? "";
     SearchProperties(data);
   }, [name, category, service]);
+
+  const renderSearchCategory = service !== undefined && service !== "";
 
   return (
     <Layout>
@@ -64,9 +63,11 @@ export default function SearchProperties() {
                     <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
                       <SearchService cambio={setservice} />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                      <SearchCategory cambio={setcategory} />
-                    </Grid>
+                    {renderSearchCategory && (
+                      <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                        <SearchCategory cambio={setcategory} />
+                      </Grid>
+                    )}
                     <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
                       <SearchName cambio={setname} />
                     </Grid>
