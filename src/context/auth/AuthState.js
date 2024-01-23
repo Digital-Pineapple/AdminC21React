@@ -19,7 +19,7 @@ const AuthState = (props) => {
     autenticado: false,
     usuario: {},
     User: {},
-    cargando: false,
+    cargando: true, 
     success: false,
     directions: [],
   };

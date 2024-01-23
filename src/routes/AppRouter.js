@@ -8,26 +8,18 @@ import AdminRoutes from "./AdminRoutes";
 import { PrivateRouter } from "./PrivateRoute";
 import AuthContext from "../context/auth/AuthContext";
 import { Box, Grid } from "@mui/material";
+import LoadingComponent from "../components/loading/LoadingComponent";
 
 const AppRouter = () => {
   const { autenticado, usuarioAutenticado, cargando } = useContext(AuthContext);
   useEffect(() => {
     usuarioAutenticado();
   }, []);
+
   if (cargando) {
     return (
       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-        <Box
-          sx={{
-            width: "105%",
-            height: "177%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          Cargando...
-        </Box>
+        <LoadingComponent />
       </Grid>
     );
   }
@@ -47,7 +39,7 @@ const AppRouter = () => {
             component={Register}
             isAuthenticated={autenticado}
           />
-           <PublicRouter
+          <PublicRouter
             exact
             path="/Olvide-mi-Acceso"
             component={ResetPassword}
