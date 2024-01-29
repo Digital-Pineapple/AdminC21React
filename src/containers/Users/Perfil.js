@@ -17,7 +17,6 @@ import LockResetIcon from "@mui/icons-material/LockReset";
 import React, { useContext } from "react";
 import Layout from "../../components/layout/Layout";
 import { useState } from "react";
-import logo from "../../assets/img/C21.webp";
 import ResetPassword from "./ResetPassword";
 import AttachFileMultimedia from "./AddMultimediaUser";
 
