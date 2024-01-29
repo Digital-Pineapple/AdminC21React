@@ -169,13 +169,13 @@ const ResetPassword = () => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  backgroundColor: "#AE445A",
+                  backgroundColor: "#451952",
                   color: "white",
                   fontWeight: "bold",
                   mt: 0,
                   mb: 1,
                   "&:hover": {
-                    backgroundColor: "#AE445A",
+                    backgroundColor: "#451952",
                   },
                 }}
               >

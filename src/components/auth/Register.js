@@ -28,11 +28,8 @@ const useStyles = makeStyles({
     fontStyle: "oblique",
     letterSpacing: "1px",
   },
-  logo: {
-    margin: "auto",
-  },
   backgroundLogin: {
-    height: "auto",
+    height: "100vh",
     width: "100%",
     backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
     backgroundRepeat: "no-repeat",
@@ -364,13 +361,13 @@ const Register = () => {
                   fullWidth
                   variant="contained"
                   sx={{
-                    backgroundColor: "#AE445A",
+                    backgroundColor: "#451952",
                     color: "white",
                     fontWeight: "bold",
                     mt: 0,
                     mb: 1,
                     "&:hover": {
-                      backgroundColor: "#AE445A",
+                      backgroundColor: "#451952",
                     },
                   }}
                 >

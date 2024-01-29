@@ -219,13 +219,13 @@ const Login = () => {
                   fullWidth
                   variant="contained"
                   sx={{
-                    backgroundColor: "#AE445A",
+                    backgroundColor: "#451952",
                     color: "white",
                     fontWeight: "bold",
                     mt: 0,
                     mb: 6,
                     "&:hover": {
-                      backgroundColor: "#AE445A",
+                      backgroundColor: "#451952",
                     },
                   }}
                 >
@@ -242,7 +242,7 @@ const Login = () => {
                 <div style={{ textAlign: "center" }}>
                   ¿Olvidaste tu contraseña?
                 </div>
-              </Link> */}
+              </Link>  */}
             </Box>
           </Box>
         </div>
