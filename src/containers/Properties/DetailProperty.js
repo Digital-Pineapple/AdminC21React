@@ -1,10 +1,4 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import { Grid } from "@mui/material";
 import MethodGet from "../../config/service";
 import GeneralPropery from "../../components/PropertyDetails/GeneralPropery";
@@ -13,10 +7,14 @@ import AddressProperty from "../../components/PropertyDetails/AddressProperty";
 import MultimediaProperty from "../../components/PropertyDetails/MultimediaProperty";
 import { useEffect } from "react";
 import { useState } from "react";
-export default function DetailProperty({ id, modal, handleClose }) {
+import Layout from "../../components/layout/Layout";
+import Amenidades from "../../components/PropertyDetails/Amenidades";
+export default function DetailProperty(props) {
+  const { id } = props.match.params;
   const [property, saveProperty] = useState([]);
   const { address, details, images, rules, owner, category } = property;
   const [services, saveServices] = useState([]);
+  console.log(rules, "rules");
   useEffect(() => {
     let url = `/showAdmin/${id}`;
     MethodGet(url)
@@ -30,56 +28,31 @@ export default function DetailProperty({ id, modal, handleClose }) {
   }, [id]);
 
   return (
-    <div>
-      <Dialog
-        open={modal}
-        onClose={handleClose}
-        fullWidth
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+    <Layout>
+      <Grid
+        container
+        flexDirection={{ xs: "column", md: "row" }}
+        sx={{ display: "flex" }}
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Detalle de propiedad"} <hr />
-        </DialogTitle>
-        <DialogContent>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <GeneralPropery
-                name={property.name}
-                description={property.description}
-                status={property.status}
-                rules={rules}
-                category={category}
-              />
-            </Grid>
-            {address && (
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <AddressProperty address={address} />
-              </Grid>
-            )}
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <ServicesProperty services={services} />
-            </Grid>
-            {images && (
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <MultimediaProperty images={images} property_id={property.id} />
-              </Grid>
-            )}
+        {images && (
+          <Grid item xs={6}>
+            <MultimediaProperty images={images} property_id={property.id} />
           </Grid>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={handleClose}
-            sx={{
-              backgroundColor: "red",
-              color: "white",
-              "&:hover": { backgroundColor: "red", color: "white" },
-            }}
-          >
-            Cerrar
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+        )}
+        <Grid item xs={6}>
+          {address && <AddressProperty address={address} />}
+          <GeneralPropery
+            name={property.name}
+            description={property.description}
+            status={property.status}
+            rules={rules}
+            category={category}
+          />
+          {details && <Amenidades details={details} />}
+
+          {/* <ServicesProperty services={services} /> */}
+        </Grid>
+      </Grid>
+    </Layout>
   );
 }

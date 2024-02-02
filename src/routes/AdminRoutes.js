@@ -11,6 +11,7 @@ import CreateProperty from "../containers/Properties/CreateProperty";
 import Users from "../containers/Users/Users";
 import Perfil from "../containers/Users/Perfil";
 import EditProperty from "../containers/Properties/EditProperty";
+import DetailProperty from "../containers/Properties/DetailProperty";
 const AdminRoutes = () => {
   return (
     <Switch>
@@ -23,6 +24,7 @@ const AdminRoutes = () => {
       <Route exact path="/Visit" component={VisitProperty} />
       <Route exact path="/CreateProperty" component={CreateProperty} />
       <Route exact path="/EditProperty/:id" component={EditProperty} />
+      <Route exact path="/Propertydetail/:id" component={DetailProperty} />
       <Route exact path="/Users" component={Users} />
       <Route exact path="/Perfil" component={Perfil} />
     </Switch>

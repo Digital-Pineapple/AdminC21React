@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
@@ -15,24 +15,36 @@ const MultimediaProperty = ({ images, property_id }) => {
   );
   return (
     <Grid container spacing={2}>
+      <Grid
+        item
+        xs={12}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4" fontWeight="bold" fontFamily="monospace">
+          Fotos de la Propiedad
+        </Typography>
+      </Grid>
+
       <Box sx={{ width: "100%", display: "flex", paddingTop: 4, p: 3 }}>
-        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Box sx={{ width: "300px", margin: "0 auto" }}>
-            <Slide>
-              {new_images.map((fadeImage, index) => (
-                <div className="each-fade" key={index}>
-                  <div className="image-container">
-                    <Image
-                      src={fadeImage.url}
-                      style={{ width: "300px", height: "300px" }}
-                    />
-                  </div>
-                  <h2>{fadeImage.caption}</h2>
+        <Box sx={{ width: "800px", margin: "0 auto" }}>
+          <Slide>
+            {new_images.map((fadeImage, index) => (
+              <div className="each-fade" key={index}>
+                <div className="image-container">
+                  <Image
+                    src={fadeImage.url}
+                    style={{ width: "800px", height: "800px" }}
+                  />
                 </div>
-              ))}
-            </Slide>
-          </Box>
-        </Grid>
+                <h2>{fadeImage.caption}</h2>
+              </div>
+            ))}
+          </Slide>
+        </Box>
       </Box>
     </Grid>
   );

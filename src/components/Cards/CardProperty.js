@@ -8,8 +8,6 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-
 import { makeStyles } from "@mui/styles";
 import React, { useContext } from "react";
 import ModalImage from "react-modal-image-responsive";
@@ -19,9 +17,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import CloudSyncIcon from "@mui/icons-material/CloudSync";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import DetailProperty from "../../containers/Properties/DetailProperty";
 import { useState } from "react";
 import IframeProperty from "../PropertyDetails/IframeProperty";
 import PlaceIcon from "@mui/icons-material/Place";
@@ -31,7 +27,6 @@ import PropertiesContext from "../../context/Properties/PropertiesContext";
 import AttachFileMultimedia from "../../containers/Properties/AddMultimedia";
 import image from "../../assets/img/default.png";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { Delete } from "@mui/icons-material";
 const useStyles = makeStyles({
   titleProduct: {
     color: "white",
@@ -84,18 +79,9 @@ const useStyles = makeStyles({
 
 const CardProperty = ({ property }) => {
   const { images, address } = property;
-  const [detailProperty, openDetailProperty] = useState(false);
   const [id_property, saveProperty] = useState(null);
   const { DeleteProperty } = React.useContext(PropertiesContext);
 
-  const handleClickOpenDetail = (id) => {
-    openDetailProperty(true);
-    saveProperty(id);
-  };
-  const handleCloseDetail = () => {
-    openDetailProperty(false);
-    saveProperty(null);
-  };
   const [addreesProperty, saveAddressProperty] = useState(null);
   const [IframePropertyModal, OpenIframeProperty] = useState(false);
   const handleClickOpenIframe = (id) => {
@@ -171,10 +157,6 @@ const CardProperty = ({ property }) => {
             </Alert>
           )
         )}
-        {/* {images?.map((image) => (
-          <li>image.url</li>
-        ))} */}
-        {/* {images.map((image) => ( */}
 
         <Box sx={{ width: "100%", display: "flex" }}>
           <Grid container spacing={1}>
@@ -227,11 +209,15 @@ const CardProperty = ({ property }) => {
                   </IconButton>
                 </Link>
               </Tooltip>
+
               <Tooltip title="Detalle de Propiedad" placement="top">
-                <IconButton onClick={() => handleClickOpenDetail(property.id)}>
-                  <VisibilityIcon sx={{ color: "blue" }} />
-                </IconButton>
+                <Link to={`/Propertydetail/${property.id}`}>
+                  <IconButton>
+                    <VisibilityIcon sx={{ color: "blue" }} />
+                  </IconButton>
+                </Link>
               </Tooltip>
+
               <Tooltip title="Ubicación de Propiedad" placement="top">
                 <IconButton onClick={() => handleClickOpenIframe(property.id)}>
                   <PlaceIcon sx={{ color: "black" }} />
@@ -304,13 +290,6 @@ const CardProperty = ({ property }) => {
           modal={IframePropertyModal}
           handleClose={handleClickCloseIframe}
           iframe={addreesProperty}
-        />
-      )}
-      {id_property !== null && (
-        <DetailProperty
-          modal={detailProperty}
-          handleClose={handleCloseDetail}
-          id={id_property}
         />
       )}
       {id_property !== null && (

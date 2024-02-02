@@ -7,9 +7,19 @@ const ServicesProperty = ({ services }) => {
     <Grid container spacing={2}>
       {services && (
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Typography fontWeight="bold" variant="body1" textAlign="center">
-            Servicios de la propiedad
-          </Typography>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h4" fontWeight="bold" fontFamily="monospace">
+              Servicios de la propiedad:
+            </Typography>
+          </Grid>
         </Grid>
       )}
       {services.map((service) => (
