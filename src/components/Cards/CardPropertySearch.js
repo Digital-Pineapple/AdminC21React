@@ -8,25 +8,16 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-
 import { makeStyles } from "@mui/styles";
 import React, { useContext } from "react";
 import ModalImage from "react-modal-image-responsive";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import DetailProperty from "../../containers/Properties/DetailProperty";
 import { useState } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import IframeProperty from "../PropertyDetails/IframeProperty";
 import PlaceIcon from "@mui/icons-material/Place";
-import PropertiesContext from "../../context/Properties/PropertiesContext";
 import image from "../../assets/img/default.png";
 const useStyles = makeStyles({
-  titleProduct: {
-    color: "white",
-  },
-  ojito: {
-    color: "red",
-  },
   imgproduct: {
     top: 0,
     width: "100%",
@@ -34,55 +25,10 @@ const useStyles = makeStyles({
     objectFit: "cover",
     position: "absolute",
   },
-  card: {
-    w: "400px",
-    h: "400px",
-  },
-  cardHeader: {
-    position: "absolute",
-    borderTop: "$borderWeights$light solid $gray800",
-    marginBottom: 0,
-    zIndex: 1,
-    background: " rgba(255, 255, 255, 0.2)",
-    justifyContent: "normal",
-    textAlign: "justify",
-    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-    backdropFilter: "blur(8px)",
-    border: "1px solid rgba(255, 255, 255, 0.3)",
-    height: "auto",
-  },
-  cardBody: {
-    objectFit: "cover",
-    width: "100%",
-    height: "100%",
-    alt: "Relaxing app background",
-  },
-  cardFooter: {
-    borderTop: "$borderWeights$light solid $gray800",
-    marginTop: "85%",
-    background: " rgba(255, 255, 255, 0.2)",
-    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-    backdropFilter: "blur(5px)",
-    border: "1px solid rgba(255, 255, 255, 0.3)",
-    width: "auto",
-    height: "auto",
-    justifyContent: "space-between",
-  },
 });
 
-const CardProperty = ({ property }) => {
-  const { images, address } = property;
-  const [detailProperty, openDetailProperty] = useState(false);
-  const [id_property, saveProperty] = useState(null);
-
-  const handleClickOpenDetail = (id) => {
-    openDetailProperty(true);
-    saveProperty(id);
-  };
-  const handleCloseDetail = () => {
-    openDetailProperty(false);
-    saveProperty(null);
-  };
+const CardPropertySearch = ({ property }) => {
+  const { images } = property;
   const [addreesProperty, saveAddressProperty] = useState(null);
   const [IframePropertyModal, OpenIframeProperty] = useState(false);
   const handleClickOpenIframe = (id) => {
@@ -94,8 +40,6 @@ const CardProperty = ({ property }) => {
   };
 
   const classes = useStyles();
-  const { PublishProperty, BackPendingProperty } =
-    useContext(PropertiesContext);
   return (
     <>
       <Card className={classes.card}>
@@ -175,10 +119,13 @@ const CardProperty = ({ property }) => {
               justifyContent="space-between"
             >
               <Tooltip title="Detalle de Propiedad" placement="top">
-                <IconButton onClick={() => handleClickOpenDetail(property.id)}>
-                  <VisibilityIcon sx={{ color: "blue" }} />
-                </IconButton>
+                <Link to={`/Propertydetail/${property.id}`}>
+                  <IconButton>
+                    <VisibilityIcon sx={{ color: "blue" }} />
+                  </IconButton>
+                </Link>
               </Tooltip>
+
               <Tooltip title="Ubicación de Propiedad" placement="top">
                 <IconButton onClick={() => handleClickOpenIframe(property.id)}>
                   <PlaceIcon sx={{ color: "black" }} />
@@ -195,15 +142,8 @@ const CardProperty = ({ property }) => {
           iframe={addreesProperty}
         />
       )}
-      {id_property !== null && (
-        <DetailProperty
-          modal={detailProperty}
-          handleClose={handleCloseDetail}
-          id={id_property}
-        />
-      )}
     </>
   );
 };
 
-export default CardProperty;
+export default CardPropertySearch;

@@ -12,12 +12,13 @@ const AddressProperty = ({ address }) => {
             xs={12}
             sx={{
               display: "flex",
+              color: "#662549",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Typography variant="h4" fontWeight="bold" fontFamily="monospace">
-              Dirección
+            <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
+              Dirección:
             </Typography>
           </Grid>
 

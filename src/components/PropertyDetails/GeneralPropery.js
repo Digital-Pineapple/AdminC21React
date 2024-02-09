@@ -8,7 +8,7 @@ const GeneralPropery = ({ name, description, rules, category }) => {
     var name = rules.map((rul) => rul.name);
   }
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ padding: 2 }}>
       <Grid
         item
         xs={12}
@@ -16,13 +16,14 @@ const GeneralPropery = ({ name, description, rules, category }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          color: "#662549",
         }}
       >
-        <Typography variant="h4" fontWeight="bold" fontFamily="monospace">
+        <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
           Detalles generales:
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+      <Grid item xs={12} sm={12} md={12} lg={12} xl={10}>
         <Typography variant="h6" fontWeight="bold">
           Descripcion:
         </Typography>
@@ -36,9 +37,10 @@ const GeneralPropery = ({ name, description, rules, category }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          color: "#662549",
         }}
       >
-        <Typography variant="h4" fontWeight="bold" fontFamily="monospace">
+        <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
           Precios:
         </Typography>
       </Grid>

@@ -24,17 +24,64 @@ const Amenidades = ({ details }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              color: "#662549",
             }}
           >
-            <Typography variant="h4" fontWeight="bold" fontFamily="monospace">
-              Amenidades
+            <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
+              Amenidades:
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Stack direction="row" spacing={1}>
-              
-            </Stack>
+            <Typography variant="h6" fontWeight="bold">
+              Años de antiguedad:
+            </Typography>
+            {age}
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+            <Typography variant="h6" fontWeight="bold">
+              Habitaciones:
+            </Typography>
+            {rooms}
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+            <Typography variant="h6" fontWeight="bold">
+              Estacionamiento:
+            </Typography>
+            {parking === 1 ? `Si` : "No"}
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+            <Typography variant="h6" fontWeight="bold">
+              En remodelacion:
+            </Typography>
+            {remodel === 1 ? `Si` : "No"}
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+            <Typography variant="h6" fontWeight="bold">
+              Baños:
+            </Typography>
+            {bathroom}
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+            <Typography variant="h6" fontWeight="bold">
+              Medios Baños
+            </Typography>
+            {half_bath}
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+            <Typography variant="h6" fontWeight="bold">
+              Metros Totales
+            </Typography>
+            {size_total}M²
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+            <Typography variant="h6" fontWeight="bold">
+              Metros Construidos
+            </Typography>
+            {size}M
           </Grid>
         </>
       )}

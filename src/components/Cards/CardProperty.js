@@ -28,12 +28,6 @@ import AttachFileMultimedia from "../../containers/Properties/AddMultimedia";
 import image from "../../assets/img/default.png";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const useStyles = makeStyles({
-  titleProduct: {
-    color: "white",
-  },
-  ojito: {
-    color: "red",
-  },
   imgproduct: {
     top: 0,
     width: "100%",
@@ -41,44 +35,10 @@ const useStyles = makeStyles({
     objectFit: "cover",
     position: "absolute",
   },
-  card: {
-    w: "400px",
-    h: "400px",
-  },
-  cardHeader: {
-    position: "absolute",
-    borderTop: "$borderWeights$light solid $gray800",
-    marginBottom: 0,
-    zIndex: 1,
-    background: " rgba(255, 255, 255, 0.2)",
-    justifyContent: "normal",
-    textAlign: "justify",
-    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-    backdropFilter: "blur(8px)",
-    border: "1px solid rgba(255, 255, 255, 0.3)",
-    height: "auto",
-  },
-  cardBody: {
-    objectFit: "cover",
-    width: "100%",
-    height: "100%",
-    alt: "Relaxing app background",
-  },
-  cardFooter: {
-    borderTop: "$borderWeights$light solid $gray800",
-    marginTop: "85%",
-    background: " rgba(255, 255, 255, 0.2)",
-    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-    backdropFilter: "blur(5px)",
-    border: "1px solid rgba(255, 255, 255, 0.3)",
-    width: "auto",
-    height: "auto",
-    justifyContent: "space-between",
-  },
 });
 
 const CardProperty = ({ property }) => {
-  const { images, address } = property;
+  const { images } = property;
   const [id_property, saveProperty] = useState(null);
   const { DeleteProperty } = React.useContext(PropertiesContext);
 

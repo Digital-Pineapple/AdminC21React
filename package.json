@@ -27,6 +27,7 @@
     "react-slideshow-image": "^3.7.5",
     "react-swipeable-views": "^0.14.0",
     "sweetalert2": "^11.3.10",
+    "swiper": "^11.0.6",
     "use-debounce": "^8.0.4",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
