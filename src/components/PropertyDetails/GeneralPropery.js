@@ -8,7 +8,7 @@ const GeneralPropery = ({ name, description, rules, category }) => {
     var name = rules.map((rul) => rul.name);
   }
   return (
-    <Grid container spacing={2} sx={{ padding: 2 }}>
+    <Grid container spacing={2}>
       <Grid
         item
         xs={12}

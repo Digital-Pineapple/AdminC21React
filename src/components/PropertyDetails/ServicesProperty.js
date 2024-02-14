@@ -26,7 +26,7 @@ const ServicesProperty = ({ services }) => {
         <>
           <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
             <Typography variant="h6" fontWeight="bold">
-              {service.name}
+              # {service.name}
             </Typography>
           </Grid>
         </>

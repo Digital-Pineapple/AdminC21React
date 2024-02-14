@@ -44,9 +44,9 @@ export default function DetailProperty(props) {
       <Grid container spacing={2} sx={{ padding: 2 }}>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <GeneralPropery description={property.description} rules={rules} />
-          {address && <AddressProperty address={address} />}
           {details && <Amenidades details={details} />}
           {owner && <Owner owner={owner} />}
+          {address && <AddressProperty address={address} />}
           {services && <ServicesProperty services={services} />}
         </Grid>
       </Grid>

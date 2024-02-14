@@ -66,6 +66,18 @@ const AddressProperty = ({ address }) => {
             {address.number_int}
           </Grid>
 
+          <Grid
+            item
+            xs={12}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Grid dangerouslySetInnerHTML={{ __html: address.iframe }}></Grid>
+          </Grid>
+
           {/* {address.fractionamient !== null && (
             <>
               <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
