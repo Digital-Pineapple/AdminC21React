@@ -18,7 +18,7 @@ const Owner = ({ owner }) => {
             }}
           >
             <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
-              Propietario:
+              Contacto:
             </Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>

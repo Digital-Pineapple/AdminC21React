@@ -12,10 +12,7 @@ import { makeStyles } from "@mui/styles";
 import React, { useContext } from "react";
 import ModalImage from "react-modal-image-responsive";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import IframeProperty from "../PropertyDetails/IframeProperty";
-import PlaceIcon from "@mui/icons-material/Place";
 import image from "../../assets/img/default.png";
 const useStyles = makeStyles({
   imgproduct: {
@@ -29,15 +26,6 @@ const useStyles = makeStyles({
 
 const CardPropertySearch = ({ property }) => {
   const { images } = property;
-  const [addreesProperty, saveAddressProperty] = useState(null);
-  const [IframePropertyModal, OpenIframeProperty] = useState(false);
-  const handleClickOpenIframe = (id) => {
-    saveAddressProperty(id);
-    OpenIframeProperty(true);
-  };
-  const handleClickCloseIframe = () => {
-    OpenIframeProperty(false);
-  };
 
   const classes = useStyles();
   return (
@@ -52,7 +40,10 @@ const CardPropertySearch = ({ property }) => {
             <Typography
               fontWeight="bold"
               fontFamily="monospace"
+              textOverflow={"ellipsis"}
+              minHeight={"3rem"}
               textAlign="center"
+              sx={{ textOverflow: "ellipsis" }}
             >
               {property.name}
             </Typography>
@@ -67,7 +58,10 @@ const CardPropertySearch = ({ property }) => {
               <Typography
                 fontWeight="bold"
                 fontFamily="monospace"
-                textAlign="center"
+                textOverflow={"ellipsis"}
+                minHeight={"3rem"}
+                textAlign={"center"}
+                sx={{ textOverflow: "ellipsis" }}
               >
                 {property.name}
               </Typography>
@@ -116,32 +110,20 @@ const CardPropertySearch = ({ property }) => {
               lg={12}
               xl={12}
               display="flex"
-              justifyContent="space-between"
+              justifyContent="center"
+              alignItems="center"
             >
-              <Tooltip title="Detalle de Propiedad" placement="top">
+              <Tooltip title="Mas Detalles" placement="top">
                 <Link to={`/Propertydetail/${property.id}`}>
                   <IconButton>
                     <VisibilityIcon sx={{ color: "blue" }} />
                   </IconButton>
                 </Link>
               </Tooltip>
-
-              <Tooltip title="Ubicación de Propiedad" placement="top">
-                <IconButton onClick={() => handleClickOpenIframe(property.id)}>
-                  <PlaceIcon sx={{ color: "black" }} />
-                </IconButton>
-              </Tooltip>
             </Grid>
           </Grid>
         </CardActions>
       </Card>
-      {addreesProperty !== null && (
-        <IframeProperty
-          modal={IframePropertyModal}
-          handleClose={handleClickCloseIframe}
-          iframe={addreesProperty}
-        />
-      )}
     </>
   );
 };

@@ -18,7 +18,7 @@ const AddressProperty = ({ address }) => {
             }}
           >
             <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
-              Dirección:
+              Ubicación:
             </Typography>
           </Grid>
 
@@ -65,10 +65,27 @@ const AddressProperty = ({ address }) => {
             </Typography>
             {address.number_int}
           </Grid>
-
           <Grid
             item
             xs={12}
+            sx={{
+              display: "flex",
+              color: "#662549",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
+              Referencias:
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
             sx={{
               display: "flex",
               justifyContent: "center",
