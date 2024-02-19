@@ -161,7 +161,7 @@ const Perfil = () => {
                           : User.type_user === 2
                           ? "Inmobiliaria"
                           : User.type_user === 3
-                          ? "Asesor (Broker)"
+                          ? "Asesor"
                           : User.type_user === 4 &&
                             "Inquilino (Rentar/Comprar)"}
                       </Typography>

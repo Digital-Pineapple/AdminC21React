@@ -19,7 +19,7 @@ const AuthState = (props) => {
     autenticado: false,
     usuario: {},
     User: {},
-    cargando: true, 
+    cargando: true,
     success: false,
     directions: [],
   };
@@ -90,8 +90,8 @@ const AuthState = (props) => {
         });
         usuarioAutenticado();
         setTimeout(() => {
-          window.location.href = "/Properties";
-        }, 5000);
+          window.location.href = "/iniciar-sesion";
+        }, 2500);
       })
       .catch((error) => {
         Swal.fire({

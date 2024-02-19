@@ -54,7 +54,7 @@ export default function CardUser({ user }) {
             : user.type_user === 2
             ? "Inmobiliaria"
             : user.type_user === 3
-            ? "Asesor (Broker)"
+            ? "Asesor"
             : user.type_user === 4 && "Inquilino (Rentar/Comprar)"}
         </b>
       </CardContent>
