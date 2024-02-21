@@ -34,6 +34,19 @@ export default (state, action) => {
         autenticado: true,
         cargando: false,
       };
+
+    case types.UPDATE_INFO:
+      let xd = JSON.parse(localStorage.getItem("usuaio"));
+      let hoila = action.payload.data;
+      hoila.image = xd.image;
+
+      localStorage.setItem("usuaio", JSON.stringify(hoila));
+      return {
+        ...state,
+        autenticado: true,
+        cargando: false,
+      };
+
     case types.USER_CHANGEPHOTO:
       return {
         ...state,

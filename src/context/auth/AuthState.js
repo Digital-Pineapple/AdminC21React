@@ -74,6 +74,7 @@ const AuthState = (props) => {
       });
   };
 
+  //Register
   const AddUser = (datos) => {
     let url = "/register";
     MethodPost(url, datos)
@@ -105,6 +106,34 @@ const AuthState = (props) => {
       });
   };
 
+  // Edita la informacion del usuario
+  const EditInfo = (data) => {
+    let url = `/updateProfile`;
+    MethodPut(url, data)
+      .then((res) => {
+        Swal.fire({
+          title: "¡ Informacion !",
+          text: "Modificada Correctamente",
+          icon: "success",
+        });
+        dispatch({
+          type: types.UPDATE_INFO,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error",
+          text: error.response.data.message,
+          icon: "error",
+        });
+        dispatch({
+          type: SHOW_ERRORS_API,
+        });
+      });
+  };
+
+  // Registra un nuevo Usuario
   const NewUser = (datos) => {
     let url = "/register";
     MethodPost(url, datos)
@@ -230,6 +259,7 @@ const AuthState = (props) => {
         ChangePasswordUser,
         ChangePhoto,
         AddUser,
+        EditInfo,
         NewUser,
       }}
     >

@@ -17,8 +17,10 @@ import LockResetIcon from "@mui/icons-material/LockReset";
 import React, { useContext } from "react";
 import Layout from "../../components/layout/Layout";
 import { useState } from "react";
+import EditNoteIcon from "@mui/icons-material/EditNote";
 import ResetPassword from "./ResetPassword";
 import AttachFileMultimedia from "./AddMultimediaUser";
+import EditInfo from "./EditInfo";
 
 const Perfil = () => {
   const User = JSON.parse(localStorage.getItem("usuaio"));
@@ -40,6 +42,14 @@ const Perfil = () => {
   };
   const handleClose = () => {
     setOpenModal(false);
+  };
+
+  const [openModalInfo, setOpenModalInfo] = React.useState(false);
+  const handleClickOpenInfo = () => {
+    setOpenModalInfo(true);
+  };
+  const handleCloseInfo = () => {
+    setOpenModalInfo(false);
   };
 
   return (
@@ -189,6 +199,25 @@ const Perfil = () => {
 
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                       <Button
+                        onClick={handleClickOpenInfo}
+                        fullWidth
+                        variant="contained"
+                        sx={{
+                          color: "white",
+                          backgroundColor: "#662549",
+                          "&:hover": {
+                            color: "white",
+                            backgroundColor: "#662549",
+                          },
+                        }}
+                      >
+                        Editar mi Información{" "}
+                        <EditNoteIcon sx={{ marginLeft: 2 }} />
+                      </Button>
+                    </Grid>
+
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <Button
                         onClick={handleClickOpen}
                         fullWidth
                         variant="contained"
@@ -219,6 +248,7 @@ const Perfil = () => {
             />
           )}
           <ResetPassword modal={openModal} handleClose={handleClose} />
+          <EditInfo modal={openModalInfo} handleClose={handleCloseInfo} />
         </Grid>
       </Grid>
     </Layout>

@@ -8,6 +8,7 @@ export const types = {
   CERRAR_SESION: "[AUTH] cerrar sesion",
   INICIAR_SESION: "[AUTH] inicia sesion",
   USER_CHANGEPHOTO: "[AUTH] USER_CHANGEPHOTO",
+  UPDATE_INFO: "[AUTH] UPDATE_INFO",
 };
 
 //Errors API
@@ -30,6 +31,7 @@ export const GET_ALL_USERS = "GET_ALL_USERS";
 export const ADD_USERS = "ADD_USERS";
 export const UPDATE_USERS = "UPDATE_USERS";
 export const DELETE_USERS = "DELETE_USERS";
+
 //properties
 export const CLEAN_PROPERTIES = "CLEAN_PROPERTIES";
 export const GET_ALL_PROPERTIES_PUBLISH = "GET_ALL_PROPERTIES_PUBLISH";
