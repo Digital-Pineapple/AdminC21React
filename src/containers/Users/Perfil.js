@@ -14,9 +14,8 @@ import {
 } from "@mui/material";
 import FlipCameraIosIcon from "@mui/icons-material/FlipCameraIos";
 import LockResetIcon from "@mui/icons-material/LockReset";
-import React, { useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Layout from "../../components/layout/Layout";
-import { useState } from "react";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ResetPassword from "./ResetPassword";
 import AttachFileMultimedia from "./AddMultimediaUser";
@@ -52,6 +51,23 @@ const Perfil = () => {
     setOpenModalInfo(false);
   };
 
+  const [saludo, setSaludo] = useState("");
+  useEffect(() => {
+    const obtenerSaludo = () => {
+      const horaActual = new Date().getHours();
+
+      if (horaActual >= 6 && horaActual < 12) {
+        setSaludo("Buenos días");
+      } else if (horaActual >= 12 && horaActual < 18) {
+        setSaludo("Buenas tardes");
+      } else {
+        setSaludo("Buenas noches");
+      }
+    };
+
+    obtenerSaludo();
+  }, []);
+
   return (
     <Layout>
       <Grid
@@ -70,7 +86,7 @@ const Perfil = () => {
                   textAlign="center"
                   sx={{ color: "#662549" }}
                 >
-                  Hola de nuevo, {""} {User && User.name}
+                  Hola de nuevo, {saludo} {User && User.name}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -248,7 +264,11 @@ const Perfil = () => {
             />
           )}
           <ResetPassword modal={openModal} handleClose={handleClose} />
-          <EditInfo modal={openModalInfo} handleClose={handleCloseInfo} />
+          <EditInfo
+            User={User}
+            modal={openModalInfo}
+            handleClose={handleCloseInfo}
+          />
         </Grid>
       </Grid>
     </Layout>

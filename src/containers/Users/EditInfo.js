@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import InputAdornment from "@mui/material/InputAdornment";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -51,7 +49,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function EditInfo({ modal, handleClose }) {
+export default function EditInfo({ modal, handleClose, User }) {
   const { EditInfo } = React.useContext(AuthContext);
 
   const {
@@ -102,6 +100,7 @@ export default function EditInfo({ modal, handleClose }) {
                   type="text"
                   fullWidth
                   name="name"
+                  defaultValue={User.name}
                   label="Nombre(s):"
                   error={errors.name ? true : false}
                   helperText={errors?.name?.message}
@@ -125,6 +124,7 @@ export default function EditInfo({ modal, handleClose }) {
                 <TextField
                   type="text"
                   fullWidth
+                  defaultValue={User.last_name}
                   name="last_name"
                   label="Apellido(s):"
                   error={errors.last_name ? true : false}
@@ -150,6 +150,7 @@ export default function EditInfo({ modal, handleClose }) {
                   type="number"
                   fullWidth
                   name="phone_number"
+                  defaultValue={User.phone_number}
                   label="Telefono:"
                   error={errors.phone_number ? true : false}
                   helperText={errors?.phone_number?.message}
@@ -173,6 +174,7 @@ export default function EditInfo({ modal, handleClose }) {
                 <TextField
                   type="email"
                   fullWidth
+                  defaultValue={User.email}
                   name="email"
                   label="Correo Electrónico:"
                   error={errors.email ? true : false}
