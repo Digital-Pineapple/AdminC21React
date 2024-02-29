@@ -10,7 +10,6 @@ import VisitContext from "../../context/Visits/VisitContext";
 import bg from "../../assets/img/visit.png";
 
 export default function CardVisit({ visit }) {
-  console.log(visit, "la visita");
   const { DeleteVisit } = React.useContext(VisitContext);
 
   return (

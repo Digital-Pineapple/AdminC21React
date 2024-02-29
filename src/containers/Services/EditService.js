@@ -25,7 +25,6 @@ export default function EditService({ open, handleClose, id }) {
         console.log(error);
       });
   }, [id]);
-  console.log(service, "el servicio");
   const {
     register,
     formState: { errors },

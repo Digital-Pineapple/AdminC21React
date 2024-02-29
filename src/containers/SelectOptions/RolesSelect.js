@@ -14,7 +14,7 @@ const RolesSelect = (props) => {
   // }, []);
   const array = [
     { name: "Inquilino (Rentar/Comprar)", value: 4 },
-    { name: "Asesor", value: 3 },
+    { name: "Asesor (Individual)", value: 3 },
     { name: "Inmobiliaria", value: 2 },
   ];
 

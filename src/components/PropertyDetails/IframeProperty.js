@@ -25,7 +25,6 @@ export default function IframeProperty({ id, modal, handleClose, iframe }) {
         console.log(error);
       });
   }, [iframe]);
-  console.log(cargando, "el cargando");
   return (
     <div>
       <Dialog

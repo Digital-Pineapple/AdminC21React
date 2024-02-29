@@ -58,40 +58,36 @@ const UsersState = ({ children }) => {
         console.log(error.response.data.message);
       });
   };
+
   const ChangeUser = (data) => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    //formData.append("typeCategory", data.typeCategory);
-    //formData.append("brand", category.brand);
-    let url = `/users/${data.id}`;
-    MethodPut(url, formData)
+    let url = "/updateTypeUser/" + data.id;
+    MethodPut(url, data)
       .then((res) => {
-        Swal.fire({
-          title: "Usuario Modificado",
-          text: res.data.message,
-          icon: "success",
-          timer: 1000,
-          showCancelButton: false,
-          showConfirmButton: false,
-        });
         dispatch({
           type: UPDATE_USERS,
-          payload: res.data.category,
+          payload: res.data,
+        });
+        Swal.fire({
+          title: "Editado",
+          text: "El usuario se ha editado correctamente!",
+          icon: "success",
+          timer: 1000,
+          showConfirmButton: false,
+          didClose: () => {
+            window.location.reload();
+          },
         });
       })
       .catch((error) => {
         Swal.fire({
           title: "Error",
-          text: "Ocurrio un error al actualizar el usuario",
           icon: "error",
+          text: error.response.data.message,
           showConfirmButton: false,
-        });
-        dispatch({
-          type: SHOW_ERRORS_API,
-          payload: error.res.data.error,
         });
       });
   };
+
   //Eliminar categoria
   const DeleteUsers = (id) => {
     Swal.fire({

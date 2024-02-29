@@ -19,7 +19,6 @@ const Users = () => {
   const handleClose = () => {
     setOpenModal(false);
   };
-  console.log(users);
   return (
     <Layout>
       <Grid container spacing={2} sx={{ padding: 2 }}>

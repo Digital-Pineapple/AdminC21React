@@ -86,7 +86,7 @@ const Perfil = () => {
                   textAlign="center"
                   sx={{ color: "#662549" }}
                 >
-                  Hola de nuevo, {saludo} {User && User.name}
+                  Hola, {saludo} {User && User.name}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -187,7 +187,7 @@ const Perfil = () => {
                           : User.type_user === 2
                           ? "Inmobiliaria"
                           : User.type_user === 3
-                          ? "Asesor"
+                          ? "Asesor (Individual)"
                           : User.type_user === 4 &&
                             "Inquilino (Rentar/Comprar)"}
                       </Typography>

@@ -21,13 +21,13 @@ const UsersReducer = (state, action) => {
     case UPDATE_USERS:
       return {
         ...state,
-        ErrorsAPI: [],
-        users: state.users.map((service) => {
-          if (service.id === action.payload.id) {
-            service = action.payload;
+        users: state.users.map((user) => {
+          if (user.id === action.payload.id) {
+            user = action.payload;
           }
-          return service;
+          return user;
         }),
+        ErrorsApi: [],
       };
     case DELETE_USERS:
       return {
