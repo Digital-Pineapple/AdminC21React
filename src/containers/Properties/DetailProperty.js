@@ -10,6 +10,7 @@ import Layout from "../../components/layout/Layout";
 import Amenidades from "../../components/PropertyDetails/Amenidades";
 import Owner from "../../components/PropertyDetails/Owner";
 import MultimediaProperty from "../../components/PropertyDetails/MultimediaProperty";
+import GeneratePDF from "../../components/PropertyDetails/GeneratePDF";
 export default function DetailProperty(props) {
   const { id } = props.match.params;
   const [property, saveProperty] = useState([]);
@@ -48,6 +49,7 @@ export default function DetailProperty(props) {
           {address && <AddressProperty address={address} />}
           {owner && <Owner owner={owner} />}
           {services && <ServicesProperty services={services} />}
+          <GeneratePDF id={id} />
         </Grid>
       </Grid>
     </Layout>

@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
 import { useHistory } from "react-router-dom";
 import PropertiesReducer from "./PropertiesReducer";
+import clientAxios from "../../config/Axios";
+import fileDownload from "js-file-download";
 import MethodGet, {
   MethodDelete,
   MethodPost,
@@ -203,6 +205,41 @@ const PropertiesState = ({ children }) => {
         });
       });
   };
+
+  const DownloadPDF = (id) => {
+    Swal.fire({
+      title: "¿Estas seguro?",
+      text: "La propiedad seleccionada será descargada",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, descargar",
+      cancelButtonText: "No, cancelar",
+    }).then((result) => {
+      if (result.value) {
+        let url = `/generatePDF/${id}`;
+        clientAxios
+          .get(url, { responseType: "blob" })
+          .then((res) => {
+            fileDownload(res.data, "FichaTecnica.pdf");
+            Swal.fire({
+              title: "Descargada",
+              text: "La propiedad se ha descargado correctamente!",
+              icon: "success",
+            });
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Error",
+              text: error.response.data.message,
+              icon: "error",
+            });
+          });
+      }
+    });
+  };
+
   const AddMultimediaProperty = (data) => {
     Swal.fire({
       title: "Agregar Imagen",
@@ -376,6 +413,7 @@ const PropertiesState = ({ children }) => {
         UpdateProperty,
         DeleteProperty,
         PublishProperty,
+        DownloadPDF,
         BackPendingProperty,
         AddMultimediaProperty,
       }}
