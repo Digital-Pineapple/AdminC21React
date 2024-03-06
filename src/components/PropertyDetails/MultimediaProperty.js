@@ -67,7 +67,11 @@ const MultimediaProperty = ({ name, images, property_id }) => {
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <Swiper
             onSwiper={setThumbsSwiper}
+            loop={true}
+            spaceBetween={10}
             slidesPerView={4}
+            freeMode={true}
+            watchSlidesProgress={true}
             modules={[FreeMode, Navigation, Thumbs]}
           >
             {nuevasImagenes.map((slide, index) => (

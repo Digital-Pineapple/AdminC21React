@@ -14,7 +14,8 @@ import GeneratePDF from "../../components/PropertyDetails/GeneratePDF";
 export default function DetailProperty(props) {
   const { id } = props.match.params;
   const [property, saveProperty] = useState([]);
-  const { address, details, images, rules, owner, name, category } = property;
+  const { address, details, images, rules, owner, name, category, status } =
+    property;
   const [services, saveServices] = useState([]);
   useEffect(() => {
     let url = `/showAdmin/${id}`;
@@ -49,8 +50,8 @@ export default function DetailProperty(props) {
           {address && <AddressProperty address={address} />}
           {owner && <Owner owner={owner} />}
           {services && <ServicesProperty services={services} />}
-          <GeneratePDF id={id} />
         </Grid>
+        <GeneratePDF id={id} status={status} />
       </Grid>
     </Layout>
   );
