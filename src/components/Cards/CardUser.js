@@ -35,32 +35,29 @@ export default function CardUser({ user }) {
         <CardContent sx={{ marginTop: -15 }}>
           <Typography
             sx={{
-              color: "#662549",
+              color: "#1F3473",
             }}
           >
-            Nombre(s):
+            <b>Nombre(s):</b>
           </Typography>
           <b>{user.name}</b>
-
           <Typography
             sx={{
-              color: "#662549",
+              color: "#1F3473",
             }}
           >
-            Apellido(s):
+            <b>Apellido(s):</b>
           </Typography>
           <b>{user.last_name}</b>
-
           <Typography
             sx={{
-              color: "#662549",
+              color: "#1F3473",
             }}
           >
             {" "}
-            Tipo de Usuario:
-          </Typography>
+            <b>Tipo de Usuario:</b>
+          </Typography>{" "}
           <b>
-            {" "}
             {user.type_user === 1
               ? "Admin"
               : user.type_user === 2
@@ -69,23 +66,21 @@ export default function CardUser({ user }) {
               ? "Asesor (Individual)"
               : user.type_user === 4 && "Inquilino (Rentar/Comprar)"}
           </b>
-
           <Typography
             sx={{
-              color: "#662549",
+              color: "#1F3473",
             }}
           >
-            Telefono:
+            <b>Telefono:</b>
           </Typography>
           <b>{user.phone_number}</b>
-
           <Typography
             sx={{
-              color: "#662549",
+              color: "#1F3473",
             }}
           >
             {" "}
-            Correo Electronico:
+            <b>Correo Electronico:</b>
           </Typography>
           <b>{user.email}</b>
         </CardContent>

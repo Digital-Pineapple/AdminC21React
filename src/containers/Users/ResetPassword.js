@@ -220,11 +220,11 @@ export default function ChangePasswordUser({ modal, handleClose }) {
               type="submit"
               fullWidth
               sx={{
-                color: "white",
-                backgroundColor: "#451952",
+                color: "#1F3473",
+                backgroundColor: "#8ED5E1",
                 "&:hover": {
-                  color: "white",
-                  backgroundColor: "#451952",
+                  color: "#1F3473",
+                  backgroundColor: "#8ED5E1",
                 },
               }}
             >

@@ -35,7 +35,7 @@ const CardPropertySearch = ({ property }) => {
           <Alert
             icon={false}
             severity="info"
-            sx={{ backgroundColor: "#662549", color: "white" }}
+            sx={{ backgroundColor: "#8ED5E1", color: "#1F3473" }}
           >
             <Typography
               fontWeight="bold"
@@ -53,7 +53,7 @@ const CardPropertySearch = ({ property }) => {
             <Alert
               icon={false}
               severity="success"
-              sx={{ backgroundColor: "#AE445A", color: "white" }}
+              sx={{ backgroundColor: "#8ED5E1", color: "#1F3473" }}
             >
               <Typography
                 fontWeight="bold"

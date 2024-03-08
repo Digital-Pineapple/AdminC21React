@@ -119,7 +119,20 @@ export default function AddService({ modal, handleClose }) {
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button autoFocus variant="contained" type="submit" fullWidth>
+            <Button
+              autoFocus
+              variant="contained"
+              type="submit"
+              fullWidth
+              sx={{
+                color: "white",
+                backgroundColor: "#1F3473",
+                "&:hover": {
+                  color: "white",
+                  backgroundColor: "#1F3473 ",
+                },
+              }}
+            >
               Guardar
             </Button>
           </DialogActions>

@@ -149,7 +149,12 @@ const EditProperty = (props) => {
     <Layout>
       <Grid container spacing={2} sx={{ marginTop: 1, padding: 2 }}>
         <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
-          <Typography fontWeight="bold" fontFamily="monospace" variant="h4">
+          <Typography
+            fontWeight="bold"
+            fontFamily="monospace"
+            variant="h4"
+            sx={{ color: "#1f3473" }}
+          >
             Editar Propiedad
           </Typography>
         </Grid>
@@ -166,7 +171,7 @@ const EditProperty = (props) => {
                 <Divider>
                   <Chip
                     label="Detalles"
-                    sx={{ backgroundColor: "#451952", color: "white" }}
+                    sx={{ backgroundColor: "#1f3473", color: "white" }}
                   />
                 </Divider>
               </Grid>
@@ -301,7 +306,7 @@ const EditProperty = (props) => {
                 <Divider>
                   <Chip
                     label="Datos Generales"
-                    sx={{ backgroundColor: "#451952", color: "white" }}
+                    sx={{ backgroundColor: "#1f3473", color: "white" }}
                   />
                 </Divider>
               </Grid>
@@ -388,7 +393,7 @@ const EditProperty = (props) => {
                 <Divider>
                   <Chip
                     label="Dirección"
-                    sx={{ backgroundColor: "#451952", color: "white" }}
+                    sx={{ backgroundColor: "#1f3473", color: "white" }}
                   />
                 </Divider>
               </Grid>
@@ -529,9 +534,9 @@ const EditProperty = (props) => {
                   size="large"
                   fullWidth
                   sx={{
-                    background: "#451952",
+                    background: "#1f3473",
                     color: "white",
-                    "&:hover": { background: "#451952", color: "white" },
+                    "&:hover": { background: "#1f3473", color: "white" },
                   }}
                 >
                   Guardar

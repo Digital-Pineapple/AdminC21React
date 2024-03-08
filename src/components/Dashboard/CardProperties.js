@@ -16,7 +16,7 @@ const CardProperties = ({ total_properties }) => {
   const classes = useStyles();
   return (
     <Card
-      style={{ backgroundColor: "#451952" }}
+      style={{ backgroundColor: "#8ED5E1" }}
       sx={{
         boxShadow: 4,
         display: "flex",
@@ -31,7 +31,7 @@ const CardProperties = ({ total_properties }) => {
             marginLeft: 10,
             marginTop: 10,
             marginBottom: 10,
-            color: "white",
+            color: "#1F3473",
           }}
         />
       </div>
@@ -42,7 +42,7 @@ const CardProperties = ({ total_properties }) => {
           sx={{
             fontWeight: "bold",
             fontSize: 20,
-            color: "white",
+            color: "#1F3473",
             border: "1px",
             borderColor: "green",
           }}
@@ -52,7 +52,7 @@ const CardProperties = ({ total_properties }) => {
         <Typography
           sx={{
             fontSize: 23,
-            color: "white",
+            color: "#1F3473",
             border: "1px",
             borderColor: "green",
           }}

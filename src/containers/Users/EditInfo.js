@@ -205,10 +205,10 @@ export default function EditInfo({ modal, handleClose, User }) {
               fullWidth
               sx={{
                 color: "white",
-                backgroundColor: "#451952",
+                backgroundColor: "#1F3473",
                 "&:hover": {
                   color: "white",
-                  backgroundColor: "#451952",
+                  backgroundColor: "#1F3473",
                 },
               }}
             >

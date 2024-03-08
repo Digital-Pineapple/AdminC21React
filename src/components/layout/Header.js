@@ -9,8 +9,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import HouseIcon from "@mui/icons-material/House";
-import SearchIcon from '@mui/icons-material/Search';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import SearchIcon from "@mui/icons-material/Search";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Divider from "@mui/material/Divider";
 import AddIcon from "@mui/icons-material/Add";
@@ -21,7 +21,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import HomeIcon from "@mui/icons-material/Home";
 import CategoryIcon from "@mui/icons-material/Category";
 import SettingsIcon from "@mui/icons-material/Settings";
-import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
+import HolidayVillageIcon from "@mui/icons-material/HolidayVillage";
 import GroupIcon from "@mui/icons-material/Group";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AuthContext from "../../context/auth/AuthContext";
@@ -414,7 +414,7 @@ export default function Header({ children }) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#662549" }}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#1F3473" }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             color="inherit"
@@ -434,6 +434,7 @@ export default function Header({ children }) {
             fontWeight="bold"
             noWrap
             component="div"
+            sx={{ color: "white" }}
           >
             Yo Comparto
           </Typography>
@@ -452,9 +453,9 @@ export default function Header({ children }) {
       <Drawer
         variant="permanent"
         open={open}
-        sx={{ backgroundColor: "#662549" }}
+        sx={{ backgroundColor: "#1F3473" }}
       >
-        <DrawerHeader sx={{ backgroundColor: "#662549" }}>
+        <DrawerHeader sx={{ backgroundColor: "#1F3473" }}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -482,7 +483,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
-                          color: "#451952",
+                          color: "#1F3473",
                         }}
                       >
                         {text.icon}
@@ -491,7 +492,7 @@ export default function Header({ children }) {
                         primary={text.name}
                         sx={{
                           opacity: open ? 1 : 0,
-                          color: "#662549",
+                          color: "#1F3473",
                           fontWeight: "bold",
                         }}
                       />
@@ -515,7 +516,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
-                          color: "#451952",
+                          color: "#1F3473",
                         }}
                       >
                         {text.icon}
@@ -524,7 +525,7 @@ export default function Header({ children }) {
                         primary={text.name}
                         sx={{
                           opacity: open ? 1 : 0,
-                          color: "#662549",
+                          color: "#1F3473",
                           fontWeight: "bold",
                         }}
                       />
@@ -548,7 +549,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
-                          color: "#451952",
+                          color: "#1F3473",
                         }}
                       >
                         {text.icon}
@@ -557,7 +558,7 @@ export default function Header({ children }) {
                         primary={text.name}
                         sx={{
                           opacity: open ? 1 : 0,
-                          color: "#662549",
+                          color: "#1F3473",
                           fontWeight: "bold",
                         }}
                       />
@@ -581,7 +582,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
-                          color: "#451952",
+                          color: "#1F3473",
                         }}
                       >
                         {text.icon}
@@ -590,7 +591,7 @@ export default function Header({ children }) {
                         primary={text.name}
                         sx={{
                           opacity: open ? 1 : 0,
-                          color: "#662549",
+                          color: "#1F3473",
                           fontWeight: "bold",
                         }}
                       />
@@ -610,14 +611,12 @@ export default function Header({ children }) {
           )}
         </List>
       </Drawer>
-      {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}> */}
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <DrawerHeader />
           {children}
         </Grid>
       </Grid>
-      {/* </Box> */}
     </Box>
   );
 }

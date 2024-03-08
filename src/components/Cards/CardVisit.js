@@ -15,56 +15,60 @@ export default function CardVisit({ visit }) {
   return (
     <>
       {visit.bookings.map((item) => (
-        <Card sx={{ maxWidth: "auto" }}>
-          <CardMedia sx={{ height: 130, opacity: "0.7" }} image={bg} />
-          <CardContent>
+        <Card sx={{ maxWidth: 345 }}>
+          <CardMedia
+            sx={{ height: 140, opacity: "0.2" }}
+            image={bg}
+            title="citas"
+          />
+          <CardContent sx={{ marginTop: -15 }}>
             <Typography
               sx={{
-                color: "#662549",
+                color: "#1F3473",
               }}
             >
-              Nombre:
+              <b>Nombre:</b>
             </Typography>{" "}
             <b>{item.name}</b>
             <Typography
               sx={{
-                color: "#662549",
+                color: "#1F3473",
               }}
             >
-              Telefono:
+              <b>Telefono:</b>
             </Typography>
             <b>{item.phone}</b>
             <Typography
               sx={{
-                color: "#662549",
+                color: "#1F3473",
               }}
             >
-              Correo Electronico:
+              <b>Correo Electronico:</b>
             </Typography>
             <b>{item.email}</b>
             <Typography
               sx={{
-                color: "#662549",
+                color: "#1F3473",
               }}
             >
-              Fecha:
+              <b>Fecha:</b>
             </Typography>
             <b>{item.datetime}</b>
             <Typography
               sx={{
-                color: "#662549",
+                color: "#1F3473",
               }}
             >
-              Mensaje:
+              <b>Mensaje:</b>
             </Typography>
             <b>{item.message}</b>
             <Typography
               sx={{
-                color: "#662549",
+                color: "#1F3473",
               }}
             >
               {" "}
-              Propiedad
+              <b>Propiedad:</b>
             </Typography>
             <b>{visit.name}</b>
           </CardContent>

@@ -37,7 +37,7 @@ export default function CardCategory({ category }) {
             fontFamily="inherit"
             variant="h5"
             sx={{
-              color: "#662549",
+              color: "#1F3473",
             }}
           >
             {category.name}

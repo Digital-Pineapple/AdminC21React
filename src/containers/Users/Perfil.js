@@ -84,7 +84,7 @@ const Perfil = () => {
                   fontFamily="monospace"
                   fontSize="40px"
                   textAlign="center"
-                  sx={{ color: "#662549" }}
+                  sx={{ color: "#1F3473" }}
                 >
                   Hola, {saludo} {User && User.name}
                 </Typography>
@@ -119,11 +119,11 @@ const Perfil = () => {
                       fullWidth
                       variant="contained"
                       sx={{
-                        color: "white",
-                        backgroundColor: "#451952",
+                        color: "#1F3473",
+                        backgroundColor: "#8ED5E1",
                         "&:hover": {
-                          color: "white",
-                          backgroundColor: "#451952",
+                          color: "#1F3473",
+                          backgroundColor: "#8ED5E1",
                         },
                       }}
                     >
@@ -149,7 +149,7 @@ const Perfil = () => {
                     fontFamily="monospace"
                     fontWeight="bold"
                     variant="h5"
-                    sx={{ color: "#662549" }}
+                    sx={{ color: "#1F3473" }}
                   >
                     Detalles de mi cuenta...
                   </Typography>
@@ -159,7 +159,7 @@ const Perfil = () => {
                         fontFamily="monospace"
                         fontWeight="bold"
                         variant="subtitle1"
-                        sx={{ color: "#662549" }}
+                        sx={{ color: "black" }}
                       >
                         Nombre(s): {User.name}
                       </Typography>
@@ -169,7 +169,7 @@ const Perfil = () => {
                         fontFamily="monospace"
                         fontWeight="bold"
                         variant="subtitle1"
-                        sx={{ color: "#662549" }}
+                        sx={{ color: "black" }}
                       >
                         Apellido(s): {User.last_name}
                       </Typography>
@@ -179,7 +179,7 @@ const Perfil = () => {
                         fontFamily="monospace"
                         fontWeight="bold"
                         variant="subtitle1"
-                        sx={{ color: "#662549" }}
+                        sx={{ color: "black" }}
                       >
                         Soy:{" "}
                         {User.type_user === 1
@@ -197,7 +197,7 @@ const Perfil = () => {
                         fontFamily="monospace"
                         fontWeight="bold"
                         variant="subtitle1"
-                        sx={{ color: "#662549" }}
+                        sx={{ color: "black" }}
                       >
                         Telefono: {User.phone_number}
                       </Typography>
@@ -207,7 +207,7 @@ const Perfil = () => {
                         fontFamily="monospace"
                         fontWeight="bold"
                         variant="subtitle1"
-                        sx={{ color: "#662549" }}
+                        sx={{ color: "black" }}
                       >
                         Correo Electrónico: {User.email}
                       </Typography>
@@ -219,11 +219,11 @@ const Perfil = () => {
                         fullWidth
                         variant="contained"
                         sx={{
-                          color: "white",
-                          backgroundColor: "#662549",
+                          color: "#1F3473",
+                          backgroundColor: "#8ED5E1",
                           "&:hover": {
-                            color: "white",
-                            backgroundColor: "#662549",
+                            color: "#1F3473",
+                            backgroundColor: "#8ED5E1 ",
                           },
                         }}
                       >
@@ -238,11 +238,11 @@ const Perfil = () => {
                         fullWidth
                         variant="contained"
                         sx={{
-                          color: "white",
-                          backgroundColor: "#451952",
+                          color: "#8ED5E1",
+                          backgroundColor: "#1F3473",
                           "&:hover": {
-                            color: "white",
-                            backgroundColor: "#451952",
+                            color: "#8ED5E1",
+                            backgroundColor: "#1F3473",
                           },
                         }}
                       >

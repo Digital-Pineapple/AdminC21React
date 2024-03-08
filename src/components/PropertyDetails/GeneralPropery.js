@@ -19,7 +19,12 @@ const GeneralPropery = ({ name, description, rules, category }) => {
           color: "#662549",
         }}
       >
-        <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
+        <Typography
+          variant="h6"
+          fontWeight="bold"
+          fontFamily="monospace"
+          sx={{ color: "#1f3473" }}
+        >
           Detalles generales:
         </Typography>
       </Grid>
@@ -40,7 +45,12 @@ const GeneralPropery = ({ name, description, rules, category }) => {
           color: "#662549",
         }}
       >
-        <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
+        <Typography
+          variant="h6"
+          fontWeight="bold"
+          fontFamily="monospace"
+          sx={{ color: "#1f3473" }}
+        >
           Precios:
         </Typography>
       </Grid>

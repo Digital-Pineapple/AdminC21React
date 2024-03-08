@@ -142,7 +142,7 @@ const Register = () => {
                 <div
                   style={{
                     textAlign: "center",
-                    color: "black",
+                    color: "#1F3473",
                     marginBottom: "10px",
                     fontSize: "40px",
                     fontFamily: "monospace",
@@ -155,7 +155,7 @@ const Register = () => {
               <div
                 style={{
                   textAlign: "center",
-                  color: "black",
+                  color: "#1F3473",
                   marginBottom: "25px",
                   fontFamily: "monospace",
                   fontWeight: "bold",
@@ -165,7 +165,7 @@ const Register = () => {
               </div>
 
               <Grid container spacing={2}>
-                <Grid item xs={12} md={12} lg={12} xl={12}>
+                <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                   <TextField
                     type="text"
                     fullWidth
@@ -185,7 +185,7 @@ const Register = () => {
                     })}
                   />
                 </Grid>
-                <Grid item xs={12} md={12} lg={12} xl={12}>
+                <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                   <TextField
                     type="text"
                     fullWidth
@@ -343,13 +343,14 @@ const Register = () => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  backgroundColor: "#AE445A",
-                  color: "white",
+                  backgroundColor: "#8ED5E1",
+                  color: "#1F3473",
                   fontWeight: "bold",
                   mt: 3,
                   mb: 2,
                   "&:hover": {
-                    backgroundColor: "#AE445A",
+                    backgroundColor: "#8ED5E1 ",
+                    color: "#1F3473",
                   },
                 }}
               >
@@ -361,13 +362,14 @@ const Register = () => {
                   fullWidth
                   variant="contained"
                   sx={{
-                    backgroundColor: "#451952",
-                    color: "white",
+                    backgroundColor: "#1F3473",
+                    color: "#8ED5E1",
                     fontWeight: "bold",
                     mt: 0,
-                    mb: 1,
+                    mb: 6,
                     "&:hover": {
-                      backgroundColor: "#451952",
+                      backgroundColor: "#1F3473",
+                      color: "#ED5E1",
                     },
                   }}
                 >

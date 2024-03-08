@@ -29,7 +29,7 @@ const MultimediaProperty = ({ name, images, property_id }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          color: "#662549",
+          color: "#1f3473",
           padding: "16px",
         }}
       >

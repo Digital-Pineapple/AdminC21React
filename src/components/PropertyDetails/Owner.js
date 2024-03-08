@@ -14,7 +14,7 @@ const Owner = ({ owner }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              color: "#662549",
+              color: "#1f3473",
             }}
           >
             <Typography variant="h6" fontWeight="bold" fontFamily="monospace">

@@ -12,7 +12,7 @@ const AddressProperty = ({ address }) => {
             xs={12}
             sx={{
               display: "flex",
-              color: "#662549",
+              color: "#1f3473",
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -70,7 +70,7 @@ const AddressProperty = ({ address }) => {
             xs={12}
             sx={{
               display: "flex",
-              color: "#662549",
+              color: "#1f3473",
               justifyContent: "center",
               alignItems: "center",
             }}

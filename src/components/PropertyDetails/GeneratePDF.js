@@ -16,10 +16,10 @@ export default function GeneratePDF({ id, status }) {
             variant="contained"
             sx={{
               color: "white",
-              backgroundColor: "#662549",
+              backgroundColor: "#1f3473",
               "&:hover": {
                 color: "white",
-                backgroundColor: "#662549",
+                backgroundColor: "#1f3473",
               },
             }}
           >

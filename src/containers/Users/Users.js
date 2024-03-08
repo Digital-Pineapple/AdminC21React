@@ -23,7 +23,12 @@ const Users = () => {
     <Layout>
       <Grid container spacing={2} sx={{ padding: 2 }}>
         <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
-          <Typography fontWeight="bold" fontFamily="monospace" variant="h4">
+          <Typography
+            fontWeight="bold"
+            fontFamily="monospace"
+            variant="h4"
+            sx={{ color: "#1F3473" }}
+          >
             Usuarios
           </Typography>
         </Grid>
@@ -33,8 +38,12 @@ const Users = () => {
             fullWidth
             onClick={handleClickOpen}
             sx={{
-              backgroundColor: "#451952",
-              "&:hover": { backgroundColor: "#451952" },
+              color: "#1F3473",
+              backgroundColor: "#8ED5E1",
+              "&:hover": {
+                color: "#1F3473",
+                backgroundColor: "#8ED5E1 ",
+              },
             }}
           >
             Agregar

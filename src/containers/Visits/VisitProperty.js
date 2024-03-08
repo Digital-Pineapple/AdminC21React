@@ -15,7 +15,12 @@ const VisitProperty = () => {
     <Layout>
       <Grid container spacing={2} sx={{ padding: 2 }}>
         <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
-          <Typography fontWeight="bold" fontFamily="monospace" variant="h4">
+          <Typography
+            fontWeight="bold"
+            fontFamily="monospace"
+            variant="h4"
+            sx={{ color: "#1F3473" }}
+          >
             Visitas Agendadas de mis Propiedades
           </Typography>
         </Grid>
