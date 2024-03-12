@@ -1,6 +1,6 @@
 import Layout from "../../components/layout/Layout";
 import { Grid, Typography } from "@mui/material";
-import CardVisit from "../../components/Cards/CardVisit";
+import TableVisit from "../../components/Cards/TableVisit";
 import LoadingComponent from "../../components/loading/LoadingComponent";
 import React, { useContext, useEffect } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
@@ -14,20 +14,19 @@ const VisitProperty = () => {
   return (
     <Layout>
       <Grid container spacing={2} sx={{ padding: 2 }}>
-        <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
-          <Typography
-            fontWeight="bold"
-            fontFamily="monospace"
-            variant="h4"
-            sx={{ color: "#1F3473" }}
-          >
-            Visitas Agendadas de mis Propiedades
-          </Typography>
-        </Grid>
+        <Grid item xs={12} sm={12} md={10} lg={10} xl={10}></Grid>
         {success && visits.length ? (
           visits.map((visit) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-              <CardVisit visit={visit} />
+            <Grid item xs={12}>
+              <Typography
+                fontWeight="bold"
+                fontFamily="monospace"
+                variant="h4"
+                sx={{ color: "#1F3473", padding: 1 }}
+              >
+                Visitas Agendadas de mis Propiedades
+              </Typography>
+              <TableVisit visit={visit} />
             </Grid>
           ))
         ) : success && visits.length <= 0 ? (
