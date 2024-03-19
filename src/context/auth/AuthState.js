@@ -76,6 +76,7 @@ const AuthState = (props) => {
 
   //Register
   const AddUser = (datos) => {
+    console.log(datos, "email");
     let url = "/register";
     MethodPost(url, datos)
       .then((res) => {
@@ -84,15 +85,18 @@ const AuthState = (props) => {
           type: types,
           payload: res.data.data,
         });
-        Swal.fire({
-          title: "Registrado",
-          text: "Usuario registrado correctamente, Inicia sesión Ahora",
-          icon: "success",
-        });
+        const token = res.data.token;
+        localStorage.setItem("token", token);
+        console.log(token, "el token");
         usuarioAutenticado();
-        setTimeout(() => {
-          window.location.href = "/iniciar-sesion";
-        }, 2500);
+        sendVerificationCode();
+        Swal.fire({
+          title: "¡Registro completado exitosamente!",
+          text: "Por favor, verifica tu correo electrónico.",
+          icon: "success",
+        }).then(() => {
+          window.location.href = "/verificar-cuenta";
+        });
       })
       .catch((error) => {
         Swal.fire({
@@ -103,6 +107,18 @@ const AuthState = (props) => {
         dispatch({
           type: SHOW_ERRORS_API,
         });
+      });
+  };
+
+  // Función para enviar el código de verificación al correo electrónico del usuario
+  const sendVerificationCode = () => {
+    // Llamada a tu endpoint para enviar el código de verificación
+    MethodGet("/verify-account")
+      .then((res) => {
+        console.log(res.data.message);
+      })
+      .catch((error) => {
+        console.error("Error al enviar el código de verificación:", error);
       });
   };
 
