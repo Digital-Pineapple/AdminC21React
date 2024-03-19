@@ -240,8 +240,13 @@ const Login = () => {
                   </Typography>
                 </Button>
               </Link>
-              <Link to="/Olvide-mi-Acceso">
-                <h3 style={{ textAlign: "center", color: "#1F3473" }}>
+              <Link to="/Olvide-mi-Acceso" style={{ textDecoration: "none" }}>
+                <h3
+                  style={{
+                    textAlign: "center",
+                    color: "#1F3473",
+                  }}
+                >
                   ¿Olvidaste tu contraseña?
                 </h3>
               </Link>

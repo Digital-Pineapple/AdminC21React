@@ -5,6 +5,7 @@ export default (state, action) => {
     case types.REGISTRO_EXITOSO:
       return {
         ...state,
+        autenticado: false,
       };
     case types.LOGIN_EXITOSO:
       localStorage.setItem("token", action.payload.access_token);

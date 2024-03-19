@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 
 const AuthState = (props) => {
   //Agregar state inicial
+  const history = useHistory();
   const initialState = {
     token: localStorage.getItem("token"),
     autenticado: false,
@@ -81,21 +82,41 @@ const AuthState = (props) => {
     MethodPost(url, datos)
       .then((res) => {
         console.log(res);
+        // const token = res.data.access_token;
+        // localStorage.setItem("token", token);
+        // usuarioAutenticado();
+        // sendVerificationCode();
         dispatch({
-          type: types,
+          type: types.REGISTRO_EXITOSO,
           payload: res.data.data,
         });
-        const token = res.data.token;
-        localStorage.setItem("token", token);
-        console.log(token, "el token");
-        usuarioAutenticado();
-        sendVerificationCode();
+        if (res) {
+          // window.location.href = "/verificar-cuenta";
+        }
         Swal.fire({
           title: "¡Registro completado exitosamente!",
           text: "Por favor, verifica tu correo electrónico.",
           icon: "success",
+          timer: 2000,
+          showConfirmButton: false,
         }).then(() => {
-          window.location.href = "/verificar-cuenta";
+          const token = res.data.access_token;
+          tokenAuth(token);
+          let url = "/verify-account";
+          MethodGet(url)
+            .then((res) => {
+              Swal.fire({
+                title: "Codigo Enviado",
+                text: "Se ha enviado el codigo de verifcacion",
+                icon: "success",
+                timer: 1500,
+                showConfirmButton: false,
+              });
+              window.location.href = "/verificar-cuenta";
+            })
+            .catch((error) => {
+              console.log(error, "ocurrio un error al enviar el codigo");
+            });
         });
       })
       .catch((error) => {
