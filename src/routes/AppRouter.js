@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { PublicRouter } from "./PublicRoute";
 import Login from "../components/auth/Login";
 import Register from "../components/auth/Register";
+import VerifyAccount from "../components/auth/VerifyAccount";
 import ResetPassword from "../components/auth/ResetPassword";
 import AdminRoutes from "./AdminRoutes";
 import { PrivateRouter } from "./PrivateRoute";
@@ -37,6 +38,12 @@ const AppRouter = () => {
             exact
             path="/registrarme"
             component={Register}
+            isAuthenticated={autenticado}
+          />
+          <PublicRouter
+            exact
+            path="/verificar-cuenta"
+            component={VerifyAccount}
             isAuthenticated={autenticado}
           />
           <PublicRouter

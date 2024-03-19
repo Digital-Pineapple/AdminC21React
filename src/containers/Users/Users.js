@@ -29,7 +29,7 @@ const Users = () => {
             variant="h4"
             sx={{ color: "#1F3473" }}
           >
-            Usuarios
+            Mis Usuarios
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>

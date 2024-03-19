@@ -1,20 +1,14 @@
 import {
   Box,
   Button,
-  FormControl,
   Grid,
   IconButton,
   InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  Paper,
   TextField,
-  Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import image from "../../assets/img/bg.jpg";
 import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import AuthContext from "../../context/auth/AuthContext";
@@ -29,7 +23,9 @@ const useStyles = makeStyles({
     letterSpacing: "1px",
   },
   backgroundLogin: {
-    height: "100vh",
+    height: "100%",
+    minHeight: "100vh",
+    boxSizing: "content-box",
     width: "100%",
     backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
     backgroundRepeat: "no-repeat",
@@ -44,7 +40,7 @@ const useStyles = makeStyles({
     backdropFilter: "blur(20px)",
     border: "1px solid rgba(255, 255, 255, 0.3)",
     margin: "auto",
-    width: "50vh",
+    width: "60%",
   },
 });
 
@@ -126,9 +122,9 @@ const Register = () => {
               sx={{
                 boxShadow: 3,
                 m: 5,
-                padding: 5,
+                padding: 4,
                 position: "relative",
-                marginTop: 4,
+                marginTop: 5,
               }}
               className={classes.caja}
             >

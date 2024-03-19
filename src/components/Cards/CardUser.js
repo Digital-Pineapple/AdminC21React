@@ -7,7 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Grid, IconButton } from "@mui/material";
+import { Grid, IconButton, Tooltip } from "@mui/material";
 import EditUser from "../../containers/Users/EditUser";
 import UsersContext from "../../context/Users/UsersContext";
 import img from "../../assets/img/user.png";
@@ -86,10 +86,14 @@ export default function CardUser({ user }) {
         </CardContent>
         <CardActions>
           <IconButton size="small" onClick={() => handleClickOpen(user.id)}>
-            <EditIcon sx={{ color: "#0277bd" }} />
+            <Tooltip title="Editar Usuario" placement="right">
+              <EditIcon sx={{ color: "#0277bd" }} />
+            </Tooltip>
           </IconButton>
           <IconButton size="small" onClick={() => DeleteUsers(user.id)}>
-            <DeleteIcon sx={{ color: "red" }} />
+            <Tooltip title="Eliminar Usuario" placement="right">
+              <DeleteIcon sx={{ color: "red" }} />
+            </Tooltip>
           </IconButton>
         </CardActions>
       </Card>

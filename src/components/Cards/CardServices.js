@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import bg from "../../assets/img/services.png";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { IconButton } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import ServicesContext from "../../context/Services/ServicesContext";
 import EditService from "../../containers/Services/EditService";
 import { useState } from "react";
@@ -45,10 +45,14 @@ export default function CardServices({ service }) {
         </CardContent>
         <CardActions>
           <IconButton size="small" onClick={() => handleClickOpen(service.id)}>
-            <EditIcon sx={{ color: "#0277bd" }} />
+            <Tooltip title="Editar Servicio" placement="right">
+              <EditIcon sx={{ color: "#0277bd" }} />
+            </Tooltip>
           </IconButton>
           <IconButton size="small" onClick={() => DeleteService(service.id)}>
-            <DeleteIcon sx={{ color: "red" }} />
+            <Tooltip title="Eliminar Servicio" placement="right">
+              <DeleteIcon sx={{ color: "red" }} />
+            </Tooltip>
           </IconButton>
         </CardActions>
       </Card>

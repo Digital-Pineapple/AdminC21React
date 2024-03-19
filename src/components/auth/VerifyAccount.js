@@ -33,9 +33,9 @@ const useStyles = makeStyles({
   },
 });
 
-const ResetPassword = () => {
+const VerifyAccount = () => {
   const classes = useStyles();
-  const { ResetPassword } = React.useContext(AuthContext);
+  const { sendVerificationEmail } = React.useContext(AuthContext);
 
   const reset = () => {
     setValue("email", "", { shouldDirty: true });
@@ -49,7 +49,7 @@ const ResetPassword = () => {
   } = useForm();
 
   const onSubmit = (data, e) => {
-    ResetPassword(data);
+    sendVerificationEmail(data);
     reset();
   };
 
@@ -110,7 +110,7 @@ const ResetPassword = () => {
                   fontWeight: "bold",
                 }}
               >
-                Recupera tu cuenta
+                Verificación de tu Cuenta
               </div>
               <div
                 style={{
@@ -121,26 +121,30 @@ const ResetPassword = () => {
                   fontWeight: "bold",
                 }}
               >
-                Ingrese su correo electrónico para enviar el código de
-                verificación y recuperar su cuenta.
+                Ingresa el código de verificación que se envió a tu correo
+                electrónico para validar tu cuenta.
               </div>
 
               <Grid item xs={12} md={12} lg={12} xl={12}>
                 <TextField
-                  type="email"
+                  type="number"
                   fullWidth
-                  name="email"
-                  label="Correo Electrónico:"
-                  error={errors.email ? true : false}
-                  helperText={errors?.email?.message}
-                  {...register("email", {
+                  name="code"
+                  label="Codigo de Verificación"
+                  error={errors.code ? true : false}
+                  helperText={errors?.code?.message}
+                  {...register("code", {
                     required: {
                       value: true,
-                      message: "El email es requerido",
+                      message: "El codigo de verificación es requerido",
+                    },
+                    minLength: {
+                      value: 4,
+                      message: "Minimo 4 caracteres",
                     },
                     maxLength: {
-                      value: 255,
-                      message: "Maximo 255 caracteres",
+                      value: 4,
+                      message: "Maximo 4 caracteres",
                     },
                   })}
                 />
@@ -169,26 +173,6 @@ const ResetPassword = () => {
                   Enviar
                 </Typography>
               </Button>
-              <Link to="iniciar-sesion">
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "#1F3473",
-                    color: "#8ED5E1",
-                    fontWeight: "bold",
-                    mt: 0,
-                    mb: 6,
-                    "&:hover": {
-                      backgroundColor: "#1F3473",
-                      color: "#ED5E1",
-                    },
-                  }}
-                >
-                  Regresar
-                </Button>
-              </Link>
             </Box>
           </div>
         </Grid>
@@ -197,4 +181,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default VerifyAccount;

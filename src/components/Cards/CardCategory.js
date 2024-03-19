@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import bg from "../../assets/img/category.png";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { IconButton } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import CategoryContext from "../../context/Categories/CategoryContext";
 import EditCategory from "../../containers/Categories/EditCategory";
 import { useState } from "react";
@@ -45,10 +45,14 @@ export default function CardCategory({ category }) {
         </CardContent>
         <CardActions>
           <IconButton size="small" onClick={() => handleOpenEdit(category.id)}>
-            <EditIcon sx={{ color: "#0277bd" }} />
+            <Tooltip title="Editar Categoria" placement="right">
+              <EditIcon sx={{ color: "#0277bd" }} />
+            </Tooltip>
           </IconButton>
           <IconButton size="small" onClick={() => DeleteCategory(category.id)}>
-            <DeleteIcon sx={{ color: "red" }} />
+            <Tooltip title="Eliminar Categoria" placement="right">
+              <DeleteIcon sx={{ color: "red" }} />
+            </Tooltip>
           </IconButton>
         </CardActions>
       </Card>

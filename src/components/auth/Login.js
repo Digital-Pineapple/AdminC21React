@@ -7,7 +7,6 @@ import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
-  Paper,
   TextField,
   Typography,
 } from "@mui/material";
@@ -15,7 +14,6 @@ import * as Yup from "yup";
 import { makeStyles, styled } from "@mui/styles";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import image from "../../assets/img/bg.jpg";
 import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import AuthContext from "../../context/auth/AuthContext";
@@ -29,7 +27,9 @@ const useStyles = makeStyles({
     letterSpacing: "1px",
   },
   backgroundLogin: {
-    height: "100vh",
+    height: "100%",
+    minHeight: "100vh",
+    boxSizing: "content-box",
     width: "100%",
     backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
     backgroundRepeat: "no-repeat",
@@ -240,11 +240,11 @@ const Login = () => {
                   </Typography>
                 </Button>
               </Link>
-              {/* <Link to="/Olvide-mi-Acceso">
-                <div style={{ textAlign: "center" }}>
+              <Link to="/Olvide-mi-Acceso">
+                <h3 style={{ textAlign: "center", color: "#1F3473" }}>
                   ¿Olvidaste tu contraseña?
-                </div>
-              </Link>  */}
+                </h3>
+              </Link>
             </Box>
           </Box>
         </div>

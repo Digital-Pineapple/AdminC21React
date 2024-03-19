@@ -4,11 +4,13 @@ import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import { IconButton } from "@mui/material";
-import moment from 'moment';
+import { IconButton, Tooltip } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { format } from "date-fns";
+import { es } from "date-fns/locale/es";
 import React, { useContext, useEffect } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
 
@@ -43,10 +45,7 @@ const rows = [
   createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
 
-export default function TableVisit({ visit, item }) {
-  console.log(visit);
-  const formattedDate = moment(item.created_at).format('DD/MM/YYYY HH:mm:ss');
-
+export default function TableVisit({ visit }) {
   const { DeleteVisit } = React.useContext(VisitContext);
 
   return (
@@ -73,16 +72,30 @@ export default function TableVisit({ visit, item }) {
               <StyledTableCell align="right">{item.last_name}</StyledTableCell>
               <StyledTableCell align="right"> {item.phone} </StyledTableCell>
               <StyledTableCell align="right"> {item.email} </StyledTableCell>
-              {/* <StyledTableCell align="right">{item.created_at}</StyledTableCell> */}
-              <StyledTableCell align="right">{formattedDate}</StyledTableCell>
+              <StyledTableCell align="right">
+                {format(
+                  new Date(item.created_at),
+                  "dd 'de' MMMM 'de' yyyy 'a las' HH:mm",
+                  { locale: es }
+                )}
+              </StyledTableCell>
               <StyledTableCell align="right"> {item.message} </StyledTableCell>
               <StyledTableCell align="right"> {visit.name} </StyledTableCell>
               <StyledTableCell align="right">
+                <IconButton size="small">
+                  <Tooltip title="Contactar al Cliente" placement="right">
+                    <a href={`https://wa.me/${item.phone}`}>
+                      <WhatsAppIcon sx={{ color: "#00A884" }} />
+                    </a>
+                  </Tooltip>
+                </IconButton>
                 <IconButton
                   size="small"
                   onClick={() => DeleteVisit(visit.bookings[0].id)}
                 >
-                  <DeleteIcon sx={{ color: "red" }} />
+                  <Tooltip title="Eliminar Visita" placement="right">
+                    <DeleteIcon sx={{ color: "red" }} />
+                  </Tooltip>
                 </IconButton>
               </StyledTableCell>
             </StyledTableRow>

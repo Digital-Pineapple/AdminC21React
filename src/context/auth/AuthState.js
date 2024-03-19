@@ -188,6 +188,28 @@ const AuthState = (props) => {
       });
   };
 
+  //cuando el usuario Ccambia de contraseña
+  const ResetPassword = (datos) => {
+    let url = "/forgotPassword";
+    MethodPost(url, datos)
+      .then((res) => {
+        Swal.fire({
+          title: "Verificado",
+          text: "Se ha enviado un correo electrónico con tu nueva contraseña generada.",
+          icon: "success",
+        }).then(() => {
+          window.location.href = "/iniciar-sesion";
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error",
+          text: error.response.data.message,
+          icon: "error",
+        });
+      });
+  };
+
   // Cambiar Imagen de Perfil
   const ChangePhoto = (data) => {
     Swal.fire({
@@ -255,6 +277,7 @@ const AuthState = (props) => {
         directions: state.directions,
         iniciarSesion,
         usuarioAutenticado,
+        ResetPassword,
         cerrarSesion,
         ChangePasswordUser,
         ChangePhoto,
