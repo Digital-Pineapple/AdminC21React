@@ -35,10 +35,10 @@ const useStyles = makeStyles({
 
 const VerifyAccount = () => {
   const classes = useStyles();
-  const { sendVerificationEmail } = React.useContext(AuthContext);
+  const { VerifyCode } = React.useContext(AuthContext);
 
   const reset = () => {
-    setValue("email", "", { shouldDirty: true });
+    setValue("code", "", { shouldDirty: true });
   };
 
   const {
@@ -49,7 +49,7 @@ const VerifyAccount = () => {
   } = useForm();
 
   const onSubmit = (data, e) => {
-    sendVerificationEmail(data);
+    VerifyCode(data);
     reset();
   };
 
