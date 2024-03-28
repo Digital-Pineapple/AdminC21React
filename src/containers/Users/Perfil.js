@@ -188,8 +188,9 @@ const Perfil = () => {
                           ? "Inmobiliaria"
                           : User.type_user === 3
                           ? "Asesor (Individual)"
-                          : User.type_user === 4 &&
-                            "Inquilino (Rentar/Comprar)"}
+                          : User.type_user === 4
+                          ? "Inquilino (Rentar/Comprar)"
+                          : User.type_user === 5 && "Asesor (Inmobiliaria)"}
                       </Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>

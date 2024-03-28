@@ -9,6 +9,7 @@ import PropertiesPending from "../containers/Properties/IndexPropertiesPending";
 import VisitProperty from "../containers/Visits/VisitProperty";
 import CreateProperty from "../containers/Properties/CreateProperty";
 import Users from "../containers/Users/Users";
+import AseUsers from "../containers/AseUsers/Users";
 import Perfil from "../containers/Users/Perfil";
 import EditProperty from "../containers/Properties/EditProperty";
 import DetailProperty from "../containers/Properties/DetailProperty";
@@ -26,6 +27,7 @@ const AdminRoutes = () => {
       <Route exact path="/EditProperty/:id" component={EditProperty} />
       <Route exact path="/Propertydetail/:id" component={DetailProperty} />
       <Route exact path="/Users" component={Users} />
+      <Route exact path="/AseUsers" component={AseUsers} />
       <Route exact path="/Perfil" component={Perfil} />
     </Switch>
   );

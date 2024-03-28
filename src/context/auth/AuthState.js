@@ -76,7 +76,7 @@ const AuthState = (props) => {
   };
 
   //Register
-  const AddUser = (datos) => {
+  const AddUserq = (datos) => {
     let url = "/register";
     MethodPost(url, datos)
       .then((res) => {
@@ -106,7 +106,7 @@ const AuthState = (props) => {
   };
 
   //Register
-  const AddUsera = (datos) => {
+  const AddUser = (datos) => {
     let url = "/register";
     MethodPost(url, datos)
       .then((res) => {
@@ -121,6 +121,7 @@ const AuthState = (props) => {
           icon: "success",
         }).then(() => {
           const token = res.data.access_token;
+          localStorage.setItem("mi token", token);
           tokenAuth(token);
           MethodGet("/verify-account")
             .then((res) => {
@@ -156,15 +157,10 @@ const AuthState = (props) => {
   };
 
   // Función para verificar el código de verificación
-  const VerifyCode = (datos) => {
+  const VerifyCode = (datos, token) => {
+    tokenAuth(token);
     let url = "/verify-account-check";
-    const headerConfig = {
-      headers: {
-        "Content-type": "aplication/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    };
-    MethodPost(url, datos, headerConfig)
+    MethodPost(url, datos)
       .then((res) => {
         console.log(res);
         dispatch({
@@ -172,17 +168,18 @@ const AuthState = (props) => {
           payload: res.data.data,
         });
         Swal.fire({
-          title: "Código",
-          text: "Valido correctamente",
+          title: "¡Bien!",
+          text: res.data.message,
           icon: "success",
         });
         usuarioAutenticado();
+        console.log(usuarioAutenticado, "que hay ?");
       })
       .catch((error) => {
         Swal.fire({
-          title: "Código",
-          icon: "Incorrecto, Intenta de nuevo",
+          title: "¡Error!",
           text: error.response.data.message,
+          icon: "error",
         });
         dispatch({
           type: SHOW_ERRORS_API,
@@ -230,6 +227,35 @@ const AuthState = (props) => {
         Swal.fire({
           title: "Registrado",
           text: "Usuario registrado correctamente",
+          icon: "success",
+        });
+        usuarioAutenticado();
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: error.response.data.message,
+        });
+        dispatch({
+          type: SHOW_ERRORS_API,
+        });
+      });
+  };
+
+  // Registra un nuevo Usuario
+  const NewUserInm = (datos) => {
+    let url = "/registerUserInm";
+    MethodPost(url, datos)
+      .then((res) => {
+        console.log(res);
+        dispatch({
+          type: types,
+          payload: res.data.data,
+        });
+        Swal.fire({
+          title: "Registrado",
+          text: "Asesor registrado correctamente",
           icon: "success",
         });
         usuarioAutenticado();
@@ -343,8 +369,10 @@ const AuthState = (props) => {
 
   //Cierrra sesion del usuario
   const cerrarSesion = () => {
-    localStorage.removeItem("type_user");
+    localStorage.removeItem("usuaio");
     localStorage.removeItem("user_id");
+    localStorage.removeItem("type_user");
+    localStorage.removeItem("token");
     dispatch({
       type: types.CERRAR_SESION,
     });
@@ -362,6 +390,7 @@ const AuthState = (props) => {
         iniciarSesion,
         usuarioAutenticado,
         ResetPassword,
+        NewUserInm,
         cerrarSesion,
         VerifyCode,
         ChangePasswordUser,

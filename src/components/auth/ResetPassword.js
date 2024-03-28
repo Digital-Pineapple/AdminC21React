@@ -18,7 +18,10 @@ const useStyles = makeStyles({
     minHeight: "100vh",
     boxSizing: "content-box",
     width: "100%",
-    backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
+    // backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
+    background: "rgb(197,224,228)",
+    background:
+      "radial-gradient(circle, rgba(197,224,228,1) 0%, rgba(88,129,255,1) 100%)",
     backgroundRepeat: "no-repeat",
     opacity: 1,
     overflowY: "none",

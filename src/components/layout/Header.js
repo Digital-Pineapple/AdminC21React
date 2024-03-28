@@ -262,10 +262,10 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Mis Usuarios",
-      value: "/Users",
+      name: "Mis Asesores",
+      value: "/AseUsers",
       icon: (
-        <Tooltip title="Mis Usuarios" placement="right">
+        <Tooltip title="Mis Asesores" placement="right">
           <GroupIcon />
         </Tooltip>
       ),
@@ -379,6 +379,53 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Aprobados" placement="right">
           <HolidayVillageIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Buscar Propiedades",
+      value: "/SearchProperties",
+      icon: (
+        <Tooltip title="Buscar Propiedades" placement="right">
+          <SearchIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Visitas Agendadas",
+      value: "/Visit",
+      icon: (
+        <Tooltip title="Visitas Agendadas" placement="right">
+          <CalendarMonthIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Mi Perfil",
+      value: "/Perfil",
+      icon: (
+        <Tooltip title="Mi Perfil" placement="right">
+          <AccountCircleIcon />
+        </Tooltip>
+      ),
+    },
+  ];
+  const ASINM = [
+    {
+      name: "Inicio",
+      value: "/",
+      icon: (
+        <Tooltip title="Inicio" placement="right">
+          <HomeIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Nueva Propiedad",
+      value: "/CreateProperty",
+      icon: (
+        <Tooltip title="Nueva Propiedad" placement="right">
+          <AddIcon />{" "}
         </Tooltip>
       ),
     },
@@ -568,6 +615,39 @@ export default function Header({ children }) {
               ))
             ) : usuario.type_user === 4 ? (
               IND.map((text, index) => (
+                <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                  <Link to={text.value} style={{ textDecoration: "none" }}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                          color: "#1F3473",
+                        }}
+                      >
+                        {text.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={text.name}
+                        sx={{
+                          opacity: open ? 1 : 0,
+                          color: "#1F3473",
+                          fontWeight: "bold",
+                        }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))
+            ) : usuario.type_user === 5 ? (
+              ASINM.map((text, index) => (
                 <ListItem key={text} disablePadding sx={{ display: "block" }}>
                   <Link to={text.value} style={{ textDecoration: "none" }}>
                     <ListItemButton

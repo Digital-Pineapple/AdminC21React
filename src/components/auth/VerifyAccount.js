@@ -18,7 +18,10 @@ const useStyles = makeStyles({
     minHeight: "100vh",
     boxSizing: "content-box",
     width: "100%",
-    backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
+    // backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
+    background: "rgb(197,224,228)",
+    background:
+      "radial-gradient(circle, rgba(96,136,253,1) 0%, rgba(174,203,229,1) 100%)",
     backgroundRepeat: "no-repeat",
     opacity: 1,
     overflowY: "none",
@@ -36,7 +39,7 @@ const useStyles = makeStyles({
 const VerifyAccount = () => {
   const classes = useStyles();
   const { VerifyCode } = React.useContext(AuthContext);
-
+  const token = localStorage.getItem("mi token");
   const reset = () => {
     setValue("code", "", { shouldDirty: true });
   };
@@ -49,7 +52,7 @@ const VerifyAccount = () => {
   } = useForm();
 
   const onSubmit = (data, e) => {
-    VerifyCode(data);
+    VerifyCode(data, token);
     reset();
   };
 

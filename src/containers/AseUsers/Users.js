@@ -1,14 +1,15 @@
 import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
-import TableUsers from "./TableUsers";
 import LoadingComponent from "../../components/loading/LoadingComponent";
 import UsersContext from "../../context/Users/UsersContext";
-import AddUser from "./AddUser";
-import CardUser from "../../components/Cards/CardUser";
+import CardUserInm from "../../components/Cards/CardUserInm";
+import AddUser from "../AseUsers/AddUser";
 import NoDataComponent from "../../components/loading/NoDataComponent";
-const Users = () => {
+const AseUsers = () => {
   const { GetUsers, users, success } = useContext(UsersContext);
+  const User = JSON.parse(localStorage.getItem("usuaio"));
+
   useEffect(() => {
     GetUsers();
   }, []);
@@ -30,7 +31,7 @@ const Users = () => {
             variant="h4"
             sx={{ color: "#1F3473" }}
           >
-            Usuarios
+            Mis Asesores
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
@@ -53,7 +54,7 @@ const Users = () => {
         {success && users.length ? (
           users.map((user) => (
             <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-              <CardUser user={user} />
+              <CardUserInm user={user} />
             </Grid>
           ))
         ) : success && users.length <= 0 ? (
@@ -69,4 +70,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default AseUsers;

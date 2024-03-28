@@ -10,7 +10,7 @@ const UsersReducer = (state, action) => {
       return {
         ...state,
         users: action.payload,
-        success: false,
+        success: true,
         ErrorsApi: [],
       };
     case ADD_USERS:

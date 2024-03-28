@@ -27,7 +27,12 @@ const VisitState = ({ children }) => {
         .catch((error) => {
           console.log(error);
         });
-    } else if (type_user === "2" || type_user === "3" || type_user === "4") {
+    } else if (
+      type_user === "2" ||
+      type_user === "3" ||
+      type_user === "4" ||
+      type_user === "5"
+    ) {
       let url = `/visitTypeUser/${user_id}`;
       MethodGet(url)
         .then((res) => {

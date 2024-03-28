@@ -27,7 +27,10 @@ const useStyles = makeStyles({
     minHeight: "100vh",
     boxSizing: "content-box",
     width: "100%",
-    backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
+    // backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
+    background: "rgb(197,224,228)",
+    background:
+      "radial-gradient(circle, rgba(96,136,253,1) 0%, rgba(174,203,229,1) 100%)",
     backgroundRepeat: "no-repeat",
     opacity: 1,
     overflowY: "none",
@@ -40,7 +43,6 @@ const useStyles = makeStyles({
     backdropFilter: "blur(20px)",
     border: "1px solid rgba(255, 255, 255, 0.3)",
     margin: "auto",
-    width: "60%",
   },
 });
 
@@ -125,6 +127,7 @@ const Register = () => {
                 padding: 4,
                 position: "relative",
                 marginTop: 5,
+                width: { xs: "60%", md: "30%" },
               }}
               className={classes.caja}
             >
