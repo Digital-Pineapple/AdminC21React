@@ -3,6 +3,7 @@ import {
   DELETE_USERS,
   GET_ALL_USERS,
   UPDATE_USERS,
+  UPDATE_USERS_INM,
 } from "../../types/index";
 const UsersReducer = (state, action) => {
   switch (action.type) {
@@ -21,14 +22,26 @@ const UsersReducer = (state, action) => {
     case UPDATE_USERS:
       return {
         ...state,
+        ErrorsApi: [],
         users: state.users.map((user) => {
           if (user.id === action.payload.id) {
             user = action.payload;
           }
           return user;
         }),
-        ErrorsApi: [],
       };
+    case UPDATE_USERS_INM:
+      return {
+        ...state,
+        ErrorsApi: [],
+        users: state.users.map((user) => {
+          if (user.id === action.payload.id) {
+            user = action.payload;
+          }
+          return user;
+        }),
+      };
+
     case DELETE_USERS:
       return {
         ...state,

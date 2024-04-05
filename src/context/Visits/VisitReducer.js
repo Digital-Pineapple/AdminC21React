@@ -9,11 +9,16 @@ const VisitReducer = (state, action) => {
         ErrorsApi: [],
       };
     case DELETE_VISITS:
+      let newV = state.visits.map((visit) => {
+        let copyVisit = visit;
+        copyVisit.bookings = visit.bookings.filter(
+          (item) => item.id !== action.payload
+        );
+        return copyVisit;
+      });
       return {
         ...state,
-        visits: state.visits.filter(
-          (visit) => visit.id !== action.payload
-        ),
+        visits: newV,
       };
     default:
       return state;

@@ -106,11 +106,13 @@ const PropertiesCreate = () => {
     setValue("apple_house", "", { shouldDirty: true });
     setValue("street_name", "", { shouldDirty: true });
     setValue("number_building", "", { shouldDirty: true });
+    setValue("number_int", "", { shouldDirty: true });
     setValue("no_int", "", { shouldDirty: true });
     setValue("colony", "", { shouldDirty: true });
     setValue("postal_code", "", { shouldDirty: true });
   };
-
+  let user_id = localStorage.getItem("user_id");
+  let type_user = localStorage.getItem("type_user");
   const onSubmit = (data, e) => {
     data.category_id = category;
     data.rule_id = option;
@@ -133,6 +135,8 @@ const PropertiesCreate = () => {
     }
     data.fractionamient = selectedValueFractionamient;
     data.iframe = map;
+    data.user_id = user_id;
+    data.type_user = type_user;
     // data.category = CategoryId;
     // data.subcategory = SubcategoryId;
     // data.tags = tagId;
@@ -146,7 +150,6 @@ const PropertiesCreate = () => {
     // data.price_purchase = PriceFormat(data.price_purchase);
     // data.price = PriceFormat(data.price);
     AddProperty(data);
-    // reset();
     reset();
   };
 
@@ -194,6 +197,14 @@ const PropertiesCreate = () => {
                     message:
                       "Los años de antiguedad de la propiedad es requerida",
                   },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 3,
+                    message: "Maximo 3 caracteres",
+                  },
                 })}
               />
             </Grid>
@@ -211,6 +222,14 @@ const PropertiesCreate = () => {
                     value: true,
                     message:
                       "El numero de recamaras de la propiedad es requerida",
+                  },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 2,
+                    message: "Maximo 2 caracteres",
                   },
                 })}
               />
@@ -230,6 +249,14 @@ const PropertiesCreate = () => {
                     message:
                       "El numero de baños completos de la propiedad es requerida",
                   },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 2,
+                    message: "Maximo 2 caracteres",
+                  },
                 })}
               />
             </Grid>
@@ -247,6 +274,14 @@ const PropertiesCreate = () => {
                     value: true,
                     message:
                       "El numero de medios baños de la propiedad es requerida",
+                  },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 3,
+                    message: "Maximo 3 caracteres",
                   },
                 })}
               />
@@ -266,6 +301,14 @@ const PropertiesCreate = () => {
                     message:
                       "El numero de metros construidos de la propiedad es requerida",
                   },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 5,
+                    message: "Maximo 5 caracteres",
+                  },
                 })}
               />
             </Grid>
@@ -283,6 +326,14 @@ const PropertiesCreate = () => {
                     value: true,
                     message:
                       "El numero de metros completos de la propiedad es requerida",
+                  },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 5,
+                    message: "Maximo 5 caracteres",
                   },
                 })}
               />
@@ -317,6 +368,14 @@ const PropertiesCreate = () => {
                       value: true,
                       message:
                         "El numero de lugares de estacionamiento de la propiedad es requerida",
+                    },
+                    minLength: {
+                      value: 1,
+                      message: "Minimo 1 caracteres",
+                    },
+                    maxLength: {
+                      value: 2,
+                      message: "Maximo 2 caracteres",
                     },
                   })}
                 />
@@ -359,6 +418,14 @@ const PropertiesCreate = () => {
                     value: true,
                     message: "El nombre de la propiedad es requerida",
                   },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "Maximo 50 caracteres",
+                  },
                 })}
               />
             </Grid>
@@ -383,6 +450,14 @@ const PropertiesCreate = () => {
                   required: {
                     value: true,
                     message: "El precio de la propiedad es requerido",
+                  },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 12,
+                    message: "Maximo 12 caracteres",
                   },
                 })}
               />
@@ -441,6 +516,14 @@ const PropertiesCreate = () => {
                     value: true,
                     message: "La calle de la propiedad es requerida",
                   },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "Maximo 50 caracteres",
+                  },
                 })}
               />
             </Grid>
@@ -448,7 +531,7 @@ const PropertiesCreate = () => {
               <TextField
                 fullWidth
                 variant="outlined"
-                type="text"
+                type="number"
                 label="No_Ext"
                 name="number_building"
                 error={errors.number_building ? true : false}
@@ -458,6 +541,14 @@ const PropertiesCreate = () => {
                     value: true,
                     message: "El numero eexterior es requerido",
                   },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 5,
+                    message: "Maximo 5 caracteres",
+                  },
                 })}
               />
             </Grid>
@@ -465,7 +556,7 @@ const PropertiesCreate = () => {
               <TextField
                 fullWidth
                 variant="outlined"
-                type="text"
+                type="number"
                 label="No_Int"
                 name="number_int"
                 error={errors.number_int ? true : false}
@@ -474,6 +565,14 @@ const PropertiesCreate = () => {
                   required: {
                     value: true,
                     message: "El numero interior es requerido",
+                  },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 5,
+                    message: "Maximo 5 caracteres",
                   },
                 })}
               />
@@ -491,6 +590,14 @@ const PropertiesCreate = () => {
                   required: {
                     value: true,
                     message: "La colonia de la propiedad es requerida",
+                  },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "Maximo 50 caracteres",
                   },
                 })}
               />
@@ -510,7 +617,7 @@ const PropertiesCreate = () => {
               <TextField
                 fullWidth
                 variant="outlined"
-                type="text"
+                type="number"
                 label="Codigo Postal"
                 name="postal_code"
                 error={errors.postal_code ? true : false}
@@ -519,6 +626,14 @@ const PropertiesCreate = () => {
                   required: {
                     value: true,
                     message: "El codigo postal de la propiedad es requerida",
+                  },
+                  minLength: {
+                    value: 1,
+                    message: "Minimo 1 caracteres",
+                  },
+                  maxLength: {
+                    value: 10,
+                    message: "Maximo 10 caracteres",
                   },
                 })}
               />

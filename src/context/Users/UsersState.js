@@ -13,9 +13,10 @@ import {
   GET_ALL_USERS,
   SHOW_ERRORS_API,
   UPDATE_USERS,
+  UPDATE_USERS_INM,
 } from "../../types";
 const UsersState = ({ children }) => {
-    //estado inicial
+  //estado inicial
   const initialState = {
     users: [],
     user: null,
@@ -79,27 +80,24 @@ const UsersState = ({ children }) => {
     let url = "/updateTypeUser/" + data.id;
     MethodPut(url, data)
       .then((res) => {
-        dispatch({
-          type: UPDATE_USERS,
-          payload: res.data,
-        });
         Swal.fire({
           title: "Editado",
           text: "El usuario se ha editado correctamente!",
           icon: "success",
-          timer: 1000,
-          showConfirmButton: false,
-          didClose: () => {
-            window.location.reload();
-          },
+        });
+        dispatch({
+          type: UPDATE_USERS,
+          payload: res.data.data,
         });
       })
       .catch((error) => {
         Swal.fire({
           title: "Error",
-          icon: "error",
           text: error.response.data.message,
-          showConfirmButton: false,
+          icon: "error",
+        });
+        dispatch({
+          type: SHOW_ERRORS_API,
         });
       });
   };
@@ -108,27 +106,24 @@ const UsersState = ({ children }) => {
     let url = "/editUserInm/" + data.id;
     MethodPost(url, data)
       .then((res) => {
-        dispatch({
-          type: UPDATE_USERS,
-          payload: res.data,
-        });
         Swal.fire({
           title: "Editado",
           text: "El usuario se ha editado correctamente!",
           icon: "success",
-          timer: 1000,
-          showConfirmButton: false,
-          didClose: () => {
-            window.location.reload();
-          },
+        });
+        dispatch({
+          type: UPDATE_USERS_INM,
+          payload: res.data.data,
         });
       })
       .catch((error) => {
         Swal.fire({
           title: "Error",
-          icon: "error",
           text: error.response.data.message,
-          showConfirmButton: false,
+          icon: "error",
+        });
+        dispatch({
+          type: SHOW_ERRORS_API,
         });
       });
   };

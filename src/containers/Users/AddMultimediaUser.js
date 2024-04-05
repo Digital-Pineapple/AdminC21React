@@ -20,33 +20,20 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AttachFileMultimedia({
-  open,
-  handleClose,
-  id,
-  id_User,
-}) {
+export default function AttachFileMultimedia({ open, handleClose, id }) {
   const classes = useStyles();
   const [image, saveImage] = useState({
     urlPhoto:
-      "https://www.pacifictrellisfruit.com/wp-content/uploads/2016/04/default-placeholder-300x300.png",
+      "https://yocomparto.com.mx/wp-content/uploads/2024/02/placeholder.png",
     image: "",
   });
   const [debouncedFile] = useDebounce(image.image, 500);
   const handleChangeImage = (e) => {
     saveImage({
-      image,
+      ...image,
       urlPhoto: URL.createObjectURL(e.target.files[0]),
       image: e.target.files[0],
     });
-    let img = JSON.parse(localStorage.getItem("usuaio"));
-    img.image = URL.createObjectURL(e.target.files[0]);
-    localStorage.setItem("usuaio", JSON.stringify(img));
-    setTimeout(() => {
-      let xd = JSON.parse(localStorage.getItem("usuaio"));
-      xd.image = `https://mibien.s3.us-east-2.amazonaws.com/production/profile/${id_User}`;
-      localStorage.setItem("usuaio", JSON.stringify(xd));
-    }, 1000);
   };
 
   const { ChangePhoto } = useContext(AuthContext);

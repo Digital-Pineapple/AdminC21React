@@ -8,7 +8,6 @@ import AddUser from "../AseUsers/AddUser";
 import NoDataComponent from "../../components/loading/NoDataComponent";
 const AseUsers = () => {
   const { GetUsers, users, success } = useContext(UsersContext);
-  const User = JSON.parse(localStorage.getItem("usuaio"));
 
   useEffect(() => {
     GetUsers();

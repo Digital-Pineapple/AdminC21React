@@ -14,7 +14,7 @@ const VisitProperty = () => {
   return (
     <Layout>
       <Grid container spacing={2} sx={{ padding: 2 }}>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <Typography
             fontWeight="bold"
             fontFamily="monospace"
@@ -26,7 +26,7 @@ const VisitProperty = () => {
         </Grid>
         {success && visits.length ? (
           visits.map((visit) => (
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <TableVisit visit={visit} />
             </Grid>
           ))

@@ -8,7 +8,13 @@ import { useHistory } from "react-router-dom";
 /**Importar componente token headers */
 import tokenAuth from "../../config/TokenAuth";
 
-import { SHOW_ERRORS_API, types } from "../../types";
+import {
+  SHOW_ERRORS_API,
+  types,
+  GET_USER_ME,
+  UPDATE_INFO,
+  USER_CHANGEPHOTO,
+} from "../../types";
 
 import Swal from "sweetalert2";
 
@@ -20,6 +26,7 @@ const AuthState = (props) => {
     autenticado: false,
     usuario: {},
     User: {},
+    user_me: null,
     cargando: true,
     success: false,
     directions: [],
@@ -62,36 +69,6 @@ const AuthState = (props) => {
           payload: res.data,
         });
         usuarioAutenticado();
-      })
-      .catch((error) => {
-        Swal.fire({
-          title: "Error",
-          icon: "error",
-          text: error.response.data.message,
-        });
-        dispatch({
-          type: SHOW_ERRORS_API,
-        });
-      });
-  };
-
-  //Register
-  const AddUserq = (datos) => {
-    let url = "/register";
-    MethodPost(url, datos)
-      .then((res) => {
-        console.log(res);
-        dispatch({
-          type: types.REGISTRO_EXITOSO,
-          payload: res.data.data,
-        });
-        Swal.fire({
-          title: "¡Registro exitoso!",
-          text: "Ahora puedes iniciar sesion",
-          icon: "success",
-        }).then(() => {
-          window.location.href = "/iniciar-sesion";
-        });
       })
       .catch((error) => {
         Swal.fire({
@@ -198,8 +175,8 @@ const AuthState = (props) => {
           icon: "success",
         });
         dispatch({
-          type: types.UPDATE_INFO,
-          payload: res.data,
+          type: UPDATE_INFO,
+          payload: res.data.data,
         });
       })
       .catch((error) => {
@@ -349,8 +326,8 @@ const AuthState = (props) => {
               }
             });
             dispatch({
-              type: types.USER_CHANGEPHOTO,
-              payload: res.data,
+              type: USER_CHANGEPHOTO,
+              payload: res.data.data,
             });
           })
           .catch((error) => {
@@ -367,9 +344,22 @@ const AuthState = (props) => {
     });
   };
 
+  const UserMe = () => {
+    let url = "/me";
+    MethodGet(url)
+      .then((res) => {
+        dispatch({
+          type: GET_USER_ME,
+          payload: res.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   //Cierrra sesion del usuario
   const cerrarSesion = () => {
-    localStorage.removeItem("usuaio");
     localStorage.removeItem("user_id");
     localStorage.removeItem("type_user");
     localStorage.removeItem("token");
@@ -387,9 +377,11 @@ const AuthState = (props) => {
         success: state.success,
         cargando: state.cargando,
         directions: state.directions,
+        user_me: state.user_me,
         iniciarSesion,
         usuarioAutenticado,
         ResetPassword,
+        UserMe,
         NewUserInm,
         cerrarSesion,
         VerifyCode,

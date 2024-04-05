@@ -124,31 +124,67 @@ const PropertiesState = ({ children }) => {
 
   const AddProperty = (data) => {
     let url = "/properties";
-    MethodPost(url, data)
-      .then((res) => {
-        dispatch({
-          type: ADD_PROPERTY,
-          payload: res.data.data,
+    let type_user = localStorage.getItem("type_user");
+    if (
+      type_user === "1" ||
+      type_user === "2" ||
+      type_user === "3" ||
+      type_user === "4"
+    ) {
+      MethodPost(url, data)
+        .then((res) => {
+          dispatch({
+            type: ADD_PROPERTY,
+            payload: res.data.data,
+          });
+          Swal.fire({
+            title: "Registrado",
+            text: "La propiedad se ha registrado correctamente!",
+            icon: "success",
+            timer: 1000,
+            showConfirmButton: false,
+          });
+          setTimeout(() => {
+            window.location.href = "/PropertiesPending";
+          }, 1000);
+        })
+        .catch((error) => {
+          console.log(error);
+          Swal.fire({
+            title: "Error",
+            icon: "error",
+            text: error.response.data.message,
+          });
         });
-        Swal.fire({
-          title: "Registrado",
-          text: "La propiedad se ha registrado correctamente!",
-          icon: "success",
-          timer: 1000,
-          showConfirmButton: false,
+    } else if (type_user === "5") {
+      MethodPost(url, data)
+        .then((res) => {
+          Swal.fire({
+            title: "Registrado",
+            text: "¡La propiedad se ha registrado correctamente! Por favor, espera la aprobación de tu propiedad.",
+            icon: "success",
+          }).then((result) => {
+            if (result.value) {
+              window.location.reload();
+            }
+          });
+          dispatch({
+            type: ADD_PROPERTY,
+            payload: res.data.data,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          Swal.fire({
+            title: "Error",
+            icon: "error",
+            text: error.response.data.message,
+          });
+          dispatch({
+            type: SHOW_ERRORS_API,
+          });
         });
-        setTimeout(() => {
-          window.location.href = "/PropertiesPending";
-        }, 1000);
-      })
-      .catch((error) => {
-        console.log(error);
-        Swal.fire({
-          title: "Error",
-          icon: "error",
-          text: error.response.data.message,
-        });
-      });
+    }
   };
 
   const SearchProperties = (data) => {

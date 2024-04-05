@@ -24,7 +24,7 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
   const classes = useStyles();
   const [image, saveImage] = useState({
     urlPhoto:
-      "https://www.pacifictrellisfruit.com/wp-content/uploads/2016/04/default-placeholder-300x300.png",
+      "https://yocomparto.com.mx/wp-content/uploads/2024/02/placeholder.png",
     image: "",
   });
   const [debouncedFile] = useDebounce(image.image, 500);
