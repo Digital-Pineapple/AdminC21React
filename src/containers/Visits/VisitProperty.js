@@ -18,8 +18,8 @@ const VisitProperty = () => {
           <Typography
             fontWeight="bold"
             fontFamily="monospace"
-            variant="h4"
-            sx={{ color: "#1F3473", padding: 1 }}
+            variant="h5"
+            sx={{ color: "black" }}
           >
             Visitas Agendadas de mis Propiedades
           </Typography>

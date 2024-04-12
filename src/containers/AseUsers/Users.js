@@ -27,8 +27,8 @@ const AseUsers = () => {
           <Typography
             fontWeight="bold"
             fontFamily="monospace"
-            variant="h4"
-            sx={{ color: "#1F3473" }}
+            variant="h5"
+            sx={{ color: "black" }}
           >
             Mis Asesores
           </Typography>

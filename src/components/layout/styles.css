@@ -1,11 +1,17 @@
-.box{
-background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(9.2px);
-    -webkit-backdrop-filter: blur(9.2px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+.box {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.2px);
+  -webkit-backdrop-filter: blur(9.2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.header{
-    background-color: #662549;
+.header {
+  background-color: #662549;
+}
+#map iframe,
+#map object,
+#map embed {
+  max-width: 100%;
+  height: auto;
 }

@@ -87,7 +87,7 @@ const Perfil = () => {
                   <Typography
                     fontWeight="bold"
                     fontFamily="monospace"
-                    fontSize="40px"
+                    variant="h4"
                     textAlign="center"
                     sx={{ color: "#1F3473" }}
                   >

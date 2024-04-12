@@ -113,6 +113,7 @@ const PropertiesCreate = () => {
   };
   let user_id = localStorage.getItem("user_id");
   let type_user = localStorage.getItem("type_user");
+  console.log(user_id, type_user, "los datos");
   const onSubmit = (data, e) => {
     data.category_id = category;
     data.rule_id = option;
@@ -155,13 +156,13 @@ const PropertiesCreate = () => {
 
   return (
     <Layout>
-      <Grid container sx={{ marginTop: 1, padding: 2 }}>
+      <Grid container spacing={2} sx={{ padding: 2 }}>
         <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
           <Typography
             fontWeight="bold"
             fontFamily="monospace"
-            variant="h4"
-            sx={{ color: "#1F3473" }}
+            variant="h5"
+            sx={{ color: "black" }}
           >
             Agregar mi propiedad
           </Typography>

@@ -25,7 +25,7 @@ const AdminRoutes = () => {
       <Route exact path="/Visit" component={VisitProperty} />
       <Route exact path="/CreateProperty" component={CreateProperty} />
       <Route exact path="/EditProperty/:id" component={EditProperty} />
-      <Route exact path="/Propertydetail/:id" component={DetailProperty} />
+      <Route exact path="/Propertydetail/:id" component={DetailProperty} /> 
       <Route exact path="/Users" component={Users} />
       <Route exact path="/AseUsers" component={AseUsers} />
       <Route exact path="/Perfil" component={Perfil} />

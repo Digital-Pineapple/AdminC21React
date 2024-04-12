@@ -33,18 +33,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
-
 export default function TableVisit({ visit }) {
   const { DeleteVisit } = React.useContext(VisitContext);
 
@@ -54,7 +42,6 @@ export default function TableVisit({ visit }) {
         <TableHead>
           <TableRow>
             <StyledTableCell>Nombre(s):</StyledTableCell>
-            <StyledTableCell align="right">Apellido(s):</StyledTableCell>
             <StyledTableCell align="right">Telefono:</StyledTableCell>
             <StyledTableCell align="right">Correo Electronico:</StyledTableCell>
             <StyledTableCell align="right">Fecha Registrada:</StyledTableCell>
@@ -67,9 +54,8 @@ export default function TableVisit({ visit }) {
           {visit.bookings.map((item) => (
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">
-                {item.name}
+                {item.name} {item.last_name}
               </StyledTableCell>
-              <StyledTableCell align="right">{item.last_name}</StyledTableCell>
               <StyledTableCell align="right"> {item.phone} </StyledTableCell>
               <StyledTableCell align="right"> {item.email} </StyledTableCell>
               <StyledTableCell align="right">
@@ -94,7 +80,7 @@ export default function TableVisit({ visit }) {
                   onClick={() => DeleteVisit(visit.bookings[0].id)}
                 >
                   <Tooltip title="Eliminar Visita" placement="right">
-                    <DeleteIcon sx={{ color: "red" }} />
+                    <DeleteIcon sx={{ color: "#FF0000" }} />
                   </Tooltip>
                 </IconButton>
               </StyledTableCell>

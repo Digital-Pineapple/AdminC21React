@@ -147,13 +147,13 @@ const EditProperty = (props) => {
 
   return (
     <Layout>
-      <Grid container spacing={2} sx={{ marginTop: 1, padding: 2 }}>
+      <Grid container spacing={2} sx={{ padding: 2 }}>
         <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
           <Typography
             fontWeight="bold"
             fontFamily="monospace"
-            variant="h4"
-            sx={{ color: "#1f3473" }}
+            variant="h5"
+            sx={{ color: "black" }}
           >
             Editar Propiedad
           </Typography>
@@ -515,9 +515,23 @@ const EditProperty = (props) => {
                   defaultValue={property.address.iframe}
                 />
               </Grid>
-              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                <div dangerouslySetInnerHTML={{ __html: map }} id="map" />
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={6}
+                lg={6}
+                xl={4}
+                sx={{ display: "flex" }}
+              >
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: map,
+                  }}
+                  id="map"
+                />
               </Grid>
+
               <Grid
                 item
                 xs={12}

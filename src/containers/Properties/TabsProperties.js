@@ -17,8 +17,8 @@ export default function LabTabs() {
         <Typography
           fontWeight="bold"
           fontFamily="monospace"
-          variant="h4"
-          sx={{ color: "#1F3473" }}
+          variant="h5"
+          sx={{ color: "black" }}
         >
           Propiedades Aprobadas
         </Typography>

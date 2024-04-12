@@ -40,7 +40,12 @@ const Dashboard = () => {
           display="flex"
           justifyContent="start"
         >
-          <Typography variant="h4" fontWeight="bold" fontFamily="monospace" sx={{color: "#1F3473"}}>
+          <Typography
+            fontWeight="bold"
+            fontFamily="monospace"
+            variant="h5"
+            sx={{ color: "black" }}
+          >
             Vistazo General
           </Typography>
         </Grid>
@@ -70,7 +75,12 @@ const Dashboard = () => {
           display="flex"
           justifyContent="start"
         >
-          <Typography variant="h4" fontWeight="bold" fontFamily="monospace" sx={{color: "#1F3473"}}>
+          <Typography
+            fontWeight="bold"
+            fontFamily="monospace"
+            variant="h5"
+            sx={{ color: "black" }}
+          >
             Resumen de Tendencias
           </Typography>
         </Grid>

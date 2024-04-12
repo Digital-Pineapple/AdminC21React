@@ -44,16 +44,6 @@ export default function SearchProperties() {
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <Box sx={{ width: "100%", typography: "body1" }}>
               <TabContext value={value}>
-                <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
-                  <Typography
-                    fontWeight="bold"
-                    fontFamily="monospace"
-                    variant="h4"
-                    sx={{ color: "#1F3473" }}
-                  >
-                    Buscar Propiedades
-                  </Typography>
-                </Grid>
                 <TabPanel value="3">
                   <Grid
                     container

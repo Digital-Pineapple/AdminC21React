@@ -149,8 +149,8 @@ const AuthState = (props) => {
           text: res.data.message,
           icon: "success",
         });
+        localStorage.setItem("token", token);
         usuarioAutenticado();
-        console.log(usuarioAutenticado, "que hay ?");
       })
       .catch((error) => {
         Swal.fire({
@@ -310,21 +310,21 @@ const AuthState = (props) => {
       cancelButtonText: "No, cancelar",
     }).then((result) => {
       if (result.value) {
-        let url = "/profile/image/update";
         const formData = new FormData();
         formData.append("image", data.image);
-
+        let url = "/profile/image/update";
         MethodPost(url, formData, { headerConfig })
           .then((res) => {
             Swal.fire({
               title: "¡Foto!",
               text: "Modificada Correctamente",
+              showConfirmButton: false,
+              timer: 1000,
               icon: "success",
-            }).then((result) => {
-              if (result.value) {
-                window.location.reload();
-              }
             });
+            setTimeout(() => {
+              window.location.href = "/Perfil";
+            }, 1000);
             dispatch({
               type: USER_CHANGEPHOTO,
               payload: res.data.data,
@@ -335,9 +335,6 @@ const AuthState = (props) => {
               title: "Error",
               icon: "error",
               text: error.response.data.message,
-            });
-            dispatch({
-              type: SHOW_ERRORS_API,
             });
           });
       }

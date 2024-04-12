@@ -27,10 +27,10 @@ const Users = () => {
           <Typography
             fontWeight="bold"
             fontFamily="monospace"
-            variant="h4"
-            sx={{ color: "#1F3473" }}
+            variant="h5"
+            sx={{ color: "black" }}
           >
-            Usuarios
+            Mis Usuarios
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
