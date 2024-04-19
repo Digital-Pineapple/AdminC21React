@@ -41,7 +41,6 @@ const ServicesState = ({ children }) => {
     let url = "/services";
     MethodPost(url, data)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: ADD_SERVICE,
           payload: res.data.data,
@@ -50,45 +49,39 @@ const ServicesState = ({ children }) => {
           title: "Agregada",
           text: "Servicio Agregado correctamente",
           icon: "success",
-          timer: 1500,
-          showConfirmButton: false,
         });
       })
       .catch((error) => {
-        console.log(error.response.data.message);
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: error.response.data.message,
+        });
       });
   };
   const ChangeService = (data) => {
     let url = `/services/${data.id}`;
     MethodPut(url, data)
       .then((res) => {
+        dispatch({
+          type: UPDATE_SERVICE,
+          payload: res.data.data,
+        });
         Swal.fire({
           title: "Servicio Modificado",
           text: res.data.message,
           icon: "success",
-          timer: 1000,
-          showCancelButton: false,
-          showConfirmButton: false,
-        });
-        dispatch({
-          type: UPDATE_SERVICE,
-          payload: res.data.data,
         });
       })
       .catch((error) => {
         Swal.fire({
           title: "Error",
-          text: "Ocurrio un error al actualizar el servicio",
           icon: "error",
-          showConfirmButton: false,
-        });
-        dispatch({
-          type: SHOW_ERRORS_API,
-          payload: error.res.data.error,
+          text: error.response.data.message,
         });
       });
   };
-  //Eliminar categoria
+  //Eliminar servicio
   const DeleteService = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -108,8 +101,6 @@ const ServicesState = ({ children }) => {
               title: "Eliminado",
               text: res.data.message,
               icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
             });
             dispatch({
               type: DELETE_SERVICE,
@@ -121,7 +112,6 @@ const ServicesState = ({ children }) => {
               title: "Error",
               text: error.response.data.message,
               icon: "error",
-              showConfirmButton: true,
             });
           });
       }

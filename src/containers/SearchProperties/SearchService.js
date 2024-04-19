@@ -35,7 +35,6 @@ export default function SearchService({ cambio }) {
     setservice(value);
     cambio(value);
   };
-  //console.log(personName, "service");
 
   return (
     <div>

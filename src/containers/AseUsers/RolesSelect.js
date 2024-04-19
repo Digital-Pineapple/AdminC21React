@@ -14,6 +14,7 @@ const RolesSelect = (props) => {
       <FormControl fullWidth>
         <InputLabel id="roles-options-label">Tipo:</InputLabel>
         <Select
+          required
           labelId="roles-options-label"
           id="roles-options-select"
           onChange={detectarCambiosRole}

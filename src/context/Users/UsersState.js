@@ -58,7 +58,6 @@ const UsersState = ({ children }) => {
     let url = "/users";
     MethodPost(url, data)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: ADD_USERS,
           payload: res.data.data,
@@ -67,12 +66,14 @@ const UsersState = ({ children }) => {
           title: "Agregada",
           text: "Usuario Agregado correctamente",
           icon: "success",
-          timer: 1500,
-          showConfirmButton: false,
         });
       })
       .catch((error) => {
-        console.log(error.response.data.message);
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: error.response.data.message,
+        });
       });
   };
 
@@ -80,24 +81,21 @@ const UsersState = ({ children }) => {
     let url = "/updateTypeUser/" + data.id;
     MethodPut(url, data)
       .then((res) => {
+        dispatch({
+          type: UPDATE_USERS,
+          payload: res.data.data,
+        });
         Swal.fire({
           title: "Editado",
           text: "El usuario se ha editado correctamente!",
           icon: "success",
         });
-        dispatch({
-          type: UPDATE_USERS,
-          payload: res.data.data,
-        });
       })
       .catch((error) => {
         Swal.fire({
           title: "Error",
-          text: error.response.data.message,
           icon: "error",
-        });
-        dispatch({
-          type: SHOW_ERRORS_API,
+          text: error.response.data.message,
         });
       });
   };
@@ -106,14 +104,14 @@ const UsersState = ({ children }) => {
     let url = "/editUserInm/" + data.id;
     MethodPost(url, data)
       .then((res) => {
+        dispatch({
+          type: UPDATE_USERS_INM,
+          payload: res.data.data,
+        });
         Swal.fire({
           title: "Editado",
           text: "El usuario se ha editado correctamente!",
           icon: "success",
-        });
-        dispatch({
-          type: UPDATE_USERS_INM,
-          payload: res.data.data,
         });
       })
       .catch((error) => {
@@ -121,9 +119,6 @@ const UsersState = ({ children }) => {
           title: "Error",
           text: error.response.data.message,
           icon: "error",
-        });
-        dispatch({
-          type: SHOW_ERRORS_API,
         });
       });
   };
@@ -148,8 +143,6 @@ const UsersState = ({ children }) => {
               title: "Eliminado",
               text: res.data.message,
               icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
             });
             dispatch({
               type: DELETE_USERS,
@@ -161,8 +154,6 @@ const UsersState = ({ children }) => {
               title: "Error",
               text: error.response.data.message,
               icon: "error",
-              timer: 2000,
-              showConfirmButton: false,
             });
           });
       }
@@ -189,8 +180,6 @@ const UsersState = ({ children }) => {
               title: "Eliminado",
               text: res.data.message,
               icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
             });
             dispatch({
               type: DELETE_USERS,
@@ -202,8 +191,6 @@ const UsersState = ({ children }) => {
               title: "Error",
               text: error.response.data.message,
               icon: "error",
-              timer: 2000,
-              showConfirmButton: false,
             });
           });
       }

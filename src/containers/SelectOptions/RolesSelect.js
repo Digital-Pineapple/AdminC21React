@@ -3,15 +3,6 @@ import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import MethodGet from "../../config/service";
 
 const RolesSelect = (props) => {
-  // const [roles, saveRoles] = useState([]);
-  // const [selectedRole, setSelectedRole] = useState("");
-
-  // useEffect(() => {
-  //   let url = "/roles";
-  //   MethodGet(url)
-  //     .then((res) => saveRoles(res.data.data))
-  //     .catch((error) => console.log(error));
-  // }, []);
   const array = [
     { name: "Inquilino (Rentar/Comprar)", value: 4 },
     { name: "Asesor (Individual)", value: 3 },
@@ -28,9 +19,9 @@ const RolesSelect = (props) => {
       <FormControl fullWidth>
         <InputLabel id="roles-options-label">Soy</InputLabel>
         <Select
+          required
           labelId="roles-options-label"
           id="roles-options-select"
-          // value={selectedRole}
           onChange={detectarCambiosRole}
           label="Soy"
           name="account"

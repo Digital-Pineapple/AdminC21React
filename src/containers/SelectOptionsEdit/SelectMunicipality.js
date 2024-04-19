@@ -39,6 +39,7 @@ const SelectMunicipality = (props) => {
       <FormControl fullWidth>
         <InputLabel id="state-select-label">Selecciona un municipio</InputLabel>
         <Select
+          required
           labelId="state-select-label"
           id="state-select"
           value={selectedMunicipalityId}

@@ -128,7 +128,7 @@ const EditProperty = (props) => {
     setValue("colony", "", { shouldDirty: true });
     setValue("street_name", "", { shouldDirty: true });
     setValue("number_building", "", { shouldDirty: true });
-    setValue("no_int", "", { shouldDirty: true });
+    setValue("number_int", "", { shouldDirty: true });
   };
 
   const onSubmit = (data, e) => {
@@ -142,7 +142,7 @@ const EditProperty = (props) => {
     data.remodel = remodel;
     data.iframe = map;
     UpdateProperty(data);
-    reset();
+    // reset();
   };
 
   return (
@@ -505,6 +505,7 @@ const EditProperty = (props) => {
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <TextField
+                  required
                   multiline
                   rows={6}
                   fullWidth

@@ -20,6 +20,7 @@ const CategoriesSelect = (props) => {
       <FormControl fullWidth>
         <InputLabel id="parking-options-label">Selecciona categoría</InputLabel>
         <Select
+          required
           labelId="parking-options-label"
           id="parking-options-select"
           value={selectedCategory}

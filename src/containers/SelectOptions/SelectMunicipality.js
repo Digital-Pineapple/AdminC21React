@@ -29,14 +29,13 @@ const SelectMunicipality = (props) => {
     <>
       <label>Selecciona un municipio</label>
       <Select
+        required
         fullwith
         styles={selectStyles}
         onChange={(value) => detectarCambiosMunicipality(value)}
-        //className="basic-single"
         classNamePrefix="select"
         name="account"
         placeholder="Selecciona un municipio"
-        // options={nuevoArreglo}
         options={municipalities.map((muni) => {
           let attribute = {
             label: muni.name,

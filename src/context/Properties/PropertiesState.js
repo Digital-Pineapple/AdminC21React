@@ -141,19 +141,15 @@ const PropertiesState = ({ children }) => {
             title: "Registrado",
             text: "La propiedad se ha registrado correctamente!",
             icon: "success",
-            timer: 1000,
-            showConfirmButton: false,
-          });
-          setTimeout(() => {
+          }).then(() => {
             window.location.href = "/PropertiesPending";
-          }, 1000);
+          });
         })
         .catch((error) => {
-          console.log(error);
           Swal.fire({
             title: "Error",
             icon: "error",
-            text: error.response.data.message,
+            text: error.response.data[0],
           });
         });
     } else if (type_user === "5") {
@@ -174,11 +170,10 @@ const PropertiesState = ({ children }) => {
           });
         })
         .catch((error) => {
-          console.log(error);
           Swal.fire({
             title: "Error",
             icon: "error",
-            text: error.response.data.message,
+            text: error.response.data[0],
           });
           dispatch({
             type: SHOW_ERRORS_API,
@@ -223,21 +218,15 @@ const PropertiesState = ({ children }) => {
           title: "Editado",
           text: "La propiedad se ha editado correctamente!",
           icon: "success",
-          timer: 1000,
-          showConfirmButton: false,
+        }).then(() => {
+          window.location.reload();
         });
-        setTimeout(() => {
-          window.location.href = "/Properties";
-        }, 1000);
       })
       .catch((error) => {
-        console.log(error);
         Swal.fire({
           title: "Error",
           icon: "error",
-          text: error.response.data.message,
-          timer: 2000,
-          showConfirmButton: false,
+          text: error.response.data[0],
         });
       });
   };
@@ -296,13 +285,10 @@ const PropertiesState = ({ children }) => {
             Swal.fire({
               title: "Agregado",
               text: "La imagen se ha agregado correctamente!",
-              showConfirmButton: false,
-              timer: 1000,
               icon: "success",
-            });
-            setTimeout(() => {
+            }).then(() => {
               window.location.href = "/PropertiesPending";
-            }, 1000);
+            });
             dispatch({
               type: ADD_MULTIMEDIA_PROPERTY,
               payload: res.data.data,
@@ -337,8 +323,6 @@ const PropertiesState = ({ children }) => {
               title: "Eliminado",
               text: "La propiedad se ha eliminado correctamente!",
               icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
             });
             dispatch({
               type: DELETE_PROPERTY,
@@ -350,7 +334,6 @@ const PropertiesState = ({ children }) => {
               title: "Error",
               text: error.response.data.message,
               icon: "error",
-              showConfirmButton: false,
             });
           });
       }
@@ -373,10 +356,10 @@ const PropertiesState = ({ children }) => {
           .then((res) => {
             Swal.fire({
               title: "Publicado",
-              text: "La propiedad se ha publicado correctamente!",
+              text: "¡La propiedad se ha publicado correctamente!",
               icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
+            }).then((res) => {
+              window.location.href = "/Properties";
             });
             dispatch({
               type: PUBLISH_PROPERTY,
@@ -414,8 +397,8 @@ const PropertiesState = ({ children }) => {
               title: "Pendiente",
               text: "La propiedad ha regresado a status pendiente!",
               icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
+            }).then(() => {
+              window.location.href = "/PropertiesPending";
             });
             dispatch({
               type: BACK_PENDING_PROPERTY,

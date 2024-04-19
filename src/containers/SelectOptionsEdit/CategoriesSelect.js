@@ -41,12 +41,18 @@ const CategoriesSelect = ({ category_id, detectarCambiosCategory }) => {
   // Manejar el cambio de categoría
   const handleCategoryChange = (event) => {
     const selectedCategoryId = event.target.value;
-    const selectedCategory = cachedCategories.find((cat) => cat.id === selectedCategoryId);
+    const selectedCategory = cachedCategories.find(
+      (cat) => cat.id === selectedCategoryId
+    );
 
-    setSelectedOption(selectedCategory ? {
-      label: selectedCategory.name,
-      value: selectedCategory.id,
-    } : null);
+    setSelectedOption(
+      selectedCategory
+        ? {
+            label: selectedCategory.name,
+            value: selectedCategory.id,
+          }
+        : null
+    );
 
     detectarCambiosCategory(selectedCategoryId);
   };
@@ -62,6 +68,7 @@ const CategoriesSelect = ({ category_id, detectarCambiosCategory }) => {
       <FormControl fullWidth>
         <InputLabel id="parking-options-label">Selecciona categoría</InputLabel>
         <Select
+          required
           labelId="parking-options-label"
           id="parking-options-select"
           value={selectedOption ? selectedOption.value : ""}

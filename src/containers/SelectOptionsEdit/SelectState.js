@@ -51,6 +51,7 @@ const SelectState = (props) => {
       <FormControl fullWidth>
         <InputLabel id="state-select-label">Selecciona un Estado</InputLabel>
         <Select
+          required
           labelId="state-select-label"
           id="state-select"
           value={selectedState}

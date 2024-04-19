@@ -37,6 +37,7 @@ const Options = ({ detectarCambios, rules }) => {
       <FormControl fullWidth>
         <InputLabel id="parking-options-label">Selecciona servicio</InputLabel>
         <Select
+          required
           labelId="parking-options-label"
           id="parking-options-select"
           value={Rules ? Rules.value : ""}

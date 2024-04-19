@@ -39,6 +39,7 @@ const ParkingOptions = ({ detectarCambios, parking }) => {
         </InputLabel>
 
         <Select
+          required
           labelId="parking-options-label"
           id="parking-options-select"
           value={Parking ? Parking.value : ""}

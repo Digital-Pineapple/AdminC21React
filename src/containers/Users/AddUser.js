@@ -102,7 +102,6 @@ export default function NewUser({ modal, handleClose }) {
     data.type_user = role;
     NewUser(data);
     handleClose();
-    reset();
   };
 
   return (
@@ -193,12 +192,12 @@ export default function NewUser({ modal, handleClose }) {
                       message: "Este campo es requerido",
                     },
                     minLength: {
-                      value: 4,
-                      message: "Minimo 4 caracteres",
+                      value: 10,
+                      message: "Minimo 10 caracteres",
                     },
                     maxLength: {
-                      value: 255,
-                      message: "Maximo 255 caracteres",
+                      value: 10,
+                      message: "Maximo 10 caracteres",
                     },
                   })}
                 />

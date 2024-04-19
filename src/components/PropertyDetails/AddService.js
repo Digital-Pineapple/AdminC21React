@@ -23,10 +23,9 @@ export default function AddService({ modal, handleClose, id }) {
       .then((res) => {
         Swal.fire({
           title: "Agregado",
-          text: "sercivicio registrado",
+          text: "Sercivicio Registrado",
           icon: "success",
-          timer: 1000,
-          showConfirmButton: false,
+          showConfirmButton: true,
         });
       })
       .catch((error) => {

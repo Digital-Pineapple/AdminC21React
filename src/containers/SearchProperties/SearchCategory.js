@@ -37,7 +37,6 @@ const SearchCategory = ({ cambio }) => {
     setcategory(typeof value === "string" ? value.split(",") : value);
     cambio(value);
   };
-  //console.log(personName, "category");
 
   return (
     <div>

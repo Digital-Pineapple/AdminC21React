@@ -92,7 +92,10 @@ const AddressProperty = ({ address }) => {
               alignItems: "center",
             }}
           >
-            <Grid dangerouslySetInnerHTML={{ __html: address.iframe }}></Grid>
+            <div
+              dangerouslySetInnerHTML={{ __html: address.iframe }}
+              id="map"
+            />
           </Grid>
 
           {/* {address.fractionamient !== null && (

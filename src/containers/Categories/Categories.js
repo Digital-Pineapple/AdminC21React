@@ -18,7 +18,6 @@ const Categories = () => {
   useEffect(() => {
     GetCategories();
   }, []);
-  console.log(categories);
   return (
     <Layout>
       <Grid container spacing={2} sx={{ padding: 2 }}>

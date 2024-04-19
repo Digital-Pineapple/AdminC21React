@@ -67,8 +67,6 @@ const VisitState = ({ children }) => {
               title: "Eliminado",
               text: res.data.message,
               icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
             });
             dispatch({
               type: DELETE_VISITS,
@@ -80,8 +78,6 @@ const VisitState = ({ children }) => {
               title: "Error",
               text: error.response.data.message,
               icon: "error",
-              timer: 2000,
-              showConfirmButton: false,
             });
           });
       }

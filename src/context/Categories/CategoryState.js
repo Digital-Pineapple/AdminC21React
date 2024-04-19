@@ -41,7 +41,6 @@ const CategoryState = ({ children }) => {
     let url = "/categories";
     MethodPost(url, data)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: ADD_CATEGORY,
           payload: res.data.data,
@@ -50,41 +49,35 @@ const CategoryState = ({ children }) => {
           title: "Agregada",
           text: "Categoria Agregada correctamente",
           icon: "success",
-          timer: 1500,
-          showConfirmButton: false,
         });
       })
       .catch((error) => {
-        console.log(error.response.data.message);
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: error.response.data.message,
+        });
       });
   };
   const ChangeCategory = (data) => {
     let url = `/categories/${data.id}`;
     MethodPut(url, data)
       .then((res) => {
+        dispatch({
+          type: UPDATE_CATEGORY,
+          payload: res.data.data,
+        });
         Swal.fire({
           title: "Categoria Modificada",
           text: res.data.message,
           icon: "success",
-          timer: 1000,
-          showCancelButton: false,
-          showConfirmButton: false,
-        });
-        dispatch({
-          type: UPDATE_CATEGORY,
-          payload: res.data.data,
         });
       })
       .catch((error) => {
         Swal.fire({
           title: "Error",
-          text: "Ocurrio un error al actualizar la categoría",
           icon: "error",
-          showConfirmButton: false,
-        });
-        dispatch({
-          type: SHOW_ERRORS_API,
-          payload: error.res.data.error,
+          text: error.response.data.message,
         });
       });
   };
@@ -108,8 +101,6 @@ const CategoryState = ({ children }) => {
               title: "Eliminado",
               text: res.data.message,
               icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
             });
             dispatch({
               type: DELETE_CATEGORY,
@@ -121,8 +112,6 @@ const CategoryState = ({ children }) => {
               title: "Error",
               text: error.response.data.message,
               icon: "error",
-              timer: 2000,
-              showConfirmButton: false,
             });
           });
       }

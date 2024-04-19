@@ -113,7 +113,6 @@ const PropertiesCreate = () => {
   };
   let user_id = localStorage.getItem("user_id");
   let type_user = localStorage.getItem("type_user");
-  console.log(user_id, type_user, "los datos");
   const onSubmit = (data, e) => {
     data.category_id = category;
     data.rule_id = option;
@@ -138,20 +137,8 @@ const PropertiesCreate = () => {
     data.iframe = map;
     data.user_id = user_id;
     data.type_user = type_user;
-    // data.category = CategoryId;
-    // data.subcategory = SubcategoryId;
-    // data.tags = tagId;
-    // data.brand = brandId;
-    // data.product_type = typeProduct;
-    // data.discount = 0;
-    // //data.multimedia = multimedia;
-    // if (typeProduct === "2" && variant !== null) {
-    //   data.variation = variant;
-    // }
-    // data.price_purchase = PriceFormat(data.price_purchase);
-    // data.price = PriceFormat(data.price);
     AddProperty(data);
-    reset();
+    // reset();
   };
 
   return (
@@ -355,7 +342,7 @@ const PropertiesCreate = () => {
                 handleChangeParking={handleChangeParking}
               />
             </Grid>
-            {selectedValueParking === "si" && (
+            {/* {selectedValueParking === "si" && (
               <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
                 <TextField
                   fullWidth
@@ -381,7 +368,7 @@ const PropertiesCreate = () => {
                   })}
                 />
               </Grid>
-            )}
+            )} */}
             <Grid
               item
               xs={12}
@@ -641,6 +628,7 @@ const PropertiesCreate = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
               <TextField
+                required
                 multiline
                 rows={6}
                 fullWidth

@@ -28,14 +28,13 @@ const SelectState = (props) => {
     <>
       <label>Selecciona un estado</label>
       <Select
+        required
         fullwith
         styles={selectStyles}
         onChange={(value) => detectarCambiosState(value)}
-        //className="basic-single"
         classNamePrefix="select"
         name="account"
         placeholder="Selecciona un estado"
-        // options={nuevoArreglo}
         options={states.map((state) => {
           let attribute = {
             label: state.name,

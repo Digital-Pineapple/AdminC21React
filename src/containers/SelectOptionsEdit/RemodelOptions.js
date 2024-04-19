@@ -38,6 +38,7 @@ const RemodelOptions = ({ detectarCambios, remodel }) => {
           ¿Se encuentra en remodelacion actualmente?
         </InputLabel>
         <Select
+          required
           labelId="parking-options-label"
           id="parking-options-select"
           value={Remodel ? Remodel.value : ""}

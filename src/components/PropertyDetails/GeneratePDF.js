@@ -4,7 +4,6 @@ import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import PropertiesContext from "../../context/Properties/PropertiesContext";
 
 export default function GeneratePDF({ id, status }) {
-  console.log(status);
   const { DownloadPDF } = useContext(PropertiesContext);
   return (
     <>

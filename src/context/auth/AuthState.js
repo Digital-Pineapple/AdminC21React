@@ -63,7 +63,6 @@ const AuthState = (props) => {
     let url = "/login";
     MethodPost(url, datos)
       .then((res) => {
-        console.log(res.data);
         dispatch({
           type: types.LOGIN_EXITOSO,
           payload: res.data,
@@ -87,7 +86,6 @@ const AuthState = (props) => {
     let url = "/register";
     MethodPost(url, datos)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: types.REGISTRO_EXITOSO,
           payload: res.data.data,
@@ -102,7 +100,6 @@ const AuthState = (props) => {
           tokenAuth(token);
           MethodGet("/verify-account")
             .then((res) => {
-              console.log(res.data.message);
               window.location.href = "/verificar-cuenta";
             })
             .catch((error) => {
@@ -139,7 +136,6 @@ const AuthState = (props) => {
     let url = "/verify-account-check";
     MethodPost(url, datos)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: types,
           payload: res.data.data,
@@ -196,7 +192,6 @@ const AuthState = (props) => {
     let url = "/register";
     MethodPost(url, datos)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: types,
           payload: res.data.data,
@@ -225,7 +220,6 @@ const AuthState = (props) => {
     let url = "/registerUserInm";
     MethodPost(url, datos)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: types,
           payload: res.data.data,
@@ -318,13 +312,10 @@ const AuthState = (props) => {
             Swal.fire({
               title: "¡Foto!",
               text: "Modificada Correctamente",
-              showConfirmButton: false,
-              timer: 1000,
               icon: "success",
-            });
-            setTimeout(() => {
+            }).then(() => {
               window.location.href = "/Perfil";
-            }, 1000);
+            });
             dispatch({
               type: USER_CHANGEPHOTO,
               payload: res.data.data,
@@ -360,6 +351,7 @@ const AuthState = (props) => {
     localStorage.removeItem("user_id");
     localStorage.removeItem("type_user");
     localStorage.removeItem("token");
+    localStorage.removeItem("mi token");
     dispatch({
       type: types.CERRAR_SESION,
     });
