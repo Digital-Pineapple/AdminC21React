@@ -37,49 +37,50 @@ export default function TableVisit({ visit }) {
   const { DeleteVisit } = React.useContext(VisitContext);
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+    <TableContainer component={Paper} sx={{ overflowX: "auto" }}>
+      <Table aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Nombre(s):</StyledTableCell>
-            <StyledTableCell align="right">Telefono:</StyledTableCell>
-            <StyledTableCell align="right">Correo Electronico:</StyledTableCell>
-            <StyledTableCell align="right">Fecha Registrada:</StyledTableCell>
-            <StyledTableCell align="right">Mensaje:</StyledTableCell>
-            <StyledTableCell align="right">Propiedad:</StyledTableCell>
-            <StyledTableCell align="right">Acciones:</StyledTableCell>
+            <StyledTableCell>Nombre(s)</StyledTableCell>
+            <StyledTableCell>Telefono</StyledTableCell>
+            <StyledTableCell>Correo Electronico</StyledTableCell>
+            <StyledTableCell>Fecha Registrada</StyledTableCell>
+            <StyledTableCell>Mensaje</StyledTableCell>
+            <StyledTableCell>Propiedad</StyledTableCell>
+            <StyledTableCell>Acciones</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {visit.bookings.map((item) => (
-            <StyledTableRow>
-              <StyledTableCell component="th" scope="row">
+            <StyledTableRow key={item.id}>
+              <StyledTableCell>
                 {item.name} {item.last_name}
               </StyledTableCell>
-              <StyledTableCell align="right"> {item.phone} </StyledTableCell>
-              <StyledTableCell align="right"> {item.email} </StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell>{item.phone}</StyledTableCell>
+              <StyledTableCell>{item.email}</StyledTableCell>
+              <StyledTableCell>
                 {format(
                   new Date(item.created_at),
                   "dd 'de' MMMM 'de' yyyy 'a las' HH:mm",
                   { locale: es }
                 )}
               </StyledTableCell>
-              <StyledTableCell align="right"> {item.message} </StyledTableCell>
-              <StyledTableCell align="right"> {visit.name} </StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell>{item.message}</StyledTableCell>
+              <StyledTableCell>{visit.name}</StyledTableCell>
+              <StyledTableCell>
                 <IconButton size="small">
-                  <Tooltip title="Contactar al Cliente" placement="right">
-                    <a href={`https://wa.me/${item.phone}`}>
+                  <Tooltip title="Contactar al Cliente" placement="top">
+                    <a
+                      href={`https://wa.me/${item.phone}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <WhatsAppIcon sx={{ color: "#00A884" }} />
                     </a>
                   </Tooltip>
                 </IconButton>
-                <IconButton
-                  size="small"
-                  onClick={() => DeleteVisit(visit.bookings[0].id)}
-                >
-                  <Tooltip title="Eliminar Visita" placement="right">
+                <IconButton size="small" onClick={() => DeleteVisit(item.id)}>
+                  <Tooltip title="Eliminar Visita" placement="top">
                     <DeleteIcon sx={{ color: "#FF0000" }} />
                   </Tooltip>
                 </IconButton>

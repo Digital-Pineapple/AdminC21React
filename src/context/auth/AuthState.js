@@ -341,9 +341,7 @@ const AuthState = (props) => {
           payload: res.data.data,
         });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});  
   };
 
   //Cierrra sesion del usuario

@@ -461,7 +461,14 @@ export default function Header({ children }) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#1F3473" }}>
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{
+          background:
+            "radial-gradient(circle, rgba(142,213,225,1) 0%, rgba(31,52,115,1) 80%)",
+        }}
+      >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             color="inherit"
