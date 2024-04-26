@@ -97,7 +97,6 @@ export default function ChangePasswordUser({ modal, handleClose }) {
   const onSubmit = (data, e) => {
     ChangePasswordUser(data);
     handleClose();
-    reset();
   };
 
   return (

@@ -2,16 +2,14 @@ import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import AddService from "./AddService";
-import LoadingComponent from "../../components/loading/LoadingComponent";
 import ServicesContext from "../../context/Services/ServicesContext";
-
 import CardServices from "../../components/Cards/CardServices";
 const Services = () => {
   const [openModal, setOpenModal] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpenModal(true);
-  };
+  };  
   const handleClose = () => {
     setOpenModal(false);
   };
@@ -22,7 +20,6 @@ const Services = () => {
 
   return (
     <Layout>
-      {/* <Paper elevation={3} sx={{ margin: 5 }}> */}
       <Grid container spacing={2} sx={{ padding: 2 }}>
         <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>
           <Typography
@@ -51,17 +48,14 @@ const Services = () => {
             Agregar
           </Button>
         </Grid>
-        {services.length ? (
-          services.map((service) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-              <CardServices service={service} />
-            </Grid>
-          ))
-        ) : (
-          <LoadingComponent />
-        )}
+        {services.length > 0
+          ? services.map((service) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+                <CardServices service={service} />
+              </Grid>
+            ))
+          : null}
       </Grid>
-      {/* </Paper> */}
       <AddService modal={openModal} handleClose={handleClose} />
     </Layout>
   );

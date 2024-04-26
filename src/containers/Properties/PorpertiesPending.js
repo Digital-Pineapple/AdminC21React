@@ -5,7 +5,7 @@ import { Grid } from "@mui/material";
 import LoadingComponent from "../../components/loading/LoadingComponent";
 import NoDataComponent from "../../components/loading/NoDataComponent";
 const PorpertiesPending = () => {
-  const { GetPropertiesPending, properties, success } =
+  const { GetPropertiesPending, properties } =
     useContext(PropertiesContext);
   useEffect(() => {
     GetPropertiesPending();
@@ -14,19 +14,13 @@ const PorpertiesPending = () => {
   return (
     <div>
       <Grid container spacing={2}>
-        {success && properties.length ? (
-          properties.map((property) => (
-            <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
-              <CardProperty property={property} />
-            </Grid>
-          ))
-        ) : success && properties.length <= 0 ? (
-          <NoDataComponent />
-        ) : success === false ? (
-          <LoadingComponent />
-        ) : (
-          ""
-        )}
+        {properties.length > 0
+          ? properties.map((property) => (
+              <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
+                <CardProperty property={property} />
+              </Grid>
+            ))
+          : null}
       </Grid>
     </div>
   );

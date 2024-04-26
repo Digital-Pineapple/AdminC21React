@@ -2,7 +2,6 @@ import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import AddCategory from "./AddCategory";
-import LoadingComponent from "../../components/loading/LoadingComponent";
 import CategoryContext from "../../context/Categories/CategoryContext";
 import CardCategory from "../../components/Cards/CardCategory";
 const Categories = () => {
@@ -18,6 +17,7 @@ const Categories = () => {
   useEffect(() => {
     GetCategories();
   }, []);
+  
   return (
     <Layout>
       <Grid container spacing={2} sx={{ padding: 2 }}>
@@ -48,15 +48,13 @@ const Categories = () => {
             Agregar
           </Button>
         </Grid>
-        {categories.length ? (
-          categories.map((category) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-              <CardCategory category={category} />
-            </Grid>
-          ))
-        ) : (
-          <LoadingComponent />
-        )}
+        {categories.length > 0
+          ? categories.map((category) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+                <CardCategory category={category} />
+              </Grid>
+            ))
+          : null}
       </Grid>
       <AddCategory modal={openModal} handleClose={handleClose} />
     </Layout>

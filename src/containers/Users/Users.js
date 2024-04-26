@@ -1,17 +1,10 @@
 import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
-import TableUsers from "./TableUsers";
-import LoadingComponent from "../../components/loading/LoadingComponent";
 import UsersContext from "../../context/Users/UsersContext";
 import AddUser from "./AddUser";
 import CardUser from "../../components/Cards/CardUser";
-import NoDataComponent from "../../components/loading/NoDataComponent";
 const Users = () => {
-  const { GetUsers, users, success } = useContext(UsersContext);
-  useEffect(() => {
-    GetUsers();
-  }, []);
   const [openModal, setOpenModal] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -20,6 +13,11 @@ const Users = () => {
   const handleClose = () => {
     setOpenModal(false);
   };
+  const { GetUsers, users } = useContext(UsersContext);
+  useEffect(() => {
+    GetUsers();
+  }, []);
+  
   return (
     <Layout>
       <Grid container spacing={2} sx={{ padding: 2 }}>
@@ -50,19 +48,13 @@ const Users = () => {
             Agregar
           </Button>
         </Grid>
-        {success && users.length ? (
-          users.map((user) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-              <CardUser user={user} />
-            </Grid>
-          ))
-        ) : success && users.length <= 0 ? (
-          <NoDataComponent />
-        ) : success === false ? (
-          <LoadingComponent />
-        ) : (
-          ""
-        )}
+        {users.length > 0
+          ? users.map((user) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+                <CardUser user={user} />
+              </Grid>
+            ))
+          : null}
       </Grid>
       <AddUser modal={openModal} handleClose={handleClose} />
     </Layout>
