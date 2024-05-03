@@ -11,7 +11,8 @@ const VisitState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(VisitReducer, initialState);
-
+  
+  //Consulta las visitas
   const GetVisit = () => {
     let user_id = localStorage.getItem("user_id");
     let type_user = localStorage.getItem("type_user");

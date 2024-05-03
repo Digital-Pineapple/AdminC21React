@@ -23,7 +23,7 @@ const CategoryState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(CategoryReducer, initialState);
-
+  //Consulta las categorias
   const GetCategories = () => {
     let url = "/categories";
     MethodGet(url)
@@ -37,6 +37,7 @@ const CategoryState = ({ children }) => {
         console.log(error);
       });
   };
+  //Agrega una categoria
   const AddCategory = (data) => {
     let url = "/categories";
     MethodPost(url, data)
@@ -59,6 +60,7 @@ const CategoryState = ({ children }) => {
         });
       });
   };
+  //Edita una categoria
   const ChangeCategory = (data) => {
     let url = `/categories/${data.id}`;
     MethodPut(url, data)
@@ -81,7 +83,7 @@ const CategoryState = ({ children }) => {
         });
       });
   };
-  //Eliminar categoria
+  //Elimina una categoria
   const DeleteCategory = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",

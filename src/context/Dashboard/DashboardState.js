@@ -19,6 +19,7 @@ const DashboardState = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
+  //Consulta el total de propiedades
   const TotalProperties = () => {
     let url = "/countProperty";
     MethodGet(url)
@@ -32,6 +33,7 @@ const DashboardState = ({ children }) => {
         console.log(error);
       });
   };
+  //Consulta los inmuebles en venta
   const TotalPropertiesSold = () => {
     let url = "/countVent";
     MethodGet(url)
@@ -45,6 +47,7 @@ const DashboardState = ({ children }) => {
         console.log(error);
       });
   };
+  //Consulta los inmuebles en renta
   const TotalPropertiesRent = () => {
     let url = "/countRent";
     MethodGet(url)
@@ -58,6 +61,7 @@ const DashboardState = ({ children }) => {
         console.log(error);
       });
   };
+  //Consulta todos los usuarios
   const GetTotalUsers = () => {
     let url = "/countUser";
     MethodGet(url)

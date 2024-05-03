@@ -20,7 +20,6 @@ import Swal from "sweetalert2";
 
 const AuthState = (props) => {
   //Agregar state inicial
-  const history = useHistory();
   const initialState = {
     token: localStorage.getItem("token"),
     autenticado: false,
@@ -33,7 +32,6 @@ const AuthState = (props) => {
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
-  //funciones
   //Retorna el usuario autenticado
   const usuarioAutenticado = async (datos) => {
     const token = localStorage.getItem("token");
@@ -58,7 +56,7 @@ const AuthState = (props) => {
       });
   };
 
-  //cuando el usuario inicia sesion
+  //Cuando el usuario inicia sesion
   const iniciarSesion = (datos) => {
     let url = "/login";
     MethodPost(url, datos)
@@ -81,7 +79,7 @@ const AuthState = (props) => {
       });
   };
 
-  //Register
+  //Registro de usuario de la pagina web
   const AddUser = (datos) => {
     let url = "/register";
     MethodPost(url, datos)
@@ -160,7 +158,7 @@ const AuthState = (props) => {
       });
   };
 
-  // Edita la informacion del usuario
+  //Edita la informacion del usuario
   const EditInfo = (data) => {
     let url = `/updateProfile`;
     MethodPut(url, data)
@@ -187,7 +185,7 @@ const AuthState = (props) => {
       });
   };
 
-  // Registra un nuevo Usuario
+  //Registra un nuevo usuario
   const NewUser = (datos) => {
     let url = "/register";
     MethodPost(url, datos)
@@ -215,7 +213,7 @@ const AuthState = (props) => {
       });
   };
 
-  // Registra un nuevo Usuario
+  //Registra un nuevo asesor
   const NewUserInm = (datos) => {
     let url = "/registerUserInm";
     MethodPost(url, datos)
@@ -243,7 +241,7 @@ const AuthState = (props) => {
       });
   };
 
-  //cuando el usuario Ccambia de contraseña
+  //Cuando el usuario cambia de contraseña
   const ChangePasswordUser = (datos) => {
     let url = "/resetPassword";
     MethodPost(url, datos)
@@ -269,7 +267,7 @@ const AuthState = (props) => {
       });
   };
 
-  //cuando el usuario Ccambia de contraseña
+  //Restablecer la contraseña
   const ResetPassword = (datos) => {
     let url = "/forgotPassword";
     MethodPost(url, datos)
@@ -291,7 +289,7 @@ const AuthState = (props) => {
       });
   };
 
-  // Cambiar Imagen de Perfil
+  //Cambia la Imagen de Perfil
   const ChangePhoto = (data) => {
     Swal.fire({
       title: "Agregar Imagen",
@@ -332,6 +330,7 @@ const AuthState = (props) => {
     });
   };
 
+  //Consulta la informacion del usuario autentivcado
   const UserMe = () => {
     let url = "/me";
     MethodGet(url)
@@ -341,7 +340,7 @@ const AuthState = (props) => {
           payload: res.data.data,
         });
       })
-      .catch((error) => {});  
+      .catch((error) => {});
   };
 
   //Cierrra sesion del usuario

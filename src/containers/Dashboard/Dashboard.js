@@ -6,7 +6,6 @@ import PropertiesRent from "../../components/Dashboard/PropertiesRent";
 import CardProperties from "../../components/Dashboard/CardProperties";
 import DashboardContext from "../../context/Dashboard/DashboardContext";
 import Graphics from "../../components/Dashboard/Graphics";
-import Logout from "../../components/Dashboard/Logout";
 import { Grid, Typography } from "@mui/material";
 
 const Dashboard = () => {

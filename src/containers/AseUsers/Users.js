@@ -4,6 +4,7 @@ import Layout from "../../components/layout/Layout";
 import UsersContext from "../../context/Users/UsersContext";
 import CardUserInm from "../../components/Cards/CardUserInm";
 import AddUser from "../AseUsers/AddUser";
+import NoDataComponent from "../../components/loading/NoDataComponent";
 const AseUsers = () => {
   const [openModal, setOpenModal] = React.useState(false);
 
@@ -48,13 +49,17 @@ const AseUsers = () => {
             Agregar
           </Button>
         </Grid>
-        {users.length > 0
-          ? users.map((user) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-                <CardUserInm user={user} />
-              </Grid>
-            ))
-          : null}
+        {users.length > 0 ? (
+          users.map((user) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+              <CardUserInm user={user} />
+            </Grid>
+          ))
+        ) : (
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <NoDataComponent />
+          </Grid>
+        )}
       </Grid>
       <AddUser modal={openModal} handleClose={handleClose} />
     </Layout>

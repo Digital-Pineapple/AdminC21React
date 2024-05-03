@@ -4,12 +4,13 @@ import Layout from "../../components/layout/Layout";
 import AddService from "./AddService";
 import ServicesContext from "../../context/Services/ServicesContext";
 import CardServices from "../../components/Cards/CardServices";
+import NoDataComponent from "../../components/loading/NoDataComponent";
 const Services = () => {
   const [openModal, setOpenModal] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpenModal(true);
-  };  
+  };
   const handleClose = () => {
     setOpenModal(false);
   };
@@ -48,13 +49,17 @@ const Services = () => {
             Agregar
           </Button>
         </Grid>
-        {services.length > 0
-          ? services.map((service) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-                <CardServices service={service} />
-              </Grid>
-            ))
-          : null}
+        {services.length > 0 ? (
+          services.map((service) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+              <CardServices service={service} />
+            </Grid>
+          ))
+        ) : (
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <NoDataComponent />
+          </Grid>
+        )}
       </Grid>
       <AddService modal={openModal} handleClose={handleClose} />
     </Layout>

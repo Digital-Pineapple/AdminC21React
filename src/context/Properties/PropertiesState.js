@@ -32,6 +32,7 @@ const PropertiesState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(PropertiesReducer, initialState);
+  //Consulta todas las propiedades publicadas
   const GetPropertiesPublish = () => {
     dispatch({
       type: CLEAN_PROPERTIES,
@@ -64,6 +65,7 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
+  //Consulta las propiedades para buscar por filtros
   const GetPropertiesPublishSearch = () => {
     dispatch({
       type: CLEAN_PROPERTIES,
@@ -88,7 +90,7 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
-
+  //Consulta todas las propiedades en pendiente
   const GetPropertiesPending = () => {
     dispatch({
       type: CLEAN_PROPERTIES,
@@ -121,7 +123,7 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
-
+  //Agrega una propiedad
   const AddProperty = (data) => {
     let url = "/properties";
     let type_user = localStorage.getItem("type_user");
@@ -181,7 +183,6 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
-
   const SearchProperties = (data) => {
     let url = `/properties`;
     MethodGet(url, {
@@ -206,6 +207,7 @@ const PropertiesState = ({ children }) => {
         });
       });
   };
+  //Edita una propiedad
   const UpdateProperty = (data) => {
     let url = "/update/p/" + data.id;
     MethodPost(url, data)
@@ -230,7 +232,7 @@ const PropertiesState = ({ children }) => {
         });
       });
   };
-
+  //Descarga una ficha tecnica de la propiedad
   const DownloadPDF = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -264,7 +266,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
-
+  //Agrega las fotos de la propiedad
   const AddMultimediaProperty = (data) => {
     Swal.fire({
       title: "Agregar Imagen",
@@ -304,6 +306,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
+  //Elimina una propiedad
   const DeleteProperty = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -339,6 +342,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
+  // Publica una propiedad
   const PublishProperty = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -378,6 +382,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
+  //Regresa la propiedad a pendiente
   const BackPendingProperty = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",

@@ -4,6 +4,7 @@ import Layout from "../../components/layout/Layout";
 import AddCategory from "./AddCategory";
 import CategoryContext from "../../context/Categories/CategoryContext";
 import CardCategory from "../../components/Cards/CardCategory";
+import NoDataComponent from "../../components/loading/NoDataComponent";
 const Categories = () => {
   const [openModal, setOpenModal] = React.useState(false);
 
@@ -17,7 +18,7 @@ const Categories = () => {
   useEffect(() => {
     GetCategories();
   }, []);
-  
+
   return (
     <Layout>
       <Grid container spacing={2} sx={{ padding: 2 }}>
@@ -48,13 +49,17 @@ const Categories = () => {
             Agregar
           </Button>
         </Grid>
-        {categories.length > 0
-          ? categories.map((category) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-                <CardCategory category={category} />
-              </Grid>
-            ))
-          : null}
+        {categories.length > 0 ? (
+          categories.map((category) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+              <CardCategory category={category} />
+            </Grid>
+          ))
+        ) : (
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <NoDataComponent />
+          </Grid>
+        )}
       </Grid>
       <AddCategory modal={openModal} handleClose={handleClose} />
     </Layout>

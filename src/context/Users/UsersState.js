@@ -24,7 +24,7 @@ const UsersState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(UsersReducer, initialState);
-
+  //Consulta los usuarios
   const GetUsers = () => {
     let user_id = localStorage.getItem("user_id");
     let type_user = localStorage.getItem("type_user");
@@ -54,6 +54,7 @@ const UsersState = ({ children }) => {
         });
     }
   };
+  //Agrega un usuario el admin
   const AddUser = (data) => {
     let url = "/users";
     MethodPost(url, data)
@@ -77,6 +78,7 @@ const UsersState = ({ children }) => {
       });
   };
 
+  //Edita un usuario
   const ChangeUser = (data) => {
     let url = "/updateTypeUser/" + data.id;
     MethodPut(url, data)
@@ -100,6 +102,7 @@ const UsersState = ({ children }) => {
       });
   };
 
+  //Edita la infromacion de un asesor
   const ChangeUserInm = (data) => {
     let url = "/editUserInm/" + data.id;
     MethodPost(url, data)
@@ -123,7 +126,7 @@ const UsersState = ({ children }) => {
       });
   };
 
-  //Eliminar categoria
+  //Elimina un usuario
   const DeleteUsers = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -160,11 +163,11 @@ const UsersState = ({ children }) => {
     });
   };
 
-  //Eliminar categoria
+  //Elimina un asesor
   const DeleteUsersInm = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
-      text: "El usuario seleccionada será eliminado",
+      text: "El asesor seleccionada será eliminado",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

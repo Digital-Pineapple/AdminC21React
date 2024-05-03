@@ -23,7 +23,7 @@ const ServicesState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(ServicesReducer, initialState);
-
+  //Consulta todos los servicios 
   const GetServices = () => {
     let url = "/services";
     MethodGet(url)
@@ -37,6 +37,7 @@ const ServicesState = ({ children }) => {
         console.log(error);
       });
   };
+  //Agrega un servicio
   const AddService = (data) => {
     let url = "/services";
     MethodPost(url, data)
@@ -59,6 +60,7 @@ const ServicesState = ({ children }) => {
         });
       });
   };
+  //Edita un servicio
   const ChangeService = (data) => {
     let url = `/services/${data.id}`;
     MethodPut(url, data)
@@ -81,7 +83,7 @@ const ServicesState = ({ children }) => {
         });
       });
   };
-  //Eliminar servicio
+  //Eliminar un servicio
   const DeleteService = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
