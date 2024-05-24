@@ -6,6 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import * as React from "react";
 import { useForm } from "react-hook-form";
 import CategoriesSelect from "../SelectOptionsEdit/CategoriesSelect";
 import RemodelOptions from "../SelectOptionsEdit/RemodelOptions";
@@ -19,8 +20,10 @@ import FractionamientOptions from "../SelectOptionsEdit/FractionamientOptions";
 import { useState, useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import MethodGet from "../../config/service";
+import UserPropSelect from "../SelectOptionsEdit/UserPropSelect";
 const EditProperty = (props) => {
   const { UpdateProperty } = useContext(PropertiesContext);
+  let type_user = localStorage.getItem("type_user");
   const { id } = props.match.params;
   const [property, saveProperty] = useState([]);
 
@@ -34,6 +37,12 @@ const EditProperty = (props) => {
   const [option, saveOption] = useState(null);
   const detectarCambiosOption = (value) => {
     saveOption(value);
+  };
+
+  //Select de Usuarios de Inm
+  const [userInm, saveUserInm] = useState(null);
+  const detectarCambiosUserInm = (value) => {
+    saveUserInm(value);
   };
 
   //Select de Estacionamineto
@@ -99,8 +108,15 @@ const EditProperty = (props) => {
     }, 1000);
   }, [property]);
 
-  const { description, category_id, address, rules, details, status } =
-    property;
+  const {
+    description,
+    category_id,
+    userInm_id,
+    address,
+    rules,
+    details,
+    status,
+  } = property;
   const {
     register,
     formState: { errors },
@@ -108,41 +124,18 @@ const EditProperty = (props) => {
     setValue,
   } = useForm();
 
-  const reset = () => {
-    saveState(null);
-    saveMunicipality(null);
-    saveCategory(null);
-    saveOption(null);
-    setMap(null);
-    setValue("name", "", { shouldDirty: true });
-    setValue("description", "", { shouldDirty: true });
-    setValue("final_price", "", { shouldDirty: true });
-    setValue("commission", "", { shouldDirty: true });
-    setValue("age", "", { shouldDirty: true });
-    setValue("rooms", "", { shouldDirty: true });
-    setValue("bathroom", "", { shouldDirty: true });
-    setValue("half_bath", "", { shouldDirty: true });
-    setValue("size", "", { shouldDirty: true });
-    setValue("size_total", "", { shouldDirty: true });
-    setValue("postal_code", "", { shouldDirty: true });
-    setValue("colony", "", { shouldDirty: true });
-    setValue("street_name", "", { shouldDirty: true });
-    setValue("number_building", "", { shouldDirty: true });
-    setValue("number_int", "", { shouldDirty: true });
-  };
-
   const onSubmit = (data, e) => {
     data.id = id;
     data.status = status;
     data.category_id = category;
     data.rule_id = option;
+    data.userInm_id = userInm;
     data.state_id = States;
     data.municipality_id = municipality;
     data.parking = parking;
     data.remodel = remodel;
     data.iframe = map;
     UpdateProperty(data);
-    // reset();
   };
 
   return (
@@ -357,11 +350,11 @@ const EditProperty = (props) => {
                   })}
                 />
               </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+              <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
                 <TextField
                   fullWidth
                   variant="outlined"
-                  type="number"
+                  type="text"
                   label="Comisión compartida de la propiedad"
                   name="commission"
                   defaultValue={property.rules[0].detail.commission}
@@ -370,6 +363,14 @@ const EditProperty = (props) => {
                   {...register("commission", {})}
                 />
               </Grid>
+              {type_user === "2" && (
+                <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+                  <UserPropSelect
+                    detectarCambiosUserInm={detectarCambiosUserInm}
+                    userInm_id={userInm_id}
+                  />
+                </Grid>
+              )}
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <TextField
                   id="outlined-multiline-static"

@@ -8,12 +8,14 @@ import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
+import MailIcon from "@mui/icons-material/Mail";
 import HouseIcon from "@mui/icons-material/House";
 import SearchIcon from "@mui/icons-material/Search";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Divider from "@mui/material/Divider";
 import AddIcon from "@mui/icons-material/Add";
+import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -25,6 +27,8 @@ import HolidayVillageIcon from "@mui/icons-material/HolidayVillage";
 import GroupIcon from "@mui/icons-material/Group";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AuthContext from "../../context/auth/AuthContext";
+import { useContext, useEffect } from "react";
+import VisitContext from "../../context/Visits/VisitContext";
 import {
   Grid,
   ListItem,
@@ -33,7 +37,6 @@ import {
   ListItemText,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -102,6 +105,10 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Header({ children }) {
+  const { visits, GetVisit } = useContext(VisitContext);
+  useEffect(() => {
+    GetVisit();
+  }, []);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -183,7 +190,9 @@ export default function Header({ children }) {
       value: "/Visit",
       icon: (
         <Tooltip title="Visitas Agendadas" placement="right">
-          <CalendarMonthIcon />
+          <Badge badgeContent={visits ? visits.length : 0} color="error">
+            <MailIcon />
+          </Badge>
         </Tooltip>
       ),
     },
@@ -257,7 +266,12 @@ export default function Header({ children }) {
       value: "/Visit",
       icon: (
         <Tooltip title="Visitas Agendadas" placement="right">
-          <CalendarMonthIcon />
+          <Badge
+            badgeContent={visits ? visits[0]?.bookings.length : 0}
+            color="error"
+          >
+            <MailIcon />
+          </Badge>
         </Tooltip>
       ),
     },
@@ -281,15 +295,6 @@ export default function Header({ children }) {
     },
   ];
   const AS = [
-    {
-      name: "Inicio",
-      value: "/",
-      icon: (
-        <Tooltip title="Inicio" placement="right">
-          <HomeIcon />
-        </Tooltip>
-      ),
-    },
     {
       name: "Nueva Propiedad",
       value: "/CreateProperty",
@@ -331,7 +336,12 @@ export default function Header({ children }) {
       value: "/Visit",
       icon: (
         <Tooltip title="Visitas Agendadas" placement="right">
-          <CalendarMonthIcon />
+          <Badge
+            badgeContent={visits ? visits[0]?.bookings.length : 0}
+            color="error"
+          >
+            <MailIcon />
+          </Badge>
         </Tooltip>
       ),
     },
@@ -346,15 +356,6 @@ export default function Header({ children }) {
     },
   ];
   const IND = [
-    {
-      name: "Inicio",
-      value: "/",
-      icon: (
-        <Tooltip title="Inicio" placement="right">
-          <HomeIcon />
-        </Tooltip>
-      ),
-    },
     {
       name: "Nueva Propiedad",
       value: "/CreateProperty",
@@ -396,7 +397,12 @@ export default function Header({ children }) {
       value: "/Visit",
       icon: (
         <Tooltip title="Visitas Agendadas" placement="right">
-          <CalendarMonthIcon />
+          <Badge
+            badgeContent={visits ? visits[0]?.bookings.length : 0}
+            color="error"
+          >
+            <MailIcon />
+          </Badge>
         </Tooltip>
       ),
     },
@@ -411,15 +417,6 @@ export default function Header({ children }) {
     },
   ];
   const ASINM = [
-    {
-      name: "Inicio",
-      value: "/",
-      icon: (
-        <Tooltip title="Inicio" placement="right">
-          <HomeIcon />
-        </Tooltip>
-      ),
-    },
     {
       name: "Nueva Propiedad",
       value: "/CreateProperty",
@@ -443,7 +440,12 @@ export default function Header({ children }) {
       value: "/Visit",
       icon: (
         <Tooltip title="Visitas Agendadas" placement="right">
-          <CalendarMonthIcon />
+          <Badge
+            badgeContent={visits ? visits[0]?.bookings.length : 0}
+            color="error"
+          >
+            <MailIcon />
+          </Badge>
         </Tooltip>
       ),
     },

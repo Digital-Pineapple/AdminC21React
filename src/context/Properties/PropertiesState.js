@@ -300,7 +300,7 @@ const PropertiesState = ({ children }) => {
             Swal.fire({
               title: "Error",
               icon: "error",
-              text: error.response.data.message,
+              text: "Esta imagen no es compatible. Por favor, selecciona otra imagen.",
             });
           });
       }

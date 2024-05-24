@@ -14,6 +14,7 @@ import RemodelOptions from "./RemodelOptions";
 import SelectState from "../SelectOptions/SelectState";
 import { useState } from "react";
 import SelectMunicipality from "../SelectOptions/SelectMunicipality";
+import UserPropSelect from "../SelectOptions/UserPropSelect";
 import PropertiesContext from "../../context/Properties/PropertiesContext";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
@@ -26,8 +27,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const PropertiesCreate = () => {
   const { AddProperty } = useContext(PropertiesContext);
-  const [category, saveCategory] = React.useState(null);
 
+  const [category, saveCategory] = React.useState(null);
   const detectarCambiosCategory = (value) => {
     saveCategory(value);
   };
@@ -35,6 +36,11 @@ const PropertiesCreate = () => {
   const [option, saveOption] = React.useState(null);
   const detectarCambiosOption = (value) => {
     saveOption(value);
+  };
+
+  const [userInm, saveUserInm] = React.useState(null);
+  const detectarCambiosUserInm = (value) => {
+    saveUserInm(value);
   };
 
   const [selectedValueParking, setSelectedValueParking] = React.useState("si");
@@ -81,41 +87,14 @@ const PropertiesCreate = () => {
     register,
     formState: { errors },
     handleSubmit,
-    setValue,
   } = useForm();
 
-  const reset = () => {
-    saveState(null);
-    saveMunicipality(null);
-    saveCategory(null);
-    saveOption(null);
-    setMap(null);
-    setValue("name", "", { shouldDirty: true });
-    setValue("description", "", { shouldDirty: true });
-    setValue("final_price", "", { shouldDirty: true });
-    setValue("commission", "", { shouldDirty: true });
-    setValue("age", "", { shouldDirty: true });
-    setValue("rooms", "", { shouldDirty: true });
-    setValue("bathroom", "", { shouldDirty: true });
-    setValue("half_bath", "", { shouldDirty: true });
-    setValue("size", "", { shouldDirty: true });
-    setValue("size_total", "", { shouldDirty: true });
-    setValue("parking_places", "", { shouldDirty: true });
-    setValue("name_fractionamient", "", { shouldDirty: true });
-    setValue("lote", "", { shouldDirty: true });
-    setValue("apple_house", "", { shouldDirty: true });
-    setValue("street_name", "", { shouldDirty: true });
-    setValue("number_building", "", { shouldDirty: true });
-    setValue("number_int", "", { shouldDirty: true });
-    setValue("no_int", "", { shouldDirty: true });
-    setValue("colony", "", { shouldDirty: true });
-    setValue("postal_code", "", { shouldDirty: true });
-  };
   let user_id = localStorage.getItem("user_id");
   let type_user = localStorage.getItem("type_user");
   const onSubmit = (data, e) => {
     data.category_id = category;
     data.rule_id = option;
+    data.userInm_id = userInm;
     data.state_id = state;
     data.municipality_id = municipality;
     if (selectedValueParking === "si") {
@@ -138,7 +117,6 @@ const PropertiesCreate = () => {
     data.user_id = user_id;
     data.type_user = type_user;
     AddProperty(data);
-    // reset();
   };
 
   return (
@@ -450,7 +428,7 @@ const PropertiesCreate = () => {
                 })}
               />
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
               <TextField
                 fullWidth
                 variant="outlined"
@@ -464,6 +442,13 @@ const PropertiesCreate = () => {
                 })}
               />
             </Grid>
+            {type_user === "2" && (
+              <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+                <UserPropSelect
+                  detectarCambiosUserInm={detectarCambiosUserInm}
+                />
+              </Grid>
+            )}
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <TextField
                 id="outlined-multiline-static"

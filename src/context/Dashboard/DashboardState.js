@@ -7,11 +7,13 @@ import {
   TOTAL_PROPERTIES_RENT,
   TOTAL_PROPERTIES_SOLD,
   TOTAL_USER,
+  TOTAL_USER_INM,
 } from "../../types";
 
 const DashboardState = ({ children }) => {
   const initialState = {
     total_users: [],
+    total_usersInm: [],
     total_properties: [],
     total_properties_rent: [],
     total_properties_sold: [],
@@ -19,47 +21,91 @@ const DashboardState = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
+  let type_user = localStorage.getItem("type_user");
+  let user_id = localStorage.getItem("user_id");
   //Consulta el total de propiedades
   const TotalProperties = () => {
-    let url = "/countProperty";
-    MethodGet(url)
-      .then((res) => {
-        dispatch({
-          type: TOTAL_PROPERTIES,
-          payload: res.data.count,
+    if (type_user === "1") {
+      let url = "/countProperty";
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: TOTAL_PROPERTIES,
+            payload: res.data.count,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    } else if (type_user === "2") {
+      let url = `/countPropertyInm/${user_id}`;
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: TOTAL_PROPERTIES,
+            payload: res.data.count,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   //Consulta los inmuebles en venta
   const TotalPropertiesSold = () => {
-    let url = "/countVent";
-    MethodGet(url)
-      .then((res) => {
-        dispatch({
-          type: TOTAL_PROPERTIES_SOLD,
-          payload: res.data.propertiesForSale,
+    if (type_user === "1") {
+      let url = "/countVent";
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: TOTAL_PROPERTIES_SOLD,
+            payload: res.data.propertiesForSale,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    } else if (type_user === "2") {
+      let url = `/countVentInm/${user_id}`;
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: TOTAL_PROPERTIES_SOLD,
+            payload: res.data.propertiesForSale,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   //Consulta los inmuebles en renta
   const TotalPropertiesRent = () => {
-    let url = "/countRent";
-    MethodGet(url)
-      .then((res) => {
-        dispatch({
-          type: TOTAL_PROPERTIES_RENT,
-          payload: res.data.propertiesForRent,
+    if (type_user === "1") {
+      let url = "/countRent";
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: TOTAL_PROPERTIES_RENT,
+            payload: res.data.propertiesForRent,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    } else if (type_user === "2") {
+      let url = `/countRentInm/${user_id}`;
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: TOTAL_PROPERTIES_RENT,
+            payload: res.data.propertiesForRent,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   //Consulta todos los usuarios
   const GetTotalUsers = () => {
@@ -75,6 +121,34 @@ const DashboardState = ({ children }) => {
         console.log(error);
       });
   };
+  //Consulta todos los asesores dependiendo de la inmobiliaria
+  const GetTotalUsersInm = () => {
+    if (type_user === "1") {
+      let url = `/countAsesores`;
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: TOTAL_USER_INM,
+            payload: res.data.count,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (type_user === "2") {
+      let url = `/countAse/${user_id}`;
+      MethodGet(url)
+        .then((res) => {
+          dispatch({
+            type: TOTAL_USER_INM,
+            payload: res.data.count,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
   return (
     <DashboardContext.Provider
       value={{
@@ -82,10 +156,12 @@ const DashboardState = ({ children }) => {
         total_properties_rent: state.total_properties_rent,
         total_properties_sold: state.total_properties_sold,
         total_users: state.total_users,
+        total_usersInm: state.total_usersInm,
         TotalProperties,
         TotalPropertiesRent,
         TotalPropertiesSold,
         GetTotalUsers,
+        GetTotalUsersInm,
       }}
     >
       {children}

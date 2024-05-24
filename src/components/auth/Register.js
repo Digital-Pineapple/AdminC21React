@@ -99,7 +99,6 @@ const Register = () => {
   const onSubmit = (data, e) => {
     data.type_user = role;
     AddUser(data);
-    reset();
   };
 
   return (

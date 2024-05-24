@@ -26,35 +26,41 @@ ChartJS.register(
 );
 
 export default function Bars() {
+  let type_user = localStorage.getItem("type_user");
+
   const {
     total_properties,
     total_properties_sold,
     total_properties_rent,
     total_users,
+    total_usersInm,
     TotalProperties,
     TotalPropertiesSold,
     TotalPropertiesRent,
     GetTotalUsers,
+    GetTotalUsersInm,
   } = useContext(DashboardContext);
-
   useEffect(() => {
     TotalProperties();
     TotalPropertiesSold();
     TotalPropertiesRent();
     GetTotalUsers();
+    GetTotalUsersInm();
   }, []);
 
   var beneficios = [
     total_properties,
     total_properties_sold,
     total_properties_rent,
-    total_users,
+    total_usersInm,
+    ...(type_user === "1" ? [total_users] : []),
   ];
   var meses = [
     "Total de Inmuebles",
     "Inmuebles en Venta",
     "Inmuebles en Renta",
-    "Total de Usuarios",
+    "Total Asesores",
+    ...(type_user === "1" ? ["Total de Usuarios"] : []),
   ];
 
   var misoptions = {
@@ -68,7 +74,6 @@ export default function Bars() {
     scales: {
       y: {
         min: 0,
-        //max: 50,
       },
       x: {
         ticks: { color: "#001F3F" },

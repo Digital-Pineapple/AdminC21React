@@ -4,6 +4,7 @@ import {
   TOTAL_PROPERTIES_RENT,
   TOTAL_PROPERTIES_SOLD,
   TOTAL_USER,
+  TOTAL_USER_INM,
 } from "../../types";
 
 const DashboardReducer = (state, action) => {
@@ -34,6 +35,12 @@ const DashboardReducer = (state, action) => {
       };
     default:
       return state;
+    case TOTAL_USER_INM:
+      return {
+        ...state,
+        total_usersInm: action.payload,
+        ErrorsAPI: [],
+      };
   }
 };
 

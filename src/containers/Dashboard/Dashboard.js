@@ -7,6 +7,8 @@ import CardProperties from "../../components/Dashboard/CardProperties";
 import DashboardContext from "../../context/Dashboard/DashboardContext";
 import Graphics from "../../components/Dashboard/Graphics";
 import { Grid, Typography } from "@mui/material";
+import TotalUsersInm from "../../components/Dashboard/TotalUsersInm";
+let type_user = localStorage.getItem("type_user");
 
 const Dashboard = () => {
   const {
@@ -14,16 +16,19 @@ const Dashboard = () => {
     total_properties_sold,
     total_properties_rent,
     total_users,
+    total_usersInm,
     TotalProperties,
     TotalPropertiesSold,
     TotalPropertiesRent,
     GetTotalUsers,
+    GetTotalUsersInm,
   } = useContext(DashboardContext);
   useEffect(() => {
     TotalProperties();
     TotalPropertiesSold();
     TotalPropertiesRent();
     GetTotalUsers();
+    GetTotalUsersInm();
   }, []);
 
   return (
@@ -50,8 +55,13 @@ const Dashboard = () => {
         </Grid>
       </Grid>
       <Grid container spacing={2} sx={{ padding: 2 }}>
+        {type_user === "1" && (
+          <Grid item xs={12} sm={6} md={3} lg={3} xl={3}>
+            <TotalUsers total_users={total_users} />
+          </Grid>
+        )}
         <Grid item xs={12} sm={6} md={3} lg={3} xl={3}>
-          <TotalUsers total_users={total_users} />
+          <TotalUsersInm total_usersInm={total_usersInm} />
         </Grid>
         <Grid item xs={12} sm={6} md={3} lg={3} xl={3}>
           <PropertiesSold total_properties_sold={total_properties_sold} />
@@ -89,7 +99,7 @@ const Dashboard = () => {
           item
           xs={12}
           sm={12}
-          md={6}
+          md={12}
           lg={6}
           xl={6}
           display="flex"
