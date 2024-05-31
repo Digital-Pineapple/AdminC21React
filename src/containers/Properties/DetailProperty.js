@@ -11,11 +11,21 @@ import Amenidades from "../../components/PropertyDetails/Amenidades";
 import Owner from "../../components/PropertyDetails/Owner";
 import MultimediaProperty from "../../components/PropertyDetails/MultimediaProperty";
 import GeneratePDF from "../../components/PropertyDetails/GeneratePDF";
+import UserInm from "../../components/PropertyDetails/UserInm";
 export default function DetailProperty(props) {
   const { id } = props.match.params;
   const [property, saveProperty] = useState([]);
-  const { address, details, images, rules, owner, name, category, status } =
-    property;
+  const {
+    address,
+    details,
+    images,
+    rules,
+    owner,
+    name,
+    category,
+    status,
+    user_inm,
+  } = property;
   const [services, saveServices] = useState([]);
   useEffect(() => {
     let url = `/showAdmin/${id}`;
@@ -49,6 +59,7 @@ export default function DetailProperty(props) {
           {details && <Amenidades details={details} />}
           {address && <AddressProperty address={address} />}
           {owner && <Owner owner={owner} />}
+          {user_inm && <UserInm owner={user_inm} />}
           {services && <ServicesProperty services={services} />}
         </Grid>
         <GeneratePDF id={id} status={status} />

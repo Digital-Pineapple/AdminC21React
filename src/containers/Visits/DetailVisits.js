@@ -1,27 +1,31 @@
-import * as React from "react";
-import { Card, Grid, Typography, Button, Paper, Box } from "@mui/material";
-import MethodGet from "../../config/service";
-import ModalImage from "react-modal-image-responsive";
-import { useEffect, useState } from "react";
-import Layout from "../../components/layout/Layout";
-import ImageList from "@mui/material/ImageList";
+import React from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale/es";
-import ImageListItem from "@mui/material/ImageListItem";
 import AddReport from "./AddReport";
+import { useEffect, useState } from "react";
+import MethodGet from "../../config/service";
+import Layout from "../../components/layout/Layout";
+import { Card, Grid, Typography, Button } from "@mui/material";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageList from "@mui/material/ImageList";
 
 export default function DetailVisits(props) {
+  let type_user = localStorage.getItem("type_user");
   const { id } = props.match.params;
   const [property, saveProperty] = useState([]);
-  const { images, bookings, rules, owner, user_inm } = property;
-  console.log(property, "la prop");
+  const { bookingData } = property;
+  const { report_booking } = bookingData || {};
+  const { propertyData } = property;
+  const { images } = propertyData || {};
+  const { rules } = propertyData || {};
+
+  console.log(report_booking);
 
   if (rules !== undefined) {
     let detail = rules.map((rule) => rule.detail);
     var final_price = detail.map((det) => det.final_price);
     var name = rules.map((rul) => rul.name);
   }
-
   const [openModal, setOpenModal] = React.useState(false);
   const handleClickOpen = () => {
     setOpenModal(true);
@@ -34,7 +38,7 @@ export default function DetailVisits(props) {
     let url = `/showVisit/${id}`;
     MethodGet(url)
       .then((res) => {
-        saveProperty(res.data.data);
+        saveProperty(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -54,7 +58,6 @@ export default function DetailVisits(props) {
             Reporte de Visitas
           </Typography>
         </Grid>
-
         <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
           <Button
             variant="contained"
@@ -69,12 +72,11 @@ export default function DetailVisits(props) {
               },
             }}
           >
-            Agregar
+            Crear reporte
           </Button>
         </Grid>
-
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-          {images !== undefined && images.length > 0 ? (
+          {images !== undefined && (
             <ImageList
               sx={{ width: "auto", height: 650 }}
               cols={3}
@@ -90,141 +92,272 @@ export default function DetailVisits(props) {
                 </ImageListItem>
               ))}
             </ImageList>
-          ) : (
-            <div>No images available</div>
           )}
         </Grid>
-
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-          <Card sx={{ padding: 4 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <Typography
-                  fontFamily="monospace"
-                  fontWeight="bold"
-                  variant="h5"
-                  sx={{ color: "#1F3473" }}
-                >
-                  Infromación de la Propiedad:
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <Typography
-                  fontFamily="monospace"
-                  fontWeight="bold"
-                  variant="subtitle1"
-                  sx={{ color: "black" }}
-                >
-                  {property.name}
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                {owner !== undefined && (
+          {propertyData !== undefined && (
+            <Card sx={{ padding: 4 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="h5"
+                    sx={{ color: "#1F3473" }}
+                  >
+                    Infromación de la Propiedad:
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                   <Typography
                     fontFamily="monospace"
                     fontWeight="bold"
                     variant="subtitle1"
                     sx={{ color: "black" }}
                   >
-                    De: {owner.name} {owner.last_name}
+                    {propertyData.name}
                   </Typography>
-                )}
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <Typography
-                  fontFamily="monospace"
-                  fontWeight="bold"
-                  variant="subtitle1"
-                  sx={{ color: "black" }}
-                >
-                  En: {name} ${final_price} MXN
-                </Typography>
-              </Grid>
-            </Grid>
-
-            <Typography variant="subtitle1" gutterBottom>
-              {property.description}
-            </Typography>
-          </Card>
-
-          {bookings !== undefined && bookings.length > 0 ? (
-            <Card sx={{ padding: 4 }}>
-              {bookings.map((booking) => (
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <Typography
-                      fontFamily="monospace"
-                      fontWeight="bold"
-                      variant="h5"
-                      sx={{ color: "#1F3473" }}
-                    >
-                      Detalles de la Visita:
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <Typography
-                      fontFamily="monospace"
-                      fontWeight="bold"
-                      variant="subtitle1"
-                      sx={{ color: "black" }}
-                    >
-                      Nombre del Cliente: {booking.name} {booking.last_name}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <Typography
-                      fontFamily="monospace"
-                      fontWeight="bold"
-                      variant="subtitle1"
-                      sx={{ color: "black" }}
-                    >
-                      Correo Electronico: {booking.email}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <Typography
-                      fontFamily="monospace"
-                      fontWeight="bold"
-                      variant="subtitle1"
-                      sx={{ color: "black" }}
-                    >
-                      Numero de Telefono: {booking.phone}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <Typography
-                      fontFamily="monospace"
-                      fontWeight="bold"
-                      variant="subtitle1"
-                      sx={{ color: "black" }}
-                    >
-                      Fecha Registrada de la Visita:{" "}
-                      {format(
-                        new Date(booking.created_at),
-                        "dd 'de' MMMM 'de' yyyy 'a las' HH:mm",
-                        { locale: es }
-                      )}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <Typography
-                      fontFamily="monospace"
-                      fontWeight="bold"
-                      variant="subtitle1"
-                      sx={{ color: "black" }}
-                    >
-                      Comentarios del Cliente: {booking.message}
-                    </Typography>
-                  </Grid>
                 </Grid>
-              ))}
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    De: {propertyData.owner.name} {propertyData.owner.last_name}
+                  </Typography>
+                </Grid>
+                {type_user === "2" && propertyData.user_inm && (
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Typography
+                      fontFamily="monospace"
+                      fontWeight="bold"
+                      variant="subtitle1"
+                      sx={{ color: "black" }}
+                    >
+                      Asesor: {propertyData.user_inm.name}
+                      {propertyData.user_inm.last_name}
+                    </Typography>
+                  </Grid>
+                )}
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    En: {name} ${final_price} MXN
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography variant="subtitle1" gutterBottom>
+                    {propertyData.description}
+                  </Typography>
+                </Grid>
+              </Grid>
             </Card>
-          ) : (
-            <div>No Data</div>
+          )}
+
+          {bookingData !== undefined && (
+            <Card sx={{ padding: 4 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="h5"
+                    sx={{ color: "#1F3473" }}
+                  >
+                    Detalles de la Visita:
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Nombre del Cliente: {bookingData.name}
+                    {bookingData.last_name}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Correo Electronico: {bookingData.email}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Numero de Telefono: {bookingData.phone}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Fecha Registrada de la Visita:{" "}
+                    {format(
+                      new Date(bookingData.created_at),
+                      "dd 'de' MMMM 'de' yyyy 'a las' HH:mm",
+                      { locale: es }
+                    )}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Comentarios del Cliente: {bookingData.message}
+                  </Typography>
+                </Grid>
+                <AddReport
+                  modal={openModal}
+                  handleClose={handleClose}
+                  bookingData={bookingData}
+                />
+              </Grid>
+            </Card>
+          )}
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+          {report_booking !== undefined && report_booking.length > 0 && (
+            <Card sx={{ padding: 4 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="h5"
+                    sx={{ color: "#1F3473" }}
+                  >
+                    Información de Reporte:
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Ubicación:
+                  </Typography>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Espacios:
+                  </Typography>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Estado de conservación:
+                  </Typography>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Distribución:
+                  </Typography>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Funcionalidad::
+                  </Typography>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Precio:
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Comentarios:
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Considera esta propiedad como una alternativa de
+                    compra/renta?
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    ¿Por qué?
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    El servicio que ha recibido es:
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                    variant="subtitle1"
+                    sx={{ color: "black" }}
+                  >
+                    Observaciones:
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Card>
           )}
         </Grid>
       </Grid>
-      <AddReport modal={openModal} handleClose={handleClose} />
     </Layout>
   );
 }

@@ -100,7 +100,7 @@ export default function TableVisit({ visit }) {
                 {item.message}
               </StyledTableCell>
               <StyledTableCell data-label="Acciones">
-                <Link to={`/DetailVisits/${visit.id}`}>
+                <Link to={`/DetailVisits/${item.id}`}>
                   <IconButton size="small">
                     <Tooltip title="Detalle de Visita" placement="top">
                       <VisibilityIcon sx={{ color: "blue" }} />

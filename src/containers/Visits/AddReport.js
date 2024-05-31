@@ -10,7 +10,15 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { Grid, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
-import AuthContext from "../../context/auth/AuthContext";
+import OptionsReportLocation from "../SelectOptionsReport/OptionsReportLocation";
+import OptionsReportEspacios from "../SelectOptionsReport/OptionsReportEspacios";
+import OptionsReportEstado from "../SelectOptionsReport/OptionsReportEstado";
+import OptionsReportDistribución from "../SelectOptionsReport/OptionsReportDistribución";
+import OptionsReportFuncionalidad from "../SelectOptionsReport/OptionsReportFuncionalidad";
+import OptionsReportPrecio from "../SelectOptionsReport/OptionsReportPrecio";
+import OptionsReport from "../SelectOptionsReport/OptionsReport";
+import OptionsReportServicio from "../SelectOptionsReport/OptionsReportServicio";
+import VisitContext from "../../context/Visits/VisitContext";
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -19,10 +27,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     padding: theme.spacing(1),
   },
 }));
-
 function BootstrapDialogTitle(props) {
   const { children, onClose, ...other } = props;
-
   return (
     <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
       {children}
@@ -43,18 +49,56 @@ function BootstrapDialogTitle(props) {
     </DialogTitle>
   );
 }
-
 BootstrapDialogTitle.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
 };
 
-export default function AddReport({ modal, handleClose }) {
-  const { NewUser } = React.useContext(AuthContext);
-  const [role, saveRole] = React.useState(null);
-  const detectarCambiosRole = (value) => {
-    saveRole(value);
+export default function AddReport({ modal, handleClose, bookingData }) {
+  const { AddReport } = React.useContext(VisitContext);
+
+  const [selectedValueLocation, setSelectedValueLocation] = useState(1);
+  const handleChangeLocation = (event) => {
+    setSelectedValueLocation(parseInt(event.target.value, 10));
   };
+
+  const [selectedValueEspacios, setSelectedValueEspacios] = React.useState(1);
+  const handleChangeEspacios = (event) => {
+    setSelectedValueEspacios(parseInt(event.target.value, 10));
+  };
+
+  const [selectedValueEstado, setSelectedValueEstado] = React.useState(1);
+  const handleChangeEstado = (event) => {
+    setSelectedValueEstado(parseInt(event.target.value, 10));
+  };
+
+  const [selectedValueDistribucion, setSelectedValueDistribucion] =
+    React.useState(1);
+  const handleChangeDistribucion = (event) => {
+    setSelectedValueDistribucion(parseInt(event.target.value, 10));
+  };
+
+  const [selectedValueFuncionalidad, setSelectedValueFuncionalidad] =
+    React.useState(1);
+  const handleChangeFuncionalidad = (event) => {
+    setSelectedValueFuncionalidad(parseInt(event.target.value, 10));
+  };
+
+  const [selectedValuePrecio, setSelectedValuePrecio] = React.useState(1);
+  const handleChangePrecio = (event) => {
+    setSelectedValuePrecio(parseInt(event.target.value, 10));
+  };
+
+  const [selectedValueReport, setSelectedValueReport] = React.useState(1);
+  const handleChangeReport = (event) => {
+    setSelectedValueReport(parseInt(event.target.value, 10));
+  };
+
+  const [selectedValueServicio, setSelectedValueSericio] = React.useState(1);
+  const handleChangeServicio = (event) => {
+    setSelectedValueSericio(parseInt(event.target.value, 10));
+  };
+
   const {
     register,
     formState: { errors },
@@ -62,7 +106,16 @@ export default function AddReport({ modal, handleClose }) {
   } = useForm();
 
   const onSubmit = (data, e) => {
-    NewUser(data);
+    data.location = selectedValueLocation;
+    data.spaces = selectedValueEspacios;
+    data.conservation = selectedValueEstado;
+    data.distribution = selectedValueDistribucion;
+    data.functionality = selectedValueFuncionalidad;
+    data.price = selectedValuePrecio;
+    data.purchase_rent = selectedValueReport;
+    data.service = selectedValueServicio;
+    data.report_id = bookingData.id;
+    AddReport(data);
     handleClose();
   };
 
@@ -77,7 +130,7 @@ export default function AddReport({ modal, handleClose }) {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          Agregar Reporte
+          Agregar Reporte de Visitas
         </BootstrapDialogTitle>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -90,27 +143,115 @@ export default function AddReport({ modal, handleClose }) {
           <DialogContent dividers>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <OptionsReportLocation
+                  setSelectedValueLocation={setSelectedValueLocation}
+                  selectedValueLocation={selectedValueLocation}
+                  handleChangeLocation={handleChangeLocation}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <OptionsReportEspacios
+                  setSelectedValueEspacios={setSelectedValueEspacios}
+                  selectedValueEspacios={selectedValueEspacios}
+                  handleChangeEspacios={handleChangeEspacios}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <OptionsReportEstado
+                  setSelectedValueEstado={setSelectedValueEstado}
+                  selectedValueEstado={selectedValueEstado}
+                  handleChangeEstado={handleChangeEstado}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <OptionsReportDistribución
+                  setSelectedValueDistribucion={setSelectedValueDistribucion}
+                  selectedValueDistribucion={selectedValueDistribucion}
+                  handleChangeDistribucion={handleChangeDistribucion}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <OptionsReportFuncionalidad
+                  setSelectedValueFuncionalidad={setSelectedValueFuncionalidad}
+                  selectedValueFuncionalidad={selectedValueFuncionalidad}
+                  handleChangeFuncionalidad={handleChangeFuncionalidad}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <OptionsReportPrecio
+                  setSelectedValuePrecio={setSelectedValuePrecio}
+                  selectedValuePrecio={selectedValuePrecio}
+                  handleChangePrecio={handleChangePrecio}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <OptionsReport
+                  setSelectedValueReport={setSelectedValueReport}
+                  selectedValueReport={selectedValueReport}
+                  handleChangeReport={handleChangeReport}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <TextField
                   type="text"
                   fullWidth
-                  name="name"
-                  label="Nombre(s):"
-                  error={errors.name ? true : false}
-                  helperText={errors?.name?.message}
-                  {...register("name", {
+                  name="because"
+                  label="¿Por qué?"
+                  error={errors.because ? true : false}
+                  helperText={errors?.because?.message}
+                  {...register("because", {
                     required: {
                       value: true,
                       message: "Este campo es requerido",
                     },
                     minLength: {
-                      value: 4,
-                      message: "Minimo 4 caracteres",
+                      value: 5,
+                      message: "Minimo 5 caracteres",
                     },
                     maxLength: {
-                      value: 255,
-                      message: "Maximo 255 caracteres",
+                      value: 100,
+                      message: "Maximo 100 caracteres",
                     },
                   })}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <OptionsReportServicio
+                  setSelectedValueSericio={setSelectedValueSericio}
+                  selectedValueServicio={selectedValueServicio}
+                  handleChangeServicio={handleChangeServicio}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <TextField
+                  type="text"
+                  fullWidth
+                  name="comments"
+                  label="Comentarios:"
+                  error={errors.comments ? true : false}
+                  helperText={errors?.comments?.message}
+                  {...register("comments", {})}
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <TextField
+                  type="text"
+                  fullWidth
+                  name="observations"
+                  label="Observaciones"
+                  error={errors.observations ? true : false}
+                  helperText={errors?.observations?.message}
+                  {...register("observations", {})}
                 />
               </Grid>
             </Grid>
