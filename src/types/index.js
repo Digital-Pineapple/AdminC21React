@@ -25,7 +25,9 @@ export const DELETE_SERVICE = "DELETE_SERVICE";
 //visits
 export const GET_ALL_VISITS = "GET_ALL_VISITS";
 export const DELETE_VISITS = "DELETE_VISITS";
+//Reportes
 export const ADD_REPORT = "ADD_REPORT";
+export const GET_ALL_REPORT = "GET_ALL_REPORT";
 //users
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const ADD_USERS = "ADD_USERS";

@@ -1,12 +1,7 @@
 import React, { useReducer } from "react";
 import VisitContext from "./VisitContext";
 import VisitReducer from "./VisitReducer";
-import {
-  DELETE_VISITS,
-  GET_ALL_VISITS,
-  ADD_REPORT,
-  SHOW_ERRORS_API,
-} from "../../types";
+import { DELETE_VISITS, GET_ALL_VISITS } from "../../types";
 import MethodGet, { MethodDelete, MethodPost } from "../../config/service";
 import Swal from "sweetalert2";
 const VisitState = ({ children }) => {
@@ -53,31 +48,6 @@ const VisitState = ({ children }) => {
     }
   };
 
-  //Alta de un reporte de las visitas
-  const AddReport = (data) => {
-    let url = "/reportBooking";
-    MethodPost(url, data)
-      .then((res) => {
-        dispatch({
-          type: ADD_REPORT,
-          payload: res.data.data,
-        });
-        Swal.fire({
-          title: "Registrado",
-          text: "El reporte se ha registrado correctamente!",
-          icon: "success",
-        });
-      })
-      .catch((error) => {
-        Swal.fire({
-          title: "Error",
-          icon: "error",
-          text: error.response.data.message,
-        });
-        console.log(error, "error");
-      });
-  };
-
   //Elimina las visitas
   const DeleteVisit = (id) => {
     Swal.fire({
@@ -122,7 +92,6 @@ const VisitState = ({ children }) => {
         ErrorsApi: state.ErrorsApi,
         success: state.success,
         GetVisit,
-        AddReport,
         DeleteVisit,
       }}
     >

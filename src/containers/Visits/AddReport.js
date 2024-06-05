@@ -18,7 +18,7 @@ import OptionsReportFuncionalidad from "../SelectOptionsReport/OptionsReportFunc
 import OptionsReportPrecio from "../SelectOptionsReport/OptionsReportPrecio";
 import OptionsReport from "../SelectOptionsReport/OptionsReport";
 import OptionsReportServicio from "../SelectOptionsReport/OptionsReportServicio";
-import VisitContext from "../../context/Visits/VisitContext";
+import ReportContext from "../../context/ReportVisits/ReportContext";
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -55,7 +55,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function AddReport({ modal, handleClose, bookingData }) {
-  const { AddReport } = React.useContext(VisitContext);
+  const { AddReportVisits } = useContext(ReportContext);
 
   const [selectedValueLocation, setSelectedValueLocation] = useState(1);
   const handleChangeLocation = (event) => {
@@ -115,7 +115,7 @@ export default function AddReport({ modal, handleClose, bookingData }) {
     data.purchase_rent = selectedValueReport;
     data.service = selectedValueServicio;
     data.report_id = bookingData.id;
-    AddReport(data);
+    AddReportVisits(data);
     handleClose();
   };
 
@@ -212,8 +212,8 @@ export default function AddReport({ modal, handleClose, bookingData }) {
                       message: "Este campo es requerido",
                     },
                     minLength: {
-                      value: 5,
-                      message: "Minimo 5 caracteres",
+                      value: 1,
+                      message: "Minimo 1 caracteres",
                     },
                     maxLength: {
                       value: 100,

@@ -8,6 +8,7 @@ import Layout from "../../components/layout/Layout";
 import { Card, Grid, Typography, Button } from "@mui/material";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageList from "@mui/material/ImageList";
+import ReportBooking from "./ReportBooking";
 
 export default function DetailVisits(props) {
   let type_user = localStorage.getItem("type_user");
@@ -18,8 +19,6 @@ export default function DetailVisits(props) {
   const { propertyData } = property;
   const { images } = propertyData || {};
   const { rules } = propertyData || {};
-
-  console.log(report_booking);
 
   if (rules !== undefined) {
     let detail = rules.map((rule) => rule.detail);
@@ -240,121 +239,7 @@ export default function DetailVisits(props) {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           {report_booking !== undefined && report_booking.length > 0 && (
-            <Card sx={{ padding: 4 }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="h5"
-                    sx={{ color: "#1F3473" }}
-                  >
-                    Información de Reporte:
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    Ubicación:
-                  </Typography>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    Espacios:
-                  </Typography>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    Estado de conservación:
-                  </Typography>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    Distribución:
-                  </Typography>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    Funcionalidad::
-                  </Typography>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    Precio:
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    Comentarios:
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    Considera esta propiedad como una alternativa de
-                    compra/renta?
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    ¿Por qué?
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    El servicio que ha recibido es:
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <Typography
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    variant="subtitle1"
-                    sx={{ color: "black" }}
-                  >
-                    Observaciones:
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Card>
+            <ReportBooking report_booking={report_booking} />
           )}
         </Grid>
       </Grid>

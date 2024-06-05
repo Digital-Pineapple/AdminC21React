@@ -1,0 +1,173 @@
+import React from "react";
+import { Card, Grid, Typography, Button } from "@mui/material";
+
+const ReportBooking = ({ report_booking }) => {
+  const report = report_booking[0];
+  console.log(report);
+  return (
+    <div>
+      <Card sx={{ padding: 4 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="h5"
+              sx={{ color: "#1F3473" }}
+            >
+              Información de Reporte:
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              Ubicación:
+            </Typography>
+            {report.location === 1
+              ? "Muy Bien"
+              : report.location === 2
+              ? "Bien"
+              : report.location === 3
+              ? "Regular"
+              : report.location === 4 && "Mal"}
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              Espacios:
+            </Typography>
+            {report.spaces === 1
+              ? "Muy Bien"
+              : report.spaces === 2
+              ? "Bien"
+              : report.spaces === 3
+              ? "Regular"
+              : report.spaces === 4 && "Mal"}
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              Estado de conservación:
+            </Typography>
+            {report.conservation === 1
+              ? "Muy Bien"
+              : report.conservation === 2
+              ? "Bien"
+              : report.conservation === 3
+              ? "Regular"
+              : report.conservation === 4 && "Mal"}
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              Distribución:
+            </Typography>
+            {report.distribution === 1
+              ? "Muy Bien"
+              : report.distribution === 2
+              ? "Bien"
+              : report.distribution === 3
+              ? "Regular"
+              : report.distribution === 4 && "Mal"}
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              Funcionalidad:
+            </Typography>
+            {report.functionality === 1
+              ? "Muy Bien"
+              : report.functionality === 2
+              ? "Bien"
+              : report.functionality === 3
+              ? "Regular"
+              : report.functionality === 4 && "Mal"}
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              Precio:
+            </Typography>
+            {report.price === 1
+              ? "Muy Bien"
+              : report.price === 2
+              ? "Bien"
+              : report.price === 3
+              ? "Regular"
+              : report.price === 4 && "Mal"}
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              Comentarios:
+            </Typography>
+            {report.comments}
+
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              Considera esta propiedad como una alternativa de compra/renta?
+            </Typography>
+            {report.price === 1 ? "Si" : report.price === 2 && "No"}
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              ¿Por qué?
+            </Typography>
+            {report.because}
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              El servicio que ha recibido es:
+            </Typography>
+            {report.service === 1
+              ? "Muy Bien"
+              : report.service === 2
+              ? "Bien"
+              : report.service === 3
+              ? "Regular"
+              : report.service === 4 && "Mal"}
+            <Typography
+              fontFamily="monospace"
+              fontWeight="bold"
+              variant="subtitle1"
+              sx={{ color: "black" }}
+            >
+              Observaciones:
+            </Typography>
+            {report.observations}
+          </Grid>
+        </Grid>
+      </Card>
+    </div>
+  );
+};
+
+export default ReportBooking;
