@@ -3,7 +3,9 @@ import { Card, Grid, Typography, Button } from "@mui/material";
 
 const ReportBooking = ({ report_booking }) => {
   const report = report_booking[0];
-  console.log(report);
+  const handlePrint = () => {
+    window.print();
+  };
   return (
     <div>
       <Card sx={{ padding: 4 }}>
@@ -18,7 +20,7 @@ const ReportBooking = ({ report_booking }) => {
               Información de Reporte:
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+          <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
             <Typography
               fontFamily="monospace"
               fontWeight="bold"
@@ -110,7 +112,7 @@ const ReportBooking = ({ report_booking }) => {
               ? "Regular"
               : report.price === 4 && "Mal"}
           </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+          <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
             <Typography
               fontFamily="monospace"
               fontWeight="bold"
@@ -163,6 +165,21 @@ const ReportBooking = ({ report_booking }) => {
               Observaciones:
             </Typography>
             {report.observations}
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={handlePrint}
+              sx={{
+                color: "#1F3473",
+                backgroundColor: "#8ED5E1",
+                "&:hover": {
+                  color: "#1F3473",
+                  backgroundColor: "#8ED5E1 ",
+                },
+              }}
+            >
+              Descargar Reporte
+            </Button>
           </Grid>
         </Grid>
       </Card>
