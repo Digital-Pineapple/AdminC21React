@@ -58,21 +58,23 @@ export default function DetailVisits(props) {
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
-          <Button
-            variant="contained"
-            fullWidth
-            onClick={handleClickOpen}
-            sx={{
-              color: "#1F3473",
-              backgroundColor: "#8ED5E1",
-              "&:hover": {
+          {(report_booking === undefined || report_booking.length === 0) && (
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={handleClickOpen}
+              sx={{
                 color: "#1F3473",
-                backgroundColor: "#8ED5E1 ",
-              },
-            }}
-          >
-            Crear reporte
-          </Button>
+                backgroundColor: "#8ED5E1",
+                "&:hover": {
+                  color: "#1F3473",
+                  backgroundColor: "#8ED5E1 ",
+                },
+              }}
+            >
+              Crear reporte
+            </Button>
+          )}
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           {images !== undefined && (
@@ -179,7 +181,7 @@ export default function DetailVisits(props) {
                     variant="subtitle1"
                     sx={{ color: "black" }}
                   >
-                    Nombre del Cliente: {bookingData.name}
+                    Nombre del Cliente: {bookingData.name}{" "}
                     {bookingData.last_name}
                   </Typography>
                 </Grid>

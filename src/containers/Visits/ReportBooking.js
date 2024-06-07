@@ -1,10 +1,20 @@
 import React from "react";
 import { Card, Grid, Typography, Button } from "@mui/material";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import EditReport from "./EditReport";
 
 const ReportBooking = ({ report_booking }) => {
   const report = report_booking[0];
   const handlePrint = () => {
     window.print();
+  };
+  const [openModal, setOpenModal] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpenModal(true);
+  };
+  const handleClose = () => {
+    setOpenModal(false);
   };
   return (
     <div>
@@ -165,10 +175,12 @@ const ReportBooking = ({ report_booking }) => {
               Observaciones:
             </Typography>
             {report.observations}
+          </Grid>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <Button
               variant="contained"
               fullWidth
-              onClick={handlePrint}
+              onClick={handleClickOpen}
               sx={{
                 color: "#1F3473",
                 backgroundColor: "#8ED5E1",
@@ -178,9 +190,32 @@ const ReportBooking = ({ report_booking }) => {
                 },
               }}
             >
-              Descargar Reporte
+              Editar Reporte <EditNoteIcon sx={{ marginLeft: 2 }} />
             </Button>
           </Grid>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={handlePrint}
+              sx={{
+                color: "#8ED5E1",
+                backgroundColor: "#1F3473",
+                "&:hover": {
+                  color: "#8ED5E1",
+                  backgroundColor: "#1F3473",
+                },
+              }}
+            >
+              Descargar Reporte
+              <CloudDownloadIcon sx={{ marginLeft: 2 }} />
+            </Button>
+          </Grid>
+          <EditReport
+            modal={openModal}
+            handleClose={handleClose}
+            report={report}
+          />
         </Grid>
       </Card>
     </div>

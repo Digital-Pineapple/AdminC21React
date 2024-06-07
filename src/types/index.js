@@ -27,6 +27,7 @@ export const GET_ALL_VISITS = "GET_ALL_VISITS";
 export const DELETE_VISITS = "DELETE_VISITS";
 //Reportes
 export const ADD_REPORT = "ADD_REPORT";
+export const UPDATE_REPORT = "UPDATE_REPORT";
 export const GET_ALL_REPORT = "GET_ALL_REPORT";
 //users
 export const GET_ALL_USERS = "GET_ALL_USERS";

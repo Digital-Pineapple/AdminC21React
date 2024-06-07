@@ -2,8 +2,8 @@ import React, { useReducer } from "react";
 import ReportContext from "./ReportContext";
 import ReportReducer from "./ReportReducer";
 import Swal from "sweetalert2";
-import MethodGet, { MethodPost } from "../../config/service";
-import { ADD_REPORT, GET_ALL_REPORT } from "../../types";
+import MethodGet, { MethodPost, MethodPut } from "../../config/service";
+import { ADD_REPORT, GET_ALL_REPORT, UPDATE_REPORT } from "../../types";
 
 const ReportState = ({ children }) => {
   const initialState = {
@@ -54,11 +54,36 @@ const ReportState = ({ children }) => {
         console.log(error, "error");
       });
   };
+
+  //Edita un reporte
+  const EditReportVisits = (data) => {
+    let url = `/reportBooking/${data.id}`;
+    MethodPut(url, data)
+      .then((res) => {
+        dispatch({
+          type: UPDATE_REPORT,
+          payload: res.data.data,
+        });
+        Swal.fire({
+          title: "Reporte Modificado",
+          text: res.data.message,
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: error.response.data.message,
+        });
+      });
+  };
   return (
     <ReportContext.Provider
       value={{
         AddReportVisits,
         GetReportVisits,
+        EditReportVisits,
       }}
     >
       {children}

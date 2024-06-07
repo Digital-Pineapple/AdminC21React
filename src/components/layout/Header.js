@@ -266,10 +266,7 @@ export default function Header({ children }) {
       value: "/Visit",
       icon: (
         <Tooltip title="Visitas Agendadas" placement="right">
-          <Badge
-            badgeContent={visits ? visits[0]?.bookings.length : 0}
-            color="error"
-          >
+          <Badge badgeContent={visits ? visits.length : 0} color="error">
             <MailIcon />
           </Badge>
         </Tooltip>
