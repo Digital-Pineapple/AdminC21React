@@ -2,21 +2,26 @@ import React from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale/es";
 import AddReport from "./AddReport";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import MethodGet from "../../config/service";
 import Layout from "../../components/layout/Layout";
 import { Card, Grid, Typography, Button } from "@mui/material";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageList from "@mui/material/ImageList";
 import ReportBooking from "./ReportBooking";
+import ReportContext from "../../context/ReportVisits/ReportContext";
 
 export default function DetailVisits(props) {
   let type_user = localStorage.getItem("type_user");
   const { id } = props.match.params;
-  const [property, saveProperty] = useState([]);
-  const { bookingData } = property;
+  const { reports, GetReportsVisits } = useContext(ReportContext);
+  useEffect(() => {
+    GetReportsVisits(id);
+  }, [id]);
+
+  const { bookingData } = reports;
   const { report_booking } = bookingData || {};
-  const { propertyData } = property;
+  const { propertyData } = reports;
   const { images } = propertyData || {};
   const { rules } = propertyData || {};
 
@@ -32,17 +37,6 @@ export default function DetailVisits(props) {
   const handleClose = () => {
     setOpenModal(false);
   };
-
-  useEffect(() => {
-    let url = `/showVisit/${id}`;
-    MethodGet(url)
-      .then((res) => {
-        saveProperty(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
 
   return (
     <Layout>
@@ -241,7 +235,10 @@ export default function DetailVisits(props) {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           {report_booking !== undefined && report_booking.length > 0 && (
-            <ReportBooking report_booking={report_booking} />
+            <ReportBooking
+              report_booking={report_booking}
+              bookingData={bookingData}
+            />
           )}
         </Grid>
       </Grid>

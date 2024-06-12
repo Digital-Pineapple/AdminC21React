@@ -4,17 +4,20 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import EditReport from "./EditReport";
 
-const ReportBooking = ({ report_booking }) => {
+const ReportBooking = ({ report_booking, bookingData }) => {
   const report = report_booking[0];
   const handlePrint = () => {
     window.print();
   };
+  const [id_report, saveid_report] = React.useState(null);
   const [openModal, setOpenModal] = React.useState(false);
-  const handleClickOpen = () => {
+  const handleClickOpen = (id) => {
     setOpenModal(true);
+    saveid_report(id);
   };
   const handleClose = () => {
     setOpenModal(false);
+    saveid_report(null);
   };
   return (
     <div>
@@ -180,7 +183,7 @@ const ReportBooking = ({ report_booking }) => {
             <Button
               variant="contained"
               fullWidth
-              onClick={handleClickOpen}
+              onClick={() => handleClickOpen(report.id)}
               sx={{
                 color: "#1F3473",
                 backgroundColor: "#8ED5E1",
@@ -211,11 +214,15 @@ const ReportBooking = ({ report_booking }) => {
               <CloudDownloadIcon sx={{ marginLeft: 2 }} />
             </Button>
           </Grid>
-          <EditReport
-            modal={openModal}
-            handleClose={handleClose}
-            report={report}
-          />
+          {id_report !== null && (
+            <EditReport
+              modal={openModal}
+              handleClose={handleClose}
+              id={id_report}
+              report={report}
+              bookingData={bookingData}
+            />
+          )}
         </Grid>
       </Card>
     </div>

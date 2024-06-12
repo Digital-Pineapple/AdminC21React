@@ -8,13 +8,13 @@ import { ADD_REPORT, GET_ALL_REPORT, UPDATE_REPORT } from "../../types";
 const ReportState = ({ children }) => {
   const initialState = {
     reports: [],
+    report: null,
     ErrorsApi: [],
     success: false,
   };
   const [state, dispatch] = useReducer(ReportReducer, initialState);
-
-  //No en uso
-  const GetReportVisits = (id) => {
+  // Get de los reportes
+  const GetReportsVisits = (id) => {
     let url = `/showVisit/${id}`;
     MethodGet(url)
       .then((res) => {
@@ -41,8 +41,6 @@ const ReportState = ({ children }) => {
           title: "Registrado",
           text: "El reporte se ha registrado correctamente!",
           icon: "success",
-        }).then(() => {
-          window.location.reload();
         });
       })
       .catch((error) => {
@@ -51,7 +49,6 @@ const ReportState = ({ children }) => {
           icon: "error",
           text: error.response.data.message,
         });
-        console.log(error, "error");
       });
   };
 
@@ -81,8 +78,12 @@ const ReportState = ({ children }) => {
   return (
     <ReportContext.Provider
       value={{
+        reports: state.reports,
+        report: state.report,
+        ErrorsApi: state.ErrorsApi,
+        success: state.success,
         AddReportVisits,
-        GetReportVisits,
+        GetReportsVisits,
         EditReportVisits,
       }}
     >
