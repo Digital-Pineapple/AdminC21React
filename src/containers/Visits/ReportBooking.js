@@ -144,7 +144,11 @@ const ReportBooking = ({ report_booking, bookingData }) => {
             >
               Considera esta propiedad como una alternativa de compra/renta?
             </Typography>
-            {report.price === 1 ? "Si" : report.price === 2 && "No"}
+            {report.purchase_rent === 1
+              ? "Sí"
+              : report.purchase_rent === 2
+              ? "No"
+              : "Valor no especificado"}
             <Typography
               fontFamily="monospace"
               fontWeight="bold"

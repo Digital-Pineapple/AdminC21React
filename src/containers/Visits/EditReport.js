@@ -63,44 +63,42 @@ export default function EditReport({
 }) {
   const { EditReportVisits } = useContext(ReportContext);
 
-  const [selectedValueLocation, setSelectedValueLocation] = useState(1);
+  const [selectedValueLocation, setSelectedValueLocation] = useState(report.location);
   const handleChangeLocation = (event) => {
     setSelectedValueLocation(parseInt(event.target.value, 10));
   };
 
-  const [selectedValueEspacios, setSelectedValueEspacios] = React.useState(1);
+  const [selectedValueEspacios, setSelectedValueEspacios] = useState(report.spaces);
   const handleChangeEspacios = (event) => {
     setSelectedValueEspacios(parseInt(event.target.value, 10));
   };
 
-  const [selectedValueEstado, setSelectedValueEstado] = React.useState(1);
+  const [selectedValueEstado, setSelectedValueEstado] = useState(report.conservation);
   const handleChangeEstado = (event) => {
     setSelectedValueEstado(parseInt(event.target.value, 10));
   };
 
-  const [selectedValueDistribucion, setSelectedValueDistribucion] =
-    React.useState(1);
+  const [selectedValueDistribucion, setSelectedValueDistribucion] = useState(report.distribution);
   const handleChangeDistribucion = (event) => {
     setSelectedValueDistribucion(parseInt(event.target.value, 10));
   };
 
-  const [selectedValueFuncionalidad, setSelectedValueFuncionalidad] =
-    React.useState(1);
+  const [selectedValueFuncionalidad, setSelectedValueFuncionalidad] = useState(report.functionality);
   const handleChangeFuncionalidad = (event) => {
     setSelectedValueFuncionalidad(parseInt(event.target.value, 10));
   };
 
-  const [selectedValuePrecio, setSelectedValuePrecio] = React.useState(1);
+  const [selectedValuePrecio, setSelectedValuePrecio] = useState(report.price);
   const handleChangePrecio = (event) => {
     setSelectedValuePrecio(parseInt(event.target.value, 10));
   };
 
-  const [selectedValueReport, setSelectedValueReport] = React.useState(1);
+  const [selectedValueReport, setSelectedValueReport] = useState(report.purchase_rent);
   const handleChangeReport = (event) => {
     setSelectedValueReport(parseInt(event.target.value, 10));
   };
 
-  const [selectedValueServicio, setSelectedValueSericio] = React.useState(1);
+  const [selectedValueServicio, setSelectedValueSericio] = useState(report.service);
   const handleChangeServicio = (event) => {
     setSelectedValueSericio(parseInt(event.target.value, 10));
   };

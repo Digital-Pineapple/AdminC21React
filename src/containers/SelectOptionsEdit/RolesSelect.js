@@ -37,13 +37,13 @@ const RolesSelect = ({ detectarCambiosRole, type_user }) => {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="roles-options-label">Soy</InputLabel>
+        <InputLabel id="roles-options-label">Tipo de Usuario:</InputLabel>
         <Select
           labelId="roles-options-label"
           id="roles-options-select"
           value={Type_user ? Type_user.value : ""}
           onChange={handleRoleChange}
-          label="Soy"
+          label="Tipo de Usuario:"
           name="account"
         >
           {arrays.map((array) => (

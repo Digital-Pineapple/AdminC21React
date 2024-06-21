@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import MethodGet from "../../config/service";
 
-const RolesSelect = (props) => {
-  const array = [{ name: "Asesor (Inmobiliaria)", value: 5 }];
+const AddRolesSelect = (props) => {
+  const array = [
+    { name: "Inquilino (Rentar/Comprar)", value: 4 },
+    { name: "Asesor (Individual)", value: 3 },
+    { name: "Inmobiliaria", value: 2 },
+    { name: "Admin", value: 1 },
+  ];
 
   const detectarCambiosRole = (value) => {
     props.detectarCambiosRole(value.target.value);
@@ -32,4 +37,4 @@ const RolesSelect = (props) => {
   );
 };
 
-export default RolesSelect;
+export default AddRolesSelect;

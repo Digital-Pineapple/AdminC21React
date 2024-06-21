@@ -12,7 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { Grid, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
-import RolesSelect from "../SelectOptions/RolesSelect";
+import AddRolesSelect from "../SelectOptions/AddRolesSelect";
 import AuthContext from "../../context/auth/AuthContext";
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -176,7 +176,7 @@ export default function NewUser({ modal, handleClose }) {
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <RolesSelect detectarCambiosRole={detectarCambiosRole} />
+                <AddRolesSelect detectarCambiosRole={detectarCambiosRole} />
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <TextField
