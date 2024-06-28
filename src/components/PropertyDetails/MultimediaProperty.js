@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { FreeMode, Navigation, Thumbs, A11y } from "swiper/modules";
 import { Box, Grid, Typography } from "@mui/material";
 import { Image } from "react-bootstrap";
 
@@ -12,7 +12,7 @@ const MultimediaProperty = ({ name, images, property_id }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const generarUrlImagen = (index) =>
-    `https://mibien.s3.us-east-2.amazonaws.com/production/properties/${property_id}_${
+    `https://mibien.s3.us-east-2.amazonaws.com/test/properties/${property_id}_${
       index + 1
     }`;
 
@@ -39,32 +39,43 @@ const MultimediaProperty = ({ name, images, property_id }) => {
       </Grid>
       <Grid
         container
+        justifyContent="center"
+        alignItems="center"
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          flexDirection: { xs: "column", md: "row" },
+          gap: 2,
         }}
       >
-        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+        <Grid item xs={12} md={8}>
           <Swiper
-            navigation
+            style={{
+              "--swiper-navigation-color": "#fff",
+              "--swiper-pagination-color": "#fff",
+            }}
+            loop={true}
+            spaceBetween={10}
+            navigation={true}
             thumbs={{ swiper: thumbsSwiper }}
-            modules={[FreeMode, Navigation, Thumbs]}
+            modules={[FreeMode, Navigation, Thumbs, A11y]}
+            className="mySwiper2"
           >
             {nuevasImagenes.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div>
-                  <Image
-                    src={slide.url}
-                    style={{ width: "100%", height: "55vh" }}
-                  />
-                </div>
+                <Image
+                  src={slide.url}
+                  alt={`Imagen ${index + 1} de ${name}`}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    maxHeight: "50vh",
+                    objectFit: "cover",
+                  }}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+        <Grid item xs={12} md={8}>
           <Swiper
             onSwiper={setThumbsSwiper}
             loop={true}
@@ -72,16 +83,31 @@ const MultimediaProperty = ({ name, images, property_id }) => {
             slidesPerView={4}
             freeMode={true}
             watchSlidesProgress={true}
-            modules={[FreeMode, Navigation, Thumbs]}
+            modules={[FreeMode, Navigation, Thumbs, A11y]}
+            className="mySwiper"
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 10,
+              },
+            }}
           >
             {nuevasImagenes.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div>
-                  <Image
-                    src={slide.url}
-                    style={{ width: "80%", height: "23vh" }}
-                  />
-                </div>
+                <Image
+                  src={slide.url}
+                  alt={`Miniatura ${index + 1} de ${name}`}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    maxHeight: "23vh",
+                    objectFit: "cover",
+                  }}
+                />
               </SwiperSlide>
             ))}
           </Swiper>

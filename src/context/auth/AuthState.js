@@ -312,7 +312,7 @@ const AuthState = (props) => {
               text: "Modificada Correctamente",
               icon: "success",
             }).then(() => {
-              window.location.href = "/Perfil";
+              window.location.reload();
             });
             dispatch({
               type: USER_CHANGEPHOTO,
