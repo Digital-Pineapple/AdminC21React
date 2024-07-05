@@ -33,14 +33,14 @@ const DashboardReducer = (state, action) => {
         total_users: action.payload,
         ErrorsAPI: [],
       };
-    default:
-      return state;
     case TOTAL_USER_INM:
       return {
         ...state,
         total_usersInm: action.payload,
         ErrorsAPI: [],
       };
+    default:
+      return state;
   }
 };
 

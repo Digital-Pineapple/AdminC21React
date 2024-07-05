@@ -6,7 +6,9 @@ import Services from "../containers/Services/Services";
 import Properties from "../containers/Properties/IndexProperties";
 import SearchProperties from "../containers/SearchProperties/SearchProperties";
 import PropertiesPending from "../containers/Properties/IndexPropertiesPending";
-import VisitProperty from "../containers/Visits/VisitProperty";
+import VisitPending from "../containers/Visits/VisitPending";
+import VisitApproved from "../containers/Visits/VisitApproved";
+import VisitAccept from "../containers/Visits/VisitAccept";
 import CreateProperty from "../containers/Properties/CreateProperty";
 import Users from "../containers/Users/Users";
 import AseUsers from "../containers/AseUsers/Users";
@@ -23,7 +25,9 @@ const AdminRoutes = () => {
       <Route exact path="/PropertiesPending" component={PropertiesPending} />
       <Route exact path="/Properties" component={Properties} />
       <Route exact path="/SearchProperties" component={SearchProperties} />
-      <Route exact path="/Visit" component={VisitProperty} />
+      <Route exact path="/VisitPending" component={VisitPending} />
+      <Route exact path="/VisitApproved" component={VisitApproved} />
+      <Route exact path="/VisitAccept" component={VisitAccept} />
       <Route exact path="/DetailVisits/:id" component={DetailVisits} />
       <Route exact path="/CreateProperty" component={CreateProperty} />
       <Route exact path="/EditProperty/:id" component={EditProperty} />

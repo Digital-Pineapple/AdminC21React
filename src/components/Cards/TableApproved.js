@@ -4,8 +4,10 @@ import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import CancelIcon from "@mui/icons-material/Cancel";
 import { IconButton, Tooltip } from "@mui/material";
+import { Link } from "react-router-dom";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
@@ -59,8 +61,8 @@ const TableContainerResponsive = styled(TableContainer)(({ theme }) => ({
   },
 }));
 
-export default function TableVisit({ visits }) {
-  const { DeleteVisit, AcceptVisit } = useContext(VisitContext);
+export default function TableApproved({ visitsApproved }) {
+  const { BackPendingVisit } = useContext(VisitContext);
 
   return (
     <TableContainerResponsive component={Paper} sx={{ overflowX: "auto" }}>
@@ -76,38 +78,42 @@ export default function TableVisit({ visits }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {visits.map((visit) => (
-            <StyledTableRow key={visit.id}>
+          {visitsApproved.map((visitsApprove) => (
+            <StyledTableRow key={visitsApprove.id}>
               <StyledTableCell data-label="Nombre(s)">
-                {visit.name} {visit.last_name}
+                {visitsApprove.name} {visitsApprove.last_name}
               </StyledTableCell>
               <StyledTableCell data-label="Telefono">
-                {visit.phone}
+                {visitsApprove.phone}
               </StyledTableCell>
               <StyledTableCell data-label="Correo Electronico">
-                {visit.email}
+                {visitsApprove.email}
               </StyledTableCell>
               <StyledTableCell data-label="Fecha Registrada">
                 {format(
-                  new Date(visit.created_at),
+                  new Date(visitsApprove.created_at),
                   "dd 'de' MMMM 'de' yyyy 'a las' HH:mm",
                   { locale: es }
                 )}
               </StyledTableCell>
               <StyledTableCell data-label="Mensaje">
-                {visit.message}
+                {visitsApprove.message}
               </StyledTableCell>
               <StyledTableCell data-label="Acciones">
-                <IconButton size="small" onClick={() => AcceptVisit(visit.id)}>
-                  <Tooltip title="Aprovar Visita" placement="top">
-                    <CheckCircleOutlineIcon sx={{ color: "#0AC309" }} />
-                  </Tooltip>
-                </IconButton>
-                <IconButton size="small" onClick={() => DeleteVisit(visit.id)}>
-                  <Tooltip title="Eliminar Visita" placement="top">
-                    <DeleteIcon sx={{ color: "#FF0000" }} />
-                  </Tooltip>
-                </IconButton>
+                <Link to={`/DetailVisits/${visitsApprove.id}`}>
+                  <IconButton size="small">
+                    <Tooltip title="Detalle de Visita" placement="top">
+                      <VisibilityIcon sx={{ color: "blue" }} />
+                    </Tooltip>
+                  </IconButton>
+                </Link>
+                <Tooltip title="Cancelar Visita" placement="top">
+                  <IconButton
+                    onClick={() => BackPendingVisit(visitsApprove.id)}
+                  >
+                    <CancelIcon sx={{ color: "red" }} />
+                  </IconButton>
+                </Tooltip>
               </StyledTableCell>
             </StyledTableRow>
           ))}

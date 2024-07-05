@@ -1,4 +1,11 @@
-import { DELETE_VISITS, GET_ALL_VISITS } from "../../types/index";
+import {
+  DELETE_VISITS,
+  GET_ALL_VISITS,
+  GET_ALL_VISITS_APPROVED,
+  GET_ALL_VISITS_CLIENT,
+  UPDATE_VISIT,
+  DELETE_VISITS_CLIENT,
+} from "../../types/index";
 const VisitReducer = (state, action) => {
   switch (action.type) {
     case GET_ALL_VISITS:
@@ -9,16 +16,42 @@ const VisitReducer = (state, action) => {
         ErrorsApi: [],
       };
     case DELETE_VISITS:
-      let newV = state.visits.map((visit) => {
-        let copyVisit = visit;
-        copyVisit.bookings = visit.bookings.filter(
-          (item) => item.id !== action.payload
-        );
-        return copyVisit;
-      });
       return {
         ...state,
-        visits: newV,
+        visits: state.visits.filter((visit) => visit.id !== action.payload),
+      };
+
+    case GET_ALL_VISITS_APPROVED:
+      return {
+        ...state,
+        visitsApproved: action.payload,
+        success: true,
+        ErrorsApi: [],
+      };
+
+    case GET_ALL_VISITS_CLIENT:
+      return {
+        ...state,
+        visitsClient: action.payload,
+        success: true,
+        ErrorsApi: [],
+      };
+    case UPDATE_VISIT:
+      return {
+        ...state,
+        visitsClient: state.visitsClient.map((visitsClien) => {
+          if (visitsClien.id === action.payload.id) {
+            visitsClien = action.payload;
+          }
+          return visitsClien;
+        }),
+      };
+    case DELETE_VISITS_CLIENT:
+      return {
+        ...state,
+        visitsClient: state.visitsClient.filter(
+          (visitsClien) => visitsClien.id !== action.payload
+        ),
       };
     default:
       return state;

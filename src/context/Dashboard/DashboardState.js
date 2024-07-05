@@ -21,10 +21,11 @@ const DashboardState = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
-  let type_user = localStorage.getItem("type_user");
-  let user_id = localStorage.getItem("user_id");
+
   //Consulta el total de propiedades
   const TotalProperties = () => {
+    let type_user = localStorage.getItem("type_user");
+    let user_id = localStorage.getItem("user_id");
     if (type_user === "1") {
       let url = "/countProperty";
       MethodGet(url)
@@ -53,6 +54,8 @@ const DashboardState = ({ children }) => {
   };
   //Consulta los inmuebles en venta
   const TotalPropertiesSold = () => {
+    let type_user = localStorage.getItem("type_user");
+    let user_id = localStorage.getItem("user_id");
     if (type_user === "1") {
       let url = "/countVent";
       MethodGet(url)
@@ -81,6 +84,8 @@ const DashboardState = ({ children }) => {
   };
   //Consulta los inmuebles en renta
   const TotalPropertiesRent = () => {
+    let type_user = localStorage.getItem("type_user");
+    let user_id = localStorage.getItem("user_id");
     if (type_user === "1") {
       let url = "/countRent";
       MethodGet(url)
@@ -123,6 +128,8 @@ const DashboardState = ({ children }) => {
   };
   //Consulta todos los asesores dependiendo de la inmobiliaria
   const GetTotalUsersInm = () => {
+    let type_user = localStorage.getItem("type_user");
+    let user_id = localStorage.getItem("user_id");
     if (type_user === "1") {
       let url = `/countAsesores`;
       MethodGet(url)

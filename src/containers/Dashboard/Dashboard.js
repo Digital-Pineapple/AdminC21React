@@ -8,27 +8,33 @@ import DashboardContext from "../../context/Dashboard/DashboardContext";
 import Graphics from "../../components/Dashboard/Graphics";
 import { Grid, Typography } from "@mui/material";
 import TotalUsersInm from "../../components/Dashboard/TotalUsersInm";
-let type_user = localStorage.getItem("type_user");
+import CategoryContext from "../../context/Categories/CategoryContext";
 
 const Dashboard = () => {
+  let type_user = localStorage.getItem("type_user");
+
   const {
-    total_properties,
-    total_properties_sold,
-    total_properties_rent,
     total_users,
-    total_usersInm,
-    TotalProperties,
-    TotalPropertiesSold,
-    TotalPropertiesRent,
     GetTotalUsers,
+
+    total_usersInm,
     GetTotalUsersInm,
+
+    total_properties_sold,
+    TotalPropertiesSold,
+
+    total_properties_rent,
+    TotalPropertiesRent,
+
+    total_properties,
+    TotalProperties,
   } = useContext(DashboardContext);
   useEffect(() => {
-    TotalProperties();
-    TotalPropertiesSold();
-    TotalPropertiesRent();
     GetTotalUsers();
     GetTotalUsersInm();
+    TotalPropertiesSold();
+    TotalPropertiesRent();
+    TotalProperties();
   }, []);
 
   return (

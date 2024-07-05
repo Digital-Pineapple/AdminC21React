@@ -11,8 +11,9 @@ import Tooltip from "@mui/material/Tooltip";
 import MailIcon from "@mui/icons-material/Mail";
 import HouseIcon from "@mui/icons-material/House";
 import SearchIcon from "@mui/icons-material/Search";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import Divider from "@mui/material/Divider";
 import AddIcon from "@mui/icons-material/Add";
 import Badge from "@mui/material/Badge";
@@ -105,9 +106,18 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Header({ children }) {
-  const { visits, GetVisit } = useContext(VisitContext);
+  const {
+    visits,
+    GetVisitPending,
+    visitsApproved,
+    GetVisitApproved,
+    visitsClient,
+    GetVisitClient,
+  } = useContext(VisitContext);
   useEffect(() => {
-    GetVisit();
+    GetVisitPending();
+    GetVisitApproved();
+    GetVisitClient();
   }, []);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -186,12 +196,34 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas Agendadas",
-      value: "/Visit",
+      name: "Visitas Pendientes",
+      value: "/VisitPending",
       icon: (
-        <Tooltip title="Visitas Agendadas" placement="right">
-          <Badge badgeContent={visits ? visits.length : 0} color="error">
+        <Tooltip title="Visitas Pendientes" placement="right">
+          <Badge badgeContent={visits.length} color="error">
+            <MailOutlineIcon />
+          </Badge>
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Visitas Aprovadas",
+      value: "/VisitApproved",
+      icon: (
+        <Tooltip title="Visitas Aprovadas" placement="right">
+          <Badge badgeContent={visitsApproved.length} color="error">
             <MailIcon />
+          </Badge>
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Mis Visitas Aceptadas",
+      value: "/VisitAccept",
+      icon: (
+        <Tooltip title="Mis Visitas Aceptadas" placement="right">
+          <Badge badgeContent={visitsClient.length} color="error">
+            <MarkEmailReadIcon />
           </Badge>
         </Tooltip>
       ),
@@ -253,20 +285,22 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Buscar Propiedades",
-      value: "/SearchProperties",
+      name: "Visitas Pendientes",
+      value: "/VisitPending",
       icon: (
-        <Tooltip title="Buscar Propiedades" placement="right">
-          <SearchIcon />
+        <Tooltip title="Visitas Pendientes" placement="right">
+          <Badge badgeContent={visits.length} color="error">
+            <MailOutlineIcon />
+          </Badge>
         </Tooltip>
       ),
     },
     {
-      name: "Visitas Agendadas",
-      value: "/Visit",
+      name: "Visitas Aprovadas",
+      value: "/VisitApproved",
       icon: (
-        <Tooltip title="Visitas Agendadas" placement="right">
-          <Badge badgeContent={visits ? visits.length : 0} color="error">
+        <Tooltip title="Visitas Aprovadas" placement="right">
+          <Badge badgeContent={visitsApproved.length} color="error">
             <MailIcon />
           </Badge>
         </Tooltip>
@@ -329,14 +363,22 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas Agendadas",
-      value: "/Visit",
+      name: "Visitas Pendientes",
+      value: "/VisitPending",
       icon: (
-        <Tooltip title="Visitas Agendadas" placement="right">
-          <Badge
-            badgeContent={visits ? visits[0]?.bookings.length : 0}
-            color="error"
-          >
+        <Tooltip title="Visitas Pendientes" placement="right">
+          <Badge badgeContent={visits.length} color="error">
+            <MailOutlineIcon />
+          </Badge>
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Visitas Aprovadas",
+      value: "/VisitApproved",
+      icon: (
+        <Tooltip title="Visitas Aprovadas" placement="right">
+          <Badge badgeContent={visitsApproved.length} color="error">
             <MailIcon />
           </Badge>
         </Tooltip>
@@ -390,15 +432,34 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas Agendadas",
-      value: "/Visit",
+      name: "Visitas Pendientes",
+      value: "/VisitPending",
       icon: (
-        <Tooltip title="Visitas Agendadas" placement="right">
-          <Badge
-            badgeContent={visits ? visits[0]?.bookings.length : 0}
-            color="error"
-          >
+        <Tooltip title="Visitas Pendientes" placement="right">
+          <Badge badgeContent={visits.length} color="error">
+            <MailOutlineIcon />
+          </Badge>
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Visitas Aprovadas",
+      value: "/VisitApproved",
+      icon: (
+        <Tooltip title="Visitas Aprovadas" placement="right">
+          <Badge badgeContent={visitsApproved.length} color="error">
             <MailIcon />
+          </Badge>
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Mis Visitas Aceptadas",
+      value: "/VisitAccept",
+      icon: (
+        <Tooltip title="Mis Visitas Aceptadas" placement="right">
+          <Badge badgeContent={visitsClient.length} color="error">
+            <MarkEmailReadIcon />
           </Badge>
         </Tooltip>
       ),
@@ -433,14 +494,22 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas Agendadas",
-      value: "/Visit",
+      name: "Visitas Pendientes",
+      value: "/VisitPending",
       icon: (
-        <Tooltip title="Visitas Agendadas" placement="right">
-          <Badge
-            badgeContent={visits ? visits[0]?.bookings.length : 0}
-            color="error"
-          >
+        <Tooltip title="Visitas Pendientes" placement="right">
+          <Badge badgeContent={visits.length} color="error">
+            <MailOutlineIcon />
+          </Badge>
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Visitas Aprovadas",
+      value: "/VisitApproved",
+      icon: (
+        <Tooltip title="Visitas Aprovadas" placement="right">
+          <Badge badgeContent={visitsApproved.length} color="error">
             <MailIcon />
           </Badge>
         </Tooltip>

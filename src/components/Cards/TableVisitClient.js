@@ -4,15 +4,16 @@ import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import { IconButton, Tooltip } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { IconButton, Tooltip } from "@mui/material";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { format } from "date-fns";
 import { es } from "date-fns/locale/es";
 import React, { useContext } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
+import EditVisit from "../../containers/Visits/EditVisit";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -59,56 +60,77 @@ const TableContainerResponsive = styled(TableContainer)(({ theme }) => ({
   },
 }));
 
-export default function TableVisit({ visits }) {
-  const { DeleteVisit, AcceptVisit } = useContext(VisitContext);
+export default function TableVisitClient({ visitsClient }) {
+  const { DeleteVisitClient } = useContext(VisitContext);
+
+  const [openModalVisit, setOpenModalVisit] = React.useState(false);
+  const handleClickOpenVisit = () => {
+    setOpenModalVisit(true);
+  };
+  const handleCloseVisit = () => {
+    setOpenModalVisit(false);
+  };
 
   return (
     <TableContainerResponsive component={Paper} sx={{ overflowX: "auto" }}>
       <Table aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Nombre(s):</StyledTableCell>
-            <StyledTableCell>Telefono:</StyledTableCell>
-            <StyledTableCell>Correo Electronico:</StyledTableCell>
+            <StyledTableCell>Mi Nombre:</StyledTableCell>
+            <StyledTableCell>Mi Telefono:</StyledTableCell>
+            <StyledTableCell>Mi Correo Electronico:</StyledTableCell>
             <StyledTableCell>Fecha Registrada:</StyledTableCell>
-            <StyledTableCell>Mensaje:</StyledTableCell>
+            <StyledTableCell>Mi Mensaje:</StyledTableCell>
+            <StyledTableCell>Status:</StyledTableCell>
             <StyledTableCell>Acciones:</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {visits.map((visit) => (
-            <StyledTableRow key={visit.id}>
-              <StyledTableCell data-label="Nombre(s)">
-                {visit.name} {visit.last_name}
+          {visitsClient.map((visitsClien) => (
+            <StyledTableRow key={visitsClien.id}>
+              <StyledTableCell data-label="Mi Nombre:">
+                {visitsClien.name} {visitsClien.last_name}
               </StyledTableCell>
-              <StyledTableCell data-label="Telefono">
-                {visit.phone}
+              <StyledTableCell data-label="Mi Telefono:">
+                {visitsClien.phone}
               </StyledTableCell>
-              <StyledTableCell data-label="Correo Electronico">
-                {visit.email}
+              <StyledTableCell data-label="Mi Correo Electronico:">
+                {visitsClien.email}
               </StyledTableCell>
-              <StyledTableCell data-label="Fecha Registrada">
+              <StyledTableCell data-label="Fecha Registrada:">
                 {format(
-                  new Date(visit.created_at),
+                  new Date(visitsClien.created_at),
                   "dd 'de' MMMM 'de' yyyy 'a las' HH:mm",
                   { locale: es }
                 )}
               </StyledTableCell>
-              <StyledTableCell data-label="Mensaje">
-                {visit.message}
+              <StyledTableCell data-label="Mi Mensaje:">
+                {visitsClien.message}
+              </StyledTableCell>
+              <StyledTableCell data-label="Status:">
+                {visitsClien.status === 2
+                  ? "Visita Aprovada"
+                  : visitsClien.status === 1
+                  ? "Visita No Aprovada"
+                  : "Status Desconocido"}
               </StyledTableCell>
               <StyledTableCell data-label="Acciones">
-                <IconButton size="small" onClick={() => AcceptVisit(visit.id)}>
-                  <Tooltip title="Aprovar Visita" placement="top">
-                    <CheckCircleOutlineIcon sx={{ color: "#0AC309" }} />
-                  </Tooltip>
-                </IconButton>
-                <IconButton size="small" onClick={() => DeleteVisit(visit.id)}>
-                  <Tooltip title="Eliminar Visita" placement="top">
-                    <DeleteIcon sx={{ color: "#FF0000" }} />
-                  </Tooltip>
-                </IconButton>
+                <Tooltip title="Editar mi Visita" placement="top">
+                  <IconButton onClick={handleClickOpenVisit}>
+                    <EditIcon sx={{ color: "orange" }} />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Cancelar mi Visita" placement="top">
+                  <IconButton onClick={() => DeleteVisitClient(visitsClien.id)}>
+                    <DeleteIcon sx={{ color: "red" }} />
+                  </IconButton>
+                </Tooltip>
               </StyledTableCell>
+              <EditVisit
+                visitsClien={visitsClien}
+                modal={openModalVisit}
+                handleClose={handleCloseVisit}
+              />
             </StyledTableRow>
           ))}
         </TableBody>
