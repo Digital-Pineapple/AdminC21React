@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
@@ -6,6 +6,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
+import MethodGet from "../../config/service";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { Grid, TextField } from "@mui/material";
@@ -49,9 +50,22 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function EditVisit({ modal, handleClose, visitsClien }) {
-  const { EditVisit } = React.useContext(VisitContext);
+export default function EditVisit({ modal, handleClose, id }) {
+  const [visitsClien, saveVisitsClien] = useState(null);
 
+  const { bookingData } = visitsClien || {};
+
+  const { EditVisit } = React.useContext(VisitContext);
+  useEffect(() => {
+    let url = `/showVisit/${id}`;
+    MethodGet(url)
+      .then((res) => {
+        saveVisitsClien(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
   const {
     register,
     formState: { errors },
@@ -59,9 +73,10 @@ export default function EditVisit({ modal, handleClose, visitsClien }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    data.id = visitsClien.id;
-    data.property_id = visitsClien.property_id;
-    data.user_id = visitsClien.user_id;
+    data.status = bookingData.status;
+    data.id = bookingData.id;
+    data.property_id = bookingData.property_id;
+    data.user_id = bookingData.user_id;
     EditVisit(data);
     handleClose();
   };
@@ -88,133 +103,137 @@ export default function EditVisit({ modal, handleClose, visitsClien }) {
           }}
         >
           <DialogContent dividers>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <TextField
-                  type="text"
-                  defaultValue={visitsClien.name}
-                  fullWidth
-                  name="name"
-                  label="Mi Nombre"
-                  error={errors.name ? true : false}
-                  helperText={errors?.name?.message}
-                  {...register("name", {
-                    required: {
-                      value: true,
-                      message: "Este campo es requerido",
-                    },
-                    minLength: {
-                      value: 4,
-                      message: "Minimo 4 caracteres",
-                    },
-                    maxLength: {
-                      value: 50,
-                      message: "Maximo 50 caracteres",
-                    },
-                  })}
-                />
+            {bookingData !== undefined && (
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <TextField
+                    type="text"
+                    defaultValue={bookingData.name}
+                    fullWidth
+                    name="name"
+                    label="Mi Nombre"
+                    error={errors.name ? true : false}
+                    helperText={errors?.name?.message}
+                    {...register("name", {
+                      required: {
+                        value: true,
+                        message: "Este campo es requerido",
+                      },
+                      minLength: {
+                        value: 4,
+                        message: "Minimo 4 caracteres",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "Maximo 50 caracteres",
+                      },
+                    })}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <TextField
+                    type="text"
+                    defaultValue={bookingData.last_name}
+                    fullWidth
+                    name="last_name"
+                    label="Mi Apellido"
+                    error={errors.last_name ? true : false}
+                    helperText={errors?.last_name?.message}
+                    {...register("last_name", {
+                      required: {
+                        value: true,
+                        message: "Este campo es requerido",
+                      },
+                      minLength: {
+                        value: 1,
+                        message: "Minimo 1 caracteres",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "Maximo 50 caracteres",
+                      },
+                    })}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <TextField
+                    type="number"
+                    fullWidth
+                    defaultValue={bookingData.phone}
+                    name="phone"
+                    label="Mi Telefono:"
+                    error={errors.phone ? true : false}
+                    helperText={errors?.phone?.message}
+                    {...register("phone", {
+                      required: {
+                        value: true,
+                        message: "Este campo es requerido",
+                      },
+                      minLength: {
+                        value: 10,
+                        message: "Minimo 10 caracteres",
+                      },
+                      maxLength: {
+                        value: 15,
+                        message: "Maximo 15 caracteres",
+                      },
+                    })}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <TextField
+                    type="email"
+                    fullWidth
+                    name="email"
+                    defaultValue={bookingData.email}
+                    label="Mi Correo Electrónico:"
+                    error={errors.email ? true : false}
+                    helperText={errors?.email?.message}
+                    {...register("email", {
+                      required: {
+                        value: true,
+                        message: "Este campo es requerido",
+                      },
+                      minLength: {
+                        value: 4,
+                        message: "Minimo 4 caracteres",
+                      },
+                      maxLength: {
+                        value: 100,
+                        message: "Maximo 100 caracteres",
+                      },
+                    })}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <TextField
+                    type="text"
+                    defaultValue={bookingData.message}
+                    fullWidth
+                    multiline
+                    rows={6}
+                    name="message"
+                    label="Mi Mensaje:"
+                    error={errors.message ? true : false}
+                    helperText={errors?.message?.message}
+                    {...register("message", {
+                      required: {
+                        value: true,
+                        message: "Este campo es requerido",
+                      },
+                      minLength: {
+                        value: 4,
+                        message: "Minimo 4 caracteres",
+                      },
+                      maxLength: {
+                        value: 200,
+                        message: "Maximo 200 caracteres",
+                      },
+                    })}
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <TextField
-                  type="text"
-                  defaultValue={visitsClien.last_name}
-                  fullWidth
-                  name="last_name"
-                  label="Mi Apellido"
-                  error={errors.last_name ? true : false}
-                  helperText={errors?.last_name?.message}
-                  {...register("last_name", {
-                    required: {
-                      value: true,
-                      message: "Este campo es requerido",
-                    },
-                    minLength: {
-                      value: 1,
-                      message: "Minimo 1 caracteres",
-                    },
-                    maxLength: {
-                      value: 50,
-                      message: "Maximo 50 caracteres",
-                    },
-                  })}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <TextField
-                  type="number"
-                  fullWidth
-                  defaultValue={visitsClien.phone}
-                  name="phone"
-                  label="Mi Telefono:"
-                  error={errors.phone ? true : false}
-                  helperText={errors?.phone?.message}
-                  {...register("phone", {
-                    required: {
-                      value: true,
-                      message: "Este campo es requerido",
-                    },
-                    minLength: {
-                      value: 10,
-                      message: "Minimo 10 caracteres",
-                    },
-                    maxLength: {
-                      value: 15,
-                      message: "Maximo 15 caracteres",
-                    },
-                  })}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <TextField
-                  type="email"
-                  fullWidth
-                  name="email"
-                  defaultValue={visitsClien.email}
-                  label="Mi Correo Electrónico:"
-                  error={errors.email ? true : false}
-                  helperText={errors?.email?.message}
-                  {...register("email", {
-                    required: {
-                      value: true,
-                      message: "Este campo es requerido",
-                    },
-                    minLength: {
-                      value: 4,
-                      message: "Minimo 4 caracteres",
-                    },
-                    maxLength: {
-                      value: 100,
-                      message: "Maximo 100 caracteres",
-                    },
-                  })}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <TextField
-                  type="text"
-                  defaultValue={visitsClien.message}
-                  fullWidth
-                  name="message"
-                  label="Mi Mensaje:"
-                  error={errors.message ? true : false}
-                  helperText={errors?.message?.message}
-                  {...register("message", {
-                    required: {
-                      value: true,
-                      message: "Este campo es requerido",
-                    },
-                    minLength: {
-                      value: 4,
-                      message: "Minimo 4 caracteres",
-                    },
-                    maxLength: {
-                      value: 200,
-                      message: "Maximo 200 caracteres",
-                    },
-                  })}
-                />
-              </Grid>
-            </Grid>
+            )}
           </DialogContent>
           <DialogActions>
             <Button

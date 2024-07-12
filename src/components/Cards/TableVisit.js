@@ -7,6 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { IconButton, Tooltip } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { format } from "date-fns";
@@ -98,6 +100,13 @@ export default function TableVisit({ visits }) {
                 {visit.message}
               </StyledTableCell>
               <StyledTableCell data-label="Acciones">
+                <Link to={`/DetailVisits/${visit.id}`}>
+                  <IconButton size="small">
+                    <Tooltip title="Detalle de Visita" placement="top">
+                      <VisibilityIcon sx={{ color: "blue" }} />
+                    </Tooltip>
+                  </IconButton>
+                </Link>
                 <IconButton size="small" onClick={() => AcceptVisit(visit.id)}>
                   <Tooltip title="Aprovar Visita" placement="top">
                     <CheckCircleOutlineIcon sx={{ color: "#0AC309" }} />

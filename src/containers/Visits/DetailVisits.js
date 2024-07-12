@@ -19,9 +19,8 @@ export default function DetailVisits(props) {
     GetReportsVisits(id);
   }, [id]);
 
-  const { bookingData } = reports;
+  const { bookingData, propertyData } = reports || {};
   const { report_booking } = bookingData || {};
-  const { propertyData } = reports;
   const { images } = propertyData || {};
   const { rules } = propertyData || {};
 
@@ -48,28 +47,30 @@ export default function DetailVisits(props) {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Reporte de Visitas
+            Detalle de Visita
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
-          {(report_booking === undefined || report_booking.length === 0) && (
-            <Button
-              variant="contained"
-              fullWidth
-              onClick={handleClickOpen}
-              sx={{
-                color: "#1F3473",
-                backgroundColor: "#8ED5E1",
-                "&:hover": {
+        {bookingData && bookingData.status === 2 && (
+          <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
+            {(report_booking === undefined || report_booking.length === 0) && (
+              <Button
+                variant="contained"
+                fullWidth
+                onClick={handleClickOpen}
+                sx={{
                   color: "#1F3473",
-                  backgroundColor: "#8ED5E1 ",
-                },
-              }}
-            >
-              Crear reporte
-            </Button>
-          )}
-        </Grid>
+                  backgroundColor: "#8ED5E1",
+                  "&:hover": {
+                    color: "#1F3473",
+                    backgroundColor: "#8ED5E1 ",
+                  },
+                }}
+              >
+                Crear reporte
+              </Button>
+            )}
+          </Grid>
+        )}
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           {images !== undefined && (
             <ImageList
@@ -233,14 +234,16 @@ export default function DetailVisits(props) {
             </Card>
           )}
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-          {report_booking !== undefined && report_booking.length > 0 && (
-            <ReportBooking
-              report_booking={report_booking}
-              bookingData={bookingData}
-            />
-          )}
-        </Grid>
+        {bookingData && bookingData.status === 2 && (
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            {report_booking !== undefined && report_booking.length > 0 && (
+              <ReportBooking
+                report_booking={report_booking}
+                bookingData={bookingData}
+              />
+            )}
+          </Grid>
+        )}
       </Grid>
     </Layout>
   );

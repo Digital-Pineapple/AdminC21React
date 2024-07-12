@@ -10,6 +10,7 @@ import {
   GET_ALL_VISITS_CLIENT,
   UPDATE_VISIT,
   DELETE_VISITS_CLIENT,
+  DELETE_VISITS_APP,
 } from "../../types";
 import MethodGet, { MethodDelete, MethodPost } from "../../config/service";
 import Swal from "sweetalert2";
@@ -132,6 +133,43 @@ const VisitState = ({ children }) => {
     });
   };
 
+  //Elimina las visitas aprovadas
+  const DeleteVisitApp = (id) => {
+    Swal.fire({
+      title: "¿Estas seguro?",
+      text: "La visita seleccionada será eliminada",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminar",
+      cancelButtonText: "No, cancelar",
+    }).then((result) => {
+      if (result.value) {
+        let url = `/visitDestroy/${id}`;
+        MethodDelete(url)
+          .then((res) => {
+            Swal.fire({
+              title: "Eliminado",
+              text: res.data.message,
+              icon: "success",
+            });
+            dispatch({
+              type: DELETE_VISITS_APP,
+              payload: id,
+            });
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Error",
+              text: error.response.data.message,
+              icon: "error",
+            });
+          });
+      }
+    });
+  };
+
   //Elimina las visitas del cleinte
   const DeleteVisitClient = (id) => {
     Swal.fire({
@@ -212,12 +250,12 @@ const VisitState = ({ children }) => {
   const BackPendingVisit = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
-      text: "La visita seleccionada será cancelada",
+      text: "La visita seleccionada será desaprobada",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, cancelar",
+      confirmButtonText: "Si, desaprobar",
       cancelButtonText: "No, regresar",
     }).then((result) => {
       if (result.value) {
@@ -225,8 +263,8 @@ const VisitState = ({ children }) => {
         MethodPost(url)
           .then((res) => {
             Swal.fire({
-              title: "Cancelada",
-              text: "¡La visita se ha cancelado correctamente!",
+              title: "Listo",
+              text: "¡La visita se ha desaprobado correctamente!",
               icon: "success",
             }).then(() => {
               window.location.href = "/VisitPending";
@@ -247,7 +285,7 @@ const VisitState = ({ children }) => {
     });
   };
 
-  //Consulta las visitas pendientes
+  //Consulta las visitas del cliente
   const GetVisitClient = () => {
     let user_id = localStorage.getItem("user_id");
     let type_user = localStorage.getItem("type_user");
@@ -283,14 +321,14 @@ const VisitState = ({ children }) => {
     }
   };
 
-  //Edita la informacion de las visitas
+  //Edita la informacion de las visitas del cliente
   const EditVisit = (data) => {
     let url = `/bookEdit/${data.id}`;
     MethodPost(url, data)
       .then((res) => {
         Swal.fire({
           title: "¡ Visita !",
-          text: "Modificada Correctamente, Espera a que sea aprobada nuevamente",
+          text: "Modificada Correctamente",
           icon: "success",
         });
         dispatch({
@@ -323,6 +361,7 @@ const VisitState = ({ children }) => {
         GetVisitClient,
         EditVisit,
         DeleteVisitClient,
+        DeleteVisitApp,
       }}
     >
       {children}

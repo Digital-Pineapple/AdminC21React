@@ -62,7 +62,7 @@ const TableContainerResponsive = styled(TableContainer)(({ theme }) => ({
 }));
 
 export default function TableApproved({ visitsApproved }) {
-  const { BackPendingVisit } = useContext(VisitContext);
+  const { BackPendingVisit, DeleteVisitApp } = useContext(VisitContext);
 
   return (
     <TableContainerResponsive component={Paper} sx={{ overflowX: "auto" }}>
@@ -114,6 +114,14 @@ export default function TableApproved({ visitsApproved }) {
                     <CancelIcon sx={{ color: "red" }} />
                   </IconButton>
                 </Tooltip>
+                <IconButton
+                  size="small"
+                  onClick={() => DeleteVisitApp(visitsApprove.id)}
+                >
+                  <Tooltip title="Eliminar Visita" placement="top">
+                    <DeleteIcon sx={{ color: "#FF0000" }} />
+                  </Tooltip>
+                </IconButton>
               </StyledTableCell>
             </StyledTableRow>
           ))}

@@ -22,7 +22,7 @@ const VisitAccept = () => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Mis Visitas Aceptadas
+            Mis Visitas Solicitadas
           </Typography>
         </Grid>
         {visitsClient && visitsClient.length > 0 ? (

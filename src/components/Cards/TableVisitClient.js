@@ -4,7 +4,9 @@ import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import EditIcon from "@mui/icons-material/Edit";
+import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton, Tooltip } from "@mui/material";
 import TableRow from "@mui/material/TableRow";
@@ -64,11 +66,14 @@ export default function TableVisitClient({ visitsClient }) {
   const { DeleteVisitClient } = useContext(VisitContext);
 
   const [openModalVisit, setOpenModalVisit] = React.useState(false);
-  const handleClickOpenVisit = () => {
+  const [idVisit, saveIdVisit] = React.useState(null);
+  const handleClickOpenVisit = (id) => {
     setOpenModalVisit(true);
+    saveIdVisit(id);
   };
   const handleCloseVisit = () => {
     setOpenModalVisit(false);
+    saveIdVisit(null);
   };
 
   return (
@@ -109,14 +114,23 @@ export default function TableVisitClient({ visitsClient }) {
               </StyledTableCell>
               <StyledTableCell data-label="Status:">
                 {visitsClien.status === 2
-                  ? "Visita Aprovada"
+                  ? "Visita Aprobada. Pronto se comunicarán contigo."
                   : visitsClien.status === 1
-                  ? "Visita No Aprovada"
+                  ? "Visita No Aprobada. Espera a que sea aprobada tu visita."
                   : "Status Desconocido"}
               </StyledTableCell>
               <StyledTableCell data-label="Acciones">
+                <Link to={`/DetailVisits/${visitsClien.id}`}>
+                  <IconButton size="small">
+                    <Tooltip title="Detalle de Visita" placement="top">
+                      <VisibilityIcon sx={{ color: "blue" }} />
+                    </Tooltip>
+                  </IconButton>
+                </Link>
                 <Tooltip title="Editar mi Visita" placement="top">
-                  <IconButton onClick={handleClickOpenVisit}>
+                  <IconButton
+                    onClick={() => handleClickOpenVisit(visitsClien.id)}
+                  >
                     <EditIcon sx={{ color: "orange" }} />
                   </IconButton>
                 </Tooltip>
@@ -126,11 +140,13 @@ export default function TableVisitClient({ visitsClient }) {
                   </IconButton>
                 </Tooltip>
               </StyledTableCell>
-              <EditVisit
-                visitsClien={visitsClien}
-                modal={openModalVisit}
-                handleClose={handleCloseVisit}
-              />
+              {idVisit !== null && (
+                <EditVisit
+                  modal={openModalVisit}
+                  handleClose={handleCloseVisit}
+                  id={idVisit}
+                />
+              )}
             </StyledTableRow>
           ))}
         </TableBody>
