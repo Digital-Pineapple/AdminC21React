@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, Grid, Typography, Button } from "@mui/material";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import EditReport from "./EditReport";
+import VisitContext from "../../context/Visits/VisitContext";
 
 const ReportBooking = ({ report_booking, bookingData }) => {
+  const { DownloadPDF } = useContext(VisitContext);
+  const id = bookingData.id;
   const report = report_booking[0];
-  const handlePrint = () => {
-    window.print();
-  };
   const [id_report, saveid_report] = React.useState(null);
   const [openModal, setOpenModal] = React.useState(false);
   const handleClickOpen = (id) => {
@@ -202,9 +202,9 @@ const ReportBooking = ({ report_booking, bookingData }) => {
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <Button
-              variant="contained"
+              onClick={() => DownloadPDF(id)}
               fullWidth
-              onClick={handlePrint}
+              variant="contained"
               sx={{
                 color: "#8ED5E1",
                 backgroundColor: "#1F3473",

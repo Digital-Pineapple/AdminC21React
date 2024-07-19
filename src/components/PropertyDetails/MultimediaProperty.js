@@ -12,7 +12,7 @@ const MultimediaProperty = ({ name, images, property_id }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const generarUrlImagen = (index) =>
-    `https://mibien.s3.us-east-2.amazonaws.com/local/properties/${property_id}_${
+    `https://mibien.s3.us-east-2.amazonaws.com/test/properties/${property_id}_${
       index + 1
     }`;
 

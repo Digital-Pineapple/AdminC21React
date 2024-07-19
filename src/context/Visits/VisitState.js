@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
+import clientAxios from "../../config/Axios";
 import VisitContext from "./VisitContext";
 import VisitReducer from "./VisitReducer";
+import fileDownload from "js-file-download";
 import {
   DELETE_VISITS,
   GET_ALL_VISITS,
@@ -345,6 +347,41 @@ const VisitState = ({ children }) => {
       });
   };
 
+  //Descarga una pdf del reporte de la visita
+  const DownloadPDF = (id) => {
+    Swal.fire({
+      title: "¿Estas seguro?",
+      text: "El reporte será descargado",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, descargar",
+      cancelButtonText: "No, cancelar",
+    }).then((result) => {
+      if (result.value) {
+        let url = `/PDFReport/${id}`;
+        clientAxios
+          .get(url, { responseType: "blob" })
+          .then((res) => {
+            fileDownload(res.data, "ReportedeVisita.pdf");
+            Swal.fire({
+              title: "Descargado",
+              text: "El reporte se ha descargado correctamente",
+              icon: "success",
+            });
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Error",
+              text: error.response.data.message,
+              icon: "error",
+            });
+          });
+      }
+    });
+  };
+
   return (
     <VisitContext.Provider
       value={{
@@ -362,6 +399,7 @@ const VisitState = ({ children }) => {
         EditVisit,
         DeleteVisitClient,
         DeleteVisitApp,
+        DownloadPDF,
       }}
     >
       {children}
