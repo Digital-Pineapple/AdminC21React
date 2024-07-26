@@ -10,6 +10,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageList from "@mui/material/ImageList";
 import ReportBooking from "./ReportBooking";
 import ReportContext from "../../context/ReportVisits/ReportContext";
+import MultimediaVisit from "../../components/PropertyDetails/MultimediaVisit";
 
 export default function DetailVisits(props) {
   let type_user = localStorage.getItem("type_user");
@@ -50,7 +51,7 @@ export default function DetailVisits(props) {
             Detalle de Visita
           </Typography>
         </Grid>
-        {bookingData && bookingData.status === 2 && (
+        {/* {bookingData && bookingData.status === 2 && (
           <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
             {(report_booking === undefined || report_booking.length === 0) && (
               <Button
@@ -70,7 +71,7 @@ export default function DetailVisits(props) {
               </Button>
             )}
           </Grid>
-        )}
+        )} */}
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           {images !== undefined && (
             <ImageList
@@ -90,6 +91,11 @@ export default function DetailVisits(props) {
             </ImageList>
           )}
         </Grid>
+        {/* <Grid container spacing={2}>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            {images && <MultimediaVisit images={images} property_id={id} />}
+          </Grid>
+        </Grid> */}
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           {propertyData !== undefined && (
             <Card sx={{ padding: 4 }}>

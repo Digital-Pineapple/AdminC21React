@@ -41,6 +41,7 @@ const CardProperty = ({ property }) => {
   const { images } = property;
   const [id_property, saveProperty] = useState(null);
   const { DeleteProperty } = React.useContext(PropertiesContext);
+   let type_user = localStorage.getItem("type_user");
 
   const [addreesProperty, saveAddressProperty] = useState(null);
   const [IframePropertyModal, OpenIframeProperty] = useState(false);
@@ -229,20 +230,21 @@ const CardProperty = ({ property }) => {
                       <HomeIcon sx={{ color: "orange" }} />{" "}
                     </IconButton>
                   </Tooltip> */}
-
-                  <Tooltip title="Publicar Propiedad" placement="top">
-                    <IconButton onClick={() => PublishProperty(property.id)}>
-                      <CheckCircleOutlineIcon
-                        sx={{ color: "rgb(46, 255, 75)" }}
-                      />
-                    </IconButton>
-                  </Tooltip>
+                  {(type_user === "1" || type_user === "2") && (
+                    <Tooltip title="Publicar Propiedad" placement="top">
+                      <IconButton onClick={() => PublishProperty(property.id)}>
+                        <CheckCircleOutlineIcon
+                          sx={{ color: "rgb(46, 255, 75)" }}
+                        />
+                      </IconButton>
+                    </Tooltip>
+                  )}
                 </>
               )}
               {/* {property.status === 3 && (
                 <Tooltip title="Actualizar Multimedia" placement="top">
                   <IconButton>
-                    <CloudSyncIcon sx={{ color: "black" }} />
+                    <CloudSync Icon sx={{ color: "black" }} />
                   </IconButton>
                 </Tooltip>
               )} */}

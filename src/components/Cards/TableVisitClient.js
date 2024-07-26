@@ -127,18 +127,25 @@ export default function TableVisitClient({ visitsClient }) {
                     </Tooltip>
                   </IconButton>
                 </Link>
-                <Tooltip title="Editar mi Visita" placement="top">
-                  <IconButton
-                    onClick={() => handleClickOpenVisit(visitsClien.id)}
-                  >
-                    <EditIcon sx={{ color: "orange" }} />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip title="Cancelar mi Visita" placement="top">
-                  <IconButton onClick={() => DeleteVisitClient(visitsClien.id)}>
-                    <DeleteIcon sx={{ color: "red" }} />
-                  </IconButton>
-                </Tooltip>
+                {visitsClien.status === 1 && (
+                  <Tooltip title="Editar mi Visita" placement="top">
+                    <IconButton
+                      onClick={() => handleClickOpenVisit(visitsClien.id)}
+                    >
+                      <EditIcon sx={{ color: "orange" }} />
+                    </IconButton>
+                  </Tooltip>
+                )}
+
+                {visitsClien.status === 1 && (
+                  <Tooltip title="Cancelar mi Visita" placement="top">
+                    <IconButton
+                      onClick={() => DeleteVisitClient(visitsClien.id)}
+                    >
+                      <DeleteIcon sx={{ color: "red" }} />
+                    </IconButton>
+                  </Tooltip>
+                )}
               </StyledTableCell>
               {idVisit !== null && (
                 <EditVisit

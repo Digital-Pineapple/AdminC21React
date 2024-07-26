@@ -45,7 +45,6 @@ const VisitState = ({ children }) => {
     } else if (
       type_user === "2" ||
       type_user === "3" ||
-      type_user === "4" ||
       type_user === "5"
     ) {
       let url = `/visitTypeUserPending/${user_id}`;

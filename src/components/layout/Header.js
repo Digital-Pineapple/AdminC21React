@@ -333,7 +333,7 @@ export default function Header({ children }) {
       value: "/CreateProperty",
       icon: (
         <Tooltip title="Nueva Propiedad" placement="right">
-          <AddIcon />{" "}
+          <AddIcon />
         </Tooltip>
       ),
     },
@@ -343,15 +343,6 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Por Aprobar" placement="right">
           <HouseIcon />
-        </Tooltip>
-      ),
-    },
-    {
-      name: "Aprobados",
-      value: "/Properties",
-      icon: (
-        <Tooltip title="Aprobados" placement="right">
-          <HolidayVillageIcon />
         </Tooltip>
       ),
     },
@@ -434,6 +425,15 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Nueva Propiedad" placement="right">
           <AddIcon />{" "}
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Por Aprobar",
+      value: "/PropertiesPending",
+      icon: (
+        <Tooltip title="Por Aprobar" placement="right">
+          <HouseIcon />
         </Tooltip>
       ),
     },

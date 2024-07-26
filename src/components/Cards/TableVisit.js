@@ -75,6 +75,7 @@ export default function TableVisit({ visits }) {
             <StyledTableCell>Fecha Registrada:</StyledTableCell>
             <StyledTableCell>Mensaje:</StyledTableCell>
             <StyledTableCell>Acciones:</StyledTableCell>
+            <StyledTableCell>Status:</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -98,6 +99,13 @@ export default function TableVisit({ visits }) {
               </StyledTableCell>
               <StyledTableCell data-label="Mensaje">
                 {visit.message}
+              </StyledTableCell>
+              <StyledTableCell data-label="Status:">
+                {visit.status === 2
+                  ? "Visita Aprobada."
+                  : visit.status === 1
+                  ? "Visita No Aprobada."
+                  : "Status Desconocido"}
               </StyledTableCell>
               <StyledTableCell data-label="Acciones">
                 <Link to={`/DetailVisits/${visit.id}`}>

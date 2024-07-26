@@ -21,6 +21,7 @@ import { useState, useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import MethodGet from "../../config/service";
 import UserPropSelect from "../SelectOptionsEdit/UserPropSelect";
+import Commission from "./Commission";
 const EditProperty = (props) => {
   const { UpdateProperty } = useContext(PropertiesContext);
   let type_user = localStorage.getItem("type_user");
@@ -89,6 +90,12 @@ const EditProperty = (props) => {
     setTimeout(() => {
       setMap(target.value);
     }, 30);
+  };
+
+  const [selectedValueCommission, setSelectedValueCommission] =
+    React.useState("si");
+  const handleChangeCommission = (event) => {
+    setSelectedValueCommission(event.target.value);
   };
 
   useEffect(() => {
@@ -350,19 +357,56 @@ const EditProperty = (props) => {
                   })}
                 />
               </Grid>
-              <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  type="text"
-                  label="Comisión compartida de la propiedad"
-                  name="commission"
-                  defaultValue={property.rules[0].detail.commission}
-                  error={errors.commission ? true : false}
-                  helperText={errors?.commission?.message}
-                  {...register("commission", {})}
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={6}
+                lg={2}
+                xl={2}
+                display="flex"
+                justifyContent="center"
+              >
+                <Commission
+                  setSelectedValueCommission={setSelectedValueCommission}
+                  selectedValueCommission={selectedValueCommission}
+                  handleChangeCommission={handleChangeCommission}
                 />
               </Grid>
+              {selectedValueCommission === "si" && (
+                <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    type="number"
+                    label="Comisión compartida de la propiedad"
+                    name="commission"
+                    defaultValue={property.rules[0].detail.commission}
+                    error={errors.commission ? true : false}
+                    helperText={errors?.commission?.message}
+                    {...register("commission", {
+                      required: {
+                        value: true,
+                        message: "La Comisión compartida es requerida",
+                      },
+                      min: {
+                        value: 0,
+                        message: "El valor debe ser al menos 0%",
+                      },
+                      max: {
+                        value: 100,
+                        message: "El valor no puede exceder el 100%",
+                      },
+                    })}
+                    inputProps={{
+                      min: 0,
+                      max: 100,
+                      step: 0.01,
+                    }}
+                  />
+                </Grid>
+              )}
+
               {type_user === "2" && (
                 <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
                   <UserPropSelect

@@ -109,7 +109,12 @@ const PropertiesState = ({ children }) => {
         .catch((error) => {
           console.log(error);
         });
-    } else if (type_user === "2" || type_user === "3" || type_user === "4") {
+    } else if (
+      type_user === "2" ||
+      type_user === "3" ||
+      type_user === "4" ||
+      type_user === "5"
+    ) {
       let url = `/pending/propertiesuser/${user_id}`;
       MethodGet(url)
         .then((res) => {
@@ -127,12 +132,7 @@ const PropertiesState = ({ children }) => {
   const AddProperty = (data) => {
     let url = "/properties";
     let type_user = localStorage.getItem("type_user");
-    if (
-      type_user === "1" ||
-      type_user === "2" ||
-      type_user === "3" ||
-      type_user === "4"
-    ) {
+    if (type_user === "1" || type_user === "2") {
       MethodPost(url, data)
         .then((res) => {
           dispatch({
@@ -154,17 +154,15 @@ const PropertiesState = ({ children }) => {
             text: error.response.data[0],
           });
         });
-    } else if (type_user === "5") {
+    } else if (type_user === "3" || type_user === "5") {
       MethodPost(url, data)
         .then((res) => {
           Swal.fire({
             title: "Registrado",
             text: "¡La propiedad se ha registrado correctamente! Por favor, espera la aprobación de tu propiedad.",
             icon: "success",
-          }).then((result) => {
-            if (result.value) {
-              window.location.reload();
-            }
+          }).then(() => {
+            window.location.href = "/PropertiesPending";
           });
           dispatch({
             type: ADD_PROPERTY,

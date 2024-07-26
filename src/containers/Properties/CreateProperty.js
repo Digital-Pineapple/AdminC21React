@@ -21,6 +21,7 @@ import { useForm } from "react-hook-form";
 import Layout from "../../components/layout/Layout";
 import FractionamientOptions from "./FractionamientOptions";
 import MapsLoading from "../../components/loading/MapsLoading";
+import Commission from "./Commission";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -75,6 +76,12 @@ const PropertiesCreate = () => {
     saveMunicipality(value.value);
   };
 
+  const [selectedValueCommission, setSelectedValueCommission] =
+    React.useState("si");
+  const handleChangeCommission = (event) => {
+    setSelectedValueCommission(event.target.value);
+  };
+
   const [cargando, spinnerCargando] = useState(true);
   const [map, setMap] = useState(null);
   const handleHtmlMap = ({ target }) => {
@@ -97,6 +104,9 @@ const PropertiesCreate = () => {
     data.userInm_id = userInm;
     data.state_id = state;
     data.municipality_id = municipality;
+    if (type_user === "5") {
+      data.userInm_id = user_id;
+    }
     if (selectedValueParking === "si") {
       data.parking = 1;
     } else {
@@ -428,20 +438,55 @@ const PropertiesCreate = () => {
                 })}
               />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-              <TextField
-                fullWidth
-                variant="outlined"
-                type="number"
-                label="Comisión compartida de la propiedad"
-                name="commission"
-                error={errors.commission ? true : false}
-                helperText={errors?.commission?.message}
-                {...register("commission", {
-                  required: {},
-                })}
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={2}
+              xl={2}
+              display="flex"
+              justifyContent="center"
+            >
+              <Commission
+                setSelectedValueCommission={setSelectedValueCommission}
+                selectedValueCommission={selectedValueCommission}
+                handleChangeCommission={handleChangeCommission}
               />
             </Grid>
+            {selectedValueCommission === "si" && (
+              <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  type="text"
+                  label="¿Qué porcentaje desea compartir?"
+                  name="commission"
+                  error={errors.commission ? true : false}
+                  helperText={errors?.commission?.message}
+                  {...register("commission", {
+                    required: {
+                      value: true,
+                      message: "La Comisión compartida es requerida",
+                    },
+                    min: {
+                      value: 0,
+                      message: "El valor debe ser al menos 0%",
+                    },
+                    max: {
+                      value: 100,
+                      message: "El valor no puede exceder el 100%",
+                    },
+                  })}
+                  inputProps={{
+                    min: 0,
+                    max: 100,
+                    step: 0.01,
+                  }}
+                />
+              </Grid>
+            )}
+
             {type_user === "2" && (
               <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
                 <UserPropSelect

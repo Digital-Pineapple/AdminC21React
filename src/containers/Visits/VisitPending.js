@@ -7,7 +7,8 @@ import NoDataComponent from "../../components/loading/NoDataComponent";
 
 const VisitPending = () => {
   const { visits, GetVisitPending } = useContext(VisitContext);
-  
+  console.log(visits, "");
+
   useEffect(() => {
     GetVisitPending();
   }, []);
@@ -22,7 +23,7 @@ const VisitPending = () => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Visitas Pendientes de mis Propiedades
+            Solicitudes de visitas para mis propiedades
           </Typography>
         </Grid>
         {visits && visits.length > 0 ? (
