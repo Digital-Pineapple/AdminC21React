@@ -1,6 +1,11 @@
-import { Chip, Grid, Typography } from "@mui/material";
+import { Grid, Typography, Chip } from "@mui/material";
 import React from "react";
-import { Stack } from "react-bootstrap";
+import EventIcon from "@mui/icons-material/Event";
+import BedroomParentIcon from "@mui/icons-material/BedroomParent";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import BuildIcon from "@mui/icons-material/Build";
+import BathtubIcon from "@mui/icons-material/Bathtub";
+import StraightenIcon from "@mui/icons-material/Straighten";
 
 const Amenidades = ({ details }) => {
   const {
@@ -12,10 +17,11 @@ const Amenidades = ({ details }) => {
     size,
     size_total,
     half_bath,
-  } = details;
+  } = details || {};
+
   return (
     <Grid container spacing={2}>
-      {details !== null && (
+      {details && (
         <>
           <Grid
             item
@@ -24,11 +30,11 @@ const Amenidades = ({ details }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              color: "#662549",
+              color: "#1f3473",
             }}
           >
             <Typography
-              variant="h6"
+              variant="h5"
               fontWeight="bold"
               fontFamily="monospace"
               sx={{ color: "#1f3473" }}
@@ -37,56 +43,104 @@ const Amenidades = ({ details }) => {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
-              Años de antiguedad:
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <EventIcon sx={{ marginRight: 1 }} />
+              Años de antigüedad:
             </Typography>
-            {age}
+            <Typography variant="body1">{age}</Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <BedroomParentIcon sx={{ marginRight: 1 }} />
               Habitaciones:
             </Typography>
-            {rooms}
+            <Typography variant="body1">{rooms}</Typography>
           </Grid>
 
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <DirectionsCarIcon sx={{ marginRight: 1 }} />
               Estacionamiento:
             </Typography>
-            {parking === 1 ? `Si` : "No"}
-          </Grid>
-
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
-              En remodelacion:
+            <Typography variant="body1">
+              {parking === 1 ? "Sí" : "No"}
             </Typography>
-            {remodel === 1 ? `Si` : "No"}
           </Grid>
 
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <BuildIcon sx={{ marginRight: 1 }} />
+              En remodelación:
+            </Typography>
+            <Typography variant="body1">
+              {remodel === 1 ? "Sí" : "No"}
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <BathtubIcon sx={{ marginRight: 1 }} />
               Baños:
             </Typography>
-            {bathroom}
+            <Typography variant="body1">{bathroom}</Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
-              Medios Baños
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <BathtubIcon sx={{ marginRight: 1 }} />
+              Medios Baños:
             </Typography>
-            {half_bath}
+            <Typography variant="body1">{half_bath}</Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
-              Metros Totales
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <StraightenIcon sx={{ marginRight: 1 }} />
+              Metros Totales:
             </Typography>
-            {size_total}M²
+            <Typography variant="body1">{size_total} m²</Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
-              Metros Construidos
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <StraightenIcon sx={{ marginRight: 1 }} />
+              Metros Construidos:
             </Typography>
-            {size}M
+            <Typography variant="body1">{size} m²</Typography>
           </Grid>
         </>
       )}

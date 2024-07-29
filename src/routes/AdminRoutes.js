@@ -7,7 +7,6 @@ import Properties from "../containers/Properties/IndexProperties";
 import SearchProperties from "../containers/SearchProperties/SearchProperties";
 import PropertiesPending from "../containers/Properties/IndexPropertiesPending";
 import VisitPending from "../containers/Visits/VisitPending";
-import VisitApproved from "../containers/Visits/VisitApproved";
 import VisitAccept from "../containers/Visits/VisitAccept";
 import CreateProperty from "../containers/Properties/CreateProperty";
 import Users from "../containers/Users/Users";
@@ -26,7 +25,6 @@ const AdminRoutes = () => {
       <Route exact path="/Properties" component={Properties} />
       <Route exact path="/SearchProperties" component={SearchProperties} />
       <Route exact path="/VisitPending" component={VisitPending} />
-      <Route exact path="/VisitApproved" component={VisitApproved} />
       <Route exact path="/VisitAccept" component={VisitAccept} />
       <Route exact path="/DetailVisits/:id" component={DetailVisits} />
       <Route exact path="/CreateProperty" component={CreateProperty} />

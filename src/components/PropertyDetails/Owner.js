@@ -1,11 +1,15 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 const Owner = ({ owner }) => {
-  const { name, email, type_user, last_name, phone_number } = owner;
+  const { name, email, last_name, phone_number } = owner || {};
   return (
     <Grid container spacing={2}>
-      {owner !== null && (
+      {owner && (
         <>
           <Grid
             item
@@ -17,33 +21,58 @@ const Owner = ({ owner }) => {
               color: "#1f3473",
             }}
           >
-            <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+              fontFamily="monospace"
+              sx={{ color: "#1f3473", marginBottom: 2 }}
+            >
               Contacto:
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <BadgeIcon sx={{ marginRight: 1 }} />
               Nombre:
             </Typography>
-            {name}
+            <Typography variant="body1">{name}</Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
-              Correo Electronico:
-            </Typography>
-            {email}
-          </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
-              Numero de Telefono:
-            </Typography>
-            {phone_number}
-          </Grid>{" "}
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Typography variant="h6" fontWeight="bold">
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <BadgeIcon sx={{ marginRight: 1 }} />
               Apellido:
             </Typography>
-            {last_name}
+            <Typography variant="body1">{last_name}</Typography>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <EmailIcon sx={{ marginRight: 1 }} />
+              Correo Electrónico:
+            </Typography>
+            <Typography variant="body1">{email}</Typography>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+            >
+              <PhoneIcon sx={{ marginRight: 1 }} />
+              Número de Teléfono:
+            </Typography>
+            <Typography variant="body1">{phone_number}</Typography>
           </Grid>
         </>
       )}

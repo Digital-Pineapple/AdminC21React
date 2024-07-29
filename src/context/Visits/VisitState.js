@@ -7,12 +7,10 @@ import {
   DELETE_VISITS,
   GET_ALL_VISITS,
   ACCEPT_VISIT,
-  GET_ALL_VISITS_APPROVED,
   BACK_PENDING_VISIT,
   GET_ALL_VISITS_CLIENT,
   UPDATE_VISIT,
   DELETE_VISITS_CLIENT,
-  DELETE_VISITS_APP,
 } from "../../types";
 import MethodGet, { MethodDelete, MethodPost } from "../../config/service";
 import Swal from "sweetalert2";
@@ -26,7 +24,7 @@ const VisitState = ({ children }) => {
   };
   const [state, dispatch] = useReducer(VisitReducer, initialState);
 
-  //Consulta las visitas pendientes
+  //Consulta todas las visitas para admin y tipo de usuario
   const GetVisitPending = () => {
     let user_id = localStorage.getItem("user_id");
     let type_user = localStorage.getItem("type_user");
@@ -42,11 +40,7 @@ const VisitState = ({ children }) => {
         .catch((error) => {
           console.log(error);
         });
-    } else if (
-      type_user === "2" ||
-      type_user === "3" ||
-      type_user === "5"
-    ) {
+    } else if (type_user === "2" || type_user === "3" || type_user === "5") {
       let url = `/visitTypeUserPending/${user_id}`;
       MethodGet(url)
         .then((res) => {
@@ -61,43 +55,7 @@ const VisitState = ({ children }) => {
     }
   };
 
-  //Consulta las visitas aprobadas
-  const GetVisitApproved = () => {
-    let user_id = localStorage.getItem("user_id");
-    let type_user = localStorage.getItem("type_user");
-    if (type_user === "1") {
-      let url = `/indexApproved`;
-      MethodGet(url)
-        .then((res) => {
-          dispatch({
-            type: GET_ALL_VISITS_APPROVED,
-            payload: res.data.data,
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else if (
-      type_user === "2" ||
-      type_user === "3" ||
-      type_user === "4" ||
-      type_user === "5"
-    ) {
-      let url = `/indexTypeUserApproved/${user_id}`;
-      MethodGet(url)
-        .then((res) => {
-          dispatch({
-            type: GET_ALL_VISITS_APPROVED,
-            payload: res.data.data,
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
-
-  //Elimina las visitas pendientes
+  //Elimina las visitas
   const DeleteVisit = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -120,43 +78,6 @@ const VisitState = ({ children }) => {
             });
             dispatch({
               type: DELETE_VISITS,
-              payload: id,
-            });
-          })
-          .catch((error) => {
-            Swal.fire({
-              title: "Error",
-              text: error.response.data.message,
-              icon: "error",
-            });
-          });
-      }
-    });
-  };
-
-  //Elimina las visitas aprovadas
-  const DeleteVisitApp = (id) => {
-    Swal.fire({
-      title: "¿Estas seguro?",
-      text: "La visita seleccionada será eliminada",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, eliminar",
-      cancelButtonText: "No, cancelar",
-    }).then((result) => {
-      if (result.value) {
-        let url = `/visitDestroy/${id}`;
-        MethodDelete(url)
-          .then((res) => {
-            Swal.fire({
-              title: "Eliminado",
-              text: res.data.message,
-              icon: "success",
-            });
-            dispatch({
-              type: DELETE_VISITS_APP,
               payload: id,
             });
           })
@@ -228,8 +149,8 @@ const VisitState = ({ children }) => {
               title: "Aprobada",
               text: "¡La visita se ha aprobado correctamente!",
               icon: "success",
-            }).then((res) => {
-              window.location.href = "/VisitApproved";
+            }).then(() => {
+              window.location.reload();
             });
             dispatch({
               type: ACCEPT_VISIT,
@@ -268,7 +189,7 @@ const VisitState = ({ children }) => {
               text: "¡La visita se ha desaprobado correctamente!",
               icon: "success",
             }).then(() => {
-              window.location.href = "/VisitPending";
+              window.location.reload();
             });
             dispatch({
               type: BACK_PENDING_VISIT,
@@ -392,12 +313,10 @@ const VisitState = ({ children }) => {
         GetVisitPending,
         DeleteVisit,
         AcceptVisit,
-        GetVisitApproved,
         BackPendingVisit,
         GetVisitClient,
         EditVisit,
         DeleteVisitClient,
-        DeleteVisitApp,
         DownloadPDF,
       }}
     >

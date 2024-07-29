@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { IconButton, Tooltip } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CancelIcon from "@mui/icons-material/Cancel";
 import { Link } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import TableRow from "@mui/material/TableRow";
@@ -62,7 +63,8 @@ const TableContainerResponsive = styled(TableContainer)(({ theme }) => ({
 }));
 
 export default function TableVisit({ visits }) {
-  const { DeleteVisit, AcceptVisit } = useContext(VisitContext);
+  const { DeleteVisit, AcceptVisit, BackPendingVisit } =
+    useContext(VisitContext);
 
   return (
     <TableContainerResponsive component={Paper} sx={{ overflowX: "auto" }}>
@@ -74,8 +76,8 @@ export default function TableVisit({ visits }) {
             <StyledTableCell>Correo Electronico:</StyledTableCell>
             <StyledTableCell>Fecha Registrada:</StyledTableCell>
             <StyledTableCell>Mensaje:</StyledTableCell>
-            <StyledTableCell>Acciones:</StyledTableCell>
             <StyledTableCell>Status:</StyledTableCell>
+            <StyledTableCell>Acciones:</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -115,11 +117,24 @@ export default function TableVisit({ visits }) {
                     </Tooltip>
                   </IconButton>
                 </Link>
-                <IconButton size="small" onClick={() => AcceptVisit(visit.id)}>
-                  <Tooltip title="Aprovar Visita" placement="top">
-                    <CheckCircleOutlineIcon sx={{ color: "#0AC309" }} />
-                  </Tooltip>
-                </IconButton>
+                {visit.status === 1 && (
+                  <IconButton
+                    size="small"
+                    onClick={() => AcceptVisit(visit.id)}
+                  >
+                    <Tooltip title="Aprovar Visita" placement="top">
+                      <CheckCircleOutlineIcon sx={{ color: "#0AC309" }} />
+                    </Tooltip>
+                  </IconButton>
+                )}
+                {visit.status === 2 && (
+                  <IconButton onClick={() => BackPendingVisit(visit.id)}>
+                    <Tooltip title="Cancelar Visita" placement="top">
+                      <CancelIcon sx={{ color: "red" }} />
+                    </Tooltip>
+                  </IconButton>
+                )}
+
                 <IconButton size="small" onClick={() => DeleteVisit(visit.id)}>
                   <Tooltip title="Eliminar Visita" placement="top">
                     <DeleteIcon sx={{ color: "#FF0000" }} />

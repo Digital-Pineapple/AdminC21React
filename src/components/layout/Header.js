@@ -112,13 +112,11 @@ export default function Header({ children }) {
     visits,
     GetVisitPending,
     visitsApproved,
-    GetVisitApproved,
     visitsClient,
     GetVisitClient,
   } = useContext(VisitContext);
   useEffect(() => {
     GetVisitPending();
-    GetVisitApproved();
     GetVisitClient();
   }, []);
   const theme = useTheme();
@@ -198,23 +196,12 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas Pendientes",
+      name: "Solicitudes de visitas",
       value: "/VisitPending",
       icon: (
-        <Tooltip title="Visitas Pendientes" placement="right">
+        <Tooltip title="Solicitudes de visitas" placement="right">
           <Badge badgeContent={visits.length} color="error">
             <EventBusyIcon />
-          </Badge>
-        </Tooltip>
-      ),
-    },
-    {
-      name: "Visitas Aprovadas",
-      value: "/VisitApproved",
-      icon: (
-        <Tooltip title="Visitas Aprovadas" placement="right">
-          <Badge badgeContent={visitsApproved.length} color="error">
-            <EventAvailableIcon />
           </Badge>
         </Tooltip>
       ),
@@ -287,23 +274,12 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas Pendientes",
+      name: "Solicitudes de visitas",
       value: "/VisitPending",
       icon: (
-        <Tooltip title="Visitas Pendientes" placement="right">
+        <Tooltip title="Solicitudes de visitas" placement="right">
           <Badge badgeContent={visits.length} color="error">
             <EventBusyIcon />
-          </Badge>
-        </Tooltip>
-      ),
-    },
-    {
-      name: "Visitas Aprovadas",
-      value: "/VisitApproved",
-      icon: (
-        <Tooltip title="Visitas Aprovadas" placement="right">
-          <Badge badgeContent={visitsApproved.length} color="error">
-            <EventAvailableIcon />
           </Badge>
         </Tooltip>
       ),
@@ -356,23 +332,12 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas Pendientes",
+      name: "Solicitudes de visitas",
       value: "/VisitPending",
       icon: (
-        <Tooltip title="Visitas Pendientes" placement="right">
+        <Tooltip title="Solicitudes de visitas" placement="right">
           <Badge badgeContent={visits.length} color="error">
             <EventBusyIcon />
-          </Badge>
-        </Tooltip>
-      ),
-    },
-    {
-      name: "Visitas Aprovadas",
-      value: "/VisitApproved",
-      icon: (
-        <Tooltip title="Visitas Aprovadas" placement="right">
-          <Badge badgeContent={visitsApproved.length} color="error">
-            <EventAvailableIcon />
           </Badge>
         </Tooltip>
       ),
@@ -447,23 +412,12 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Visitas Pendientes",
+      name: "Solicitudes de visitas",
       value: "/VisitPending",
       icon: (
-        <Tooltip title="Visitas Pendientes" placement="right">
+        <Tooltip title="Solicitudes de visitas" placement="right">
           <Badge badgeContent={visits.length} color="error">
             <EventBusyIcon />
-          </Badge>
-        </Tooltip>
-      ),
-    },
-    {
-      name: "Visitas Aprovadas",
-      value: "/VisitApproved",
-      icon: (
-        <Tooltip title="Visitas Aprovadas" placement="right">
-          <Badge badgeContent={visitsApproved.length} color="error">
-            <EventAvailableIcon />
           </Badge>
         </Tooltip>
       ),

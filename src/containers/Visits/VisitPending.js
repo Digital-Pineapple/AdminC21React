@@ -7,7 +7,6 @@ import NoDataComponent from "../../components/loading/NoDataComponent";
 
 const VisitPending = () => {
   const { visits, GetVisitPending } = useContext(VisitContext);
-  console.log(visits, "");
 
   useEffect(() => {
     GetVisitPending();

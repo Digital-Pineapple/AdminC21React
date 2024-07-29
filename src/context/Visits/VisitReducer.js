@@ -1,11 +1,9 @@
 import {
   DELETE_VISITS,
   GET_ALL_VISITS,
-  GET_ALL_VISITS_APPROVED,
   GET_ALL_VISITS_CLIENT,
   UPDATE_VISIT,
   DELETE_VISITS_CLIENT,
-  DELETE_VISITS_APP,
 } from "../../types/index";
 const VisitReducer = (state, action) => {
   switch (action.type) {
@@ -22,23 +20,6 @@ const VisitReducer = (state, action) => {
         visits: state.visits.filter((visit) => visit.id !== action.payload),
       };
 
-
-    case GET_ALL_VISITS_APPROVED:
-      return {
-        ...state,
-        visitsApproved: action.payload,
-        success: true,
-        ErrorsApi: [],
-      };
-    case DELETE_VISITS_APP:
-      return {
-        ...state,
-        visitsApproved: state.visitsApproved.filter(
-          (visitsApprove) => visitsApprove.id !== action.payload
-        ),
-      };
-
-      
     case GET_ALL_VISITS_CLIENT:
       return {
         ...state,
