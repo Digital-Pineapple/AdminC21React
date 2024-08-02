@@ -133,21 +133,21 @@ const VisitState = ({ children }) => {
   const AcceptVisit = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
-      text: "La visita seleccionada será aprobada",
+      text: "La visita seleccionada será aceptada",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, aprobar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: "Si, aceptar",
+      cancelButtonText: "No, regresar",
     }).then((result) => {
       if (result.value) {
         let url = `/booking/approve/${id}`;
         MethodPost(url)
           .then((res) => {
             Swal.fire({
-              title: "Aprobada",
-              text: "¡La visita se ha aprobado correctamente!",
+              title: "Listo",
+              text: "¡La visita se ha aceptado correctamente!",
               icon: "success",
             }).then(() => {
               window.location.reload();
@@ -172,12 +172,12 @@ const VisitState = ({ children }) => {
   const BackPendingVisit = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
-      text: "La visita seleccionada será desaprobada",
+      text: "La visita seleccionada será cancelada",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, desaprobar",
+      confirmButtonText: "Si, cancelar",
       cancelButtonText: "No, regresar",
     }).then((result) => {
       if (result.value) {
@@ -186,7 +186,7 @@ const VisitState = ({ children }) => {
           .then((res) => {
             Swal.fire({
               title: "Listo",
-              text: "¡La visita se ha desaprobado correctamente!",
+              text: "¡La visita se ha cancelado correctamente!",
               icon: "success",
             }).then(() => {
               window.location.reload();

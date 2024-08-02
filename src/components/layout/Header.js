@@ -274,6 +274,15 @@ export default function Header({ children }) {
       ),
     },
     {
+      name: "Buscar Propiedades",
+      value: "/SearchProperties",
+      icon: (
+        <Tooltip title="Buscar Propiedades" placement="right">
+          <SearchIcon />
+        </Tooltip>
+      ),
+    },
+    {
       name: "Solicitudes de visitas",
       value: "/VisitPending",
       icon: (
@@ -319,6 +328,15 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Por Aprobar" placement="right">
           <HouseIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Aprobados",
+      value: "/Properties",
+      icon: (
+        <Tooltip title="Aprobados" placement="right">
+          <HolidayVillageIcon />
         </Tooltip>
       ),
     },
@@ -399,6 +417,15 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Por Aprobar" placement="right">
           <HouseIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Aprobados",
+      value: "/Properties",
+      icon: (
+        <Tooltip title="Aprobados" placement="right">
+          <HolidayVillageIcon />
         </Tooltip>
       ),
     },

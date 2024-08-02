@@ -14,8 +14,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { format } from "date-fns";
 import { es } from "date-fns/locale/es";
-import React, { useContext } from "react";
+import AddIcon from "@mui/icons-material/Add";
+import React, { useContext, useState } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
+import AddReport from "../../containers/Visits/AddReport";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -66,6 +68,19 @@ export default function TableVisit({ visits }) {
   const { DeleteVisit, AcceptVisit, BackPendingVisit } =
     useContext(VisitContext);
 
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedVisitId, setSelectedVisitId] = useState(null);
+
+  const handleClickOpen = (visitId) => {
+    setSelectedVisitId(visitId);
+    setOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenModal(false);
+    setSelectedVisitId(null);
+  };
+
   return (
     <TableContainerResponsive component={Paper} sx={{ overflowX: "auto" }}>
       <Table aria-label="customized table">
@@ -103,7 +118,11 @@ export default function TableVisit({ visits }) {
                 {visit.message}
               </StyledTableCell>
               <StyledTableCell data-label="Status:">
-                {visit.status === 2
+                {visit.status === 4
+                  ? "Has visitado al cliente, pero él no asistió a la reunión."
+                  : visit.status === 3
+                  ? "Has visitado al cliente y han alcanzado un acuerdo."
+                  : visit.status === 2
                   ? "Visita Aprobada."
                   : visit.status === 1
                   ? "Visita No Aprobada."
@@ -117,20 +136,36 @@ export default function TableVisit({ visits }) {
                     </Tooltip>
                   </IconButton>
                 </Link>
+
                 {visit.status === 1 && (
                   <IconButton
                     size="small"
                     onClick={() => AcceptVisit(visit.id)}
                   >
-                    <Tooltip title="Aprovar Visita" placement="top">
+                    <Tooltip title="Aceptar Visita" placement="top">
                       <CheckCircleOutlineIcon sx={{ color: "#0AC309" }} />
                     </Tooltip>
                   </IconButton>
                 )}
+
                 {visit.status === 2 && (
-                  <IconButton onClick={() => BackPendingVisit(visit.id)}>
+                  <IconButton
+                    size="small"
+                    onClick={() => BackPendingVisit(visit.id)}
+                  >
                     <Tooltip title="Cancelar Visita" placement="top">
                       <CancelIcon sx={{ color: "red" }} />
+                    </Tooltip>
+                  </IconButton>
+                )}
+
+                {visit.status === 3 && (
+                  <IconButton
+                    size="small"
+                    onClick={() => handleClickOpen(visit.id)}
+                  >
+                    <Tooltip title="Crear Reporte" placement="top">
+                      <AddIcon sx={{ color: "black" }} />
                     </Tooltip>
                   </IconButton>
                 )}
@@ -145,6 +180,13 @@ export default function TableVisit({ visits }) {
           ))}
         </TableBody>
       </Table>
+      {selectedVisitId && (
+        <AddReport
+          modal={openModal}
+          handleClose={handleClose}
+          bookingData={selectedVisitId}
+        />
+      )}
     </TableContainerResponsive>
   );
 }

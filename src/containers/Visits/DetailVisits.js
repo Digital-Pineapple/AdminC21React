@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import AddReport from "./AddReport";
@@ -15,11 +15,21 @@ import PersonIcon from "@mui/icons-material/Person";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import ReportContext from "../../context/ReportVisits/ReportContext";
 import MultimediaProperty from "../../components/PropertyDetails/MultimediaProperty";
+import ReportBooking from "./ReportBooking";
+
+const formatPrice = (price) => {
+  return new Intl.NumberFormat("es-MX", {
+    style: "currency",
+    currency: "MXN",
+    minimumFractionDigits: 2,
+  }).format(price);
+};
 
 export default function DetailVisits(props) {
   const type_user = localStorage.getItem("type_user");
   const { id } = props.match.params;
-  const { reports, GetReportsVisits } = useContext(ReportContext);
+  const { reports, GetReportsVisits, AcceptVisit, NotAcceptVisit } =
+    useContext(ReportContext);
 
   useEffect(() => {
     GetReportsVisits(id);
@@ -33,10 +43,6 @@ export default function DetailVisits(props) {
   const detail = rules?.map((rule) => rule.detail) || [];
   const final_price = detail.map((det) => det.final_price) || [];
   const name = rules?.map((rul) => rul.name) || [];
-
-  const [openModal, setOpenModal] = useState(false);
-  const handleClickOpen = () => setOpenModal(true);
-  const handleClose = () => setOpenModal(false);
 
   return (
     <Layout>
@@ -73,7 +79,7 @@ export default function DetailVisits(props) {
                   variant="subtitle1"
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
-                  <HomeIcon sx={{ marginRight: 1 }} />
+                  <HomeIcon sx={{ color: "#3F51B5", marginRight: 1 }} />
                   {propertyData.name}
                 </Typography>
               </Grid>
@@ -84,7 +90,7 @@ export default function DetailVisits(props) {
                   variant="subtitle1"
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
-                  <PersonIcon sx={{ marginRight: 1 }} />
+                  <PersonIcon sx={{ color: "#4CAF50", marginRight: 1 }} />
                   De: {propertyData.owner.name} {propertyData.owner.last_name}
                 </Typography>
               </Grid>
@@ -100,7 +106,7 @@ export default function DetailVisits(props) {
                       alignItems: "center",
                     }}
                   >
-                    <PersonIcon sx={{ marginRight: 1 }} />
+                    <PersonIcon sx={{ color: "#FF9800", marginRight: 1 }} />
                     Asesor: {propertyData.user_inm.name}{" "}
                     {propertyData.user_inm.last_name}
                   </Typography>
@@ -113,8 +119,8 @@ export default function DetailVisits(props) {
                   variant="subtitle1"
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
-                  <AttachMoneyIcon sx={{ marginRight: 1 }} />
-                  En: {name} ${final_price} MXN
+                  <AttachMoneyIcon sx={{ color: "#FFC107", marginRight: 1 }} />
+                  En: {name} {formatPrice(final_price)} MXN
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -145,7 +151,7 @@ export default function DetailVisits(props) {
                   variant="subtitle1"
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
-                  <PersonIcon sx={{ marginRight: 1 }} />
+                  <PersonIcon sx={{ color: "#3F51B5", marginRight: 1 }} />
                   Nombre del Cliente: {bookingData.name} {bookingData.last_name}
                 </Typography>
               </Grid>
@@ -156,7 +162,7 @@ export default function DetailVisits(props) {
                   variant="subtitle1"
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
-                  <EmailIcon sx={{ marginRight: 1 }} />
+                  <EmailIcon sx={{ color: "#4CAF50", marginRight: 1 }} />
                   Correo Electrónico: {bookingData.email}
                 </Typography>
               </Grid>
@@ -167,7 +173,7 @@ export default function DetailVisits(props) {
                   variant="subtitle1"
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
-                  <PhoneIcon sx={{ marginRight: 1 }} />
+                  <PhoneIcon sx={{ color: "#FF9800", marginRight: 1 }} />
                   Número de Teléfono: {bookingData.phone}
                 </Typography>
               </Grid>
@@ -178,7 +184,9 @@ export default function DetailVisits(props) {
                   variant="subtitle1"
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
-                  <CalendarTodayIcon sx={{ marginRight: 1 }} />
+                  <CalendarTodayIcon
+                    sx={{ color: "#E91E63", marginRight: 1 }}
+                  />
                   Fecha Registrada de la Visita:{" "}
                   {format(
                     new Date(bookingData.created_at),
@@ -194,7 +202,7 @@ export default function DetailVisits(props) {
                   variant="subtitle1"
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
-                  <CommentIcon sx={{ marginRight: 1 }} />
+                  <CommentIcon sx={{ color: "#009688", marginRight: 1 }} />
                   Comentarios del Cliente: {bookingData.message}
                 </Typography>
               </Grid>
@@ -206,6 +214,7 @@ export default function DetailVisits(props) {
                       type_user === "2" ||
                       type_user === "3") && (
                       <Button
+                        onClick={() => AcceptVisit(bookingData.id)}
                         variant="outlined"
                         color="success"
                         startIcon={<DoneAllIcon />}
@@ -218,6 +227,7 @@ export default function DetailVisits(props) {
                       type_user === "2" ||
                       type_user === "3") && (
                       <Button
+                        onClick={() => NotAcceptVisit(bookingData.id)}
                         variant="outlined"
                         color="error"
                         startIcon={<CloseIcon />}
@@ -230,48 +240,13 @@ export default function DetailVisits(props) {
             </Grid>
           </Grid>
         )}
+        {report_booking !== undefined && report_booking.length > 0 && (
+          <ReportBooking
+            report_booking={report_booking}
+            bookingData={bookingData}
+          />
+        )}
       </Grid>
     </Layout>
   );
-}
-
-{
-  /*
-          <Grid item xs={12}>
-                    <AddReport
-                      modal={openModal}
-                      handleClose={handleClose}
-                      bookingData={bookingData}
-                    />
-                  </Grid> {bookingData && bookingData.status === 2 && (
-                <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
-                  {(report_booking === undefined || report_booking.length === 0) && (
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      onClick={handleClickOpen}
-                      sx={{
-                        color: "#1F3473",
-                        backgroundColor: "#8ED5E1",
-                        "&:hover": {
-                          color: "#1F3473",
-                          backgroundColor: "#8ED5E1 ",
-                        },
-                      }}
-                    > 
-                      Crear reporte
-                    </Button>
-                  )}
-                </Grid>
-              )} 
-            {bookingData && bookingData.status === 2 && (
-              <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-                {report_booking !== undefined && report_booking.length > 0 && (
-                  <ReportBooking
-                    report_booking={report_booking}
-                    bookingData={bookingData}
-                  />
-                )}
-              </Grid>
-            )}*/
 }

@@ -113,7 +113,11 @@ export default function TableVisitClient({ visitsClient }) {
                 {visitsClien.message}
               </StyledTableCell>
               <StyledTableCell data-label="Status:">
-                {visitsClien.status === 2
+                {visitsClien.status === 4
+                  ? "No has Asistido a la Visita."
+                  : visitsClien.status === 3
+                  ? "Has Asistido a la Visita."
+                  : visitsClien.status === 2
                   ? "Visita Aprobada. Pronto se comunicarán contigo."
                   : visitsClien.status === 1
                   ? "Visita No Aprobada. Espera a que sea aprobada tu visita."

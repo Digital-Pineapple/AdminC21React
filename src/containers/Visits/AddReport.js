@@ -114,7 +114,7 @@ export default function AddReport({ modal, handleClose, bookingData }) {
     data.price = selectedValuePrecio;
     data.purchase_rent = selectedValueReport;
     data.service = selectedValueServicio;
-    data.report_id = bookingData.id;
+    data.report_id = bookingData;
     AddReportVisits(data);
     handleClose();
   };
@@ -130,7 +130,7 @@ export default function AddReport({ modal, handleClose, bookingData }) {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          Agregar Reporte de Visitas
+          Agregar Reporte
         </BootstrapDialogTitle>
         <form
           onSubmit={handleSubmit(onSubmit)}
