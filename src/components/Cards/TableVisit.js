@@ -4,28 +4,37 @@ import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { format } from "date-fns";
+import { es } from "date-fns/locale/es";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { IconButton, Tooltip } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Link } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { format } from "date-fns";
-import { es } from "date-fns/locale/es";
 import AddIcon from "@mui/icons-material/Add";
 import React, { useContext, useState } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
 import AddReport from "../../containers/Visits/AddReport";
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+const statusColors = {
+  1: "red",
+  2: "green",
+  3: "blue",
+  4: "black",
+  default: "gray",
+};
+
+const StyledTableCell = styled(TableCell)(({ theme, status }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#8ED5E1",
     color: "#1F3473",
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 15,
+    color: statusColors[status] || statusColors.default,
   },
 }));
 
@@ -64,7 +73,7 @@ const TableContainerResponsive = styled(TableContainer)(({ theme }) => ({
   },
 }));
 
-export default function TableVisit({ visits }) {
+export default function TableVisit({ visits }) {  
   const { DeleteVisit, AcceptVisit, BackPendingVisit } =
     useContext(VisitContext);
 
@@ -117,7 +126,7 @@ export default function TableVisit({ visits }) {
               <StyledTableCell data-label="Mensaje">
                 {visit.message}
               </StyledTableCell>
-              <StyledTableCell data-label="Status:">
+              <StyledTableCell data-label="Status:" status={visit.status}>
                 {visit.status === 4
                   ? "Has visitado al cliente, pero él no asistió a la reunión."
                   : visit.status === 3

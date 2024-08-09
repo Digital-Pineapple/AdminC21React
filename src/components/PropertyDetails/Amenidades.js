@@ -49,7 +49,7 @@ const Amenidades = ({ details }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <EventIcon sx={{ marginRight: 1 }} />
+              <EventIcon sx={{ marginRight: 1, color: "#4caf50" }} />
               Años de antigüedad:
             </Typography>
             <Typography variant="body1">{age}</Typography>
@@ -61,7 +61,7 @@ const Amenidades = ({ details }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <BedroomParentIcon sx={{ marginRight: 1 }} />
+              <BedroomParentIcon sx={{ marginRight: 1, color: "#ff9800" }} />
               Habitaciones:
             </Typography>
             <Typography variant="body1">{rooms}</Typography>
@@ -73,7 +73,7 @@ const Amenidades = ({ details }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <DirectionsCarIcon sx={{ marginRight: 1 }} />
+              <DirectionsCarIcon sx={{ marginRight: 1, color: "#2196f3" }} />
               Estacionamiento:
             </Typography>
             <Typography variant="body1">
@@ -87,7 +87,7 @@ const Amenidades = ({ details }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <BuildIcon sx={{ marginRight: 1 }} />
+              <BuildIcon sx={{ marginRight: 1, color: "#ff5722" }} />
               En remodelación:
             </Typography>
             <Typography variant="body1">
@@ -101,7 +101,7 @@ const Amenidades = ({ details }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <BathtubIcon sx={{ marginRight: 1 }} />
+              <BathtubIcon sx={{ marginRight: 1, color: "#3f51b5" }} />
               Baños:
             </Typography>
             <Typography variant="body1">{bathroom}</Typography>
@@ -113,7 +113,7 @@ const Amenidades = ({ details }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <BathtubIcon sx={{ marginRight: 1 }} />
+              <BathtubIcon sx={{ marginRight: 1, color: "#673ab7" }} />
               Medios Baños:
             </Typography>
             <Typography variant="body1">{half_bath}</Typography>
@@ -125,7 +125,7 @@ const Amenidades = ({ details }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <StraightenIcon sx={{ marginRight: 1 }} />
+              <StraightenIcon sx={{ marginRight: 1, color: "#009688" }} />
               Metros Totales:
             </Typography>
             <Typography variant="body1">{size_total} m²</Typography>
@@ -137,7 +137,7 @@ const Amenidades = ({ details }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <StraightenIcon sx={{ marginRight: 1 }} />
+              <StraightenIcon sx={{ marginRight: 1, color: "#795548" }} />
               Metros Construidos:
             </Typography>
             <Typography variant="body1">{size} m²</Typography>

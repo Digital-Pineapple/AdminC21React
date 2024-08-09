@@ -41,7 +41,7 @@ const AddressProperty = ({ address }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <StreetviewIcon sx={{ marginRight: 1 }} />
+              <StreetviewIcon sx={{ marginRight: 1, color: "#d32f2f" }} />
               Calle:
             </Typography>
             <Typography variant="body1">{address.street_name}</Typography>
@@ -53,7 +53,7 @@ const AddressProperty = ({ address }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <HomeIcon sx={{ marginRight: 1 }} />
+              <HomeIcon sx={{ marginRight: 1, color: "#1976d2" }} />
               Colonia:
             </Typography>
             <Typography variant="body1">{address.colony}</Typography>
@@ -65,7 +65,7 @@ const AddressProperty = ({ address }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <MailOutlineIcon sx={{ marginRight: 1 }} />
+              <MailOutlineIcon sx={{ marginRight: 1, color: "#9c27b0" }} />
               Código Postal:
             </Typography>
             <Typography variant="body1">{address.postal_code}</Typography>
@@ -77,7 +77,7 @@ const AddressProperty = ({ address }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <MapIcon sx={{ marginRight: 1 }} />
+              <MapIcon sx={{ marginRight: 1, color: "#388e3c" }} />
               Estado:
             </Typography>
             <Typography variant="body1">{state.name}</Typography>
@@ -89,7 +89,7 @@ const AddressProperty = ({ address }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <ApartmentIcon sx={{ marginRight: 1 }} />
+              <ApartmentIcon sx={{ marginRight: 1, color: "#f57c00" }} />
               Municipio:
             </Typography>
             <Typography variant="body1">{municipality.name}</Typography>
@@ -101,7 +101,7 @@ const AddressProperty = ({ address }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <BusinessIcon sx={{ marginRight: 1 }} />
+              <BusinessIcon sx={{ marginRight: 1, color: "#0288d1" }} />
               No. Ext:
             </Typography>
             <Typography variant="body1">{address.number_building}</Typography>
@@ -113,7 +113,7 @@ const AddressProperty = ({ address }) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <BusinessIcon sx={{ marginRight: 1 }} />
+              <BusinessIcon sx={{ marginRight: 1, color: "#0288d1" }} />
               No. Int:
             </Typography>
             <Typography variant="body1">{address.number_int}</Typography>

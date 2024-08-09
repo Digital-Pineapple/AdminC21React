@@ -104,6 +104,7 @@ const PropertiesCreate = () => {
     data.userInm_id = userInm;
     data.state_id = state;
     data.municipality_id = municipality;
+    data.user_id = user_id;
     if (type_user === "5") {
       data.userInm_id = user_id;
     }
@@ -124,7 +125,6 @@ const PropertiesCreate = () => {
     }
     data.fractionamient = selectedValueFractionamient;
     data.iframe = map;
-    data.user_id = user_id;
     data.type_user = type_user;
     AddProperty(data);
   };

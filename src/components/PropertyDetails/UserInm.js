@@ -38,7 +38,7 @@ const UserInm = (user_inm) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <BadgeIcon sx={{ marginRight: 1 }} />
+              <BadgeIcon sx={{ marginRight: 1, color: "#1e88e5" }} />
               Nombre:
             </Typography>
             <Typography variant="body1">{name}</Typography>
@@ -49,7 +49,7 @@ const UserInm = (user_inm) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <BadgeIcon sx={{ marginRight: 1 }} />
+              <BadgeIcon sx={{ marginRight: 1, color: "#1e88e5" }} />
               Apellido:
             </Typography>
             <Typography variant="body1">{last_name}</Typography>
@@ -60,7 +60,7 @@ const UserInm = (user_inm) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <EmailIcon sx={{ marginRight: 1 }} />
+              <EmailIcon sx={{ marginRight: 1, color: "#d32f2f" }} />
               Correo Electrónico:
             </Typography>
             <Typography variant="body1">{email}</Typography>
@@ -71,7 +71,7 @@ const UserInm = (user_inm) => {
               fontWeight="bold"
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
-              <PhoneIcon sx={{ marginRight: 1 }} />
+              <PhoneIcon sx={{ marginRight: 1, color: "#388e3c" }} />
               Número de Teléfono:
             </Typography>
             <Typography variant="body1">{phone_number}</Typography>

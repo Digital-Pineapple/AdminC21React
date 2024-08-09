@@ -8,17 +8,14 @@ import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import MailIcon from "@mui/icons-material/Mail";
 import HouseIcon from "@mui/icons-material/House";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+import EmailIcon from "@mui/icons-material/Email";
 import Divider from "@mui/material/Divider";
-import EventBusyIcon from "@mui/icons-material/EventBusy";
+import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import AddIcon from "@mui/icons-material/Add";
 import Badge from "@mui/material/Badge";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -201,7 +198,7 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Solicitudes de visitas" placement="right">
           <Badge badgeContent={visits.length} color="error">
-            <EventBusyIcon />
+            <EmailIcon />
           </Badge>
         </Tooltip>
       ),
@@ -212,7 +209,7 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Mis Visitas Solicitadas" placement="right">
           <Badge badgeContent={visitsClient.length} color="error">
-            <CheckCircleIcon />
+            <MarkEmailReadIcon />
           </Badge>
         </Tooltip>
       ),
@@ -288,7 +285,7 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Solicitudes de visitas" placement="right">
           <Badge badgeContent={visits.length} color="error">
-            <EventBusyIcon />
+            <EmailIcon />
           </Badge>
         </Tooltip>
       ),
@@ -355,7 +352,7 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Solicitudes de visitas" placement="right">
           <Badge badgeContent={visits.length} color="error">
-            <EventBusyIcon />
+            <EmailIcon />
           </Badge>
         </Tooltip>
       ),
@@ -386,7 +383,7 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Mis Visitas Solicitadas" placement="right">
           <Badge badgeContent={visitsClient.length} color="error">
-            <CheckCircleIcon />
+            <MarkEmailReadIcon />
           </Badge>
         </Tooltip>
       ),
@@ -444,7 +441,7 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Solicitudes de visitas" placement="right">
           <Badge badgeContent={visits.length} color="error">
-            <EventBusyIcon />
+            <EmailIcon />
           </Badge>
         </Tooltip>
       ),

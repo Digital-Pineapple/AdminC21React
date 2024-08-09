@@ -12,18 +12,27 @@ import { IconButton, Tooltip } from "@mui/material";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { format } from "date-fns";
-import { es } from "date-fns/locale/es";
+import { es } from "date-fns/locale";
 import React, { useContext } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
 import EditVisit from "../../containers/Visits/EditVisit";
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+const statusColors = {
+  1: "red",
+  2: "green",
+  3: "blue",
+  4: "black",
+  default: "gray",
+};
+
+const StyledTableCell = styled(TableCell)(({ theme, status }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#8ED5E1",
     color: "#1F3473",
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 15,
+    color: statusColors[status] || statusColors.default,
   },
 }));
 
@@ -67,10 +76,12 @@ export default function TableVisitClient({ visitsClient }) {
 
   const [openModalVisit, setOpenModalVisit] = React.useState(false);
   const [idVisit, saveIdVisit] = React.useState(null);
+
   const handleClickOpenVisit = (id) => {
     setOpenModalVisit(true);
     saveIdVisit(id);
   };
+
   const handleCloseVisit = () => {
     setOpenModalVisit(false);
     saveIdVisit(null);
@@ -82,8 +93,8 @@ export default function TableVisitClient({ visitsClient }) {
         <TableHead>
           <TableRow>
             <StyledTableCell>Mi Nombre:</StyledTableCell>
-            <StyledTableCell>Mi Telefono:</StyledTableCell>
-            <StyledTableCell>Mi Correo Electronico:</StyledTableCell>
+            <StyledTableCell>Mi Teléfono:</StyledTableCell>
+            <StyledTableCell>Mi Correo Electrónico:</StyledTableCell>
             <StyledTableCell>Fecha Registrada:</StyledTableCell>
             <StyledTableCell>Mi Mensaje:</StyledTableCell>
             <StyledTableCell>Status:</StyledTableCell>
@@ -91,67 +102,64 @@ export default function TableVisitClient({ visitsClient }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {visitsClient.map((visitsClien) => (
-            <StyledTableRow key={visitsClien.id}>
+          {visitsClient.map((visit) => (
+            <StyledTableRow key={visit.id}>
               <StyledTableCell data-label="Mi Nombre:">
-                {visitsClien.name} {visitsClien.last_name}
+                {visit.name} {visit.last_name}
               </StyledTableCell>
-              <StyledTableCell data-label="Mi Telefono:">
-                {visitsClien.phone}
+              <StyledTableCell data-label="Mi Teléfono:">
+                {visit.phone}
               </StyledTableCell>
-              <StyledTableCell data-label="Mi Correo Electronico:">
-                {visitsClien.email}
+              <StyledTableCell data-label="Mi Correo Electrónico:">
+                {visit.email}
               </StyledTableCell>
               <StyledTableCell data-label="Fecha Registrada:">
                 {format(
-                  new Date(visitsClien.created_at),
+                  new Date(visit.created_at),
                   "dd 'de' MMMM 'de' yyyy 'a las' HH:mm",
                   { locale: es }
                 )}
               </StyledTableCell>
               <StyledTableCell data-label="Mi Mensaje:">
-                {visitsClien.message}
+                {visit.message}
               </StyledTableCell>
-              <StyledTableCell data-label="Status:">
-                {visitsClien.status === 4
+              <StyledTableCell data-label="Status:" status={visit.status}>
+                {visit.status === 4
                   ? "No has Asistido a la Visita."
-                  : visitsClien.status === 3
+                  : visit.status === 3
                   ? "Has Asistido a la Visita."
-                  : visitsClien.status === 2
+                  : visit.status === 2
                   ? "Visita Aprobada. Pronto se comunicarán contigo."
-                  : visitsClien.status === 1
+                  : visit.status === 1
                   ? "Visita No Aprobada. Espera a que sea aprobada tu visita."
                   : "Status Desconocido"}
               </StyledTableCell>
               <StyledTableCell data-label="Acciones">
-                <Link to={`/DetailVisits/${visitsClien.id}`}>
+                <Link to={`/DetailVisits/${visit.id}`}>
                   <IconButton size="small">
                     <Tooltip title="Detalle de Visita" placement="top">
                       <VisibilityIcon sx={{ color: "blue" }} />
                     </Tooltip>
                   </IconButton>
                 </Link>
-                {visitsClien.status === 1 && (
-                  <Tooltip title="Editar mi Visita" placement="top">
-                    <IconButton
-                      onClick={() => handleClickOpenVisit(visitsClien.id)}
-                    >
-                      <EditIcon sx={{ color: "orange" }} />
-                    </IconButton>
-                  </Tooltip>
-                )}
-
-                {visitsClien.status === 1 && (
-                  <Tooltip title="Cancelar mi Visita" placement="top">
-                    <IconButton
-                      onClick={() => DeleteVisitClient(visitsClien.id)}
-                    >
-                      <DeleteIcon sx={{ color: "red" }} />
-                    </IconButton>
-                  </Tooltip>
+                {visit.status === 1 && (
+                  <>
+                    <Tooltip title="Editar mi Visita" placement="top">
+                      <IconButton
+                        onClick={() => handleClickOpenVisit(visit.id)}
+                      >
+                        <EditIcon sx={{ color: "orange" }} />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Cancelar mi Visita" placement="top">
+                      <IconButton onClick={() => DeleteVisitClient(visit.id)}>
+                        <DeleteIcon sx={{ color: "red" }} />
+                      </IconButton>
+                    </Tooltip>
+                  </>
                 )}
               </StyledTableCell>
-              {idVisit !== null && (
+              {idVisit === visit.id && (
                 <EditVisit
                   modal={openModalVisit}
                   handleClose={handleCloseVisit}

@@ -44,7 +44,7 @@ const ReportState = ({ children }) => {
           payload: res.data.data,
         });
         Swal.fire({
-          title: "Registrado",
+          title: "Listo",
           text: "El reporte se ha registrado correctamente!",
           icon: "success",
         });

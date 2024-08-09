@@ -43,7 +43,7 @@ const ServicesProperty = ({ services }) => {
             marginBottom: 1,
           }}
         >
-          <SettingsIcon sx={{ marginRight: 1 }} />
+          <SettingsIcon sx={{ marginRight: 1, color: "#FF9800" }} />
 
           <Typography variant="h6" fontWeight="bold">
             {service.name}

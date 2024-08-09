@@ -17,6 +17,7 @@ import EditReport from "./EditReport";
 import VisitContext from "../../context/Visits/VisitContext";
 
 const ReportBooking = ({ report_booking, bookingData }) => {
+  let type_user = localStorage.getItem("type_user");
   const { DownloadPDF } = useContext(VisitContext);
   const id = bookingData.id;
   const report = report_booking[0];
@@ -172,40 +173,44 @@ const ReportBooking = ({ report_booking, bookingData }) => {
             Observaciones: {report.observations}
           </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Button
-            variant="contained"
-            fullWidth
-            onClick={() => handleClickOpen(report.id)}
-            sx={{
-              color: "#1F3473",
-              backgroundColor: "#8ED5E1",
-              "&:hover": {
+        {(type_user === "1" || type_user === "2" || type_user === "3") && (
+          <Grid item xs={12}>
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={() => handleClickOpen(report.id)}
+              sx={{
                 color: "#1F3473",
                 backgroundColor: "#8ED5E1",
-              },
-            }}
-          >
-            Editar Reporte <EditNoteIcon sx={{ marginLeft: 2 }} />
-          </Button>
-        </Grid>
-        <Grid item xs={12}>
-          <Button
-            onClick={() => DownloadPDF(id)}
-            fullWidth
-            variant="contained"
-            sx={{
-              color: "#8ED5E1",
-              backgroundColor: "#1F3473",
-              "&:hover": {
+                "&:hover": {
+                  color: "#1F3473",
+                  backgroundColor: "#8ED5E1",
+                },
+              }}
+            >
+              Editar Reporte <EditNoteIcon sx={{ marginLeft: 2 }} />
+            </Button>
+          </Grid>
+        )}
+        {(type_user === "1" || type_user === "2" || type_user === "3") && (
+          <Grid item xs={12}>
+            <Button
+              onClick={() => DownloadPDF(id)}
+              fullWidth
+              variant="contained"
+              sx={{
                 color: "#8ED5E1",
                 backgroundColor: "#1F3473",
-              },
-            }}
-          >
-            Descargar Reporte <CloudDownloadIcon sx={{ marginLeft: 2 }} />
-          </Button>
-        </Grid>
+                "&:hover": {
+                  color: "#8ED5E1",
+                  backgroundColor: "#1F3473",
+                },
+              }}
+            >
+              Descargar Reporte <CloudDownloadIcon sx={{ marginLeft: 2 }} />
+            </Button>
+          </Grid>
+        )}
         {id_report !== null && (
           <EditReport
             modal={openModal}

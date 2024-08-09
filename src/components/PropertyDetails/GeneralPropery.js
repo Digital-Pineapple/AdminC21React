@@ -48,13 +48,13 @@ const GeneralProperty = ({ name, description, rules, category }) => {
           Detalles generales
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={10}>
         <Typography
           variant="h6"
           fontWeight="bold"
           sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
         >
-          <DescriptionIcon sx={{ marginRight: 1 }} />
+          <DescriptionIcon sx={{ marginRight: 1, color: "#4CAF50" }} />
           Descripción:
         </Typography>
         <Typography variant="body1">{description}</Typography>
@@ -84,7 +84,7 @@ const GeneralProperty = ({ name, description, rules, category }) => {
           fontWeight="bold"
           sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
         >
-          <AttachMoneyIcon sx={{ marginRight: 1 }} />
+          <AttachMoneyIcon sx={{ marginRight: 1, color: "#FFC107 " }} />
           Tipo de operación:
         </Typography>
         <Typography variant="body1">{ruleNames.join(", ")}</Typography>
@@ -95,7 +95,7 @@ const GeneralProperty = ({ name, description, rules, category }) => {
           fontWeight="bold"
           sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
         >
-          <AttachMoneyIcon sx={{ marginRight: 1 }} />
+          <AttachMoneyIcon sx={{ marginRight: 1, color: "#FFC107" }} />
           Precio de {ruleNames.join(", ")}:
         </Typography>
         <Typography variant="body1">
@@ -108,7 +108,7 @@ const GeneralProperty = ({ name, description, rules, category }) => {
           fontWeight="bold"
           sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
         >
-          <PercentIcon sx={{ marginRight: 1 }} />
+          <PercentIcon sx={{ marginRight: 1, color: "#FF2530" }} />
           {sharesCommission
             ? "Esta propiedad comparte comisión"
             : "Esta propiedad no comparte comisión"}
