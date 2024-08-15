@@ -23,12 +23,19 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import HomeIcon from "@mui/icons-material/Home";
 import CategoryIcon from "@mui/icons-material/Category";
 import SettingsIcon from "@mui/icons-material/Settings";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import HolidayVillageIcon from "@mui/icons-material/HolidayVillage";
 import GroupIcon from "@mui/icons-material/Group";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AuthContext from "../../context/auth/AuthContext";
 import { useContext, useEffect } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
+
+import SellIcon from "@mui/icons-material/Sell";
+import BeenhereIcon from "@mui/icons-material/Beenhere";
+import ApartmentIcon from "@mui/icons-material/Apartment";
+import LocalAtmIcon from "@mui/icons-material/LocalAtm";
+
 import {
   Grid,
   ListItem,
@@ -184,6 +191,24 @@ export default function Header({ children }) {
       ),
     },
     {
+      name: "Vendidas",
+      value: "/SoldProperties",
+      icon: (
+        <Tooltip title="Vendidas" placement="right">
+          <BeenhereIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "En Renta",
+      value: "/RentProperties",
+      icon: (
+        <Tooltip title="En Renta" placement="right">
+          <LocalAtmIcon />
+        </Tooltip>
+      ),
+    },
+    {
       name: "Buscar Propiedades",
       value: "/SearchProperties",
       icon: (
@@ -271,6 +296,24 @@ export default function Header({ children }) {
       ),
     },
     {
+      name: "Vendidas",
+      value: "/SoldProperties",
+      icon: (
+        <Tooltip title="Vendidas" placement="right">
+          <BeenhereIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "En Renta",
+      value: "/RentProperties",
+      icon: (
+        <Tooltip title="En Renta" placement="right">
+          <LocalAtmIcon />
+        </Tooltip>
+      ),
+    },
+    {
       name: "Buscar Propiedades",
       value: "/SearchProperties",
       icon: (
@@ -334,6 +377,24 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Aprobados" placement="right">
           <HolidayVillageIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Vendidas",
+      value: "/SoldProperties",
+      icon: (
+        <Tooltip title="Vendidas" placement="right">
+          <BeenhereIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "En Renta",
+      value: "/RentProperties",
+      icon: (
+        <Tooltip title="En Renta" placement="right">
+          <LocalAtmIcon />
         </Tooltip>
       ),
     },
@@ -423,6 +484,24 @@ export default function Header({ children }) {
       icon: (
         <Tooltip title="Aprobados" placement="right">
           <HolidayVillageIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "Vendidas",
+      value: "/SoldProperties",
+      icon: (
+        <Tooltip title="Vendidas" placement="right">
+          <BeenhereIcon />
+        </Tooltip>
+      ),
+    },
+    {
+      name: "En Renta",
+      value: "/RentProperties",
+      icon: (
+        <Tooltip title="En Renta" placement="right">
+          <LocalAtmIcon />
         </Tooltip>
       ),
     },

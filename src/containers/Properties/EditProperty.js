@@ -136,7 +136,7 @@ const EditProperty = (props) => {
     data.status = status;
     data.category_id = category;
     data.rule_id = option;
-    data.userInm_id = userInm;
+    data.userInm_id = userInm_id;
     data.state_id = States;
     data.municipality_id = municipality;
     data.parking = parking;

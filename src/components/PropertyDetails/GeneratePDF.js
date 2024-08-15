@@ -7,7 +7,7 @@ export default function GeneratePDF({ id, status }) {
   const { DownloadPDF } = useContext(PropertiesContext);
   return (
     <>
-      {status === 3 && (
+      {(status === 3 || status === 4 || status === 5) && (
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <Button
             onClick={() => DownloadPDF(id)}

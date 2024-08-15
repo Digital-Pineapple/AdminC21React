@@ -15,6 +15,8 @@ import Perfil from "../containers/Users/Perfil";
 import EditProperty from "../containers/Properties/EditProperty";
 import DetailProperty from "../containers/Properties/DetailProperty";
 import DetailVisits from "../containers/Visits/DetailVisits";
+import SoldProperties from "../containers/Properties/SoldProperties";
+import RentProperties from "../containers/Properties/RentProperties";
 const AdminRoutes = () => {
   return (
     <Switch>
@@ -23,6 +25,8 @@ const AdminRoutes = () => {
       <Route exact path="/Services" component={Services} />
       <Route exact path="/PropertiesPending" component={PropertiesPending} />
       <Route exact path="/Properties" component={Properties} />
+      <Route exact path="/SoldProperties" component={SoldProperties} />
+      <Route exact path="/RentProperties" component={RentProperties} />
       <Route exact path="/SearchProperties" component={SearchProperties} />
       <Route exact path="/VisitPending" component={VisitPending} />
       <Route exact path="/VisitAccept" component={VisitAccept} />

@@ -19,13 +19,13 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useState } from "react";
-import IframeProperty from "../PropertyDetails/IframeProperty";
-import PlaceIcon from "@mui/icons-material/Place";
 import AddService from "../PropertyDetails/AddService";
 import AddView3D from "../PropertyDetails/AddView3D";
 import PropertiesContext from "../../context/Properties/PropertiesContext";
 import AttachFileMultimedia from "../../containers/Properties/AddMultimedia";
 import image from "../../assets/img/default.png";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const useStyles = makeStyles({
   imgproduct: {
@@ -39,19 +39,13 @@ const useStyles = makeStyles({
 
 const CardProperty = ({ property }) => {
   const { images } = property;
+  const { rules } = property;
+  const id = rules.map((rul) => rul.id) || [];
+
   const [id_property, saveProperty] = useState(null);
   const { DeleteProperty } = React.useContext(PropertiesContext);
-   let type_user = localStorage.getItem("type_user");
+  let type_user = localStorage.getItem("type_user");
 
-  const [addreesProperty, saveAddressProperty] = useState(null);
-  const [IframePropertyModal, OpenIframeProperty] = useState(false);
-  const handleClickOpenIframe = (id) => {
-    saveAddressProperty(id);
-    OpenIframeProperty(true);
-  };
-  const handleClickCloseIframe = () => {
-    OpenIframeProperty(false);
-  };
   const [AddServiceModal, openAddServiceModal] = useState(false);
   const handleClickOpenAddService = (id) => {
     openAddServiceModal(true);
@@ -82,48 +76,33 @@ const CardProperty = ({ property }) => {
     saveProperty(null);
   };
   const classes = useStyles();
-  const { PublishProperty, BackPendingProperty } =
-    useContext(PropertiesContext);
+  const {
+    PublishProperty,
+    BackPendingProperty,
+    SoldProperty,
+    RentProperty,
+    SoldToPublished,
+    RentedToPublished,
+  } = useContext(PropertiesContext);
   return (
     <>
       <Card className={classes.card}>
-        {property.status === 2 ? (
-          <Alert
-            icon={false}
-            severity="info"
-            sx={{ backgroundColor: "#8ED5E1", color: "#1F3473" }}
+        <Alert
+          icon={false}
+          severity="info"
+          sx={{ backgroundColor: "#8ED5E1", color: "#1F3473" }}
+        >
+          <Typography
+            fontWeight="bold"
+            fontFamily="monospace"
+            textOverflow={"ellipsis"}
+            minHeight={"3rem"}
+            textAlign="center"
+            sx={{ textOverflow: "ellipsis" }}
           >
-            <Typography
-              fontWeight="bold"
-              fontFamily="monospace"
-              textOverflow={"ellipsis"}
-              minHeight={"3rem"}
-              textAlign="center"
-              sx={{ textOverflow: "ellipsis" }}
-            >
-              {property.name}
-            </Typography>
-          </Alert>
-        ) : (
-          property.status === 3 && (
-            <Alert
-              icon={false}
-              severity="success"
-              sx={{ backgroundColor: "#8ED5E1", color: "#1F3473" }}
-            >
-              <Typography
-                fontWeight="bold"
-                fontFamily="monospace"
-                textOverflow={"ellipsis"}
-                minHeight={"3rem"}
-                textAlign="center"
-                sx={{ textOverflow: "ellipsis" }}
-              >
-                {property.name}
-              </Typography>
-            </Alert>
-          )
-        )}
+            {property.name}
+          </Typography>
+        </Alert>
 
         <Box sx={{ width: "100%", display: "flex" }}>
           <Grid container spacing={1}>
@@ -155,8 +134,6 @@ const CardProperty = ({ property }) => {
             </Grid>
           </Grid>
         </Box>
-
-        {/* ))} */}
         <CardActions>
           <Grid container spacing={2}>
             <Grid
@@ -169,50 +146,44 @@ const CardProperty = ({ property }) => {
               display="flex"
               justifyContent="space-between"
             >
-              <Tooltip title="Editar Propiedad" placement="top">
-                <Link to={`/EditProperty/${property.id}`}>
-                  <IconButton>
-                    <EditIcon sx={{ color: "orange" }} />
-                  </IconButton>
-                </Link>
-              </Tooltip>
-
-              <Tooltip title="Detalle de Propiedad" placement="top">
-                <Link to={`/Propertydetail/${property.id}`}>
-                  <IconButton>
-                    <VisibilityIcon sx={{ color: "blue" }} />
-                  </IconButton>
-                </Link>
-              </Tooltip>
-              <Tooltip title="Agregar Servicios" placement="top">
-                <IconButton
-                  onClick={() => handleClickOpenAddService(property.id)}
-                >
-                  <SettingsIcon sx={{ color: "grey" }} />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Eliminar Propiedad" placement="top">
-                <IconButton
-                  size="small"
-                  onClick={() => DeleteProperty(property.id)}
-                >
-                  <DeleteIcon sx={{ color: "red" }} />
-                </IconButton>
-              </Tooltip>
-
-              {property.status === 3 && (
-                <Tooltip title="Deshacer publicación" placement="top">
-                  <IconButton onClick={() => BackPendingProperty(property.id)}>
-                    <CancelIcon sx={{ color: "red" }} />
-                  </IconButton>
-                </Tooltip>
+              {/* Ambos Status */}
+              {(property.status === 2 || property.status === 3) && (
+                <>
+                  <Tooltip title="Detalle de Propiedad" placement="top">
+                    <Link to={`/Propertydetail/${property.id}`}>
+                      <IconButton>
+                        <VisibilityIcon sx={{ color: "blue" }} />
+                      </IconButton>
+                    </Link>
+                  </Tooltip>
+                  <Tooltip title="Editar Propiedad" placement="top">
+                    <Link to={`/EditProperty/${property.id}`}>
+                      <IconButton>
+                        <EditIcon sx={{ color: "orange" }} />
+                      </IconButton>
+                    </Link>
+                  </Tooltip>
+                  <Tooltip title="Agregar Servicios" placement="top">
+                    <IconButton
+                      onClick={() => handleClickOpenAddService(property.id)}
+                    >
+                      <SettingsIcon sx={{ color: "grey" }} />
+                    </IconButton>
+                  </Tooltip>
+                  {(type_user === "1" || type_user === "2") && (
+                    <Tooltip title="Eliminar Propiedad" placement="top">
+                      <IconButton
+                        size="small"
+                        onClick={() => DeleteProperty(property.id)}
+                      >
+                        <DeleteIcon sx={{ color: "red" }} />
+                      </IconButton>
+                    </Tooltip>
+                  )}
+                </>
               )}
 
-              {/* <Tooltip title="Ubicación de Propiedad" placement="top">
-                <IconButton onClick={() => handleClickOpenIframe(property.id)}>
-                  <PlaceIcon sx={{ color: "black" }} />
-                </IconButton>
-              </Tooltip> */}
+              {/* Status 2 = Por Aprobar */}
               {property.status === 2 && (
                 <>
                   <Tooltip title="Agregar Multimedia" placement="top">
@@ -222,14 +193,6 @@ const CardProperty = ({ property }) => {
                       <AddPhotoAlternateIcon sx={{ color: "green" }} />
                     </IconButton>
                   </Tooltip>
-
-                  {/* <Tooltip title="Agregar Vista 3D" placement="top">
-                    <IconButton
-                      onClick={() => handleClickOpenAddView3D(property.id)}
-                    >
-                      <HomeIcon sx={{ color: "orange" }} />{" "}
-                    </IconButton>
-                  </Tooltip> */}
                   {(type_user === "1" || type_user === "2") && (
                     <Tooltip title="Publicar Propiedad" placement="top">
                       <IconButton onClick={() => PublishProperty(property.id)}>
@@ -241,24 +204,75 @@ const CardProperty = ({ property }) => {
                   )}
                 </>
               )}
-              {/* {property.status === 3 && (
-                <Tooltip title="Actualizar Multimedia" placement="top">
-                  <IconButton>
-                    <CloudSync Icon sx={{ color: "black" }} />
-                  </IconButton>
-                </Tooltip>
-              )} */}
+
+              {/* Status 3 = Publicadas */}
+              {property.status === 3 && (
+                <>
+                  {id.join() === "1" && (
+                    <Tooltip title="Propiedad Rentada" placement="top">
+                      <IconButton onClick={() => RentProperty(property.id)}>
+                        <MonetizationOnIcon sx={{ color: "#E99B00" }} />
+                      </IconButton>
+                    </Tooltip>
+                  )}
+                  {id.join() === "2" && (
+                    <Tooltip title="Propiedad Vendida" placement="top">
+                      <IconButton onClick={() => SoldProperty(property.id)}>
+                        <CheckCircleIcon sx={{ color: "#2EFF4B" }} />
+                      </IconButton>
+                    </Tooltip>
+                  )}
+                  {(type_user === "1" || type_user === "2") && (
+                    <Tooltip title="Deshacer publicación" placement="top">
+                      <IconButton
+                        onClick={() => BackPendingProperty(property.id)}
+                      >
+                        <CancelIcon sx={{ color: "red" }} />
+                      </IconButton>
+                    </Tooltip>
+                  )}
+                </>
+              )}
+
+              {/* Status 4 = Vendidas */}
+              {property.status === 4 && (
+                <>
+                  <Tooltip title="Detalle de Propiedad" placement="top">
+                    <Link to={`/Propertydetail/${property.id}`}>
+                      <IconButton>
+                        <VisibilityIcon sx={{ color: "blue" }} />
+                      </IconButton>
+                    </Link>
+                  </Tooltip>
+                  <Tooltip title="Cancelar Venta" placement="top">
+                    <IconButton onClick={() => SoldToPublished(property.id)}>
+                      <CancelIcon sx={{ color: "red" }} />
+                    </IconButton>
+                  </Tooltip>
+                </>
+              )}
+
+              {/* Status 5 = Rentadas  */}
+              {property.status === 5 && (
+                <>
+                  <Tooltip title="Detalle de Propiedad" placement="top">
+                    <Link to={`/Propertydetail/${property.id}`}>
+                      <IconButton>
+                        <VisibilityIcon sx={{ color: "blue" }} />
+                      </IconButton>
+                    </Link>
+                  </Tooltip>
+                  <Tooltip title="Cancelar Renta" placement="top">
+                    <IconButton onClick={() => RentedToPublished(property.id)}>
+                      <CancelIcon sx={{ color: "red" }} />
+                    </IconButton>
+                  </Tooltip>
+                </>
+              )}
             </Grid>
           </Grid>
         </CardActions>
       </Card>
-      {addreesProperty !== null && (
-        <IframeProperty
-          modal={IframePropertyModal}
-          handleClose={handleClickCloseIframe}
-          iframe={addreesProperty}
-        />
-      )}
       {id_property !== null && (
         <AttachFileMultimedia
           open={modalMultimedia}
