@@ -4,7 +4,10 @@ import {
   Grid,
   IconButton,
   InputAdornment,
+  Radio,
   TextField,
+  FormControlLabel,
+  Checkbox,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useContext, useState } from "react";
@@ -336,6 +339,24 @@ const Register = () => {
                   />
                 </Grid>
               </Grid>
+              <div style={{ textAlign: "center", marginTop: "20px" }}>
+                <FormControlLabel
+                  control={<Checkbox required style={{ color: "#1F3473" }} />}
+                  label={
+                    <>
+                      Aceptar{" "}
+                      <a
+                        href="https://yocomparto.com.mx/terminos-y-condiciones/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "#1F3473", textDecoration: "none" }}
+                      >
+                        Términos y Condiciones
+                      </a>
+                    </>
+                  }
+                />
+              </div>
               <Button
                 type="submit"
                 fullWidth
