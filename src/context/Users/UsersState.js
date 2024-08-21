@@ -155,7 +155,7 @@ const UsersState = ({ children }) => {
           .catch((error) => {
             Swal.fire({
               title: "Error",
-              text: "No se puede eliminar este usuario porque tiene propiedades publicadas.",
+              text: error.response.data.message,
               icon: "error",
             });
           });
@@ -192,7 +192,7 @@ const UsersState = ({ children }) => {
           .catch((error) => {
             Swal.fire({
               title: "Error",
-              text: "No se puede eliminar este asesor porque tiene propiedades publicadas.",
+              text: error.response.data.message,
               icon: "error",
             });
           });

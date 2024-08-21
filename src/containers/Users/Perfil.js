@@ -16,14 +16,17 @@ import FlipCameraIosIcon from "@mui/icons-material/FlipCameraIos";
 import LockResetIcon from "@mui/icons-material/LockReset";
 import React, { useEffect, useContext, useState } from "react";
 import Layout from "../../components/layout/Layout";
+import DeleteIcon from "@mui/icons-material/Delete";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ResetPassword from "./ResetPassword";
 import AttachFileMultimedia from "./AddMultimediaUser";
 import EditInfo from "./EditInfo";
 import AuthContext from "../../context/auth/AuthContext";
+import UsersContext from "../../context/Users/UsersContext";
 
 const Perfil = () => {
   const { UserMe, user_me } = useContext(AuthContext);
+  const { DeleteUsers } = useContext(UsersContext);
   useEffect(() => {
     if (user_me === null) {
       UserMe();
@@ -247,6 +250,29 @@ const Perfil = () => {
                           <LockResetIcon sx={{ marginLeft: 2 }} />
                         </Button>
                       </Grid>
+                      {(user_me.type_user === 1 ||
+                        user_me.type_user === 2 ||
+                        user_me.type_user === 3 ||
+                        user_me.type_user === 4) && (
+                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                          <Button
+                            onClick={() => DeleteUsers(user_me.id)}
+                            fullWidth
+                            variant="contained"
+                            sx={{
+                              color: "white",
+                              backgroundColor: "#d84545",
+                              "&:hover": {
+                                color: "white",
+                                backgroundColor: "#d84545",
+                              },
+                            }}
+                          >
+                            Eliminar mi cuenta{" "}
+                            <DeleteIcon sx={{ marginLeft: 2 }} />
+                          </Button>
+                        </Grid>
+                      )}
                     </Grid>
                   </Card>
                 </Grid>
