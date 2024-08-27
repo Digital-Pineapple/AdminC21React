@@ -6,11 +6,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Grid, IconButton, Tooltip } from "@mui/material";
 import EditUser from "../../containers/Users/EditUser";
 import UsersContext from "../../context/Users/UsersContext";
 import img from "../../assets/img/user.png";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 export default function CardUser({ user }) {
   const { DeleteUsers } = React.useContext(UsersContext);
 
@@ -85,6 +87,15 @@ export default function CardUser({ user }) {
           <b>{user.email}</b>
         </CardContent>
         <CardActions>
+          {user.type_user === 2 && (
+            <Tooltip title="Mostrar Asesores" placement="top">
+              <Link to={`/UsersInm/${user.id}`}>
+                <IconButton>
+                  <VisibilityIcon sx={{ color: "blue" }} />
+                </IconButton>
+              </Link>
+            </Tooltip>
+          )}
           <IconButton size="small" onClick={() => handleClickOpen(user.id)}>
             <Tooltip title="Editar Usuario" placement="right">
               <EditIcon sx={{ color: "#0277bd" }} />

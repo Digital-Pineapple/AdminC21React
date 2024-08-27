@@ -206,13 +206,13 @@ export default function DetailVisits(props) {
                   Comentarios del Cliente: {bookingData.message}
                 </Typography>
               </Grid>
-
               <Grid item xs={12}>
-                <Stack direction="row" spacing={2}>
-                  {bookingData.status === 2 &&
-                    (type_user === "1" ||
-                      type_user === "2" ||
-                      type_user === "3") && (
+                {(type_user === "1" ||
+                  type_user === "2" ||
+                  type_user === "3" ||
+                  type_user === "5") && (
+                  <Stack direction="row" spacing={2}>
+                    {bookingData.status === 2 && (
                       <Button
                         onClick={() => AcceptVisit(bookingData.id)}
                         variant="outlined"
@@ -222,10 +222,7 @@ export default function DetailVisits(props) {
                         ¿Si asistió a la visita?
                       </Button>
                     )}
-                  {bookingData.status === 2 &&
-                    (type_user === "1" ||
-                      type_user === "2" ||
-                      type_user === "3") && (
+                    {bookingData.status === 2 && (
                       <Button
                         onClick={() => NotAcceptVisit(bookingData.id)}
                         variant="outlined"
@@ -235,7 +232,8 @@ export default function DetailVisits(props) {
                         ¿No asistió a la visita?
                       </Button>
                     )}
-                </Stack>
+                  </Stack>
+                )}
               </Grid>
             </Grid>
           </Grid>

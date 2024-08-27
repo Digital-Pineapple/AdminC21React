@@ -11,6 +11,7 @@ import VisitAccept from "../containers/Visits/VisitAccept";
 import CreateProperty from "../containers/Properties/CreateProperty";
 import Users from "../containers/Users/Users";
 import AseUsers from "../containers/AseUsers/Users";
+import UsersInm from "../containers/Users/UsersInm";
 import Perfil from "../containers/Users/Perfil";
 import EditProperty from "../containers/Properties/EditProperty";
 import DetailProperty from "../containers/Properties/DetailProperty";
@@ -36,6 +37,7 @@ const AdminRoutes = () => {
       <Route exact path="/Propertydetail/:id" component={DetailProperty} />
       <Route exact path="/Users" component={Users} />
       <Route exact path="/AseUsers" component={AseUsers} />
+      <Route exact path="/UsersInm/:id" component={UsersInm} />
       <Route exact path="/Perfil" component={Perfil} />
     </Switch>
   );

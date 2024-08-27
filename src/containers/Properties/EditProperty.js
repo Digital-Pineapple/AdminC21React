@@ -52,23 +52,10 @@ const EditProperty = (props) => {
     saveParking(value);
   };
 
-  //Select de Cuarto de Lavado
-  const [selectedValueWashRoom, setSelectedValueWashRoom] = useState("si");
-  const handleChangeWashRoom = (event) => {
-    setSelectedValueWashRoom(event.target.value);
-  };
-
   //Select de Remodelacion
   const [remodel, saveRemodel] = useState(null);
   const detectarCambiosRemodel = (value) => {
     saveRemodel(value);
-  };
-
-  //Select de Fraccionamiento
-  const [selectedValueFractionamient, setSelectedValueFractionamient] =
-    useState("si");
-  const handleChangeFractionamient = (event) => {
-    setSelectedValueFractionamient(event.target.value);
   };
 
   //Select de Estados
@@ -136,7 +123,7 @@ const EditProperty = (props) => {
     data.status = status;
     data.category_id = category;
     data.rule_id = option;
-    data.userInm_id = userInm_id;
+    data.userInm_id = userInm;
     data.state_id = States;
     data.municipality_id = municipality;
     data.parking = parking;
