@@ -31,9 +31,9 @@ const useStyles = makeStyles({
     boxSizing: "content-box",
     width: "100%",
     // backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
-    background: "rgb(197,224,228)",
+    background: "rgb(255,255,255)",
     background:
-      "radial-gradient(circle, rgba(96,136,253,1) 0%, rgba(174,203,229,1) 100%)",
+      "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(241,173,49,1) 100%)",
     backgroundRepeat: "no-repeat",
     opacity: 1,
     overflowY: "none",
@@ -143,7 +143,7 @@ const Register = () => {
                 <div
                   style={{
                     textAlign: "center",
-                    color: "#1F3473",
+                    color: "black",
                     marginBottom: "10px",
                     fontSize: "40px",
                     fontFamily: "monospace",
@@ -156,7 +156,7 @@ const Register = () => {
               <div
                 style={{
                   textAlign: "center",
-                  color: "#1F3473",
+                  color: "black",
                   marginBottom: "25px",
                   fontFamily: "monospace",
                   fontWeight: "bold",
@@ -341,7 +341,7 @@ const Register = () => {
               </Grid>
               <div style={{ textAlign: "center", marginTop: "20px" }}>
                 <FormControlLabel
-                  control={<Checkbox required style={{ color: "#1F3473" }} />}
+                  control={<Checkbox required style={{ color: "black" }} />}
                   label={
                     <>
                       Aceptar{" "}
@@ -349,7 +349,7 @@ const Register = () => {
                         href="https://yocomparto.com.mx/terminos-y-condiciones/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: "#1F3473", textDecoration: "none" }}
+                        style={{ color: "black", textDecoration: "none" }}
                       >
                         Términos y Condiciones
                       </a>
@@ -362,14 +362,14 @@ const Register = () => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  backgroundColor: "#8ED5E1",
-                  color: "#1F3473",
+                  backgroundColor: "#E1A12E",
+                  color: "black",
                   fontWeight: "bold",
                   mt: 3,
                   mb: 2,
                   "&:hover": {
-                    backgroundColor: "#8ED5E1 ",
-                    color: "#1F3473",
+                    backgroundColor: "#E1A12E ",
+                    color: "black",
                   },
                 }}
               >
@@ -381,13 +381,13 @@ const Register = () => {
                   fullWidth
                   variant="contained"
                   sx={{
-                    backgroundColor: "#1F3473",
-                    color: "#8ED5E1",
+                    backgroundColor: "black",
+                    color: "#E1A12E",
                     fontWeight: "bold",
                     mt: 0,
                     mb: 6,
                     "&:hover": {
-                      backgroundColor: "#1F3473",
+                      backgroundColor: "black",
                       color: "#ED5E1",
                     },
                   }}

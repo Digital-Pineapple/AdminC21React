@@ -14,11 +14,11 @@ export default function GeneratePDF({ id, status }) {
             fullWidth
             variant="contained"
             sx={{
-              color: "white",
-              backgroundColor: "#1f3473",
+              color: "black",
+              backgroundColor: "#ffb300",
               "&:hover": {
-                color: "white",
-                backgroundColor: "#1f3473",
+                color: "black",
+                backgroundColor: "#ffb300",
               },
             }}
           >

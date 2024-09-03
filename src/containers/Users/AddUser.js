@@ -317,11 +317,11 @@ export default function NewUser({ modal, handleClose }) {
               type="submit"
               fullWidth
               sx={{
-                color: "white",
-                backgroundColor: "#1F3473",
+                color: "black",
+                backgroundColor: "#e7a62f",
                 "&:hover": {
-                  color: "white",
-                  backgroundColor: "#1F3473",
+                  color: "black",
+                  backgroundColor: "#e7a62f",
                 },
               }}
             >

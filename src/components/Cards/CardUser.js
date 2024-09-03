@@ -13,6 +13,7 @@ import EditUser from "../../containers/Users/EditUser";
 import UsersContext from "../../context/Users/UsersContext";
 import img from "../../assets/img/user.png";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Person, Email, Phone, Work } from "@mui/icons-material";
 export default function CardUser({ user }) {
   const { DeleteUsers } = React.useContext(UsersContext);
 
@@ -37,29 +38,62 @@ export default function CardUser({ user }) {
         <CardContent sx={{ marginTop: -15 }}>
           <Typography
             sx={{
-              color: "#1F3473",
+              color: "black",
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <b>Nombre(s):</b>
           </Typography>
-          <b>{user.name}</b>
           <Typography
             sx={{
-              color: "#1F3473",
+              color: "black",
+              display: "flex",
+              alignItems: "center",
+              padding: 1,
+            }}
+          >
+            <Person sx={{ color: "#e7a62f", marginRight: 1 }} />
+            {user.name}
+          </Typography>
+          <Typography
+            sx={{
+              color: "black",
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <b>Apellido(s):</b>
           </Typography>
-          <b>{user.last_name}</b>
           <Typography
             sx={{
-              color: "#1F3473",
+              color: "black",
+              display: "flex",
+              alignItems: "center",
+              padding: 1,
             }}
           >
-            {" "}
+            <Person sx={{ color: "#e7a62f", marginRight: 1 }} />
+            {user.last_name}
+          </Typography>
+          <Typography
+            sx={{
+              color: "black",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <b>Tipo de Usuario:</b>
-          </Typography>{" "}
-          <b>
+          </Typography>
+          <Typography
+            sx={{
+              color: "black",
+              display: "flex",
+              alignItems: "center",
+              padding: 1,
+            }}
+          >
+            <Work sx={{ color: "#e7a62f", marginRight: 1 }} />
             {user.type_user === 1
               ? "Admin"
               : user.type_user === 2
@@ -67,24 +101,47 @@ export default function CardUser({ user }) {
               : user.type_user === 3
               ? "Asesor (Individual)"
               : user.type_user === 4 && "Inquilino (Rentar/Comprar)"}
-          </b>
+          </Typography>
           <Typography
             sx={{
-              color: "#1F3473",
+              color: "black",
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <b>Telefono:</b>
           </Typography>
-          <b>{user.phone_number}</b>
           <Typography
             sx={{
-              color: "#1F3473",
+              color: "black",
+              display: "flex",
+              alignItems: "center",
+              padding: 1,
             }}
           >
-            {" "}
-            <b>Correo Electronico:</b>
+            <Phone sx={{ color: "#e7a62f", marginRight: 1 }} />
+            {user.phone_number}
           </Typography>
-          <b>{user.email}</b>
+          <Typography
+            sx={{
+              color: "black",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <b>Correo Electrónico:</b>
+          </Typography>
+          <Typography
+            sx={{
+              color: "black",
+              display: "flex",
+              alignItems: "center",
+              padding: 1,
+            }}
+          >
+            <Email sx={{ color: "#e7a62f", marginRight: 1 }} />
+            {user.email}
+          </Typography>
         </CardContent>
         <CardActions>
           {user.type_user === 2 && (

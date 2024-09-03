@@ -29,11 +29,11 @@ const MultimediaProperty = ({ name, images, property_id }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          color: "#1f3473",
+          color: "#ffb300",
           padding: "16px",
         }}
       >
-        <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
+        <Typography variant="h5" fontWeight="bold" fontFamily="monospace">
           {name}
         </Typography>
       </Grid>

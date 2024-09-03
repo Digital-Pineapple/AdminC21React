@@ -154,7 +154,7 @@ const PropertiesCreate = () => {
               <Divider>
                 <Chip
                   label="Detalles"
-                  sx={{ backgroundColor: "#1f3473", color: "white" }}
+                  sx={{ backgroundColor: "#FFB300", color: "black" }}
                 />
               </Divider>
             </Grid>
@@ -377,7 +377,7 @@ const PropertiesCreate = () => {
               <Divider>
                 <Chip
                   label="Datos Generales"
-                  sx={{ backgroundColor: "#1F3473", color: "white" }}
+                  sx={{ backgroundColor: "#FFB300", color: "black" }}
                 />
               </Divider>
             </Grid>
@@ -516,7 +516,7 @@ const PropertiesCreate = () => {
               <Divider>
                 <Chip
                   label="Dirección"
-                  sx={{ backgroundColor: "#1F3473", color: "white" }}
+                  sx={{ backgroundColor: "#FFB300", color: "black" }}
                 />
               </Divider>
             </Grid>
@@ -689,9 +689,9 @@ const PropertiesCreate = () => {
                 size="large"
                 fullWidth
                 sx={{
-                  background: "#1F3473",
-                  color: "white",
-                  "&:hover": { background: "#1F3473", color: "white" },
+                  background: "#FFB300",
+                  color: "black",
+                  "&:hover": { background: "#FFB300", color: "black" },
                 }}
               >
                 Guardar{" "}

@@ -263,11 +263,11 @@ export default function AddReport({ modal, handleClose, bookingData }) {
               type="submit"
               fullWidth
               sx={{
-                color: "white",
-                backgroundColor: "#1F3473",
+                color: "black",
+                backgroundColor: "#FFB300",
                 "&:hover": {
-                  color: "white",
-                  backgroundColor: "#1F3473",
+                  color: "black",
+                  backgroundColor: "#FFB300",
                 },
               }}
             >

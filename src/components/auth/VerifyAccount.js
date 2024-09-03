@@ -19,9 +19,9 @@ const useStyles = makeStyles({
     boxSizing: "content-box",
     width: "100%",
     // backgroundImage: "url(https://source.unsplash.com/random/2560x1440)",
-    background: "rgb(197,224,228)",
+    background: "rgb(255,255,255)",
     background:
-      "radial-gradient(circle, rgba(96,136,253,1) 0%, rgba(174,203,229,1) 100%)",
+      "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(241,173,49,1) 100%)",
     backgroundRepeat: "no-repeat",
     opacity: 1,
     overflowY: "none",
@@ -94,7 +94,7 @@ const VerifyAccount = () => {
                 <div
                   style={{
                     textAlign: "center",
-                    color: "#1F3473",
+                    color: "black",
                     marginBottom: "10px",
                     fontSize: "40px",
                     fontFamily: "monospace",
@@ -107,7 +107,7 @@ const VerifyAccount = () => {
               <div
                 style={{
                   textAlign: "center",
-                  color: "#1F3473",
+                  color: "black",
                   marginBottom: "25px",
                   fontFamily: "monospace",
                   fontWeight: "bold",
@@ -157,14 +157,14 @@ const VerifyAccount = () => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  backgroundColor: "#8ED5E1",
-                  color: "#1F3473",
+                  backgroundColor: "#ffb734",
+                  color: "black",
                   fontWeight: "bold",
                   mt: 3,
                   mb: 2,
                   "&:hover": {
-                    backgroundColor: "#8ED5E1 ",
-                    color: "#1F3473",
+                    backgroundColor: "#ffb734",
+                    color: "black",
                   },
                 }}
               >

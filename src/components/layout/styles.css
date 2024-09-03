@@ -17,10 +17,11 @@
 }
 
 .center {
+  background: rgb(255, 183, 52);
   background: radial-gradient(
     circle,
-    rgba(142, 213, 225, 1) 0%,
-    rgba(31, 52, 115, 1) 80%
+    rgba(255, 183, 52, 1) 10%,
+    rgba(255, 255, 255, 1) 100%
   );
   min-height: 100vh;
   display: flex;
@@ -33,7 +34,7 @@
   height: 200px;
   border: 5px solid #ffffff;
   border-radius: 50%;
-  border-top-color: #1f3473;
+  border-top-color: #000000;
   animation: spin 1s linear infinite;
 }
 

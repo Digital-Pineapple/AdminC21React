@@ -543,8 +543,9 @@ export default function Header({ children }) {
         position="fixed"
         open={open}
         sx={{
+          background: "rgb(255,255,255)",
           background:
-            "radial-gradient(circle, rgba(142,213,225,1) 0%, rgba(31,52,115,1) 80%)",
+            "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(242,180,67,1) 73%, rgba(241,173,49,1) 80%)",
         }}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -566,7 +567,7 @@ export default function Header({ children }) {
             fontWeight="bold"
             noWrap
             component="div"
-            sx={{ color: "white" }}
+            sx={{ color: "black" }}
           >
             Yo Comparto
           </Typography>
@@ -585,9 +586,9 @@ export default function Header({ children }) {
       <Drawer
         variant="permanent"
         open={open}
-        sx={{ backgroundColor: "#1F3473" }}
+        sx={{ backgroundColor: "#FFB734" }}
       >
-        <DrawerHeader sx={{ backgroundColor: "#1F3473" }}>
+        <DrawerHeader sx={{ backgroundColor: "#FFB734" }}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -615,7 +616,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
-                          color: "#1F3473",
+                          color: "black",
                         }}
                       >
                         {text.icon}
@@ -624,7 +625,7 @@ export default function Header({ children }) {
                         primary={text.name}
                         sx={{
                           opacity: open ? 1 : 0,
-                          color: "#1F3473",
+                          color: "black",
                           fontWeight: "bold",
                         }}
                       />
@@ -648,7 +649,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
-                          color: "#1F3473",
+                          color: "black",
                         }}
                       >
                         {text.icon}
@@ -657,7 +658,7 @@ export default function Header({ children }) {
                         primary={text.name}
                         sx={{
                           opacity: open ? 1 : 0,
-                          color: "#1F3473",
+                          color: "black",
                           fontWeight: "bold",
                         }}
                       />
@@ -681,7 +682,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
-                          color: "#1F3473",
+                          color: "black",
                         }}
                       >
                         {text.icon}
@@ -690,7 +691,7 @@ export default function Header({ children }) {
                         primary={text.name}
                         sx={{
                           opacity: open ? 1 : 0,
-                          color: "#1F3473",
+                          color: "black",
                           fontWeight: "bold",
                         }}
                       />
@@ -714,7 +715,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
-                          color: "#1F3473",
+                          color: "black",
                         }}
                       >
                         {text.icon}
@@ -723,7 +724,7 @@ export default function Header({ children }) {
                         primary={text.name}
                         sx={{
                           opacity: open ? 1 : 0,
-                          color: "#1F3473",
+                          color: "black",
                           fontWeight: "bold",
                         }}
                       />
@@ -747,7 +748,7 @@ export default function Header({ children }) {
                           minWidth: 0,
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
-                          color: "#1F3473",
+                          color: "black",
                         }}
                       >
                         {text.icon}
@@ -756,7 +757,7 @@ export default function Header({ children }) {
                         primary={text.name}
                         sx={{
                           opacity: open ? 1 : 0,
-                          color: "#1F3473",
+                          color: "black",
                           fontWeight: "bold",
                         }}
                       />

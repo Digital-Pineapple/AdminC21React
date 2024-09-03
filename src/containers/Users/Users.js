@@ -38,11 +38,11 @@ const Users = () => {
             fullWidth
             onClick={handleClickOpen}
             sx={{
-              color: "#1F3473",
-              backgroundColor: "#8ED5E1",
+              color: "black",
+              backgroundColor: "#ffb734",
               "&:hover": {
-                color: "#1F3473",
-                backgroundColor: "#8ED5E1 ",
+                color: "black",
+                backgroundColor: "#ffb734 ",
               },
             }}
           >

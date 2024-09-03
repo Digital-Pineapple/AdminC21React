@@ -23,6 +23,10 @@ import AttachFileMultimedia from "./AddMultimediaUser";
 import EditInfo from "./EditInfo";
 import AuthContext from "../../context/auth/AuthContext";
 import UsersContext from "../../context/Users/UsersContext";
+import PersonIcon from "@mui/icons-material/Person";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 const Perfil = () => {
   const { UserMe, user_me } = useContext(AuthContext);
@@ -92,7 +96,7 @@ const Perfil = () => {
                     fontFamily="monospace"
                     variant="h4"
                     textAlign="center"
-                    sx={{ color: "#1F3473" }}
+                    sx={{ color: "black" }}
                   >
                     Hola, {saludo} {user_me && user_me.name}
                   </Typography>
@@ -117,11 +121,11 @@ const Perfil = () => {
                         fullWidth
                         variant="contained"
                         sx={{
-                          color: "#1F3473",
-                          backgroundColor: "#8ED5E1",
+                          color: "black",
+                          backgroundColor: "#ffb734",
                           "&:hover": {
-                            color: "#1F3473",
-                            backgroundColor: "#8ED5E1",
+                            color: "black",
+                            backgroundColor: "#ffb734",
                           },
                         }}
                       >
@@ -147,7 +151,7 @@ const Perfil = () => {
                       fontFamily="monospace"
                       fontWeight="bold"
                       variant="h5"
-                      sx={{ color: "#1F3473" }}
+                      sx={{ color: "black", padding: 2 }}
                     >
                       Detalles de mi cuenta...
                     </Typography>
@@ -157,28 +161,51 @@ const Perfil = () => {
                           fontFamily="monospace"
                           fontWeight="bold"
                           variant="subtitle1"
-                          sx={{ color: "black" }}
+                          sx={{
+                            color: "black",
+                            display: "flex",
+                            alignItems: "center",
+                          }}
                         >
+                          <PersonIcon
+                            sx={{ color: "black", marginRight: "8px" }}
+                          />
                           Nombre(s): {user_me.name}
                         </Typography>
                       </Grid>
+
                       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                         <Typography
                           fontFamily="monospace"
                           fontWeight="bold"
                           variant="subtitle1"
-                          sx={{ color: "black" }}
+                          sx={{
+                            color: "black",
+                            display: "flex",
+                            alignItems: "center",
+                          }}
                         >
+                          <BadgeIcon
+                            sx={{ color: "black", marginRight: "8px" }}
+                          />
                           Apellido(s): {user_me.last_name}
                         </Typography>
                       </Grid>
+
                       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                         <Typography
                           fontFamily="monospace"
                           fontWeight="bold"
                           variant="subtitle1"
-                          sx={{ color: "black" }}
+                          sx={{
+                            color: "black",
+                            display: "flex",
+                            alignItems: "center",
+                          }}
                         >
+                          <BadgeIcon
+                            sx={{ color: "black", marginRight: "8px" }}
+                          />
                           Soy:{" "}
                           {user_me.type_user === 1
                             ? "Admin"
@@ -192,23 +219,39 @@ const Perfil = () => {
                               "Asesor (Inmobiliaria)"}
                         </Typography>
                       </Grid>
+
                       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                         <Typography
                           fontFamily="monospace"
                           fontWeight="bold"
                           variant="subtitle1"
-                          sx={{ color: "black" }}
+                          sx={{
+                            color: "black",
+                            display: "flex",
+                            alignItems: "center",
+                          }}
                         >
-                          Telefono: {user_me.phone_number}
+                          <PhoneIcon
+                            sx={{ color: "black", marginRight: "8px" }}
+                          />
+                          Teléfono: {user_me.phone_number}
                         </Typography>
                       </Grid>
+
                       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                         <Typography
                           fontFamily="monospace"
                           fontWeight="bold"
                           variant="subtitle1"
-                          sx={{ color: "black" }}
+                          sx={{
+                            color: "black",
+                            display: "flex",
+                            alignItems: "center",
+                          }}
                         >
+                          <EmailIcon
+                            sx={{ color: "black", marginRight: "8px" }}
+                          />
                           Correo Electrónico: {user_me.email}
                         </Typography>
                       </Grid>
@@ -219,11 +262,11 @@ const Perfil = () => {
                           fullWidth
                           variant="contained"
                           sx={{
-                            color: "#1F3473",
-                            backgroundColor: "#8ED5E1",
+                            color: "black",
+                            backgroundColor: "#ffb734",
                             "&:hover": {
-                              color: "#1F3473",
-                              backgroundColor: "#8ED5E1 ",
+                              color: "black",
+                              backgroundColor: "#ffb734 ",
                             },
                           }}
                         >
@@ -238,11 +281,11 @@ const Perfil = () => {
                           fullWidth
                           variant="contained"
                           sx={{
-                            color: "#8ED5E1",
-                            backgroundColor: "#1F3473",
+                            color: "#ffb734",
+                            backgroundColor: "black",
                             "&:hover": {
-                              color: "#8ED5E1",
-                              backgroundColor: "#1F3473",
+                              color: "#ffb734",
+                              backgroundColor: "black",
                             },
                           }}
                         >
@@ -300,5 +343,4 @@ const Perfil = () => {
     </Layout>
   );
 };
-
 export default Perfil;

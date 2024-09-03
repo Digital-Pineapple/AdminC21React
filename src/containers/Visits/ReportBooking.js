@@ -42,7 +42,7 @@ const ReportBooking = ({ report_booking, bookingData }) => {
             fontFamily="monospace"
             fontWeight="bold"
             variant="h5"
-            sx={{ color: "#1F3473" }}
+            sx={{ color: "#ffb300" }}
           >
             Información de Reporte:
           </Typography>
@@ -184,11 +184,11 @@ const ReportBooking = ({ report_booking, bookingData }) => {
                 fullWidth
                 onClick={() => handleClickOpen(report.id)}
                 sx={{
-                  color: "#1F3473",
-                  backgroundColor: "#8ED5E1",
+                  color: "black",
+                  backgroundColor: "#ffb300",
                   "&:hover": {
-                    color: "#1F3473",
-                    backgroundColor: "#8ED5E1",
+                    color: "black",
+                    backgroundColor: "#ffb300",
                   },
                 }}
               >
@@ -201,11 +201,11 @@ const ReportBooking = ({ report_booking, bookingData }) => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  color: "#8ED5E1",
-                  backgroundColor: "#1F3473",
+                  color: "#ffb300",
+                  backgroundColor: "black",
                   "&:hover": {
-                    color: "#8ED5E1",
-                    backgroundColor: "#1F3473",
+                    color: "#ffb300",
+                    backgroundColor: "black",
                   },
                 }}
               >

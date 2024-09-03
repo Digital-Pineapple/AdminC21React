@@ -242,11 +242,11 @@ export default function EditVisit({ modal, handleClose, id }) {
               type="submit"
               fullWidth
               sx={{
-                color: "white",
-                backgroundColor: "#1F3473",
+                color: "black",
+                backgroundColor: "#ffb300",
                 "&:hover": {
-                  color: "white",
-                  backgroundColor: "#1F3473",
+                  color: "black",
+                  backgroundColor: "#ffb300",
                 },
               }}
             >

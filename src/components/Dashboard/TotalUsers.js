@@ -15,7 +15,7 @@ const TotalUsers = ({ total_users }) => {
   const classes = useStyles();
   return (
     <Card
-      style={{ backgroundColor: "#8ED5E1" }}
+      style={{ backgroundColor: "#FFB734" }}
       sx={{
         boxShadow: 4,
         display: "flex",
@@ -30,7 +30,7 @@ const TotalUsers = ({ total_users }) => {
             marginLeft: 10,
             marginTop: 10,
             marginBottom: 10,
-            color: "#1F3473",
+            color: "black",
           }}
         />
       </div>
@@ -41,7 +41,7 @@ const TotalUsers = ({ total_users }) => {
           sx={{
             fontWeight: "bold",
             fontSize: 20,
-            color: "#1F3473",
+            color: "black",
             border: "1px",
             borderColor: "green",
           }}
@@ -51,7 +51,7 @@ const TotalUsers = ({ total_users }) => {
         <Typography
           sx={{
             fontSize: 23,
-            color: "#1F3473",
+            color: "black",
             border: "1px",
             borderColor: "green",
           }}

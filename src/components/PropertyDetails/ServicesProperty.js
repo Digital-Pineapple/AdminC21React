@@ -15,7 +15,7 @@ const ServicesProperty = ({ services }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              color: "#1f3473",
+              color: "#ffb734",
               marginBottom: 2,
             }}
           >
@@ -23,7 +23,7 @@ const ServicesProperty = ({ services }) => {
               variant="h5"
               fontWeight="bold"
               fontFamily="monospace"
-              sx={{ color: "#1f3473" }}
+              sx={{ color: "#ffb734" }}
             >
               Servicios agregados de la propiedad:
             </Typography>

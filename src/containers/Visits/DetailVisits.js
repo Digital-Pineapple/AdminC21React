@@ -67,7 +67,7 @@ export default function DetailVisits(props) {
                   fontFamily="monospace"
                   fontWeight="bold"
                   variant="h5"
-                  sx={{ color: "#1F3473" }}
+                  sx={{ color: "#ffb300" }}
                 >
                   Información de la Propiedad:
                 </Typography>
@@ -139,7 +139,7 @@ export default function DetailVisits(props) {
                   fontFamily="monospace"
                   fontWeight="bold"
                   variant="h5"
-                  sx={{ color: "#1F3473" }}
+                  sx={{ color: "#ffb300" }}
                 >
                   Detalles de la Visita:
                 </Typography>

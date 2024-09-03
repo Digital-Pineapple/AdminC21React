@@ -18,14 +18,14 @@ const Owner = ({ owner }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              color: "#1f3473",
+              color: "#ffb300",
             }}
           >
             <Typography
               variant="h5"
               fontWeight="bold"
               fontFamily="monospace"
-              sx={{ color: "#1f3473", marginBottom: 2 }}
+              sx={{ color: "#ffb300", marginBottom: 2 }}
             >
               Contacto:
             </Typography>

@@ -30,14 +30,14 @@ const Amenidades = ({ details }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              color: "#1f3473",
+              color: "#ffb300",
             }}
           >
             <Typography
               variant="h5"
               fontWeight="bold"
               fontFamily="monospace"
-              sx={{ color: "#1f3473" }}
+              sx={{ color: "#ffb300" }}
             >
               Amenidades:
             </Typography>

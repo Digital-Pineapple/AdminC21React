@@ -37,7 +37,7 @@ export default function CardServices({ service }) {
             fontFamily="inherit"
             variant="h5"
             sx={{
-              color: "#1F3473",
+              color: "black",
             }}
           >
             {service.name}

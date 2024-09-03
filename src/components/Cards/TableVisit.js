@@ -29,8 +29,8 @@ const statusColors = {
 
 const StyledTableCell = styled(TableCell)(({ theme, status }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#8ED5E1",
-    color: "#1F3473",
+    backgroundColor: "#F7CE82",
+    color: "black",
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 15,
@@ -73,7 +73,7 @@ const TableContainerResponsive = styled(TableContainer)(({ theme }) => ({
   },
 }));
 
-export default function TableVisit({ visits }) {  
+export default function TableVisit({ visits }) {
   const { DeleteVisit, AcceptVisit, BackPendingVisit } =
     useContext(VisitContext);
 

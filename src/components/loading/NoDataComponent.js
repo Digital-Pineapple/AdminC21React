@@ -12,10 +12,12 @@ const useStyles = makeStyles(() => ({
   },
 
   imgbuilding: {
-    height: "70%",
-    width: "90%",
+    width: "100%",
+    height: "auto",
+    maxWidth: "450px",
   },
 }));
+
 export default function NoDataComponent() {
   const classes = useStyles();
 
@@ -33,7 +35,7 @@ export default function NoDataComponent() {
       >
         <div>
           <img
-            src={require("../../assets/gif/noData.gif")}
+            src={require("../../assets/gif/NoData.gif")}
             alt="spinner"
             className={classes.imgbuilding}
           />
