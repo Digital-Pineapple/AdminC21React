@@ -257,6 +257,8 @@ const PropertiesState = ({ children }) => {
       name: data.name,
       categorias: data.category,
       tipos: data.service,
+      state: data.state,
+      municipality: data.municipality,
     })
       .then((res) => {
         dispatch({
