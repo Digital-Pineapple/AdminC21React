@@ -1,0 +1,18 @@
+{
+  "logo": "Yo Comparto",
+  "login": "Inicia sesión",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "ForgotPassword": "¿Olvidaste tu contraseña?",
+  "Ingresar": "Ingresar",
+  "register": "Registrarme",
+  "telefono": "Teléfono",
+
+  "RegístrateGratis": "¡Regístrate gratis!",
+  "nombre": "Nombre(s)",
+  "apellido": "Apellido(s)",
+  "confirmarContraseña": "Confirma la Contraseña",
+  "aceptarTerminos": "Términos y Condiciones",
+  "aceptar": "Aceptar",
+  "regresar": "Regresar"
+}

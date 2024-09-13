@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import AuthContext from "../../context/auth/AuthContext";
 import RolesSelect from "../../containers/SelectOptions/RolesSelect";
-
+import { useTranslation } from "react-i18next";
 const useStyles = makeStyles({
   textlogin: {
     fontSize: "15px",
@@ -50,6 +50,7 @@ const useStyles = makeStyles({
 });
 
 const Register = () => {
+  const { t } = useTranslation();
   const classes = useStyles();
   const { AddUser } = React.useContext(AuthContext);
   const {
@@ -150,7 +151,7 @@ const Register = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  Yo Comparto
+                  {t("logo")}
                 </div>
               </Box>
               <div
@@ -162,7 +163,7 @@ const Register = () => {
                   fontWeight: "bold",
                 }}
               >
-                ¡Regístrate gratis!
+                {t("RegístrateGratis")}
               </div>
 
               <Grid container spacing={2}>
@@ -171,7 +172,7 @@ const Register = () => {
                     type="text"
                     fullWidth
                     name="name"
-                    label="Nombre(s):"
+                    label={t("nombre")}
                     error={errors.name ? true : false}
                     helperText={errors?.name?.message}
                     {...register("name", {
@@ -191,7 +192,7 @@ const Register = () => {
                     type="text"
                     fullWidth
                     name="last_name"
-                    label="Apellido(s):"
+                    label={t("apellido")}
                     error={errors.last_name ? true : false}
                     helperText={errors?.last_name?.message}
                     {...register("last_name", {
@@ -214,7 +215,7 @@ const Register = () => {
                     type="number"
                     fullWidth
                     name="phone_number"
-                    label="Teléfono:"
+                    label={t("telefono")}
                     error={errors.phone_number ? true : false}
                     helperText={errors?.phone_number?.message}
                     {...register("phone_number", {
@@ -234,7 +235,7 @@ const Register = () => {
                     type="email"
                     fullWidth
                     name="email"
-                    label="Correo Electrónico:"
+                    label={t("email")}
                     error={errors.email ? true : false}
                     helperText={errors?.email?.message}
                     {...register("email", {
@@ -273,7 +274,7 @@ const Register = () => {
                         </InputAdornment>
                       ),
                     }}
-                    label="Contraseña:"
+                    label={t("password")}
                     error={errors.password ? true : false}
                     helperText={errors?.password?.message}
                     {...register("password", {
@@ -319,7 +320,7 @@ const Register = () => {
                         </InputAdornment>
                       ),
                     }}
-                    label="Confirma la Contraseña:"
+                    label={t("confirmarContraseña")}
                     error={errors.password_confirmation ? true : false}
                     helperText={errors?.password_confirmation?.message}
                     {...register("password_confirmation", {
@@ -344,14 +345,14 @@ const Register = () => {
                   control={<Checkbox required style={{ color: "black" }} />}
                   label={
                     <>
-                      Aceptar{" "}
+                      {t("aceptar")} {""}
                       <a
                         href="https://yocomparto.com.mx/terminos-y-condiciones/"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{ color: "black", textDecoration: "none" }}
                       >
-                        Términos y Condiciones
+                        {t("aceptarTerminos")}
                       </a>
                     </>
                   }
@@ -373,7 +374,7 @@ const Register = () => {
                   },
                 }}
               >
-                Registrarme
+                {t("register")}
               </Button>
               <Link to="iniciar-sesion">
                 <Button
@@ -392,7 +393,7 @@ const Register = () => {
                     },
                   }}
                 >
-                  Regresar
+                  {t("regresar")}
                 </Button>
               </Link>
             </Box>

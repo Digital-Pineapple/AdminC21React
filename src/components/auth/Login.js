@@ -18,6 +18,7 @@ import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import AuthContext from "../../context/auth/AuthContext";
 import { useFormik } from "formik";
+import { useTranslation } from "react-i18next";
 const useStyles = makeStyles({
   textlogin: {
     fontSize: "15px",
@@ -50,6 +51,14 @@ const useStyles = makeStyles({
 });
 
 const Login = () => {
+  const { t } = useTranslation();
+
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   const classes = useStyles();
   const [values, setValues] = useState({
     password: "",
@@ -119,7 +128,7 @@ const Login = () => {
                   fontWeight: "bold",
                 }}
               >
-                Yo Comparto
+                {t("logo")}
               </div>
             </Box>
             <div
@@ -131,7 +140,7 @@ const Login = () => {
                 fontWeight: "bold",
               }}
             >
-              Inicia sesión
+              {t("login")}
             </div>
             <Box
               component="form"
@@ -147,7 +156,7 @@ const Login = () => {
                   <TextField
                     fullWidth
                     id="email"
-                    label="Correo Electronico:"
+                    label={t("email")}
                     name="email"
                     autoComplete="off"
                     onChange={formik.handleChange}
@@ -160,7 +169,7 @@ const Login = () => {
                       htmlFor="password"
                       error={formik.errors?.password ? true : false}
                     >
-                      Contraseña:
+                      {t("password")}
                     </InputLabel>
                     <OutlinedInput
                       error={formik.errors?.password ? true : false}
@@ -188,7 +197,7 @@ const Login = () => {
                           </IconButton>
                         </InputAdornment>
                       }
-                      label="Contraseña:"
+                      label={t("password")}
                     />
                   </FormControl>
                 </Grid>
@@ -214,7 +223,7 @@ const Login = () => {
                   fontWeight="bold"
                   variant="subtitle1"
                 >
-                  Ingresar
+                  {t("Ingresar")}
                 </Typography>
               </Button>
               <Link to="/registrarme">
@@ -239,7 +248,7 @@ const Login = () => {
                     fontWeight="bold"
                     variant="subtitle1"
                   >
-                    Registrarme
+                    {t("register")}
                   </Typography>
                 </Button>
               </Link>
@@ -250,9 +259,26 @@ const Login = () => {
                     color: "black",
                   }}
                 >
-                  ¿Olvidaste tu contraseña?
+                  {t("ForgotPassword")}
                 </h3>
               </Link>
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                gap={1}
+              >
+                <Button onClick={() => changeLanguage("es")}>
+                  <img
+                    src="https://flagcdn.com/mx.svg"
+                    alt="Español (México)"
+                    width="30"
+                  />
+                </Button>
+                <Button onClick={() => changeLanguage("zh")}>
+                  <img src="https://flagcdn.com/cn.svg" alt="中文" width="30" />
+                </Button>
+              </Box>
             </Box>
           </Box>
         </div>

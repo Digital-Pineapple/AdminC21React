@@ -1,0 +1,18 @@
+{
+  "logo": "我分享",
+  "login": "登入",
+  "email": "电子邮件",
+  "password": "密码",
+  "ForgotPassword": "忘记密码了吗",
+  "Ingresar": "使用权",
+  "register": "记录",
+  "telefono": "电话",
+
+  "RegístrateGratis": "免费注册！",
+  "nombre": "姓名",
+  "apellido": "姓",
+  "confirmarContraseña": "确认密码",
+  "aceptarTerminos": "条款和条件",
+  "aceptar": "接受",
+  "regresar": "回去"
+}
