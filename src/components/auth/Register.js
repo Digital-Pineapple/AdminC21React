@@ -374,7 +374,7 @@ const Register = () => {
                   },
                 }}
               >
-                {t("register")}
+                {t("continuar")}
               </Button>
               <Link to="iniciar-sesion">
                 <Button

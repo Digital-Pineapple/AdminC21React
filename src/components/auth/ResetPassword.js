@@ -4,7 +4,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useForm } from "react-hook-form";
 import React, { useContext, useState } from "react";
 import AuthContext from "../../context/auth/AuthContext";
-
+import { useTranslation } from "react-i18next";
 const useStyles = makeStyles({
   textlogin: {
     fontSize: "15px",
@@ -37,6 +37,7 @@ const useStyles = makeStyles({
 });
 
 const ResetPassword = () => {
+  const { t } = useTranslation();
   const classes = useStyles();
   const { ResetPassword } = React.useContext(AuthContext);
 
@@ -101,7 +102,7 @@ const ResetPassword = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  Yo Comparto
+                  {t("logo")}
                 </div>
               </Box>
               <div
@@ -113,7 +114,7 @@ const ResetPassword = () => {
                   fontWeight: "bold",
                 }}
               >
-                Recupera tu cuenta
+                {t("recuperar")}
               </div>
               <div
                 style={{
@@ -124,8 +125,7 @@ const ResetPassword = () => {
                   fontWeight: "bold",
                 }}
               >
-                Ingrese su correo electrónico para enviar el código de
-                verificación y recuperar su cuenta.
+                {t("recuperarTuCuenta")}
               </div>
 
               <Grid item xs={12} md={12} lg={12} xl={12}>
@@ -133,7 +133,7 @@ const ResetPassword = () => {
                   type="email"
                   fullWidth
                   name="email"
-                  label="Correo Electrónico:"
+                  label={t("email")}
                   error={errors.email ? true : false}
                   helperText={errors?.email?.message}
                   {...register("email", {
@@ -169,7 +169,7 @@ const ResetPassword = () => {
                   fontWeight="bold"
                   variant="subtitle1"
                 >
-                  Enviar
+                  {t("enviar")}
                 </Typography>
               </Button>
               <Link to="iniciar-sesion">
@@ -189,7 +189,7 @@ const ResetPassword = () => {
                     },
                   }}
                 >
-                  Regresar
+                  {t("regresar")}
                 </Button>
               </Link>
             </Box>

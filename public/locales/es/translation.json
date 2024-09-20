@@ -7,12 +7,24 @@
   "Ingresar": "Ingresar",
   "register": "Registrarme",
   "telefono": "Teléfono",
-
+  "soy": "Soy",
+  "inquilino": "Inquilino (Rentar/Comprar)",
+  "asesor": "Asesor (Individual)",
+  "inmobiliaria": "Inmobiliaria",
+  "continuar": "Continuar",
   "RegístrateGratis": "¡Regístrate gratis!",
   "nombre": "Nombre(s)",
   "apellido": "Apellido(s)",
   "confirmarContraseña": "Confirma la Contraseña",
   "aceptarTerminos": "Términos y Condiciones",
   "aceptar": "Aceptar",
-  "regresar": "Regresar"
+  "regresar": "Regresar",
+  "recuperar": "Recupera tu cuenta",
+  "enviar": "Enviar",
+  "recuperarTuCuenta": "Ingrese su correo electrónico para enviar un código de verificación y restaurar su cuenta.",
+  "verificarcuenta": "Verificación de tu Cuenta",
+  "verificarTuCuenta": "Ingresa el código de verificación que se envió a tu correo electrónico para validar tu cuenta.",
+  "CodigodeVerificación": "Codigo de Verificación",
+  "registroExitoso": "¡Registro exitoso!",
+  "mensaje": "Hemos enviado un código de verificación a tu correo electrónico. Por favor, revisa tu bandeja de entrada y, si es necesario, tu carpeta de spam."
 }

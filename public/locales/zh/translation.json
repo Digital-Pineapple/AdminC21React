@@ -4,15 +4,28 @@
   "email": "电子邮件",
   "password": "密码",
   "ForgotPassword": "忘记密码了吗",
-  "Ingresar": "使用权",
+  "Ingresar": "登入",
   "register": "记录",
   "telefono": "电话",
-
+  "soy": "用户类型",
+  "inquilino": "租户（租赁/购买",
+  "asesor": "顾问（个人）",
+  "inmobiliaria": "房地产",
+  "continuar": "继续",
   "RegístrateGratis": "免费注册！",
   "nombre": "姓名",
   "apellido": "姓",
   "confirmarContraseña": "确认密码",
   "aceptarTerminos": "条款和条件",
   "aceptar": "接受",
-  "regresar": "回去"
+  "regresar": "回去",
+  "recuperar": "恢复您的帐户",
+  "enviar": "发送",
+  "recuperarTuCuenta": "输入您的电子邮件以发送验证码并恢复您的帐户",
+  "verificarcuenta": "验证您的帐户",
+  "verificarTuCuenta": "输入发送到您的电子邮件的验证码以验证您的帐户",
+  "CodigodeVerificación": "验证码",
+  "registroExitoso": "注册成功！",
+  "mensaje": "我们已将验证码发送到您的电子邮件。请检查您的收件箱，如有必要，请检查您的垃圾邮件文件夹。"
 }
+

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useForm } from "react-hook-form";
 import React, { useContext, useState } from "react";
 import AuthContext from "../../context/auth/AuthContext";
-
+import { useTranslation } from "react-i18next";
 const useStyles = makeStyles({
   textlogin: {
     fontSize: "15px",
@@ -37,6 +37,13 @@ const useStyles = makeStyles({
 });
 
 const VerifyAccount = () => {
+  const { t } = useTranslation();
+
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
   const classes = useStyles();
   const { VerifyCode } = React.useContext(AuthContext);
   const token = localStorage.getItem("mi token");
@@ -101,7 +108,7 @@ const VerifyAccount = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  Yo Comparto
+                  {t("logo")}
                 </div>
               </Box>
               <div
@@ -113,7 +120,7 @@ const VerifyAccount = () => {
                   fontWeight: "bold",
                 }}
               >
-                Verificación de tu Cuenta
+                {t("verificarcuenta")}
               </div>
               <div
                 style={{
@@ -124,8 +131,7 @@ const VerifyAccount = () => {
                   fontWeight: "bold",
                 }}
               >
-                Ingresa el código de verificación que se envió a tu correo
-                electrónico para validar tu cuenta.
+                {t("verificarTuCuenta")}
               </div>
 
               <Grid item xs={12} md={12} lg={12} xl={12}>
@@ -133,7 +139,7 @@ const VerifyAccount = () => {
                   type="number"
                   fullWidth
                   name="code"
-                  label="Codigo de Verificación"
+                  label={t("CodigodeVerificación")}
                   error={errors.code ? true : false}
                   helperText={errors?.code?.message}
                   {...register("code", {
@@ -173,9 +179,26 @@ const VerifyAccount = () => {
                   fontWeight="bold"
                   variant="subtitle1"
                 >
-                  Enviar
+                  {t("enviar")}
                 </Typography>
               </Button>
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                gap={1}
+              >
+                <Button onClick={() => changeLanguage("es")}>
+                  <img
+                    src="https://flagcdn.com/mx.svg"
+                    alt="Español (México)"
+                    width="30"
+                  />
+                </Button>
+                <Button onClick={() => changeLanguage("zh")}>
+                  <img src="https://flagcdn.com/cn.svg" alt="中文" width="30" />
+                </Button>
+              </Box>
             </Box>
           </div>
         </Grid>
