@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 const ParkingOptions = ({ detectarCambios, parking }) => {
+  const { t } = useTranslation();
   const [Parking, setParking] = useState(null);
 
   // Definición de las opciones disponibles
@@ -35,7 +37,7 @@ const ParkingOptions = ({ detectarCambios, parking }) => {
     <div>
       <FormControl fullWidth>
         <InputLabel id="parking-options-label">
-          ¿Cuenta con estacionamiento?
+          {t("cuentaConEstacionamiento")}
         </InputLabel>
 
         <Select
@@ -44,7 +46,7 @@ const ParkingOptions = ({ detectarCambios, parking }) => {
           id="parking-options-select"
           value={Parking ? Parking.value : ""}
           onChange={handleParkingChange}
-          label="¿Cuenta con estacionamiento?"
+          label={t("cuentaConEstacionamiento")}
           name="account"
         >
           {options.map((option) => (

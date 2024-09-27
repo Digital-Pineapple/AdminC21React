@@ -1,14 +1,16 @@
 import * as React from "react";
 import Radio from "@mui/material/Radio";
+import { useTranslation } from "react-i18next";
 
 export default function Commission({
   selectedValueCommission,
   handleChangeCommission,
 }) {
+  const { t } = useTranslation();
   return (
     <div style={{ alignItems: "center" }}>
-      <div>¿Desea compartir comisión de su propiedad?</div>
-      <label>Si</label>
+      <div>{t("deseaCompartirComision")}</div>
+      <label>{t("si")}</label>
       <Radio
         checked={selectedValueCommission === "si"}
         onChange={handleChangeCommission}
@@ -16,7 +18,7 @@ export default function Commission({
         name="radio-buttons"
         inputProps={{ "aria-label": "Si" }}
       />
-      <label>No</label>
+      <label>{t("no")}</label>
       <Radio
         checked={selectedValueCommission === "no"}
         onChange={handleChangeCommission}

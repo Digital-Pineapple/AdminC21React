@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import MethodGet from "../../config/service";
 
 const SelectMunicipality = (props) => {
+  const { t } = useTranslation();
   const [municipalities, setMunicipalities] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [selectedMunicipalityId, setSelectedMunicipalityId] = useState("");
@@ -37,14 +39,16 @@ const SelectMunicipality = (props) => {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="state-select-label">Selecciona un municipio</InputLabel>
+        <InputLabel id="state-select-label">
+          {t("seleccionaMunicipio")}
+        </InputLabel>
         <Select
           required
           labelId="state-select-label"
           id="state-select"
           value={selectedMunicipalityId}
           onChange={handleChange}
-          label="Selecciona un municipio"
+          label={t("seleccionaMunicipio")}
           name="municipality_id"
         >
           {municipalities.map((municipality) => (

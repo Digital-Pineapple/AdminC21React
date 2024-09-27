@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import CategoriesSelect from "../SelectOptionsEdit/CategoriesSelect";
 import RemodelOptions from "../SelectOptionsEdit/RemodelOptions";
@@ -23,6 +24,7 @@ import MethodGet from "../../config/service";
 import UserPropSelect from "../SelectOptionsEdit/UserPropSelect";
 import Commission from "./Commission";
 const EditProperty = (props) => {
+  const { t } = useTranslation();
   const { UpdateProperty } = useContext(PropertiesContext);
   let type_user = localStorage.getItem("type_user");
   const { id } = props.match.params;
@@ -142,7 +144,7 @@ const EditProperty = (props) => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Editar Propiedad
+            {t("editarPropiedad")}
           </Typography>
         </Grid>
         <form
@@ -157,7 +159,7 @@ const EditProperty = (props) => {
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <Divider>
                   <Chip
-                    label="Detalles"
+                    label={t("Detalles")}
                     sx={{ backgroundColor: "#ffb300", color: "black" }}
                   />
                 </Divider>
@@ -168,7 +170,7 @@ const EditProperty = (props) => {
                   variant="outlined"
                   type="number"
                   name="age"
-                  label="Años de antiguedad"
+                  label={t("añosDeAntiguedad")}
                   defaultValue={property.details.age}
                   error={errors.age ? true : false}
                   helperText={errors?.age?.message}
@@ -187,7 +189,7 @@ const EditProperty = (props) => {
                   variant="outlined"
                   type="number"
                   name="rooms"
-                  label="Numero de recamaras"
+                  label={t("numeroDeRecamaras")}
                   defaultValue={property.details.rooms}
                   error={errors.rooms ? true : false}
                   helperText={errors?.rooms?.message}
@@ -206,7 +208,7 @@ const EditProperty = (props) => {
                   variant="outlined"
                   type="number"
                   name="bathroom"
-                  label="Baños completos"
+                  label={t("bañosCompletos")}
                   defaultValue={property.details.bathroom}
                   error={errors.bathroom ? true : false}
                   helperText={errors?.bathroom?.message}
@@ -225,7 +227,7 @@ const EditProperty = (props) => {
                   variant="outlined"
                   type="number"
                   name="half_bath"
-                  label="Medios Baños"
+                  label={t("mediosBaños")}
                   defaultValue={property.details.half_bath}
                   error={errors.half_bath ? true : false}
                   helperText={errors?.half_bath?.message}
@@ -244,7 +246,7 @@ const EditProperty = (props) => {
                   variant="outlined"
                   type="number"
                   name="size"
-                  label="Metros construidos"
+                  label={t("metrosConstruidos")}
                   defaultValue={property.details.size}
                   error={errors.size ? true : false}
                   helperText={errors?.size?.message}
@@ -262,7 +264,7 @@ const EditProperty = (props) => {
                   fullWidth
                   variant="outlined"
                   type="number"
-                  label="Metros totales"
+                  label={t("metrosTotales")}
                   name="size_total"
                   defaultValue={property.details.size_total}
                   error={errors.size_total ? true : false}
@@ -292,7 +294,7 @@ const EditProperty = (props) => {
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <Divider>
                   <Chip
-                    label="Datos Generales"
+                    label={t("datosGenerales")}
                     sx={{ backgroundColor: "#ffb300", color: "black" }}
                   />
                 </Divider>
@@ -302,7 +304,7 @@ const EditProperty = (props) => {
                   fullWidth
                   variant="outlined"
                   name="name"
-                  label="Nombre de la propiedad"
+                  label={t("nombreDeLaPropiedad")}
                   defaultValue={property.name}
                   error={errors.name ? true : false}
                   helperText={errors?.name?.message}
@@ -331,7 +333,7 @@ const EditProperty = (props) => {
                   fullWidth
                   variant="outlined"
                   type="number"
-                  label="Precio"
+                  label={t("precio")}
                   name="final_price"
                   defaultValue={property.rules[0].detail.final_price}
                   error={errors.final_price ? true : false}
@@ -366,7 +368,7 @@ const EditProperty = (props) => {
                     fullWidth
                     variant="outlined"
                     type="number"
-                    label="Comisión compartida de la propiedad"
+                    label={t("comisiónCompartida")}
                     name="commission"
                     defaultValue={property.rules[0].detail.commission}
                     error={errors.commission ? true : false}
@@ -405,7 +407,7 @@ const EditProperty = (props) => {
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <TextField
                   id="outlined-multiline-static"
-                  label="Descripcion del lugar"
+                  label={t("descripcionDelLugar")}
                   multiline
                   fullWidth
                   rows={8}
@@ -424,7 +426,7 @@ const EditProperty = (props) => {
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <Divider>
                   <Chip
-                    label="Dirección"
+                    label={t("direccion")}
                     sx={{ backgroundColor: "#ffb300", color: "black" }}
                   />
                 </Divider>
@@ -435,7 +437,7 @@ const EditProperty = (props) => {
                   variant="outlined"
                   type="text"
                   name="street_name"
-                  label="Calle"
+                  label={t("calle")}
                   defaultValue={property.address.street_name}
                   error={errors.street_name ? true : false}
                   helperText={errors?.street_name?.message}
@@ -452,7 +454,7 @@ const EditProperty = (props) => {
                   fullWidth
                   variant="outlined"
                   type="text"
-                  label="No_Ext"
+                  label={t("noExt")}
                   name="number_building"
                   defaultValue={property.address.number_building}
                   error={errors.number_building ? true : false}
@@ -470,7 +472,7 @@ const EditProperty = (props) => {
                   fullWidth
                   variant="outlined"
                   type="text"
-                  label="No_Int"
+                  label={t("noInt")}
                   name="number_int"
                   defaultValue={property.address.number_int}
                   error={errors.number_int ? true : false}
@@ -488,7 +490,7 @@ const EditProperty = (props) => {
                   fullWidth
                   variant="outlined"
                   type="text"
-                  label="Colonia"
+                  label={t("colonia")}
                   name="colony"
                   defaultValue={property.address.colony}
                   error={errors.colony ? true : false}
@@ -522,7 +524,7 @@ const EditProperty = (props) => {
                   fullWidth
                   variant="outlined"
                   type="text"
-                  label="Codigo Postal"
+                  label={t("codigoPostal")}
                   name="postal_code"
                   defaultValue={property.address.postal_code}
                   error={errors.postal_code ? true : false}
@@ -543,7 +545,7 @@ const EditProperty = (props) => {
                   fullWidth
                   variant="outlined"
                   onChange={handleHtmlMap}
-                  label="Iframe Mapa"
+                  label={t("iframeMapa")}
                   name="direction_maps"
                   defaultValue={property.address.iframe}
                 />
@@ -586,7 +588,7 @@ const EditProperty = (props) => {
                     "&:hover": { background: "#ffb300", color: "black" },
                   }}
                 >
-                  Guardar
+                  {t("guardar")}
                 </Button>
               </Grid>
             </Grid>

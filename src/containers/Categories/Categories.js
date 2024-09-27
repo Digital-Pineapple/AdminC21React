@@ -5,7 +5,11 @@ import AddCategory from "./AddCategory";
 import CategoryContext from "../../context/Categories/CategoryContext";
 import CardCategory from "../../components/Cards/CardCategory";
 import NoDataComponent from "../../components/loading/NoDataComponent";
+import { useTranslation } from "react-i18next";
+
 const Categories = () => {
+  const { t } = useTranslation();
+
   const [openModal, setOpenModal] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -29,7 +33,7 @@ const Categories = () => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Categorías
+            {t("categorias")}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
@@ -46,7 +50,7 @@ const Categories = () => {
               },
             }}
           >
-            Agregar
+            {t("agregar")}
           </Button>
         </Grid>
         {categories.length > 0 ? (

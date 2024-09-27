@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 const RemodelOptions = ({ detectarCambios, remodel }) => {
+  const { t } = useTranslation();
   const [Remodel, setRemodel] = useState(null);
 
   // Definición de las opciones disponibles
@@ -35,7 +37,7 @@ const RemodelOptions = ({ detectarCambios, remodel }) => {
     <div>
       <FormControl fullWidth>
         <InputLabel id="parking-options-label">
-          ¿Se encuentra en remodelacion actualmente?
+          {t("enRemodelacionActualmente")}
         </InputLabel>
         <Select
           required
@@ -43,7 +45,7 @@ const RemodelOptions = ({ detectarCambios, remodel }) => {
           id="parking-options-select"
           value={Remodel ? Remodel.value : ""}
           onChange={handleRemodelChange}
-          label="¿Se encuentra en remodelacion actualmente?"
+          label={t("enRemodelacionActualmente")}
           name="account"
         >
           {options.map((option) => (

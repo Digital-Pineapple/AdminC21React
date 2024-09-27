@@ -1,10 +1,12 @@
 import * as React from "react";
 import Radio from "@mui/material/Radio";
+import { useTranslation } from "react-i18next";
 
 export default function RemodelOptions({
   selectedValueRemodel,
   handleChangeRemodel,
 }) {
+  const { t } = useTranslation();
   //   const [selectedValue, setSelectedValue] = React.useState("a");
 
   //   const handleChange = (event) => {
@@ -13,8 +15,8 @@ export default function RemodelOptions({
 
   return (
     <div style={{ alignItems: "center" }}>
-      <div>¿Se encuentra en remodelacion actualmente?</div>
-      <label>Si</label>
+      <div>{t("enRemodelacionActualmente")}</div>
+      <label>{t("si")}</label>
       <Radio
         checked={selectedValueRemodel === "si"}
         onChange={handleChangeRemodel}
@@ -22,7 +24,7 @@ export default function RemodelOptions({
         name="radio-buttons"
         inputProps={{ "aria-label": "Si" }}
       />
-      <label>No</label>
+      <label>{t("no")}</label>
       <Radio
         checked={selectedValueRemodel === "no"}
         onChange={handleChangeRemodel}

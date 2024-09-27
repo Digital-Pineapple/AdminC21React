@@ -7,7 +7,7 @@
   "Ingresar": "Ingresar",
   "register": "Registrarme",
   "telefono": "Teléfono",
-  "soy": "Soy", 
+  "soy": "Soy",
   "inquilino": "Inquilino (Rentar/Comprar)",
   "asesor": "Asesor (Individual)",
   "inmobiliaria": "Inmobiliaria",
@@ -27,7 +27,6 @@
   "CodigodeVerificación": "Codigo de Verificación",
   "registroExitoso": "¡Registro exitoso!",
   "mensaje": "Hemos enviado un código de verificación a tu correo electrónico. Por favor, revisa tu bandeja de entrada y, si es necesario, tu carpeta de spam.",
-  
   "hola": "Hola",
   "Buenos_dias": "Buenos días",
   "Buenas_tardes": "Buenas tardes",
@@ -61,7 +60,6 @@
   "inmueblesRenta": "Inmuebles en Renta",
   "totalPropiedades": "Total de propiedades",
   "totalUsuarios": "Total usuarios",
-
   "inicio": "Inicio",
   "categorias": "Categorias",
   "servicios": "Servicios",
@@ -76,15 +74,39 @@
   "usuarios": "Usuarios",
   "asesores": "Mis Asesores",
   "miPerfil": "Mi Perfil",
-
   "totalInmueblaes": "Total de Inmuebles",
   "InmueblesVenta": "Inmuebles en Venta",
   "InmueblesRenta": "Inmuebles en Renta",
   "totaldeAsesores": "Total de Asesores",
-  "totaldeUsuarios": "Total de Usuarios"
-
-
-
-  
-
+  "totaldeUsuarios": "Total de Usuarios",
+  "misUsuarios": "Mis Usuarios",
+  "editarPropiedad": "Editar Propiedad",
+  "Detalles": "Detalles",
+  "añosDeAntiguedad": "Años de antiguedad",
+  "numeroDeRecamaras": "Numero de recamaras",
+  "bañosCompletos": "Baños Completos",
+  "mediosBaños": "Medios Baños",
+  "metrosConstruidos": "Metros Construidos",
+  "metrosTotales": "Metros Totales",
+  "cuentaConEstacionamiento": "¿Cuenta Con Estacionamiento?",
+  "si": "Si",
+  "no": "No",
+  "enRemodelacionActualmente": "En Remodelacion Actualmente",
+  "datosGenerales": "Datos Generales",
+  "nombreDeLaPropiedad": "Nombre de la Propiedad",
+  "seleccionaCategoria": "Selecciona Categoria",
+  "seleccionaServicio": "Selecciona Servicio",
+  "precio": "Precio",
+  "deseaCompartirComision": "¿Desea compartir comisión de su propiedad?",
+  "quePorcentajeCompartir": "¿Se encuentra en remodelacion actualmente?",
+  "comisiónCompartida": "Comisión compartida de la propiedad",
+  "descripcionDelLugar": "Descripcion del Lugar",
+  "direccion": "Direccion",
+  "calle": "Calle",
+  "noExt": "No_Ext",
+  "noInt": "No_Int",
+  "colonia": "Colonia",
+  "codigoPostal": "Codigo Postal",
+  "iframeMapa": "Iframe Mapa",
+  "guardar": "Guardar"
 }

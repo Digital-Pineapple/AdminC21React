@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import CategoryContext from "../../context/Categories/CategoryContext";
 import { InputLabel, FormControl, Select, MenuItem } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const CategoriesSelect = (props) => {
+  const { t } = useTranslation();
   const { GetCategories, categories } = useContext(CategoryContext);
-  const [selectedCategory, setSelectedCategory] = useState(props.category_id || "");
+  const [selectedCategory, setSelectedCategory] = useState(
+    props.category_id || ""
+  );
 
   useEffect(() => {
     GetCategories();
@@ -18,14 +22,16 @@ const CategoriesSelect = (props) => {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="parking-options-label">Selecciona categoría</InputLabel>
+        <InputLabel id="parking-options-label">
+          {t("seleccionaCategoria")}
+        </InputLabel>
         <Select
           required
           labelId="parking-options-label"
           id="parking-options-select"
           value={selectedCategory}
           onChange={detectarCambiosCategory}
-          label="Selecciona categoría"
+          label={t("seleccionaCategoria")}
           name="account"
         >
           {categories.map((category) => (

@@ -31,6 +31,13 @@ import { useTranslation } from "react-i18next";
 
 const Perfil = () => {
   const { t } = useTranslation();
+
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   const { UserMe, user_me } = useContext(AuthContext);
   const { DeleteUsers } = useContext(UsersContext);
   useEffect(() => {
@@ -137,6 +144,27 @@ const Perfil = () => {
                         ></FlipCameraIosIcon>
                       </Button>
                     </CardActions>
+                    <Box
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                      gap={1}
+                    >
+                      <Button onClick={() => changeLanguage("es")}>
+                        <img
+                          src="https://flagcdn.com/mx.svg"
+                          alt="Español (México)"
+                          width="30"
+                        />
+                      </Button>
+                      <Button onClick={() => changeLanguage("zh")}>
+                        <img
+                          src="https://flagcdn.com/cn.svg"
+                          alt="中文"
+                          width="30"
+                        />
+                      </Button>
+                    </Box>
                   </Card>
                 </Grid>
                 <Grid
@@ -155,7 +183,7 @@ const Perfil = () => {
                       variant="h5"
                       sx={{ color: "black", padding: 2 }}
                     >
-                     {t("detalles")}
+                      {t("detalles")}
                     </Typography>
                     <Grid container spacing={2}>
                       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>

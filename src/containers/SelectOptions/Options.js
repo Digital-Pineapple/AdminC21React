@@ -1,5 +1,6 @@
 import React from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { t } from "i18next";
 
 const OptionsSelect = (props) => {
   const options = [
@@ -15,14 +16,16 @@ const OptionsSelect = (props) => {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="parking-options-label">Selecciona servicio</InputLabel>
+        <InputLabel id="parking-options-label">
+          {t("seleccionaServicio")}
+        </InputLabel>
         <Select
           required
           labelId="parking-options-label"
           id="parking-options-select"
           value={props.selectedOption}
           onChange={detectarCambiosOption}
-          label="Selecciona servicio"
+          label={t("seleccionaServicio")}
           name="account"
         >
           {options.map((option) => (

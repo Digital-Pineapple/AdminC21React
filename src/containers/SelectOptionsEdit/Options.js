@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 const Options = ({ detectarCambios, rules }) => {
+  const { t } = useTranslation();
   const [Rules, setRules] = useState(null);
 
   // Definición de las opciones disponibles
@@ -35,14 +38,16 @@ const Options = ({ detectarCambios, rules }) => {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="parking-options-label">Selecciona servicio</InputLabel>
+        <InputLabel id="parking-options-label">
+          {t("seleccionaServicio")}
+        </InputLabel>
         <Select
           required
           labelId="parking-options-label"
           id="parking-options-select"
           value={Rules ? Rules.value : ""}
           onChange={handleServiceChange}
-          label="Selecciona servicio"
+          label={t("seleccionaServicio")}
           name="account"
         >
           {options.map((option) => (

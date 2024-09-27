@@ -1,10 +1,12 @@
 import * as React from "react";
 import Radio from "@mui/material/Radio";
+import { useTranslation } from "react-i18next";
 
 export default function ParkingOptions({
   selectedValueParking,
   handleChangeParking,
 }) {
+  const { t } = useTranslation();
   //   const [selectedValue, setSelectedValue] = React.useState("a");
 
   //   const handleChange = (event) => {
@@ -13,8 +15,8 @@ export default function ParkingOptions({
 
   return (
     <div style={{ alignItems: "center" }}>
-      <div>¿Cuenta con estacionamiento?</div>
-      <label>Si</label>
+      <div>{t("cuentaConEstacionamiento")}</div>
+      <label>{t("si")}</label>
       <Radio
         checked={selectedValueParking === "si"}
         onChange={handleChangeParking}
@@ -22,7 +24,7 @@ export default function ParkingOptions({
         name="radio-buttons"
         inputProps={{ "aria-label": "Si" }}
       />
-      <label>No</label>
+      <label>{t("no")}</label>
       <Radio
         checked={selectedValueParking === "no"}
         onChange={handleChangeParking}

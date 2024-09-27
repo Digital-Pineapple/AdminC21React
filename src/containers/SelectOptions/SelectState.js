@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import { useTranslation } from "react-i18next";
 import Select from "react-select";
 import { InputLabel } from "@mui/material";
 import MethodGet from "../../config/service";
 const SelectState = (props) => {
+  const { t } = useTranslation();
   const [states, saveStates] = useState([]);
   useEffect(() => {
     let url = "/states";
@@ -26,7 +27,7 @@ const SelectState = (props) => {
   };
   return (
     <>
-      <label>Selecciona un estado</label>
+      <label>{t("seleccionaEstado")}</label>
       <Select
         required
         fullwith
@@ -34,7 +35,7 @@ const SelectState = (props) => {
         onChange={(value) => detectarCambiosState(value)}
         classNamePrefix="select"
         name="account"
-        placeholder="Selecciona un estado"
+        placeholder={t("seleccionaEstado")}
         options={states.map((state) => {
           let attribute = {
             label: state.name,

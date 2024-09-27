@@ -156,7 +156,7 @@ const PropertiesCreate = () => {
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Divider>
                 <Chip
-                  label="Detalles"
+                  label={t("Detalles")}
                   sx={{ backgroundColor: "#FFB300", color: "black" }}
                 />
               </Divider>
@@ -167,7 +167,7 @@ const PropertiesCreate = () => {
                 variant="outlined"
                 type="number"
                 name="age"
-                label="Años de antiguedad"
+                label={t("añosDeAntiguedad")}
                 error={errors.age ? true : false}
                 helperText={errors?.age?.message}
                 {...register("age", {
@@ -193,7 +193,7 @@ const PropertiesCreate = () => {
                 variant="outlined"
                 type="number"
                 name="rooms"
-                label="Numero de recamaras"
+                label={t("numeroDeRecamaras")}
                 error={errors.rooms ? true : false}
                 helperText={errors?.rooms?.message}
                 {...register("rooms", {
@@ -219,7 +219,7 @@ const PropertiesCreate = () => {
                 variant="outlined"
                 type="number"
                 name="bathroom"
-                label="Baños completos"
+                label={t("bañosCompletos")}
                 error={errors.bathroom ? true : false}
                 helperText={errors?.bathroom?.message}
                 {...register("bathroom", {
@@ -245,7 +245,7 @@ const PropertiesCreate = () => {
                 variant="outlined"
                 type="number"
                 name="half_bath"
-                label="Medios Baños"
+                label={t("mediosBaños")}
                 error={errors.half_bath ? true : false}
                 helperText={errors?.half_bath?.message}
                 {...register("half_bath", {
@@ -271,7 +271,7 @@ const PropertiesCreate = () => {
                 variant="outlined"
                 type="number"
                 name="size"
-                label="Metros construidos"
+                label={t("metrosConstruidos")}
                 error={errors.size ? true : false}
                 helperText={errors?.size?.message}
                 {...register("size", {
@@ -296,7 +296,7 @@ const PropertiesCreate = () => {
                 fullWidth
                 variant="outlined"
                 type="number"
-                label="Metros totales"
+                label={t("metrosTotales")}
                 name="size_total"
                 error={errors.size_total ? true : false}
                 helperText={errors?.size_total?.message}
@@ -379,7 +379,7 @@ const PropertiesCreate = () => {
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Divider>
                 <Chip
-                  label="Datos Generales"
+                  label={t("datosGenerales")}
                   sx={{ backgroundColor: "#FFB300", color: "black" }}
                 />
               </Divider>
@@ -389,7 +389,7 @@ const PropertiesCreate = () => {
                 fullWidth
                 variant="outlined"
                 name="name"
-                label="Nombre de la propiedad"
+                label={t("nombreDeLaPropiedad")}
                 error={errors.name ? true : false}
                 helperText={errors?.name?.message}
                 {...register("name", {
@@ -421,7 +421,7 @@ const PropertiesCreate = () => {
                 fullWidth
                 variant="outlined"
                 type="number"
-                label="Precio"
+                label={t("precio")}
                 name="final_price"
                 error={errors.final_price ? true : false}
                 helperText={errors?.final_price?.message}
@@ -463,7 +463,7 @@ const PropertiesCreate = () => {
                   fullWidth
                   variant="outlined"
                   type="text"
-                  label="¿Qué porcentaje desea compartir?"
+                  label={t("quePorcentajeCompartir")}
                   name="commission"
                   error={errors.commission ? true : false}
                   helperText={errors?.commission?.message}
@@ -500,7 +500,7 @@ const PropertiesCreate = () => {
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <TextField
                 id="outlined-multiline-static"
-                label="Descripcion del lugar"
+                label={t("descripcionDelLugar")}
                 multiline
                 fullWidth
                 rows={8}
@@ -518,7 +518,7 @@ const PropertiesCreate = () => {
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Divider>
                 <Chip
-                  label="Dirección"
+                  label={t("direccion")}
                   sx={{ backgroundColor: "#FFB300", color: "black" }}
                 />
               </Divider>
@@ -529,7 +529,7 @@ const PropertiesCreate = () => {
                 variant="outlined"
                 type="text"
                 name="street_name"
-                label="Calle"
+                label={t("calle")}
                 error={errors.street_name ? true : false}
                 helperText={errors?.street_name?.message}
                 {...register("street_name", {
@@ -553,7 +553,7 @@ const PropertiesCreate = () => {
                 fullWidth
                 variant="outlined"
                 type="number"
-                label="No_Ext"
+                label={t("noExt")}
                 name="number_building"
                 error={errors.number_building ? true : false}
                 helperText={errors?.number_building?.message}
@@ -578,7 +578,7 @@ const PropertiesCreate = () => {
                 fullWidth
                 variant="outlined"
                 type="number"
-                label="No_Int"
+                label={t("noInt")}
                 name="number_int"
                 error={errors.number_int ? true : false}
                 helperText={errors?.number_int?.message}
@@ -603,7 +603,7 @@ const PropertiesCreate = () => {
                 fullWidth
                 variant="outlined"
                 type="text"
-                label="Colonia"
+                label={t("colonia")}
                 name="colony"
                 error={errors.colony ? true : false}
                 helperText={errors?.colony?.message}
@@ -639,7 +639,7 @@ const PropertiesCreate = () => {
                 fullWidth
                 variant="outlined"
                 type="number"
-                label="Codigo Postal"
+                label={t("codigoPostal")}
                 name="postal_code"
                 error={errors.postal_code ? true : false}
                 helperText={errors?.postal_code?.message}
@@ -667,7 +667,7 @@ const PropertiesCreate = () => {
                 fullWidth
                 variant="outlined"
                 onChange={handleHtmlMap}
-                label="Iframe Mapa"
+                label={t("iframeMapa")}
                 name="direction_maps"
               />
             </Grid>
@@ -697,7 +697,7 @@ const PropertiesCreate = () => {
                   "&:hover": { background: "#FFB300", color: "black" },
                 }}
               >
-                Guardar{" "}
+                {t("guardar")}
               </Button>
             </Grid>
           </Grid>

@@ -27,7 +27,6 @@
   "CodigodeVerificación": "验证码",
   "registroExitoso": "注册成功！",
   "mensaje": "我们已将验证码发送到您的电子邮件。请检查您的收件箱，如有必要，请检查您的垃圾邮件文件夹。",
-  
   "hola": "你好",
   "Buenos_dias": "早上好",
   "Buenas_tardes": "下午好",
@@ -61,7 +60,6 @@
   "inmueblesRenta": "待租房产",
   "totalPropiedades": "物业总数",
   "totalUsuarios": "用户总数",
-
   "inicio": "首页",
   "categorias": "类别",
   "servicios": "服务",
@@ -76,21 +74,39 @@
   "usuarios": "用户",
   "asesores": "顧問",
   "miPerfil": "我的资料",
-
   "totalInmuebles": "家具總數",
   "InmueblesVenta": "待售房產",
   "InmueblesRenta": "出租物業",
   "totaldeAsesores": "顾问总数",
-  "totaldeUsuarios": "用戶總數"
-
-
-
-
-
-
-
-
-
-
+  "totaldeUsuarios": "用戶總數",
+  "misUsuarios": "我的用戶",
+  "comisiónCompartida": "房产的共享佣金",
+  "editarPropiedad": "编辑房产",
+  "Detalles": "详情",
+  "añosDeAntiguedad": "房龄",
+  "numeroDeRecamaras": "卧室数量",
+  "bañosCompletos": "完整浴室",
+  "mediosBaños": "半浴室",
+  "metrosConstruidos": "建筑面积（平方米）",
+  "metrosTotales": "总面积（平方米）",
+  "cuentaConEstacionamiento": "是否有停车位？",
+  "si": "是",
+  "no": "否",
+  "enRemodelacionActualmente": "是否正在装修？",
+  "datosGenerales": "一般信息",
+  "nombreDeLaPropiedad": "房产名称",
+  "seleccionaCategoria": "选择类别",
+  "seleccionaServicio": "选择服务",
+  "precio": "价格",
+  "deseaCompartirComision": "是否愿意分享房产佣金？",
+  "quePorcentajeCompartir": "您希望分享的百分比是多少？",
+  "descripcionDelLugar": "地点描述",
+  "direccion": "地址",
+  "calle": "街道",
+  "noExt": "外部编号",
+  "noInt": "内部编号",
+  "colonia": "社区",
+  "codigoPostal": "邮政编码",
+  "iframeMapa": "地图嵌入框",
+  "guardar": "接受"
 }
-

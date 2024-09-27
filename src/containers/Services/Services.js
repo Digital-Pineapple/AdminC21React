@@ -5,7 +5,10 @@ import AddService from "./AddService";
 import ServicesContext from "../../context/Services/ServicesContext";
 import CardServices from "../../components/Cards/CardServices";
 import NoDataComponent from "../../components/loading/NoDataComponent";
+import { useTranslation } from "react-i18next";
+
 const Services = () => {
+  const { t } = useTranslation();
   const [openModal, setOpenModal] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -29,7 +32,7 @@ const Services = () => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Servicios
+            {t("servicios")}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
@@ -46,7 +49,7 @@ const Services = () => {
               },
             }}
           >
-            Agregar
+            {t("agregar")}
           </Button>
         </Grid>
         {services.length > 0 ? (

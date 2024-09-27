@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import MethodGet from "../../config/service";
 
 const SelectState = (props) => {
+  const { t } = useTranslation();
   const { detectarCambiosState, address } = props;
 
   const [states, setStates] = useState([]);
@@ -49,14 +51,14 @@ const SelectState = (props) => {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="state-select-label">Selecciona un Estado</InputLabel>
+        <InputLabel id="state-select-label">{t("seleccionaEstado")}</InputLabel>
         <Select
           required
           labelId="state-select-label"
           id="state-select"
           value={selectedState}
           onChange={handleChange}
-          label="Selecciona un Estado"
+          label={t("seleccionaEstado")}
           name="state_id"
         >
           {selectOptions}

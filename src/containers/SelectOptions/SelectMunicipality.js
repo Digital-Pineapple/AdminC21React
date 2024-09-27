@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import { useTranslation } from "react-i18next";
 import Select from "react-select";
 import MethodGet from "../../config/service";
 const SelectMunicipality = (props) => {
+  const { t } = useTranslation();
   const detectarCambiosMunicipality = (value) => {
     props.detectarCambiosMunicipality(value);
   };
@@ -27,7 +28,7 @@ const SelectMunicipality = (props) => {
   };
   return (
     <>
-      <label>Selecciona un municipio</label>
+      <label>{t("seleccionaMunicipio")}</label>
       <Select
         required
         fullwith
@@ -35,7 +36,7 @@ const SelectMunicipality = (props) => {
         onChange={(value) => detectarCambiosMunicipality(value)}
         classNamePrefix="select"
         name="account"
-        placeholder="Selecciona un municipio"
+        placeholder={t("seleccionaMunicipio")}
         options={municipalities.map((muni) => {
           let attribute = {
             label: muni.name,
