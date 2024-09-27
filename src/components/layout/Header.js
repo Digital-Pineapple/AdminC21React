@@ -30,7 +30,7 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AuthContext from "../../context/auth/AuthContext";
 import { useContext, useEffect } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
-
+import { useTranslation } from "react-i18next";
 import SellIcon from "@mui/icons-material/Sell";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import ApartmentIcon from "@mui/icons-material/Apartment";
@@ -112,6 +112,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Header({ children }) {
+  const { t } = useTranslation();
   const {
     visits,
     GetVisitPending,
@@ -137,91 +138,91 @@ export default function Header({ children }) {
   }
   const AA = [
     {
-      name: "Inicio",
+      name: t("inicio"),
       value: "/",
       icon: (
-        <Tooltip title="Inicio" placement="right">
+        <Tooltip title={t("inicio")} placement="right">
           <HomeIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Categorias",
+      name: t("categorias"),
       value: "/Categories",
       icon: (
-        <Tooltip title="Categorias" placement="right">
+        <Tooltip title={t("categorias")} placement="right">
           <CategoryIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Servicios",
+      name: t("servicios"),
       value: "/Services",
       icon: (
-        <Tooltip title="Servicios" placement="right">
+        <Tooltip title={t("servicios")} placement="right">
           <SettingsIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Nueva Propiedad",
+      name: t("nuevaPropiedad"),
       value: "/CreateProperty",
       icon: (
-        <Tooltip title="Nueva Propiedad" placement="right">
+        <Tooltip title={t("nuevaPropiedad")} placement="right">
           <AddIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Por Aprobar",
+      name: t("porAprobar"),
       value: "/PropertiesPending",
       icon: (
-        <Tooltip title="Por Aprobar" placement="right">
+        <Tooltip title={t("porAprobar")} placement="right">
           <HouseIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Aprobados",
+      name: t("aprobados"),
       value: "/Properties",
       icon: (
-        <Tooltip title="Aprobados" placement="right">
+        <Tooltip title={t("aprobados")} placement="right">
           <HolidayVillageIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Vendidas",
+      name: t("vendidas"),
       value: "/SoldProperties",
       icon: (
-        <Tooltip title="Vendidas" placement="right">
+        <Tooltip title={t("vendidas")} placement="right">
           <BeenhereIcon />
         </Tooltip>
       ),
     },
     {
-      name: "En Renta",
+      name: t("enRenta"),
       value: "/RentProperties",
       icon: (
-        <Tooltip title="En Renta" placement="right">
+        <Tooltip title={t("enRenta")} placement="right">
           <LocalAtmIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Buscar Propiedades",
+      name: t("buscarPropiedades"),
       value: "/SearchProperties",
       icon: (
-        <Tooltip title="Buscar Propiedades" placement="right">
+        <Tooltip title={t("buscarPropiedades")} placement="right">
           <SearchIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Solicitudes de visitas",
+      name: t("solicitudesVisita"),
       value: "/VisitPending",
       icon: (
-        <Tooltip title="Solicitudes de visitas" placement="right">
+        <Tooltip title={t("solicitudesVisita")} placement="right">
           <Badge badgeContent={visits.length} color="error">
             <EmailIcon />
           </Badge>
@@ -229,10 +230,10 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Mis Visitas Solicitadas",
+      name: t("visitaSolicitada"),
       value: "/VisitAccept",
       icon: (
-        <Tooltip title="Mis Visitas Solicitadas" placement="right">
+        <Tooltip title={t("visitaSolicitada")} placement="right">
           <Badge badgeContent={visitsClient.length} color="error">
             <MarkEmailReadIcon />
           </Badge>
@@ -240,19 +241,19 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Usuarios",
+      name: t("usuarios"),
       value: "/Users",
       icon: (
-        <Tooltip title="Usuarios" placement="right">
+        <Tooltip title={t("usuarios")} placement="right">
           <GroupIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Mi Perfil",
+      name: t("miPerfil"),
       value: "/Perfil",
       icon: (
-        <Tooltip title="Mi Perfil" placement="right">
+        <Tooltip title={t("miPerfil")} placement="right">
           <AccountCircleIcon />
         </Tooltip>
       ),
@@ -260,73 +261,73 @@ export default function Header({ children }) {
   ];
   const INM = [
     {
-      name: "Inicio",
+      name: t("inicio"),
       value: "/",
       icon: (
-        <Tooltip title="Inicio" placement="right">
+        <Tooltip title={t("inicio")} placement="right">
           <HomeIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Nueva Propiedad",
+      name: t("nuevaPropiedad"),
       value: "/CreateProperty",
       icon: (
-        <Tooltip title="Nueva Propiedad" placement="right">
+        <Tooltip title={t("nuevaPropiedad")} placement="right">
           <AddIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Por Aprobar",
+      name: t("porAprobar"),
       value: "/PropertiesPending",
       icon: (
-        <Tooltip title="Por Aprobar" placement="right">
+        <Tooltip title={t("porAprobar")} placement="right">
           <HouseIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Aprobados",
+      name: t("aprobados"),
       value: "/Properties",
       icon: (
-        <Tooltip title="Aprobados" placement="right">
+        <Tooltip title={t("aprobados")} placement="right">
           <HolidayVillageIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Vendidas",
+      name: t("vendidas"),
       value: "/SoldProperties",
       icon: (
-        <Tooltip title="Vendidas" placement="right">
+        <Tooltip title={t("vendidas")} placement="right">
           <BeenhereIcon />
         </Tooltip>
       ),
     },
     {
-      name: "En Renta",
+      name: t("enRenta"),
       value: "/RentProperties",
       icon: (
-        <Tooltip title="En Renta" placement="right">
+        <Tooltip title={t("enRenta")} placement="right">
           <LocalAtmIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Buscar Propiedades",
+      name: t("buscarPropiedades"),
       value: "/SearchProperties",
       icon: (
-        <Tooltip title="Buscar Propiedades" placement="right">
+        <Tooltip title={t("buscarPropiedades")} placement="right">
           <SearchIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Solicitudes de visitas",
+      name: t("solicitudesVisita"),
       value: "/VisitPending",
       icon: (
-        <Tooltip title="Solicitudes de visitas" placement="right">
+        <Tooltip title={t("solicitudesVisita")} placement="right">
           <Badge badgeContent={visits.length} color="error">
             <EmailIcon />
           </Badge>
@@ -334,19 +335,19 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Mis Asesores",
+      name: t("asesores"),
       value: "/AseUsers",
       icon: (
-        <Tooltip title="Mis Asesores" placement="right">
+        <Tooltip title={t("asesores")} placement="right">
           <GroupIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Mi Perfil",
+      name: t("miPerfil"),
       value: "/Perfil",
       icon: (
-        <Tooltip title="Mi Perfil" placement="right">
+        <Tooltip title={t("miPerfil")} placement="right">
           <AccountCircleIcon />
         </Tooltip>
       ),
@@ -354,64 +355,64 @@ export default function Header({ children }) {
   ];
   const AS = [
     {
-      name: "Nueva Propiedad",
+      name: t("nuevaPropiedad"),
       value: "/CreateProperty",
       icon: (
-        <Tooltip title="Nueva Propiedad" placement="right">
+        <Tooltip title={t("nuevaPropiedad")} placement="right">
           <AddIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Por Aprobar",
+      name: t("porAprobar"),
       value: "/PropertiesPending",
       icon: (
-        <Tooltip title="Por Aprobar" placement="right">
+        <Tooltip title={t("porAprobar")} placement="right">
           <HouseIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Aprobados",
+      name: t("aprobados"),
       value: "/Properties",
       icon: (
-        <Tooltip title="Aprobados" placement="right">
+        <Tooltip title={t("aprobados")} placement="right">
           <HolidayVillageIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Vendidas",
+      name: t("vendidas"),
       value: "/SoldProperties",
       icon: (
-        <Tooltip title="Vendidas" placement="right">
+        <Tooltip title={t("vendidas")} placement="right">
           <BeenhereIcon />
         </Tooltip>
       ),
     },
     {
-      name: "En Renta",
+      name: t("enRenta"),
       value: "/RentProperties",
       icon: (
-        <Tooltip title="En Renta" placement="right">
+        <Tooltip title={t("enRenta")} placement="right">
           <LocalAtmIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Buscar Propiedades",
+      name: t("buscarPropiedades"),
       value: "/SearchProperties",
       icon: (
-        <Tooltip title="Buscar Propiedades" placement="right">
+        <Tooltip title={t("buscarPropiedades")} placement="right">
           <SearchIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Solicitudes de visitas",
+      name: t("solicitudesVisita"),
       value: "/VisitPending",
       icon: (
-        <Tooltip title="Solicitudes de visitas" placement="right">
+        <Tooltip title={t("solicitudesVisita")} placement="right">
           <Badge badgeContent={visits.length} color="error">
             <EmailIcon />
           </Badge>
@@ -419,10 +420,10 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Mi Perfil",
+      name: t("miPerfil"),
       value: "/Perfil",
       icon: (
-        <Tooltip title="Mi Perfil" placement="right">
+        <Tooltip title={t("miPerfil")} placement="right">
           <AccountCircleIcon />
         </Tooltip>
       ),
@@ -430,19 +431,19 @@ export default function Header({ children }) {
   ];
   const IND = [
     {
-      name: "Buscar Propiedades",
+      name: t("buscarPropiedades"),
       value: "/SearchProperties",
       icon: (
-        <Tooltip title="Buscar Propiedades" placement="right">
+        <Tooltip title={t("buscarPropiedades")} placement="right">
           <SearchIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Mis Visitas Solicitadas",
+      name: t("visitaSolicitada"),
       value: "/VisitAccept",
       icon: (
-        <Tooltip title="Mis Visitas Solicitadas" placement="right">
+        <Tooltip title={t("visitaSolicitada")} placement="right">
           <Badge badgeContent={visitsClient.length} color="error">
             <MarkEmailReadIcon />
           </Badge>
@@ -450,10 +451,10 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Mi Perfil",
+      name: t("miPerfil"),
       value: "/Perfil",
       icon: (
-        <Tooltip title="Mi Perfil" placement="right">
+        <Tooltip title={t("miPerfil")} placement="right">
           <AccountCircleIcon />
         </Tooltip>
       ),
@@ -461,64 +462,64 @@ export default function Header({ children }) {
   ];
   const ASINM = [
     {
-      name: "Nueva Propiedad",
+      name: t("nuevaPropiedad"),
       value: "/CreateProperty",
       icon: (
-        <Tooltip title="Nueva Propiedad" placement="right">
+        <Tooltip title={t("nuevaPropiedad")} placement="right">
           <AddIcon />{" "}
         </Tooltip>
       ),
     },
     {
-      name: "Por Aprobar",
+      name: t("porAprobar"),
       value: "/PropertiesPending",
       icon: (
-        <Tooltip title="Por Aprobar" placement="right">
+        <Tooltip title={t("porAprobar")} placement="right">
           <HouseIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Aprobados",
+      name: t("aprobados"),
       value: "/Properties",
       icon: (
-        <Tooltip title="Aprobados" placement="right">
+        <Tooltip title={t("aprobados")} placement="right">
           <HolidayVillageIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Vendidas",
+      name: t("vendidas"),
       value: "/SoldProperties",
       icon: (
-        <Tooltip title="Vendidas" placement="right">
+        <Tooltip title={t("vendidas")} placement="right">
           <BeenhereIcon />
         </Tooltip>
       ),
     },
     {
-      name: "En Renta",
+      name: t("enRenta"),
       value: "/RentProperties",
       icon: (
-        <Tooltip title="En Renta" placement="right">
+        <Tooltip title={t("enRenta")} placement="right">
           <LocalAtmIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Buscar Propiedades",
+      name: t("buscarPropiedades"),
       value: "/SearchProperties",
       icon: (
-        <Tooltip title="Buscar Propiedades" placement="right">
+        <Tooltip title={t("buscarPropiedades")} placement="right">
           <SearchIcon />
         </Tooltip>
       ),
     },
     {
-      name: "Solicitudes de visitas",
+      name: t("solicitudesVisita"),
       value: "/VisitPending",
       icon: (
-        <Tooltip title="Solicitudes de visitas" placement="right">
+        <Tooltip title={t("solicitudesVisita")} placement="right">
           <Badge badgeContent={visits.length} color="error">
             <EmailIcon />
           </Badge>
@@ -526,10 +527,10 @@ export default function Header({ children }) {
       ),
     },
     {
-      name: "Mi Perfil",
+      name: t("miPerfil"),
       value: "/Perfil",
       icon: (
-        <Tooltip title="Mi Perfil" placement="right">
+        <Tooltip title={t("miPerfil")} placement="right">
           <AccountCircleIcon />
         </Tooltip>
       ),
@@ -569,9 +570,9 @@ export default function Header({ children }) {
             component="div"
             sx={{ color: "black" }}
           >
-            Yo Comparto
+            {t("logo")}
           </Typography>
-          <Tooltip title="Cerrar Sesión">
+          <Tooltip title={t("cerrarSesión")}>
             <IconButton sx={{ display: "flex", justifyContent: "flex-end" }}>
               <ExitToAppIcon
                 sx={{ color: "white", fontSize: 25 }}

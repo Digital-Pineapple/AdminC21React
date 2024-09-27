@@ -3,6 +3,7 @@ import React from "react";
 import StoreIcon from "@mui/icons-material/Store";
 import { makeStyles } from "@mui/styles";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
+import { useTranslation } from "react-i18next";
 const useStyles = makeStyles(() => ({
   dollar: {
     objectFit: "cover",
@@ -13,6 +14,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 const CardProperties = ({ total_properties }) => {
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <Card
@@ -47,7 +49,7 @@ const CardProperties = ({ total_properties }) => {
             borderColor: "green",
           }}
         >
-          Total de propiedades
+          {t("totalPropiedades")}
         </Typography>
         <Typography
           sx={{

@@ -3,6 +3,7 @@ import React from "react";
 import DataThresholdingIcon from "@mui/icons-material/DataThresholding";
 import { makeStyles } from "@mui/styles";
 import SellIcon from "@mui/icons-material/Sell";
+import { useTranslation } from "react-i18next";
 const useStyles = makeStyles(() => ({
   dollar: {
     objectFit: "cover",
@@ -13,6 +14,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 const PropertiesSold = ({ total_properties_sold }) => {
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <Card
@@ -47,7 +49,7 @@ const PropertiesSold = ({ total_properties_sold }) => {
             borderColor: "green",
           }}
         >
-          Inmuebles en venta
+          {t("inmueblesVenta")}
         </Typography>
         <Typography
           sx={{

@@ -27,8 +27,10 @@ import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import BadgeIcon from "@mui/icons-material/Badge";
+import { useTranslation } from "react-i18next";
 
 const Perfil = () => {
+  const { t } = useTranslation();
   const { UserMe, user_me } = useContext(AuthContext);
   const { DeleteUsers } = useContext(UsersContext);
   useEffect(() => {
@@ -69,11 +71,11 @@ const Perfil = () => {
       const horaActual = new Date().getHours();
 
       if (horaActual >= 6 && horaActual < 12) {
-        setSaludo("Buenos días");
+        setSaludo(t("Buenos_dias"));
       } else if (horaActual >= 12 && horaActual < 18) {
-        setSaludo("Buenas tardes");
+        setSaludo(t("Buenas_tardes"));
       } else {
-        setSaludo("Buenas noches");
+        setSaludo(t("Buenas_noches"));
       }
     };
     obtenerSaludo();
@@ -98,7 +100,7 @@ const Perfil = () => {
                     textAlign="center"
                     sx={{ color: "black" }}
                   >
-                    Hola, {saludo} {user_me && user_me.name}
+                    {t("hola")}, {saludo} {user_me && user_me.name}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
@@ -129,7 +131,7 @@ const Perfil = () => {
                           },
                         }}
                       >
-                        Cambiar foto{" "}
+                        {t("cambiarFoto")}
                         <FlipCameraIosIcon
                           sx={{ marginLeft: 2 }}
                         ></FlipCameraIosIcon>
@@ -153,7 +155,7 @@ const Perfil = () => {
                       variant="h5"
                       sx={{ color: "black", padding: 2 }}
                     >
-                      Detalles de mi cuenta...
+                     {t("detalles")}
                     </Typography>
                     <Grid container spacing={2}>
                       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -170,7 +172,7 @@ const Perfil = () => {
                           <PersonIcon
                             sx={{ color: "black", marginRight: "8px" }}
                           />
-                          Nombre(s): {user_me.name}
+                          {t("nombre")} {user_me.name}
                         </Typography>
                       </Grid>
 
@@ -188,7 +190,7 @@ const Perfil = () => {
                           <BadgeIcon
                             sx={{ color: "black", marginRight: "8px" }}
                           />
-                          Apellido(s): {user_me.last_name}
+                          {t("apellido")} {user_me.last_name}
                         </Typography>
                       </Grid>
 
@@ -206,7 +208,7 @@ const Perfil = () => {
                           <BadgeIcon
                             sx={{ color: "black", marginRight: "8px" }}
                           />
-                          Soy:{" "}
+                          {t("soy")} {""}
                           {user_me.type_user === 1
                             ? "Admin"
                             : user_me.type_user === 2
@@ -234,7 +236,7 @@ const Perfil = () => {
                           <PhoneIcon
                             sx={{ color: "black", marginRight: "8px" }}
                           />
-                          Teléfono: {user_me.phone_number}
+                          {t("telefono")} {user_me.phone_number}
                         </Typography>
                       </Grid>
 
@@ -252,7 +254,7 @@ const Perfil = () => {
                           <EmailIcon
                             sx={{ color: "black", marginRight: "8px" }}
                           />
-                          Correo Electrónico: {user_me.email}
+                          {t("email")} {user_me.email}
                         </Typography>
                       </Grid>
 
@@ -270,7 +272,7 @@ const Perfil = () => {
                             },
                           }}
                         >
-                          Editar mi Información{" "}
+                          {t("editarInformación")}
                           <EditNoteIcon sx={{ marginLeft: 2 }} />
                         </Button>
                       </Grid>
@@ -289,7 +291,7 @@ const Perfil = () => {
                             },
                           }}
                         >
-                          Cambiar mi contraseña{" "}
+                          {t("cambiarContraseña")}
                           <LockResetIcon sx={{ marginLeft: 2 }} />
                         </Button>
                       </Grid>
@@ -311,7 +313,7 @@ const Perfil = () => {
                               },
                             }}
                           >
-                            Eliminar mi cuenta{" "}
+                            {t("eliminarCuenta")}
                             <DeleteIcon sx={{ marginLeft: 2 }} />
                           </Button>
                         </Grid>

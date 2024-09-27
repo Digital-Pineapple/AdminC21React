@@ -4,15 +4,18 @@ import HttpBackend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 
 i18n
-  .use(HttpBackend)
-  .use(LanguageDetector)
-  .use(initReactI18next)
+  .use(HttpBackend) 
+  .use(LanguageDetector) 
+  .use(initReactI18next)  
   .init({
-    fallbackLng: "es",
-    lng: "es", // Idioma inicial, puedes cambiarlo a 'zh' si es necesario
+    fallbackLng: "es", 
     debug: true,
     interpolation: {
-      escapeValue: false,
+      escapeValue: false, 
+    },
+    detection: {
+      order: ["localStorage", "cookie", "navigator"], 
+      caches: ["localStorage", "cookie"], 
     },
     backend: {
       loadPath: "/locales/{{lng}}/{{ns}}.json",

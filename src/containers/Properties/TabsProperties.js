@@ -4,7 +4,10 @@ import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import PropertiesPublish from "./PropertiesPublish";
 import { Grid, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
+
 export default function LabTabs() {
+  const { t } = useTranslation();
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
@@ -20,7 +23,7 @@ export default function LabTabs() {
           variant="h5"
           sx={{ color: "black" }}
         >
-          Propiedades Aprobadas
+          {t("propiedadesAprobadas")}
         </Typography>
       </Grid>
       <TabContext value={value}>

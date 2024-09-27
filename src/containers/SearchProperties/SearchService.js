@@ -6,6 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import { useTranslation } from "react-i18next";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -18,15 +19,14 @@ const MenuProps = {
   },
 };
 
-const names = [
-  { id: 1, name: "Renta" },
-  { id: 2, name: "Venta" },
-  { id: 3, name: "Preventa" },
-];
-
 export default function SearchService({ cambio }) {
   const [personName, setservice] = React.useState([]);
-
+  const { t } = useTranslation();
+  const names = [
+    { id: 1, name: t("renta") },
+    { id: 2, name: t("venta") },
+    { id: 3, name: t("preventa") },
+  ];
   const handleChange = (event) => {
     const {
       target: { value },
@@ -40,7 +40,7 @@ export default function SearchService({ cambio }) {
     <div>
       <FormControl fullWidth>
         <InputLabel id="demo-multiple-checkbox-label">
-          Tipo de Operación
+          {t("tipoOperación")}
         </InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
@@ -48,7 +48,7 @@ export default function SearchService({ cambio }) {
           multiple
           value={personName}
           onChange={handleChange}
-          input={<OutlinedInput label="Tipo de Operación" />}
+          input={<OutlinedInput label={t("tipoOperación")} />}
           renderValue={(selected) => selected.join(", ")}
           MenuProps={MenuProps}
         >

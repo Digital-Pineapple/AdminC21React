@@ -22,11 +22,14 @@ import Layout from "../../components/layout/Layout";
 import FractionamientOptions from "./FractionamientOptions";
 import MapsLoading from "../../components/loading/MapsLoading";
 import Commission from "./Commission";
+import { useTranslation } from "react-i18next";
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const PropertiesCreate = () => {
+  const { t } = useTranslation();
   const { AddProperty } = useContext(PropertiesContext);
 
   const [category, saveCategory] = React.useState(null);
@@ -139,7 +142,7 @@ const PropertiesCreate = () => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Agregar mi propiedad
+            {t("agregarPropiedad")}
           </Typography>
         </Grid>
         <form

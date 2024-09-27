@@ -4,8 +4,10 @@ import Layout from "../../components/layout/Layout";
 import UsersContext from "../../context/Users/UsersContext";
 import CardUserInm from "../../components/Cards/CardUserInm";
 import AddUser from "../AseUsers/AddUser";
+import { useTranslation } from "react-i18next";
 import NoDataComponent from "../../components/loading/NoDataComponent";
 const AseUsers = () => {
+  const { t } = useTranslation();
   const [openModal, setOpenModal] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -29,7 +31,7 @@ const AseUsers = () => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Mis Asesores
+            {t("misAsesores")}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
@@ -46,7 +48,7 @@ const AseUsers = () => {
               },
             }}
           >
-            Agregar
+            {t("agregar")}
           </Button>
         </Grid>
         {users.length > 0 ? (

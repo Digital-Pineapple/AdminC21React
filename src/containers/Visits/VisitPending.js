@@ -4,8 +4,10 @@ import TableVisit from "../../components/Cards/TableVisit";
 import React, { useContext, useEffect } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
 import NoDataComponent from "../../components/loading/NoDataComponent";
+import { useTranslation } from "react-i18next";
 
 const VisitPending = () => {
+  const { t } = useTranslation();
   const { visits, GetVisitPending } = useContext(VisitContext);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const VisitPending = () => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Solicitudes de visitas para mis propiedades
+            {t("solicitudesVisitas")}
           </Typography>
         </Grid>
         {visits && visits.length > 0 ? (

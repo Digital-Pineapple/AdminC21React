@@ -4,8 +4,10 @@ import TableVisitClient from "../../components/Cards/TableVisitClient";
 import React, { useContext, useEffect } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
 import NoDataComponent from "../../components/loading/NoDataComponent";
+import { useTranslation } from "react-i18next";
 
 const VisitAccept = () => {
+  const { t } = useTranslation();
   const { visitsClient, GetVisitClient } = useContext(VisitContext);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const VisitAccept = () => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Mis Visitas Solicitadas
+            {t("visitaSolicitada")}
           </Typography>
         </Grid>
         {visitsClient && visitsClient.length > 0 ? (

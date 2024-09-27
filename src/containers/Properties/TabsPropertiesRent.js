@@ -4,7 +4,10 @@ import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import PropertiesPublishRent from "./PropertiesPublishRent";
 import { Grid, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
+
 export default function TabsPropertiesRent() {
+  const { t } = useTranslation();
   const [value, setValue] = React.useState("4");
 
   const handleChange = (event, newValue) => {
@@ -20,7 +23,7 @@ export default function TabsPropertiesRent() {
           variant="h5"
           sx={{ color: "black" }}
         >
-          Propiedades Rentadas
+          {t("propiedadesRentadas")}
         </Typography>
       </Grid>
       <TabContext value={value}>

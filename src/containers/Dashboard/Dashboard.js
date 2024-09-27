@@ -9,8 +9,10 @@ import Graphics from "../../components/Dashboard/Graphics";
 import { Grid, Typography } from "@mui/material";
 import TotalUsersInm from "../../components/Dashboard/TotalUsersInm";
 import CategoryContext from "../../context/Categories/CategoryContext";
+import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   let type_user = localStorage.getItem("type_user");
 
   const {
@@ -56,7 +58,7 @@ const Dashboard = () => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Vistazo General
+            {t("vistazoGeneral")}
           </Typography>
         </Grid>
       </Grid>
@@ -96,7 +98,7 @@ const Dashboard = () => {
             variant="h5"
             sx={{ color: "black" }}
           >
-            Resumen de Tendencias
+            {t("resumenTendencias")}
           </Typography>
         </Grid>
       </Grid>

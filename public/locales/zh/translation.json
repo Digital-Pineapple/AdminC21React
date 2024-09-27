@@ -26,6 +26,71 @@
   "verificarTuCuenta": "输入发送到您的电子邮件的验证码以验证您的帐户",
   "CodigodeVerificación": "验证码",
   "registroExitoso": "注册成功！",
-  "mensaje": "我们已将验证码发送到您的电子邮件。请检查您的收件箱，如有必要，请检查您的垃圾邮件文件夹。"
+  "mensaje": "我们已将验证码发送到您的电子邮件。请检查您的收件箱，如有必要，请检查您的垃圾邮件文件夹。",
+  
+  "hola": "你好",
+  "Buenos_dias": "早上好",
+  "Buenas_tardes": "下午好",
+  "Buenas_noches": "晚上好",
+  "detalles": "我的帐户详细信息",
+  "cambiarFoto": "更换照片",
+  "editarInformación": "编辑我的信息",
+  "cambiarContraseña": "更改我的密码",
+  "eliminarCuenta": "删除我的账户",
+  "cerrarSesión": "退出登录",
+  "tipoOperación": "操作类型",
+  "renta": "租",
+  "venta": "销售",
+  "preventa": "预售",
+  "nombreDirección": "姓名或地址",
+  "seleccionaEstado": "选择状态",
+  "seleccionaMunicipio": "选择一个市镇",
+  "misAsesores": "我的顾问",
+  "agregar": "添加",
+  "solicitudesVisitas": "我的房产的访问请求",
+  "visitasSolicitadas": "我请求的访问",
+  "propiedadesRentadas": "已租赁的房产",
+  "propiedadesVendidas": "已售出的房产",
+  "propiedadesAprobadas": "已批准的房产",
+  "propiedadesAprobar": "待批准的房产",
+  "agregarPropiedad": "添加我的房产",
+  "vistazoGeneral": "概览",
+  "resumenTendencias": "趋势概述",
+  "totalAsesores": "顾问总数",
+  "inmueblesVenta": "待售房产",
+  "inmueblesRenta": "待租房产",
+  "totalPropiedades": "物业总数",
+  "totalUsuarios": "用户总数",
+
+  "inicio": "首页",
+  "categorias": "类别",
+  "servicios": "服务",
+  "nuevaPropiedad": "新房产",
+  "porAprobar": "待批准",
+  "aprobados": "已批准",
+  "vendidas": "已售出",
+  "enRenta": "待租",
+  "buscarPropiedades": "搜索房产",
+  "solicitudesVisita": "访问请求",
+  "visitaSolicitada": "我请求的访问",
+  "usuarios": "用户",
+  "asesores": "顧問",
+  "miPerfil": "我的资料",
+
+  "totalInmuebles": "家具總數",
+  "InmueblesVenta": "待售房產",
+  "InmueblesRenta": "出租物業",
+  "totaldeAsesores": "顾问总数",
+  "totaldeUsuarios": "用戶總數"
+
+
+
+
+
+
+
+
+
+
 }
 

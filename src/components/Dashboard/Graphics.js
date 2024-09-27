@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import DashboardContext from "../../context/Dashboard/DashboardContext";
 import { Bar } from "react-chartjs-2";
+import { useTranslation } from "react-i18next";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,6 +27,7 @@ ChartJS.register(
 );
 
 export default function Bars() {
+  const { t } = useTranslation();
   let type_user = localStorage.getItem("type_user");
 
   const {
@@ -56,11 +58,11 @@ export default function Bars() {
     ...(type_user === "1" ? [total_users] : []),
   ];
   var meses = [
-    "Total de Inmuebles",
-    "Inmuebles en Venta",
-    "Inmuebles en Renta",
-    "Total Asesores",
-    ...(type_user === "1" ? ["Total de Usuarios"] : []),
+    t("totalInmuebles"),
+    t("InmueblesVenta"),
+    t("InmueblesRenta"),
+    t("totaldeAsesores"),
+    ...(type_user === "1" ? [t("totaldeUsuarios")] : []),
   ];
 
   var misoptions = {

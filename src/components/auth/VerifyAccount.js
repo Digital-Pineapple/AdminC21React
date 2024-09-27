@@ -38,15 +38,10 @@ const useStyles = makeStyles({
 
 const VerifyAccount = () => {
   const { t } = useTranslation();
-
-  const { i18n } = useTranslation();
-
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
   const classes = useStyles();
   const { VerifyCode } = React.useContext(AuthContext);
   const token = localStorage.getItem("mi token");
+ 
   const reset = () => {
     setValue("code", "", { shouldDirty: true });
   };
@@ -182,23 +177,6 @@ const VerifyAccount = () => {
                   {t("enviar")}
                 </Typography>
               </Button>
-              <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                gap={1}
-              >
-                <Button onClick={() => changeLanguage("es")}>
-                  <img
-                    src="https://flagcdn.com/mx.svg"
-                    alt="Español (México)"
-                    width="30"
-                  />
-                </Button>
-                <Button onClick={() => changeLanguage("zh")}>
-                  <img src="https://flagcdn.com/cn.svg" alt="中文" width="30" />
-                </Button>
-              </Box>
             </Box>
           </div>
         </Grid>

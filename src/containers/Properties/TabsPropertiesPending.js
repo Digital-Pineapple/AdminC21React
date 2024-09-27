@@ -4,6 +4,7 @@ import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import PorpertiesPending from "./PorpertiesPending";
 import { Grid, Typography } from "@mui/material";
+import { t } from "i18next";
 export default function LabTabs() {
   const [value, setValue] = React.useState("2");
 
@@ -20,7 +21,7 @@ export default function LabTabs() {
           variant="h5"
           sx={{ color: "black" }}
         >
-          Propiedades Por Aprobar
+          {t("propiedadesAprobar")}
         </Typography>
       </Grid>
       <TabContext value={value}>

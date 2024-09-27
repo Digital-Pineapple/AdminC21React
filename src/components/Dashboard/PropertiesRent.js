@@ -3,6 +3,7 @@ import React from "react";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import KeyIcon from "@mui/icons-material/Key";
 import { makeStyles } from "@mui/styles";
+import { useTranslation } from "react-i18next";
 const useStyles = makeStyles(() => ({
   dollar: {
     objectFit: "cover",
@@ -13,6 +14,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 const PropertiesRent = ({ total_properties_rent }) => {
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <Card
@@ -47,7 +49,7 @@ const PropertiesRent = ({ total_properties_rent }) => {
             borderColor: "green",
           }}
         >
-          Inmuebles en renta
+          {t("inmueblesRenta")}
         </Typography>
         <Typography
           sx={{

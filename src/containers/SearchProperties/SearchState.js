@@ -5,8 +5,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MethodGet from "../../config/service";
+import { useTranslation } from "react-i18next";
 
 const SearchState = (props) => {
+  const { t } = useTranslation();
   const [states, saveStates] = useState([]);
   const [selectedState, setSelectedState] = useState("");
 
@@ -30,12 +32,12 @@ const SearchState = (props) => {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="select-state-label">Selecciona un estado</InputLabel>
+        <InputLabel id="select-state-label">{t("seleccionaEstado")}</InputLabel>
         <Select
           labelId="select-state-label"
           id="select-state"
           value={selectedState}
-          label="Selecciona un estado"
+          label={t("seleccionaEstado")}
           onChange={handleChange}
         >
           {states.map((state) => (

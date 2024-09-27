@@ -4,7 +4,10 @@ import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import PropertiesPublishSold from "./PropertiesPublishSold";
 import { Grid, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
+
 export default function TabsPropertiesSold() {
+  const { t } = useTranslation();
   const [value, setValue] = React.useState("3");
 
   const handleChange = (event, newValue) => {
@@ -20,7 +23,7 @@ export default function TabsPropertiesSold() {
           variant="h5"
           sx={{ color: "black" }}
         >
-          Propiedades Vendidas
+          {t("propiedadesVendidas")}
         </Typography>
       </Grid>
       <TabContext value={value}>

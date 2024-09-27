@@ -2,6 +2,7 @@ import { Card, Grid, Hidden, Typography } from "@mui/material";
 import React from "react";
 import GroupIcon from "@mui/icons-material/Group";
 import { makeStyles } from "@mui/styles";
+import { useTranslation } from "react-i18next";
 const useStyles = makeStyles(() => ({
   dollar: {
     objectFit: "cover",
@@ -12,6 +13,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 const TotalUsers = ({ total_users }) => {
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <Card
@@ -46,7 +48,7 @@ const TotalUsers = ({ total_users }) => {
             borderColor: "green",
           }}
         >
-          Total usuarios
+          {t("totalUsuarios")}
         </Typography>
         <Typography
           sx={{
