@@ -7,8 +7,10 @@ import MapIcon from "@mui/icons-material/Map";
 import StreetviewIcon from "@mui/icons-material/Streetview";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import BusinessIcon from "@mui/icons-material/Business";
+import { useTranslation } from "react-i18next";
 
 const AddressProperty = ({ address }) => {
+  const { t } = useTranslation();
   const { state, municipality } = address || {};
 
   return (
@@ -31,7 +33,7 @@ const AddressProperty = ({ address }) => {
               fontFamily="monospace"
               sx={{ color: "#ffb300", marginBottom: 2 }}
             >
-              Ubicación:
+              {t("ubicación")}
             </Typography>
           </Grid>
 
@@ -42,7 +44,7 @@ const AddressProperty = ({ address }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <StreetviewIcon sx={{ marginRight: 1, color: "#d32f2f" }} />
-              Calle:
+              {t("calle")}
             </Typography>
             <Typography variant="body1">{address.street_name}</Typography>
           </Grid>
@@ -54,7 +56,7 @@ const AddressProperty = ({ address }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <HomeIcon sx={{ marginRight: 1, color: "#1976d2" }} />
-              Colonia:
+              {t("colonia")}
             </Typography>
             <Typography variant="body1">{address.colony}</Typography>
           </Grid>
@@ -66,7 +68,7 @@ const AddressProperty = ({ address }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <MailOutlineIcon sx={{ marginRight: 1, color: "#9c27b0" }} />
-              Código Postal:
+              {t("codigoPostal")}
             </Typography>
             <Typography variant="body1">{address.postal_code}</Typography>
           </Grid>
@@ -78,7 +80,7 @@ const AddressProperty = ({ address }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <MapIcon sx={{ marginRight: 1, color: "#388e3c" }} />
-              Estado:
+              {t("estado")}
             </Typography>
             <Typography variant="body1">{state.name}</Typography>
           </Grid>
@@ -90,7 +92,7 @@ const AddressProperty = ({ address }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <ApartmentIcon sx={{ marginRight: 1, color: "#f57c00" }} />
-              Municipio:
+              {t("municipio")}
             </Typography>
             <Typography variant="body1">{municipality.name}</Typography>
           </Grid>
@@ -102,7 +104,7 @@ const AddressProperty = ({ address }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <BusinessIcon sx={{ marginRight: 1, color: "#0288d1" }} />
-              No. Ext:
+              {t("noExt")}
             </Typography>
             <Typography variant="body1">{address.number_building}</Typography>
           </Grid>
@@ -114,7 +116,7 @@ const AddressProperty = ({ address }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <BusinessIcon sx={{ marginRight: 1, color: "#0288d1" }} />
-              No. Int:
+              {t("noInt")}
             </Typography>
             <Typography variant="body1">{address.number_int}</Typography>
           </Grid>
@@ -130,7 +132,7 @@ const AddressProperty = ({ address }) => {
             }}
           >
             <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
-              Referencias:
+              {t("referencias")}
             </Typography>
           </Grid>
           <Grid

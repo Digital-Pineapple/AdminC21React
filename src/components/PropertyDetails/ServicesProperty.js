@@ -2,8 +2,10 @@ import React from "react";
 import { Grid, Typography } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { useTranslation } from "react-i18next";
 
 const ServicesProperty = ({ services }) => {
+  const { t } = useTranslation();
   return (
     <Grid container spacing={2}>
       {services.length > 0 && (
@@ -25,7 +27,7 @@ const ServicesProperty = ({ services }) => {
               fontFamily="monospace"
               sx={{ color: "#ffb734" }}
             >
-              Servicios agregados de la propiedad:
+              {t("serviciosPro")}
             </Typography>
           </Grid>
         </Grid>

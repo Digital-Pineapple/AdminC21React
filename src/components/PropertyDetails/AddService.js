@@ -9,8 +9,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useForm } from "react-hook-form";
 import { MethodPost } from "../../config/service";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
 
 export default function AddService({ modal, handleClose, id }) {
+  const { t } = useTranslation();
   const {
     register,
     formState: { errors },
@@ -52,14 +54,14 @@ export default function AddService({ modal, handleClose, id }) {
           }}
           autoComplete="off"
         >
-          <DialogTitle>Agregar Servicio de la casa</DialogTitle>
+          <DialogTitle>{t("agregarServicio")}</DialogTitle>
           <DialogContent>
             <TextField
               autoFocus
               margin="dense"
               name="name"
               id="name"
-              label="Nombre del servicio"
+              label={t("nombreServicio")}
               type="text"
               fullWidth
               variant="outlined"
@@ -82,7 +84,7 @@ export default function AddService({ modal, handleClose, id }) {
                 "&:hover": { backgroundColor: "red", color: "white" },
               }}
             >
-              Cancelar
+              {t("cancelar")}
             </Button>
             <Button
               type="submit"
@@ -92,7 +94,7 @@ export default function AddService({ modal, handleClose, id }) {
                 "&:hover": { backgroundColor: "#1565c0", color: "white" },
               }}
             >
-              Guardar
+              {t("guardar")}
             </Button>
           </DialogActions>
         </form>

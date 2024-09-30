@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
-
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const Options = ({ detectarCambios, rules }) => {
   const { t } = useTranslation();
@@ -9,9 +8,9 @@ const Options = ({ detectarCambios, rules }) => {
 
   // Definición de las opciones disponibles
   const options = [
-    { value: 1, name: "Renta" },
-    { value: 2, name: "Venta" },
-    { value: 3, name: "Preventa" },
+    { value: 1, name:  t("renta") },
+    { value: 2, name:  t("venta") },
+    { value: 3, name:  t("preventa") },
   ];
 
   // Maneja el cambio de selección

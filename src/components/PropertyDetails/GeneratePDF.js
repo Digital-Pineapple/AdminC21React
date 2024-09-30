@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { Button, Grid } from "@mui/material";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import PropertiesContext from "../../context/Properties/PropertiesContext";
+import { useTranslation } from "react-i18next";
 
 export default function GeneratePDF({ id, status }) {
+  const { t } = useTranslation();
   const { DownloadPDF } = useContext(PropertiesContext);
   return (
     <>
@@ -22,7 +24,7 @@ export default function GeneratePDF({ id, status }) {
               },
             }}
           >
-            Descargar Ficha Técnica <CloudDownloadIcon sx={{ marginLeft: 2 }} />
+            {t("descargarFicha")} <CloudDownloadIcon sx={{ marginLeft: 2 }} />
           </Button>
         </Grid>
       )}

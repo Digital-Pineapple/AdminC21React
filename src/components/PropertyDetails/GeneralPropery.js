@@ -3,6 +3,7 @@ import React from "react";
 import PercentIcon from "@mui/icons-material/Percent";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import DescriptionIcon from "@mui/icons-material/Description";
+import { useTranslation } from "react-i18next";
 
 const formatPrice = (price) => {
   return new Intl.NumberFormat("es-MX", {
@@ -13,6 +14,7 @@ const formatPrice = (price) => {
 };
 
 const GeneralProperty = ({ name, description, rules, category }) => {
+  const { t } = useTranslation();
   const detail = rules?.map((rule) => rule.detail) || [];
   const commission = detail.map((det) => det.commission) || [];
   const final_price = detail.map((det) => det.final_price) || [];
@@ -45,7 +47,7 @@ const GeneralProperty = ({ name, description, rules, category }) => {
           fontFamily="monospace"
           sx={{ color: "#ffb300" }}
         >
-          Detalles generales
+          {t("detallesGenerales")}
         </Typography>
       </Grid>
       <Grid item xs={10}>
@@ -55,7 +57,7 @@ const GeneralProperty = ({ name, description, rules, category }) => {
           sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
         >
           <DescriptionIcon sx={{ marginRight: 1, color: "#4CAF50" }} />
-          Descripción:
+          {t("descripción")}
         </Typography>
         <Typography variant="body1">{description}</Typography>
       </Grid>
@@ -75,7 +77,7 @@ const GeneralProperty = ({ name, description, rules, category }) => {
           fontFamily="monospace"
           sx={{ color: "#ffb300" }}
         >
-          Precios
+          {t("precios")}
         </Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
@@ -85,7 +87,7 @@ const GeneralProperty = ({ name, description, rules, category }) => {
           sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
         >
           <AttachMoneyIcon sx={{ marginRight: 1, color: "#FFC107 " }} />
-          Tipo de operación:
+          {t("TipoOperación")}
         </Typography>
         <Typography variant="body1">{ruleNames.join(", ")}</Typography>
       </Grid>
@@ -96,7 +98,7 @@ const GeneralProperty = ({ name, description, rules, category }) => {
           sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
         >
           <AttachMoneyIcon sx={{ marginRight: 1, color: "#FFC107" }} />
-          Precio de {ruleNames.join(", ")}:
+         {t("PrecioRenta")} {ruleNames.join(", ")}:
         </Typography>
         <Typography variant="body1">
           {final_price.map((price) => formatPrice(price)).join(", ")} MXN
@@ -110,8 +112,8 @@ const GeneralProperty = ({ name, description, rules, category }) => {
         >
           <PercentIcon sx={{ marginRight: 1, color: "#FF2530" }} />
           {sharesCommission
-            ? "Esta propiedad comparte comisión"
-            : "Esta propiedad no comparte comisión"}
+            ? t("comision")
+            : t("nocomision")}
         </Typography>
         <Typography variant="body1">
           {sharesCommission ? (
@@ -122,7 +124,7 @@ const GeneralProperty = ({ name, description, rules, category }) => {
               </div>
             ))
           ) : (
-            <div>No se aplica comisión.</div>
+            <div>{t("nocomisioon")}</div>
           )}
         </Typography>
       </Grid>

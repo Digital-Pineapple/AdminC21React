@@ -36,6 +36,7 @@ const Perfil = () => {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+    window.location.reload();
   };
 
   const { UserMe, user_me } = useContext(AuthContext);

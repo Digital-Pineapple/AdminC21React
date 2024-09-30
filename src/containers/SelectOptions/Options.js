@@ -1,12 +1,13 @@
 import React from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const OptionsSelect = (props) => {
+  const { t } = useTranslation();
   const options = [
-    { value: 1, name: "Renta" },
-    { value: 2, name: "Venta" },
-    { value: 3, name: "Preventa" },
+    { value: 1, name: t("renta") },
+    { value: 2, name: t("venta") },
+    { value: 3, name: t("preventa") },
   ];
 
   const detectarCambiosOption = (event) => {

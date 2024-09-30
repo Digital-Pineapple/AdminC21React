@@ -6,8 +6,10 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import BuildIcon from "@mui/icons-material/Build";
 import BathtubIcon from "@mui/icons-material/Bathtub";
 import StraightenIcon from "@mui/icons-material/Straighten";
+import { useTranslation } from "react-i18next";
 
 const Amenidades = ({ details }) => {
+  const { t } = useTranslation();
   const {
     age,
     rooms,
@@ -39,7 +41,7 @@ const Amenidades = ({ details }) => {
               fontFamily="monospace"
               sx={{ color: "#ffb300" }}
             >
-              Amenidades:
+              {t("amenidades")}
             </Typography>
           </Grid>
 
@@ -50,7 +52,7 @@ const Amenidades = ({ details }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <EventIcon sx={{ marginRight: 1, color: "#4caf50" }} />
-              Años de antigüedad:
+              {t("añosDeAntiguedad")}
             </Typography>
             <Typography variant="body1">{age}</Typography>
           </Grid>
@@ -62,7 +64,7 @@ const Amenidades = ({ details }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <BedroomParentIcon sx={{ marginRight: 1, color: "#ff9800" }} />
-              Habitaciones:
+              {t("habitaciones")}
             </Typography>
             <Typography variant="body1">{rooms}</Typography>
           </Grid>
@@ -74,7 +76,7 @@ const Amenidades = ({ details }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <DirectionsCarIcon sx={{ marginRight: 1, color: "#2196f3" }} />
-              Estacionamiento:
+              {t("estacionamiento")}
             </Typography>
             <Typography variant="body1">
               {parking === 1 ? "Sí" : "No"}
@@ -88,7 +90,7 @@ const Amenidades = ({ details }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <BuildIcon sx={{ marginRight: 1, color: "#ff5722" }} />
-              En remodelación:
+              {t("remodelación")}
             </Typography>
             <Typography variant="body1">
               {remodel === 1 ? "Sí" : "No"}
@@ -102,7 +104,7 @@ const Amenidades = ({ details }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <BathtubIcon sx={{ marginRight: 1, color: "#3f51b5" }} />
-              Baños:
+              {t("bañosCompletos")}
             </Typography>
             <Typography variant="body1">{bathroom}</Typography>
           </Grid>
@@ -114,7 +116,7 @@ const Amenidades = ({ details }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <BathtubIcon sx={{ marginRight: 1, color: "#673ab7" }} />
-              Medios Baños:
+              {t("mediosBaños")}
             </Typography>
             <Typography variant="body1">{half_bath}</Typography>
           </Grid>
@@ -126,7 +128,7 @@ const Amenidades = ({ details }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <StraightenIcon sx={{ marginRight: 1, color: "#009688" }} />
-              Metros Totales:
+              {t("metrosTotales")}
             </Typography>
             <Typography variant="body1">{size_total} m²</Typography>
           </Grid>
@@ -138,7 +140,7 @@ const Amenidades = ({ details }) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <StraightenIcon sx={{ marginRight: 1, color: "#795548" }} />
-              Metros Construidos:
+              {t("metrosConstruidos")}
             </Typography>
             <Typography variant="body1">{size} m²</Typography>
           </Grid>

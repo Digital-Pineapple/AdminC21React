@@ -4,8 +4,10 @@ import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import BadgeIcon from "@mui/icons-material/Badge";
+import { useTranslation } from "react-i18next";
 
 const UserInm = (user_inm) => {
+  const { t } = useTranslation();
   const { owner } = user_inm;
   const { name, email, last_name, phone_number } = owner;
 
@@ -29,7 +31,7 @@ const UserInm = (user_inm) => {
               fontFamily="monospace"
               sx={{ color: "#ffb300", marginBottom: 2 }}
             >
-              Asesor:
+              {t("Asesor")}
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
@@ -39,7 +41,7 @@ const UserInm = (user_inm) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <BadgeIcon sx={{ marginRight: 1, color: "#1e88e5" }} />
-              Nombre:
+              {t("nombre")}
             </Typography>
             <Typography variant="body1">{name}</Typography>
           </Grid>
@@ -50,7 +52,7 @@ const UserInm = (user_inm) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <BadgeIcon sx={{ marginRight: 1, color: "#1e88e5" }} />
-              Apellido:
+              {t("apellido")}
             </Typography>
             <Typography variant="body1">{last_name}</Typography>
           </Grid>
@@ -61,7 +63,7 @@ const UserInm = (user_inm) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <EmailIcon sx={{ marginRight: 1, color: "#d32f2f" }} />
-              Correo Electrónico:
+              {t("email")}
             </Typography>
             <Typography variant="body1">{email}</Typography>
           </Grid>
@@ -72,7 +74,7 @@ const UserInm = (user_inm) => {
               sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
             >
               <PhoneIcon sx={{ marginRight: 1, color: "#388e3c" }} />
-              Número de Teléfono:
+              {t("telefono")}
             </Typography>
             <Typography variant="body1">{phone_number}</Typography>
           </Grid>
