@@ -10,6 +10,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { useTranslation } from "react-i18next";
 import { Grid, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import AuthContext from "../../context/auth/AuthContext";
@@ -52,6 +53,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function ChangePasswordUser({ modal, handleClose }) {
+  const { t } = useTranslation();
   const { ChangePasswordUser } = React.useContext(AuthContext);
 
   const {
@@ -110,7 +112,7 @@ export default function ChangePasswordUser({ modal, handleClose }) {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          Cambiar mi contraseña
+          {t("cambiarContraseña")}
         </BootstrapDialogTitle>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -127,7 +129,7 @@ export default function ChangePasswordUser({ modal, handleClose }) {
                   type={passwordValues.showPassword ? "text" : "password"}
                   fullWidth
                   name="password"
-                  label="Nueva Contraseña:"
+                  label={t("nuevaContraseña")}
                   error={errors.password ? true : false}
                   helperText={errors?.password?.message}
                   InputProps={{
@@ -171,7 +173,7 @@ export default function ChangePasswordUser({ modal, handleClose }) {
                   }
                   fullWidth
                   name="password_confirmation"
-                  label="Confirma la Contraseña:"
+                  label={t("confirmarContraseña")}
                   error={errors.password_confirmation ? true : false}
                   helperText={errors?.password_confirmation?.message}
                   InputProps={{
@@ -227,7 +229,7 @@ export default function ChangePasswordUser({ modal, handleClose }) {
                 },
               }}
             >
-              Guardar
+              {t("guardar")}
             </Button>
           </DialogActions>
         </form>

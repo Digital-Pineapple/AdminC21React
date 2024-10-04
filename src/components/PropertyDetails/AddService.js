@@ -24,8 +24,8 @@ export default function AddService({ modal, handleClose, id }) {
     MethodPost(url, data)
       .then((res) => {
         Swal.fire({
-          title: "Agregado",
-          text: "Sercivicio Registrado",
+          title: t("Listo"),
+          text: t("servicioAgregado"),
           icon: "success",
           showConfirmButton: true,
         });

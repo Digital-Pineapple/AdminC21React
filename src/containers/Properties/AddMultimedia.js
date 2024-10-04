@@ -5,6 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useDebounce } from "use-debounce";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import PropertiesContext from "../../context/Properties/PropertiesContext";
 import { useContext, useEffect } from "react";
 import { Box, Grid, IconButton, InputLabel, Tooltip } from "@mui/material";
@@ -22,6 +23,7 @@ const useStyles = makeStyles({
 });
 export default function AttachFileMultimedia({ open, handleClose, id }) {
   const classes = useStyles();
+  const { t } = useTranslation();
   const [image, saveImage] = useState({
     urlPhoto:
       "https://yocomparto.com.mx/wp-content/uploads/2024/02/placeholder.png",
@@ -58,9 +60,7 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">
-        {"Adjunta foto de la propiedad"}
-      </DialogTitle>
+      <DialogTitle id="alert-dialog-title">{t("AdjuntaFoto")}</DialogTitle>
       <DialogContent>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -88,7 +88,7 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
               onChange={handleChangeImage}
             />
             <InputLabel sx={{ textAlign: "center" }}>
-              Selecciona imagen :
+              {t("seleccionaImagen")}
               <label htmlFor="icon-button-file-first">
                 <IconButton
                   color="primary"

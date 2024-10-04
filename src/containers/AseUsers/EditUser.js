@@ -11,7 +11,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import UsersContext from "../../context/Users/UsersContext";
+import { useTranslation } from "react-i18next";
 export default function EditUser({ open, handleClose, id, User }) {
+  const { t } = useTranslation();
   const { ChangeUserInm } = useContext(UsersContext);
 
   const [role, saveRole] = React.useState(null);
@@ -72,7 +74,7 @@ export default function EditUser({ open, handleClose, id, User }) {
   return (
     <div>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Editar Asesor</DialogTitle>
+        <DialogTitle>{t("editarAsesor")}</DialogTitle>
         <form
           onSubmit={handleSubmit(onSubmit)}
           autoComplete="off"
@@ -88,7 +90,7 @@ export default function EditUser({ open, handleClose, id, User }) {
                   type="text"
                   fullWidth
                   name="name"
-                  label="Nombre(s):"
+                  label={t("nombre")}
                   defaultValue={User.name}
                   error={errors.name ? true : false}
                   helperText={errors?.name?.message}
@@ -114,7 +116,7 @@ export default function EditUser({ open, handleClose, id, User }) {
                   fullWidth
                   name="last_name"
                   defaultValue={User.last_name}
-                  label="Apellido(s):"
+                  label={t("apellido")}
                   error={errors.last_name ? true : false}
                   helperText={errors?.last_name?.message}
                   {...register("last_name", {
@@ -139,7 +141,7 @@ export default function EditUser({ open, handleClose, id, User }) {
                   fullWidth
                   defaultValue={User.phone_number}
                   name="phone_number"
-                  label="Telefono:"
+                  label={t("telefono")}
                   error={errors.phone_number ? true : false}
                   helperText={errors?.phone_number?.message}
                   {...register("phone_number", {
@@ -164,7 +166,7 @@ export default function EditUser({ open, handleClose, id, User }) {
                   fullWidth
                   defaultValue={User.email}
                   name="email"
-                  label="Correo Electronico:"
+                  label={t("email")}
                   error={errors.email ? true : false}
                   helperText={errors?.email?.message}
                   {...register("email", {
@@ -180,7 +182,7 @@ export default function EditUser({ open, handleClose, id, User }) {
                   type={passwordValues.showPassword ? "text" : "password"}
                   fullWidth
                   name="password"
-                  label="Nueva Contraseña:"
+                  label={t("password")}
                   error={errors.password ? true : false}
                   helperText={errors?.password?.message}
                   InputProps={{
@@ -224,7 +226,7 @@ export default function EditUser({ open, handleClose, id, User }) {
                   }
                   fullWidth
                   name="password_confirmation"
-                  label="Confirma la Contraseña:"
+                  label={t("confirmarContraseña")}
                   error={errors.password_confirmation ? true : false}
                   helperText={errors?.password_confirmation?.message}
                   InputProps={{
@@ -274,7 +276,7 @@ export default function EditUser({ open, handleClose, id, User }) {
                 "&:hover": { backgroundColor: "red", color: "white" },
               }}
             >
-              Cancelar
+              {t("cancelar")}
             </Button>
             <Button
               type="submit"
@@ -284,7 +286,7 @@ export default function EditUser({ open, handleClose, id, User }) {
                 "&:hover": { backgroundColor: "#1565c0", color: "white" },
               }}
             >
-              Guardar
+              {t("guardar")}
             </Button>
           </DialogActions>
         </form>

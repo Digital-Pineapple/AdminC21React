@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PropertiesReducer from "./PropertiesReducer";
 import clientAxios from "../../config/Axios";
 import fileDownload from "js-file-download";
@@ -29,6 +29,7 @@ import {
 import Swal from "sweetalert2";
 import PropertiesContext from "./PropertiesContext";
 const PropertiesState = ({ children }) => {
+  const { t } = useTranslation();
   const initialState = {
     properties: [],
     property: null,
@@ -210,8 +211,8 @@ const PropertiesState = ({ children }) => {
             payload: res.data.data,
           });
           Swal.fire({
-            title: "Registrado",
-            text: "La propiedad se ha registrado correctamente!",
+            title: t("Registrado"),
+            text: t("PropiedadRegistrado"),
             icon: "success",
           }).then(() => {
             window.location.href = "/PropertiesPending";
@@ -228,8 +229,8 @@ const PropertiesState = ({ children }) => {
       MethodPost(url, data)
         .then((res) => {
           Swal.fire({
-            title: "Registrado",
-            text: "¡La propiedad se ha registrado correctamente! Por favor, espera la aprobación de tu propiedad.",
+            title: t("Registrado"),
+            text: t("propiedadRegistrado"),
             icon: "success",
           }).then(() => {
             window.location.href = "/PropertiesPending";
@@ -287,8 +288,8 @@ const PropertiesState = ({ children }) => {
           payload: res.data,
         });
         Swal.fire({
-          title: "Editado",
-          text: "La propiedad se ha editado correctamente!",
+          title: t("Editado"),
+          text: t("EditadoProp"),
           icon: "success",
         }).then(() => {
           window.location.reload();
@@ -305,14 +306,14 @@ const PropertiesState = ({ children }) => {
   //Descarga una ficha tecnica de la propiedad
   const DownloadPDF = (id) => {
     Swal.fire({
-      title: "¿Estas seguro?",
-      text: "La propiedad seleccionada será descargada",
+      title: t("estasSeguro"),
+      text: t("downloadPDF"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, descargar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siPublicar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         let url = `/generatePDF/${id}`;
@@ -321,8 +322,8 @@ const PropertiesState = ({ children }) => {
           .then((res) => {
             fileDownload(res.data, "FichaTecnica.pdf");
             Swal.fire({
-              title: "Descargada",
-              text: "La propiedad se ha descargado correctamente!",
+              title: t("Descargado"),
+              text: t("laPropiedadseDescargo"),
               icon: "success",
             });
           })
@@ -339,14 +340,14 @@ const PropertiesState = ({ children }) => {
   //Agrega las fotos de la propiedad
   const AddMultimediaProperty = (data) => {
     Swal.fire({
-      title: "Agregar Imagen",
-      text: "¿Estas seguro de Agregar esta imagen como fotos de la propiedad?",
+      title: t("agregarImagen"),
+      text: t("estasSeguroAgregar"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, Aceptar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siPublicar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         const formData = new FormData();
@@ -355,8 +356,8 @@ const PropertiesState = ({ children }) => {
         MethodPost(url, formData, { headerConfig })
           .then((res) => {
             Swal.fire({
-              title: "Agregado",
-              text: "La imagen se ha agregado correctamente!",
+              title: t("Listo"),
+              text: t("imgProp"),
               icon: "success",
             }).then(() => {
               window.location.href = "/PropertiesPending";
@@ -379,22 +380,22 @@ const PropertiesState = ({ children }) => {
   //Elimina una propiedad
   const DeleteProperty = (id) => {
     Swal.fire({
-      title: "¿Estas seguro?",
-      text: "La propiedad seleccionada será eliminada",
+      title: t("estasSeguro"),
+      text: t("laPropiedadSeraEliminada"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, eliminar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siEliminar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         let url = `/properties/${id}`;
         MethodDelete(url)
           .then((res) => {
             Swal.fire({
-              title: "Eliminado",
-              text: "La propiedad se ha eliminado correctamente!",
+              title: t("Eliminado"),
+              text: t("eliminarProp"),
               icon: "success",
             });
             dispatch({
@@ -415,22 +416,22 @@ const PropertiesState = ({ children }) => {
   // Publica una propiedad
   const PublishProperty = (id) => {
     Swal.fire({
-      title: "¿Estas seguro?",
-      text: "La propiedad seleccionada será publicada",
+      title: t("estasSeguro"),
+      text: t("laPropiedadSeraPublicada"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, publicar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siPublicar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         let url = `/properties/${id}/publish`;
         MethodPost(url)
           .then((res) => {
             Swal.fire({
-              title: "Publicado",
-              text: "¡La propiedad se ha publicado correctamente!",
+              title: t("Publicado"),
+              text: t("propiedadPublicada"),
               icon: "success",
             }).then((res) => {
               window.location.href = "/Properties";
@@ -455,22 +456,22 @@ const PropertiesState = ({ children }) => {
   //Regresa la propiedad a pendiente
   const BackPendingProperty = (id) => {
     Swal.fire({
-      title: "¿Estas seguro?",
-      text: "La Propiedad Seleccionada Regresara a Pendiente",
+      title: t("estasSeguro"),
+      text: t("regresaraPendiente"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, regresar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siPublicar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         let url = `/properties/${id}/pending`;
         MethodPost(url)
           .then((res) => {
             Swal.fire({
-              title: "Pendiente",
-              text: "La propiedad ha regresado a status pendiente!",
+              title: t("Pendiente"),
+              text: t("propiedadPendiente"),
               icon: "success",
             }).then(() => {
               window.location.href = "/PropertiesPending";
@@ -495,22 +496,22 @@ const PropertiesState = ({ children }) => {
   // Pasa la propiedad a vendida
   const SoldProperty = (id) => {
     Swal.fire({
-      title: "¿Estas seguro?",
-      text: "La Propiedad Seleccionada Pasara a Vendida",
+      title: t("estasSeguro"),
+      text: t("laPropiedadVendida"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, aceptar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siPublicar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         let url = `/sold/${id}`;
         MethodPost(url)
           .then((res) => {
             Swal.fire({
-              title: "Listo",
-              text: "La propiedad ha pasado a vendida",
+              title: t("Listo"),
+              text: t("haPasadoAVendida"),
               icon: "success",
             }).then(() => {
               window.location.href = "/SoldProperties";
@@ -535,22 +536,22 @@ const PropertiesState = ({ children }) => {
   // Pasa la propiedad a rentada
   const RentProperty = (id) => {
     Swal.fire({
-      title: "¿Estas seguro?",
-      text: "La Propiedad Seleccionada Pasara a Rentada",
+      title: t("estasSeguro"),
+      text: t("laPropiedadRentada"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, aceptar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siPublicar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         let url = `/rented/${id}`;
         MethodPost(url)
           .then((res) => {
             Swal.fire({
-              title: "Listo",
-              text: "La propiedad ha pasado a rentada",
+              title: t("Listo"),
+              text: t("haPasadoARentada"),
               icon: "success",
             }).then(() => {
               window.location.href = "/RentProperties";
@@ -576,22 +577,22 @@ const PropertiesState = ({ children }) => {
   // Pasa la propiedad de vendida a publicada
   const SoldToPublished = (id) => {
     Swal.fire({
-      title: "¿Estas seguro?",
-      text: "La Propiedad Seleccionada Regresará a Publicada",
+      title: t("estasSeguro"),
+      text: t("laPropiedadPublicada"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, regresar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siPublicar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         let url = `/SoldToPublished/${id}`;
         MethodPost(url)
           .then((res) => {
             Swal.fire({
-              title: "Listo",
-              text: "La propiedad se ha publicado nuevamente",
+              title: t("Listo"),
+              text: t("haPublicadoNuevamente"),
               icon: "success",
             }).then(() => {
               window.location.href = "/Properties";
@@ -617,22 +618,22 @@ const PropertiesState = ({ children }) => {
   // Pasa la propiedad de rentada  a publicada
   const RentedToPublished = (id) => {
     Swal.fire({
-      title: "¿Estas seguro?",
-      text: "La Propiedad Seleccionada Regresará a Publicada",
+      title: t("estasSeguro"),
+      text: t("laPropiedadPublicada"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, regresar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siPublicar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         let url = `/RentedToPublished/${id}`;
         MethodPost(url)
           .then((res) => {
             Swal.fire({
-              title: "Listo",
-              text: "La propiedad se ha publicado nuevamente",
+              title: t("Listo"),
+              text: t("haPublicadoNuevamente"),
               icon: "success",
             }).then(() => {
               window.location.href = "/Properties";

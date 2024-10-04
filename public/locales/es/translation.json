@@ -10,12 +10,13 @@
   "soy": "Soy",
   "inquilino": "Inquilino (Rentar/Comprar)",
   "asesor": "Asesor (Individual)",
+  "asesorInm": "Asesor (Inmobiliaria)",
   "inmobiliaria": "Inmobiliaria",
   "continuar": "Continuar",
   "RegístrateGratis": "¡Regístrate gratis!",
   "nombre": "Nombre(s):",
   "apellido": "Apellido(s):",
-  "confirmarContraseña": "Confirma la Contraseña",
+  "confirmarContraseña": "Confirma la Contraseña:",
   "aceptarTerminos": "Términos y Condiciones",
   "aceptar": "Aceptar",
   "regresar": "Regresar",
@@ -113,7 +114,7 @@
   "detallesGenerales": "Detalles generales",
   "descripción": "Descripción",
   "precios": "Precios",
-  "TipoOperación":  "Tipo de operación:",
+  "TipoOperación": "Tipo de operación:",
   "PrecioRenta": "Precio de",
   "comision": "Esta propiedad comparte comisión:",
   "nocomision": "Esta propiedad no comparte comisión:",
@@ -122,7 +123,7 @@
   "habitaciones": "Habitaciones:",
   "estacionamiento": "Estacionamiento:",
   "remodelación": "En remodelación:",
-  "ubicación": "Ubicación:"  ,
+  "ubicación": "Ubicación:",
   "estado": "Estado:",
   "municipio": "Municipio:",
   "referencias": "Referencias",
@@ -135,19 +136,50 @@
   "estasSeguro": "¿Estas seguro?",
   "laPropiedadSeraEliminada": "La propiedad seleccionada será eliminada",
   "siEliminar": "Si, Eliminar",
-  "noCancelar": "No, Cancelar"
-
-
-  
- 
-  
-
-
-  
-
-
-    
-
-
-
+  "siPublicar": "Si. Aceptar",
+  "noCancelar": "No, Cancelar",
+  "AdjuntaFoto": "Adjunta foto de la propiedad",
+  "seleccionaImagen": "Selecciona imagen:",
+  "laPropiedadSeraPublicada": "La propiedad seleccionada será publicada",
+  "agregarImagen": "Agregar Imagen",
+  "estasSeguroAgregar": "¿Estás seguro de que quieres agregar esta imagen?",
+  "laPropiedadVendida": "La Propiedad Seleccionada Pasara a Vendida",
+  "laPropiedadRentada": "La Propiedad Seleccionada Pasara a Rentada",
+  "regresaraPendiente": "La Propiedad Seleccionada Regresara a Pendiente",
+  "downloadPDF": "La propiedad seleccionada será descargada",
+  "laPropiedadPublicada": "La Propiedad Seleccionada Regresará a Publicada",
+  "Registrado": "Registrado",
+  "PropiedadRegistrado": "La propiedad se ha registrado correctamente!",
+  "propiedadRegistrado": "¡La propiedad se ha registrado correctamente! Por favor, espera la aprobación de tu propiedad.",
+  "verificado": "Verificado",
+  "emailContraseña": "Se ha enviado un correo electrónico con tu nueva contraseña generada.",
+  "emailCuenta": "Hemos enviado un código de verificación a su correo electrónico. Por favor revisa tu bandeja de entrada y, si es necesario, tu carpeta de spam.",
+  "nuevaContraseña": "Nueva Contraseña:",
+  "usuarioEliminado": "El usuario seleccionada será eliminado",
+  "modificadaCorrectamente": "Modificada Correctamente",
+  "foto": "Foto",
+  "informacion": "Informacion",
+  "contraseña": "Contraseña",
+  "Eliminado": "Eliminado",
+  "Descargado": "Descargado",
+  "Listo": "Listo",
+  "laPropiedadseDescargo": "La propiedad se ha descargado correctamente",
+  "haPasadoARentada": "La propiedad ha pasado a rentada",
+  "haPasadoAVendida": "La propiedad ha pasado a Vendida",
+  "haPublicadoNuevamente": "La propiedad se ha publicado nuevamente",
+  "Publicado": "Publicado",
+  "propiedadPublicada": "¡La propiedad se ha publicado correctamente!",
+  "Pendiente": "Pendiente",
+  "propiedadPendiente": "La propiedad ha regresado a status pendiente!",
+  "imgProp": "¡La imagen se ha agregado correctamente!",
+  "eliminarProp": "La propiedad se ha eliminado correctamente!",
+  "servicioAgregado": "Sercivicio Registrado",
+  "Editado": "Editado",
+  "EditadoProp": "La propiedad se ha editado correctamente!",
+  "tipodeUsuario": "Tipo de usuario:",
+  "registrarAsesor": "Registrar un nuevo Asesor",
+  "editarAsesor": "Editar Asesor",
+  "eliminarAse": "El asesor seleccionada será eliminado",
+  "usuarioEditado": "El usuario se ha editado correctamente!",
+  "usuarioRegistrado": "Usuario registrado correctamente"
 }

@@ -7,9 +7,10 @@
   "Ingresar": "登入",
   "register": "记录",
   "telefono": "电话:",
-  "soy": "用户类型",
+  "soy": "用户类型:",
   "inquilino": "租户（租赁/购买",
   "asesor": "顾问（个人）",
+  "asesorInm": "顾问（房地产）",
   "inmobiliaria": "房地产",
   "continuar": "继续",
   "RegístrateGratis": "免费注册！",
@@ -113,7 +114,7 @@
   "detallesGenerales": "一般详情",
   "descripción": "描述",
   "precios": "价格",
-  "TipoOperación":  "操作类型：", 
+  "TipoOperación": "操作类型：",
   "PrecioRenta": "的价格",
   "comision": "该房产分享佣金：",
   "nocomision": "该房产不分享佣金。",
@@ -135,17 +136,49 @@
   "estasSeguro": "你确定吗？",
   "laPropiedadSeraEliminada": "所选属性将被删除",
   "siEliminar": "是的，删除",
-  "noCancelar": "不，取消"
-
-
-
-
-
-
-
-
-
-
-
-
+  "siPublicar": "是的接受",
+  "noCancelar": "不，取消",
+  "AdjuntaFoto": "上传您的房产照片",
+  "seleccionaImagen": "选择图像",
+  "laPropiedadSeraPublicada": "所选属性将被发布",
+  "agregarImagen": "附上照片",
+  "estasSeguroAgregar": "您确定要添加此图片吗？",
+  "laPropiedadVendida": "所选房产将被出售",
+  "laPropiedadRentada": "所选房产将被出租",
+  "regresaraPendiente": "所选属性将返回待处理状态",
+  "downloadPDF": "将下载选定的属性",
+  "laPropiedadPublicada": "所选属性将返回到已发布状态",
+  "Registrado": "挂号的",
+  "PropiedadRegistrado": "该房产已登记成功！",
+  "propiedadRegistrado": "该房产已登记成功！请等待您的财产的批准。",
+  "verificado": "已验证",
+  "emailContraseña": "一封电子邮件已发送，其中包含您生成的新密码。",
+  "emailCuenta": "我们已将验证码发送到您的电子邮件。请检查您的收件箱，如有必要，请检查您的垃圾邮件文件夹。",
+  "nuevaContraseña": "新密码：",
+  "usuarioEliminado": "所选用户将被删除",
+  "modificadaCorrectamente": "正确修改",
+  "foto": "照片",
+  "informacion": "信息",
+  "contraseña": "密码",
+  "Eliminado": "已删除",
+  "Descargado": "已下载",
+  "Listo": "挂号的",
+  "laPropiedadseDescargo": "该属性已成功下载",
+  "haPasadoARentada": "该房产已出租",
+  "haPasadoAVendida": "该房产已售出",
+  "haPublicadoNuevamente": "房产已重新挂牌",
+  "Publicado": "已发表",
+  "propiedadPublicada": "该房产已成功发布！",
+  "Pendiente": "耳环",
+  "propiedadPendiente": "该房产已恢复待处理状态！",
+  "imgProp": "图片已添加成功！",
+  "eliminarProp": "该属性已成功删除！",
+  "servicioAgregado": "服务已添加",
+  "Editado": "已编辑",
+  "EditadoProp": "属性已成功编辑！",
+  "tipodeUsuario": "用户类型：",
+  "registrarAsesor": "注册新顾问",
+  "editarAsesor": "编辑顾问",
+  "eliminarAse": "选定的顾问将被删除",
+  "usuarioEditado": "用户已编辑成功！"
 }

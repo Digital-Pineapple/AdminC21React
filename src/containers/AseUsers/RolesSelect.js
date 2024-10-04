@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import MethodGet from "../../config/service";
+import { useTranslation } from "react-i18next";
 
 const RolesSelect = (props) => {
-  const array = [{ name: "Asesor (Inmobiliaria)", value: 5 }];
+  const { t } = useTranslation();
+  const array = [{ name: t("asesorInm"), value: 5 }];
 
   const detectarCambiosRole = (value) => {
     props.detectarCambiosRole(value.target.value);
@@ -12,13 +14,13 @@ const RolesSelect = (props) => {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="roles-options-label">Tipo de Usuario:</InputLabel>
+        <InputLabel id="roles-options-label">{t("tipodeUsuario")}</InputLabel>
         <Select
           required
           labelId="roles-options-label"
           id="roles-options-select"
           onChange={detectarCambiosRole}
-          label="Tipo de Usuario:"
+          label={t("tipodeUsuario")}
           name="account"
         >
           {array.map((rol, index) => (

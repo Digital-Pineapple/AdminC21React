@@ -15,6 +15,7 @@ import {
   UPDATE_USERS,
   UPDATE_USERS_INM,
 } from "../../types";
+import { t } from "i18next";
 const UsersState = ({ children }) => {
   //estado inicial
   const initialState = {
@@ -88,8 +89,8 @@ const UsersState = ({ children }) => {
           payload: res.data.data,
         });
         Swal.fire({
-          title: "Editado",
-          text: "El usuario se ha editado correctamente!",
+          title: t("Editado"),
+          text: t("usuarioEditado"),
           icon: "success",
         });
       })
@@ -112,8 +113,8 @@ const UsersState = ({ children }) => {
           payload: res.data.data,
         });
         Swal.fire({
-          title: "Editado",
-          text: "El usuario se ha editado correctamente!",
+          title: t("Editado"),
+          text: t("usuarioEditado"),
           icon: "success",
         });
       })
@@ -129,21 +130,21 @@ const UsersState = ({ children }) => {
   //Elimina un usuario
   const DeleteUsers = (id) => {
     Swal.fire({
-      title: "¿Estas seguro?",
-      text: "El usuario seleccionada será eliminado",
+      title: t("estasSeguro"),
+      text: t("usuarioEliminado"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, eliminar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siEliminar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         let url = `/users/${id}`;
         MethodDelete(url)
           .then((res) => {
             Swal.fire({
-              title: "Eliminado",
+              title: t("Eliminado"),
               text: res.data.message,
               icon: "success",
             });
@@ -166,21 +167,21 @@ const UsersState = ({ children }) => {
   //Elimina un asesor
   const DeleteUsersInm = (id) => {
     Swal.fire({
-      title: "¿Estas seguro?",
-      text: "El asesor seleccionada será eliminado",
+      title: t("estasSeguro"),
+      text: t("eliminarAse"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, eliminar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siEliminar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         let url = `/destroyUserInm/${id}`;
         MethodDelete(url)
           .then((res) => {
             Swal.fire({
-              title: "Eliminado",
+              title: t("Eliminado"),
               text: res.data.message,
               icon: "success",
             });

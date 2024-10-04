@@ -3,6 +3,7 @@ import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
 import MethodGet, { MethodPost, MethodPut } from "../../config/service";
 import headerConfig from "../../config/imageHeaders";
+import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
 /**Importar componente token headers */
@@ -19,6 +20,7 @@ import {
 import Swal from "sweetalert2";
 
 const AuthState = (props) => {
+  const { t } = useTranslation();
   //Agregar state inicial
   const initialState = {
     token: localStorage.getItem("token"),
@@ -89,8 +91,8 @@ const AuthState = (props) => {
           payload: res.data.data,
         });
         Swal.fire({
-          title: "¡Registro exitoso!",
-          text: "Hemos enviado un código de verificación a tu correo electrónico. Por favor, revisa tu bandeja de entrada y, si es necesario, tu carpeta de spam.",
+          title: t("registroExitoso"),
+          text: t("emailCuenta"),
           icon: "success",
         }).then(() => {
           const token = res.data.access_token;
@@ -164,8 +166,8 @@ const AuthState = (props) => {
     MethodPut(url, data)
       .then((res) => {
         Swal.fire({
-          title: "¡ Informacion !",
-          text: "Modificada Correctamente",
+          title: t("informacion"),
+          text: t("modificadaCorrectamente"),
           icon: "success",
         });
         dispatch({
@@ -195,8 +197,8 @@ const AuthState = (props) => {
           payload: res.data.data,
         });
         Swal.fire({
-          title: "Registrado",
-          text: "Usuario registrado correctamente",
+          title: t("Registrado"),
+          text: t("usuarioRegistrado"),
           icon: "success",
         });
         usuarioAutenticado();
@@ -223,7 +225,7 @@ const AuthState = (props) => {
           payload: res.data.data,
         });
         Swal.fire({
-          title: "Registrado",
+          title: t("Registrado"),
           text: "Asesor registrado correctamente",
           icon: "success",
         });
@@ -247,8 +249,8 @@ const AuthState = (props) => {
     MethodPost(url, datos)
       .then((res) => {
         Swal.fire({
-          title: "¡ Contraseña !",
-          text: "Modificada Correctamente",
+          title: t("contraseña"),
+          text: t("modificadaCorrectamente"),
           icon: "success",
         });
         dispatch({
@@ -273,8 +275,8 @@ const AuthState = (props) => {
     MethodPost(url, datos)
       .then((res) => {
         Swal.fire({
-          title: "Verificado",
-          text: "Se ha enviado un correo electrónico con tu nueva contraseña generada.",
+          title: t("verificado"),
+          text: t("emailContraseña"),
           icon: "success",
         }).then(() => {
           window.location.href = "/iniciar-sesion";
@@ -292,14 +294,14 @@ const AuthState = (props) => {
   //Cambia la Imagen de Perfil
   const ChangePhoto = (data) => {
     Swal.fire({
-      title: "Agregar Imagen",
-      text: "¿Estás seguro de agregar esta imagen?",
+      title: t("agregarImagen"),
+      text: t("estasSeguroAgregar"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Sí, Aceptar",
-      cancelButtonText: "No, cancelar",
+      confirmButtonText: t("siPublicar"),
+      cancelButtonText: t("noCancelar"),
     }).then((result) => {
       if (result.value) {
         const formData = new FormData();
@@ -308,8 +310,8 @@ const AuthState = (props) => {
         MethodPost(url, formData, { headerConfig })
           .then((res) => {
             Swal.fire({
-              title: "¡Foto!",
-              text: "Modificada Correctamente",
+              title: t("foto"),
+              text: t("modificadaCorrectamente"),
               icon: "success",
             }).then(() => {
               window.location.reload();

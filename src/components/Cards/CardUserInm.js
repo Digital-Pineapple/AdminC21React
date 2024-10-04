@@ -12,7 +12,10 @@ import EditUser from "../../containers/AseUsers/EditUser";
 import UsersContext from "../../context/Users/UsersContext";
 import img from "../../assets/img/user.png";
 import { Person, Email, Phone, Work } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
+
 export default function CardUser({ user }) {
+  const { t } = useTranslation();
   const { DeleteUsersInm } = React.useContext(UsersContext);
 
   const [id_user, saveIdUser] = useState(null);
@@ -41,7 +44,7 @@ export default function CardUser({ user }) {
               alignItems: "center",
             }}
           >
-            <b>Nombre(s):</b>
+            <b>{t("nombre")}</b>
           </Typography>
           <Typography
             sx={{
@@ -61,7 +64,7 @@ export default function CardUser({ user }) {
               alignItems: "center",
             }}
           >
-            <b>Apellido(s):</b>
+            <b>{t("apellido")}</b>
           </Typography>
           <Typography
             sx={{
@@ -81,7 +84,7 @@ export default function CardUser({ user }) {
               alignItems: "center",
             }}
           >
-            <b>Tipo de Usuario:</b>
+            <b>{t("tipodeUsuario")}</b>
           </Typography>
           <Typography
             sx={{
@@ -101,7 +104,7 @@ export default function CardUser({ user }) {
               alignItems: "center",
             }}
           >
-            <b>Telefono:</b>
+            <b>{t("telefono")}</b>
           </Typography>
           <Typography
             sx={{
@@ -121,7 +124,7 @@ export default function CardUser({ user }) {
               alignItems: "center",
             }}
           >
-            <b>Correo Electrónico:</b>
+            <b>{t("email")}</b>
           </Typography>
           <Typography
             sx={{

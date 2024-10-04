@@ -3,6 +3,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { useDebounce } from "use-debounce";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import AuthContext from "../../context/auth/AuthContext";
 import { useContext, useEffect } from "react";
 import { Box, Grid, IconButton, InputLabel, Tooltip } from "@mui/material";
@@ -21,6 +22,7 @@ const useStyles = makeStyles({
 });
 
 export default function AttachFileMultimedia({ open, handleClose, id }) {
+  const { t } = useTranslation();
   const classes = useStyles();
   const [image, saveImage] = useState({
     urlPhoto:
@@ -85,7 +87,7 @@ export default function AttachFileMultimedia({ open, handleClose, id }) {
               onChange={handleChangeImage}
             />
             <InputLabel sx={{ textAlign: "center" }}>
-              Selecciona imagen:
+              {t("seleccionaImagen")}
               <label htmlFor="icon-button-file-first">
                 <IconButton
                   color="primary"
