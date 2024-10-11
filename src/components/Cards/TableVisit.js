@@ -18,6 +18,7 @@ import AddIcon from "@mui/icons-material/Add";
 import React, { useContext, useState } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
 import AddReport from "../../containers/Visits/AddReport";
+import { useTranslation } from "react-i18next";
 
 const statusColors = {
   1: "red",
@@ -74,6 +75,7 @@ const TableContainerResponsive = styled(TableContainer)(({ theme }) => ({
 }));
 
 export default function TableVisit({ visits }) {
+  const { t } = useTranslation();
   const { DeleteVisit, AcceptVisit, BackPendingVisit } =
     useContext(VisitContext);
 
@@ -95,13 +97,13 @@ export default function TableVisit({ visits }) {
       <Table aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Nombre(s):</StyledTableCell>
-            <StyledTableCell>Telefono:</StyledTableCell>
-            <StyledTableCell>Correo Electronico:</StyledTableCell>
-            <StyledTableCell>Fecha Registrada:</StyledTableCell>
-            <StyledTableCell>Mensaje:</StyledTableCell>
-            <StyledTableCell>Status:</StyledTableCell>
-            <StyledTableCell>Acciones:</StyledTableCell>
+            <StyledTableCell>{t("nombre")}</StyledTableCell>
+            <StyledTableCell>{t("telefono")}:</StyledTableCell>
+            <StyledTableCell>{t("email")}</StyledTableCell>
+            <StyledTableCell>{t("fechaVisita")}</StyledTableCell>
+            <StyledTableCell>{t("comentariosCliete")}</StyledTableCell>
+            <StyledTableCell>{t("status")}</StyledTableCell>
+            <StyledTableCell>{t("acciones")}:</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -128,14 +130,14 @@ export default function TableVisit({ visits }) {
               </StyledTableCell>
               <StyledTableCell data-label="Status:" status={visit.status}>
                 {visit.status === 4
-                  ? "Has visitado al cliente, pero él no asistió a la reunión."
+                  ? t("noAsistió")
                   : visit.status === 3
-                  ? "Has visitado al cliente y han alcanzado un acuerdo."
+                  ? t("clienteVisitado")
                   : visit.status === 2
-                  ? "Visita Aprobada."
+                  ? t("visitaAprobada")
                   : visit.status === 1
-                  ? "Visita No Aprobada."
-                  : "Status Desconocido"}
+                  ? t("visitaNoAprobada")
+                  : t("desconocido")}
               </StyledTableCell>
               <StyledTableCell data-label="Acciones">
                 <Link to={`/DetailVisits/${visit.id}`}>

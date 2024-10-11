@@ -16,6 +16,7 @@ import { es } from "date-fns/locale";
 import React, { useContext } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
 import EditVisit from "../../containers/Visits/EditVisit";
+import { useTranslation } from "react-i18next";
 
 const statusColors = {
   1: "red",
@@ -72,6 +73,7 @@ const TableContainerResponsive = styled(TableContainer)(({ theme }) => ({
 }));
 
 export default function TableVisitClient({ visitsClient }) {
+  const { t } = useTranslation();
   const { DeleteVisitClient } = useContext(VisitContext);
 
   const [openModalVisit, setOpenModalVisit] = React.useState(false);
@@ -92,13 +94,13 @@ export default function TableVisitClient({ visitsClient }) {
       <Table aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Mi Nombre:</StyledTableCell>
-            <StyledTableCell>Mi Teléfono:</StyledTableCell>
-            <StyledTableCell>Mi Correo Electrónico:</StyledTableCell>
-            <StyledTableCell>Fecha Registrada:</StyledTableCell>
-            <StyledTableCell>Mi Mensaje:</StyledTableCell>
-            <StyledTableCell>Status:</StyledTableCell>
-            <StyledTableCell>Acciones:</StyledTableCell>
+            <StyledTableCell>{t("miNombre")}</StyledTableCell>
+            <StyledTableCell>{t("miTelefono")}</StyledTableCell>
+            <StyledTableCell>{t("miEmail")}</StyledTableCell>
+            <StyledTableCell>{t("fechaVisita")}</StyledTableCell>
+            <StyledTableCell>{t("miMensaje")}</StyledTableCell>
+            <StyledTableCell>{t("status")}</StyledTableCell>
+            <StyledTableCell>{t("acciones")}</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -120,7 +122,7 @@ export default function TableVisitClient({ visitsClient }) {
                   { locale: es }
                 )}
               </StyledTableCell>
-              <StyledTableCell data-label="Mi Mensaje:">
+              <StyledTableCell data-label="Mi Men   saje:">
                 {visit.message}
               </StyledTableCell>
               <StyledTableCell data-label="Status:" status={visit.status}>

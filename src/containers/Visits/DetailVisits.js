@@ -16,6 +16,7 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import ReportContext from "../../context/ReportVisits/ReportContext";
 import MultimediaProperty from "../../components/PropertyDetails/MultimediaProperty";
 import ReportBooking from "./ReportBooking";
+import { useTranslation } from "react-i18next";
 
 const formatPrice = (price) => {
   return new Intl.NumberFormat("es-MX", {
@@ -26,6 +27,7 @@ const formatPrice = (price) => {
 };
 
 export default function DetailVisits(props) {
+  const { t } = useTranslation();
   const type_user = localStorage.getItem("type_user");
   const { id } = props.match.params;
   const { reports, GetReportsVisits, AcceptVisit, NotAcceptVisit } =
@@ -69,7 +71,7 @@ export default function DetailVisits(props) {
                   variant="h5"
                   sx={{ color: "#ffb300" }}
                 >
-                  Información de la Propiedad:
+                  {t("informacionProp")}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -91,7 +93,8 @@ export default function DetailVisits(props) {
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
                   <PersonIcon sx={{ color: "#4CAF50", marginRight: 1 }} />
-                  De: {propertyData.owner.name} {propertyData.owner.last_name}
+                  {t("de")} {propertyData.owner.name}{" "}
+                  {propertyData.owner.last_name}
                 </Typography>
               </Grid>
               {propertyData.user_inm && (
@@ -107,7 +110,7 @@ export default function DetailVisits(props) {
                     }}
                   >
                     <PersonIcon sx={{ color: "#FF9800", marginRight: 1 }} />
-                    Asesor: {propertyData.user_inm.name}{" "}
+                    {t("asesorI")} {propertyData.user_inm.name}{" "}
                     {propertyData.user_inm.last_name}
                   </Typography>
                 </Grid>
@@ -120,7 +123,7 @@ export default function DetailVisits(props) {
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
                   <AttachMoneyIcon sx={{ color: "#FFC107", marginRight: 1 }} />
-                  En: {name} {formatPrice(final_price)} MXN
+                  {t("en")} {name} {formatPrice(final_price)} MXN
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -141,7 +144,7 @@ export default function DetailVisits(props) {
                   variant="h5"
                   sx={{ color: "#ffb300" }}
                 >
-                  Detalles de la Visita:
+                  {t("detalleVisita")}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -152,7 +155,8 @@ export default function DetailVisits(props) {
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
                   <PersonIcon sx={{ color: "#3F51B5", marginRight: 1 }} />
-                  Nombre del Cliente: {bookingData.name} {bookingData.last_name}
+                  {t("nombreCliente")} {bookingData.name}{" "}
+                  {bookingData.last_name}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -163,7 +167,7 @@ export default function DetailVisits(props) {
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
                   <EmailIcon sx={{ color: "#4CAF50", marginRight: 1 }} />
-                  Correo Electrónico: {bookingData.email}
+                  {t("email")} {bookingData.email}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -174,7 +178,7 @@ export default function DetailVisits(props) {
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
                   <PhoneIcon sx={{ color: "#FF9800", marginRight: 1 }} />
-                  Número de Teléfono: {bookingData.phone}
+                  {t("numeroTelefono")} {bookingData.phone}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -187,7 +191,7 @@ export default function DetailVisits(props) {
                   <CalendarTodayIcon
                     sx={{ color: "#E91E63", marginRight: 1 }}
                   />
-                  Fecha Registrada de la Visita:{" "}
+                  {t("fechaVisita")}
                   {format(
                     new Date(bookingData.created_at),
                     "dd 'de' MMMM 'de' yyyy 'a las' HH:mm",
@@ -203,7 +207,7 @@ export default function DetailVisits(props) {
                   sx={{ color: "black", display: "flex", alignItems: "center" }}
                 >
                   <CommentIcon sx={{ color: "#009688", marginRight: 1 }} />
-                  Comentarios del Cliente: {bookingData.message}
+                  {t("comentariosCliete")} {bookingData.message}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -219,7 +223,7 @@ export default function DetailVisits(props) {
                         color="success"
                         startIcon={<DoneAllIcon />}
                       >
-                        ¿Si asistió a la visita?
+                        {t("siAsistioVisita")}
                       </Button>
                     )}
                     {bookingData.status === 2 && (
@@ -229,7 +233,7 @@ export default function DetailVisits(props) {
                         color="error"
                         startIcon={<CloseIcon />}
                       >
-                        ¿No asistió a la visita?
+                        {t("noAsistioVisita")}
                       </Button>
                     )}
                   </Stack>
