@@ -23,7 +23,6 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import HomeIcon from "@mui/icons-material/Home";
 import CategoryIcon from "@mui/icons-material/Category";
 import SettingsIcon from "@mui/icons-material/Settings";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import HolidayVillageIcon from "@mui/icons-material/HolidayVillage";
 import GroupIcon from "@mui/icons-material/Group";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
@@ -31,9 +30,7 @@ import AuthContext from "../../context/auth/AuthContext";
 import { useContext, useEffect } from "react";
 import VisitContext from "../../context/Visits/VisitContext";
 import { useTranslation } from "react-i18next";
-import SellIcon from "@mui/icons-material/Sell";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
-import ApartmentIcon from "@mui/icons-material/Apartment";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 
 import {
@@ -113,13 +110,8 @@ const Drawer = styled(MuiDrawer, {
 
 export default function Header({ children }) {
   const { t } = useTranslation();
-  const {
-    visits,
-    GetVisitPending,
-    visitsApproved,
-    visitsClient,
-    GetVisitClient,
-  } = useContext(VisitContext);
+  const { visits, GetVisitPending, visitsClient, GetVisitClient } =
+    useContext(VisitContext);
   useEffect(() => {
     GetVisitPending();
     GetVisitClient();
@@ -133,9 +125,8 @@ export default function Header({ children }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  {
-    /**Componentes del menu */
-  }
+
+  /**Componentes del menu */
   const AA = [
     {
       name: t("inicio"),
@@ -420,6 +411,17 @@ export default function Header({ children }) {
       ),
     },
     {
+      name: t("visitaSolicitada"),
+      value: "/VisitAccept",
+      icon: (
+        <Tooltip title={t("visitaSolicitada")} placement="right">
+          <Badge badgeContent={visitsClient.length} color="error">
+            <MarkEmailReadIcon />
+          </Badge>
+        </Tooltip>
+      ),
+    },
+    {
       name: t("miPerfil"),
       value: "/Perfil",
       icon: (
@@ -527,6 +529,17 @@ export default function Header({ children }) {
       ),
     },
     {
+      name: t("visitaSolicitada"),
+      value: "/VisitAccept",
+      icon: (
+        <Tooltip title={t("visitaSolicitada")} placement="right">
+          <Badge badgeContent={visitsClient.length} color="error">
+            <MarkEmailReadIcon />
+          </Badge>
+        </Tooltip>
+      ),
+    },
+    {
       name: t("miPerfil"),
       value: "/Perfil",
       icon: (
@@ -544,7 +557,6 @@ export default function Header({ children }) {
         position="fixed"
         open={open}
         sx={{
-          background: "rgb(255,255,255)",
           background:
             "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(242,180,67,1) 73%, rgba(241,173,49,1) 80%)",
         }}
