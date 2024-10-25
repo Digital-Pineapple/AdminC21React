@@ -15,6 +15,7 @@ import {
 import MethodGet, { MethodDelete, MethodPost } from "../../config/service";
 import Swal from "sweetalert2";
 const VisitState = ({ children }) => {
+  // Estado inicial
   const initialState = {
     visits: [],
     visitsApproved: [],
@@ -23,8 +24,7 @@ const VisitState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(VisitReducer, initialState);
-
-  //Consulta todas las visitas para admin y tipo de usuario
+  // Esta función consulta todas las visitas disponibles para el administrador y según el tipo de usuario
   const GetVisitPending = () => {
     let user_id = localStorage.getItem("user_id");
     let type_user = localStorage.getItem("type_user");
@@ -54,8 +54,7 @@ const VisitState = ({ children }) => {
         });
     }
   };
-
-  //Elimina las visitas
+  // Esta función elimina las visitas registradas
   const DeleteVisit = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -91,8 +90,7 @@ const VisitState = ({ children }) => {
       }
     });
   };
-
-  //Elimina las visitas del cleinte
+  // Esta función elimina las visitas registradas del cliente
   const DeleteVisitClient = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -128,8 +126,7 @@ const VisitState = ({ children }) => {
       }
     });
   };
-
-  // Acepta una visita
+  // Esta función acepta una visita programada
   const AcceptVisit = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -167,8 +164,7 @@ const VisitState = ({ children }) => {
       }
     });
   };
-
-  // Cancela una visita
+  // Esta función cancela una visita programada
   const BackPendingVisit = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -206,8 +202,7 @@ const VisitState = ({ children }) => {
       }
     });
   };
-
-  //Consulta las visitas del cliente
+  // Esta función consulta las visitas registradas del cliente
   const GetVisitClient = () => {
     let user_id = localStorage.getItem("user_id");
     let type_user = localStorage.getItem("type_user");
@@ -242,8 +237,7 @@ const VisitState = ({ children }) => {
         });
     }
   };
-
-  //Edita la informacion de las visitas del cliente
+  // Esta función edita la información de las visitas registradas del cliente
   const EditVisit = (data) => {
     let url = `/bookEdit/${data.id}`;
     MethodPost(url, data)
@@ -266,8 +260,7 @@ const VisitState = ({ children }) => {
         });
       });
   };
-
-  //Descarga una pdf del reporte de la visita
+  // Esta función descarga un PDF con el reporte de la visita
   const DownloadPDF = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",

@@ -2,11 +2,13 @@ import { types, GET_USER_ME, UPDATE_INFO, USER_CHANGEPHOTO } from "../../types";
 
 export default (state, action) => {
   switch (action.type) {
+    // Caso para el registro de usuario
     case types.REGISTRO_EXITOSO:
       return {
         ...state,
         autenticado: false,
       };
+    // Caso para el inicio de sesión
     case types.LOGIN_EXITOSO:
       localStorage.setItem("token", action.payload.access_token);
       return {
@@ -14,6 +16,7 @@ export default (state, action) => {
         autenticado: true,
         cargando: false,
       };
+    // Caso para obtener el usuario autenticado
     case types.OBTENER_USUARIO:
       return {
         ...state,
@@ -21,6 +24,7 @@ export default (state, action) => {
         usuario: action.payload,
         cargando: false,
       };
+    // Caso para obtener la información de los usuarios
     case GET_USER_ME:
       return {
         ...state,
@@ -28,6 +32,7 @@ export default (state, action) => {
         success: false,
         ErrorsApi: [],
       };
+    // Caso para editar la información de los usuarios
     case UPDATE_INFO:
       return {
         ...state,
@@ -37,6 +42,7 @@ export default (state, action) => {
           ...action.payload,
         },
       };
+    // Caso para cambiar la foto de perfil de los usuarios
     case USER_CHANGEPHOTO:
       return {
         ...state,
@@ -46,12 +52,14 @@ export default (state, action) => {
           ...action.payload,
         },
       };
+    // Caso para cambiar la contraseña de los usuarios
     case types.USER_CHANGEPASSWORD:
       return {
         ...state,
         autenticado: true,
         cargando: false,
       };
+    // Caso para cerrar la sesión de los usuarios
     case types.LOGIN_ERROR:
     case types.CERRAR_SESION:
       localStorage.removeItem("token");

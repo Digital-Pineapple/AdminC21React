@@ -10,7 +10,7 @@ import {
   ACCEPT_VISIT_CLIENT,
   NOT_ACCEPT_VISIT_CLIENT,
 } from "../../types";
-
+// Estado inicial
 const ReportState = ({ children }) => {
   const initialState = {
     reports: [],
@@ -19,7 +19,7 @@ const ReportState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(ReportReducer, initialState);
-  // Get de los reportes
+  // Esta función obtiene los reportes asociados a su propiedad
   const GetReportsVisits = (id) => {
     let url = `/showVisit/${id}`;
     MethodGet(url)
@@ -33,8 +33,7 @@ const ReportState = ({ children }) => {
         console.log(error);
       });
   };
-
-  //Alta de un reporte de las visitas
+  // Esta función registra un nuevo reporte de visitas
   const AddReportVisits = (data) => {
     let url = "/reportBooking";
     MethodPost(url, data)
@@ -57,8 +56,7 @@ const ReportState = ({ children }) => {
         });
       });
   };
-
-  //Edita un reporte
+  // Esta función edita un reporte existente
   const EditReportVisits = (data) => {
     let url = `/reportBooking/${data.id}`;
     MethodPut(url, data)
@@ -81,8 +79,7 @@ const ReportState = ({ children }) => {
         });
       });
   };
-
-  //
+  // Esta función verifica si el cliente asistió a la visita
   const AcceptVisit = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -119,8 +116,7 @@ const ReportState = ({ children }) => {
       }
     });
   };
-
-  //
+  // Esta función verifica si el cliente no asistió a la visita
   const NotAcceptVisit = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",

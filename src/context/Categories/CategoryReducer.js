@@ -7,6 +7,7 @@ import {
 } from "../../types/index";
 const CategoryReducer = (state, action) => {
   switch (action.type) {
+    // Caso para consultar las categorías
     case GET_ALL_CATEGORIES:
       return {
         ...state,
@@ -14,11 +15,13 @@ const CategoryReducer = (state, action) => {
         success: false,
         ErrorsApi: [],
       };
+    // Caso para el registro de categorías
     case ADD_CATEGORY:
       return {
         ...state,
         categories: [action.payload, ...state.categories],
       };
+    // Caso para la edición de categorías 
     case UPDATE_CATEGORY:
       return {
         ...state,
@@ -30,6 +33,7 @@ const CategoryReducer = (state, action) => {
           return category;
         }),
       };
+    // Caso para la eliminación de categorías
     case DELETE_CATEGORY:
       return {
         ...state,

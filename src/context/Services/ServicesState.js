@@ -15,7 +15,7 @@ import {
   UPDATE_SERVICE,
 } from "../../types";
 const ServicesState = ({ children }) => {
-  //estado inicial
+  // Estado inicial
   const initialState = {
     services: [],
     service: null,
@@ -23,7 +23,7 @@ const ServicesState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(ServicesReducer, initialState);
-  //Consulta todos los servicios 
+  // Esta función consulta todos los servicios disponibles
   const GetServices = () => {
     let url = "/services";
     MethodGet(url)
@@ -37,7 +37,7 @@ const ServicesState = ({ children }) => {
         console.log(error);
       });
   };
-  //Agrega un servicio
+  // Esta función agrega un nuevo servicio al sistema
   const AddService = (data) => {
     let url = "/services";
     MethodPost(url, data)
@@ -60,7 +60,7 @@ const ServicesState = ({ children }) => {
         });
       });
   };
-  //Edita un servicio
+  // Esta función edita un servicio existente en el sistema
   const ChangeService = (data) => {
     let url = `/services/${data.id}`;
     MethodPut(url, data)
@@ -83,7 +83,7 @@ const ServicesState = ({ children }) => {
         });
       });
   };
-  //Eliminar un servicio
+  // Esta función elimina un servicio del sistema
   const DeleteService = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",

@@ -10,6 +10,7 @@ import {
   TOTAL_USER_INM,
 } from "../../types";
 
+// Estado inicial
 const DashboardState = ({ children }) => {
   const initialState = {
     total_users: [],
@@ -22,7 +23,7 @@ const DashboardState = ({ children }) => {
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
 
-  //Consulta el total de propiedades
+  // Esta función consulta el total de propiedades.
   const TotalProperties = () => {
     let type_user = localStorage.getItem("type_user");
     let user_id = localStorage.getItem("user_id");
@@ -52,7 +53,7 @@ const DashboardState = ({ children }) => {
         });
     }
   };
-  //Consulta los inmuebles en venta
+  // Esta función consulta el total de inmuebles en venta.
   const TotalPropertiesSold = () => {
     let type_user = localStorage.getItem("type_user");
     let user_id = localStorage.getItem("user_id");
@@ -82,7 +83,7 @@ const DashboardState = ({ children }) => {
         });
     }
   };
-  //Consulta los inmuebles en renta
+  // Esta función consulta el total de inmuebles en renta.
   const TotalPropertiesRent = () => {
     let type_user = localStorage.getItem("type_user");
     let user_id = localStorage.getItem("user_id");
@@ -112,7 +113,7 @@ const DashboardState = ({ children }) => {
         });
     }
   };
-  //Consulta todos los usuarios
+  // Esta función consulta el total de usuarios.
   const GetTotalUsers = () => {
     let url = "/countUser";
     MethodGet(url)
@@ -126,7 +127,7 @@ const DashboardState = ({ children }) => {
         console.log(error);
       });
   };
-  //Consulta todos los asesores dependiendo de la inmobiliaria
+  // Esta función consulta el total de asesores por inmobiliaria
   const GetTotalUsersInm = () => {
     let type_user = localStorage.getItem("type_user");
     let user_id = localStorage.getItem("user_id");

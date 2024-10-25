@@ -6,6 +6,7 @@ import {
 } from "../../types/index";
 const ServicesReducer = (state, action) => {
   switch (action.type) {
+    // Case que consulta todos los servicios disponibles
     case GET_ALL_SERVICES:
       return {
         ...state,
@@ -13,11 +14,13 @@ const ServicesReducer = (state, action) => {
         success: false,
         ErrorsApi: [],
       };
+    // Case que agrega un nuevo servicio al sistema
     case ADD_SERVICE:
       return {
         ...state,
         services: [action.payload, ...state.services],
       };
+    // Case que edita un servicio existente en el sistema
     case UPDATE_SERVICE:
       return {
         ...state,
@@ -29,6 +32,7 @@ const ServicesReducer = (state, action) => {
           return service;
         }),
       };
+    // Case que elimina un servicio del sistema
     case DELETE_SERVICE:
       return {
         ...state,

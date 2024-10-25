@@ -4,7 +4,6 @@ import AuthReducer from "./AuthReducer";
 import MethodGet, { MethodPost, MethodPut } from "../../config/service";
 import headerConfig from "../../config/imageHeaders";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
 
 /**Importar componente token headers */
 import tokenAuth from "../../config/TokenAuth";
@@ -21,7 +20,7 @@ import Swal from "sweetalert2";
 
 const AuthState = (props) => {
   const { t } = useTranslation();
-  //Agregar state inicial
+  // Estado inicial
   const initialState = {
     token: localStorage.getItem("token"),
     autenticado: false,
@@ -34,7 +33,7 @@ const AuthState = (props) => {
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
-  //Retorna el usuario autenticado
+  //Esta función retorna el usuario autenticado
   const usuarioAutenticado = async (datos) => {
     const token = localStorage.getItem("token");
 
@@ -58,7 +57,7 @@ const AuthState = (props) => {
       });
   };
 
-  //Cuando el usuario inicia sesion
+  //Esta función inicia sesion a los usuarios del admin
   const iniciarSesion = (datos) => {
     let url = "/login";
     MethodPost(url, datos)
@@ -81,7 +80,7 @@ const AuthState = (props) => {
       });
   };
 
-  //Registro de usuario de la pagina web
+  //Esta función registra a los usuarios del admin
   const AddUser = (datos) => {
     let url = "/register";
     MethodPost(url, datos)
@@ -130,7 +129,7 @@ const AuthState = (props) => {
       });
   };
 
-  // Función para verificar el código de verificación
+  //Esta función verifica el código de verificación de su correo
   const VerifyCode = (datos, token) => {
     tokenAuth(token);
     let url = "/verify-account-check";
@@ -160,7 +159,7 @@ const AuthState = (props) => {
       });
   };
 
-  //Edita la informacion del usuario
+  //Esta función edita la información de los usuarios
   const EditInfo = (data) => {
     let url = `/updateProfile`;
     MethodPut(url, data)
@@ -187,7 +186,7 @@ const AuthState = (props) => {
       });
   };
 
-  //Registra un nuevo usuario
+  //Esta función registra a los usuarios dentro del admin
   const NewUser = (datos) => {
     let url = "/register";
     MethodPost(url, datos)
@@ -215,7 +214,7 @@ const AuthState = (props) => {
       });
   };
 
-  //Registra un nuevo asesor
+  //Esta función registra a los asesores dentro del admin
   const NewUserInm = (datos) => {
     let url = "/registerUserInm";
     MethodPost(url, datos)
@@ -243,7 +242,7 @@ const AuthState = (props) => {
       });
   };
 
-  //Cuando el usuario cambia de contraseña
+  //Esta función cambia la contraseña de los usuarios
   const ChangePasswordUser = (datos) => {
     let url = "/resetPassword";
     MethodPost(url, datos)
@@ -269,7 +268,7 @@ const AuthState = (props) => {
       });
   };
 
-  //Restablecer la contraseña
+  //Esta función recupera la contraseña de los usuarios
   const ResetPassword = (datos) => {
     let url = "/forgotPassword";
     MethodPost(url, datos)
@@ -291,7 +290,7 @@ const AuthState = (props) => {
       });
   };
 
-  //Cambia la Imagen de Perfil
+  //Esta función cambia la imagen de perfil de los usuarios
   const ChangePhoto = (data) => {
     Swal.fire({
       title: t("agregarImagen"),
@@ -332,7 +331,7 @@ const AuthState = (props) => {
     });
   };
 
-  //Consulta la informacion del usuario autentivcado
+  //Esta función consulta la información del usuario autenticado
   const UserMe = () => {
     let url = "/me";
     MethodGet(url)
@@ -345,7 +344,7 @@ const AuthState = (props) => {
       .catch((error) => {});
   };
 
-  //Cierrra sesion del usuario
+  //Esta función cierra la sesión de los usuarios
   const cerrarSesion = () => {
     localStorage.removeItem("user_id");
     localStorage.removeItem("type_user");

@@ -17,7 +17,7 @@ import {
 } from "../../types";
 import { t } from "i18next";
 const UsersState = ({ children }) => {
-  //estado inicial
+  // Estado inicial
   const initialState = {
     users: [],
     user: null,
@@ -25,7 +25,7 @@ const UsersState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(UsersReducer, initialState);
-  //Consulta los usuarios
+  // Esta función consulta la lista de usuarios
   const GetUsers = () => {
     let user_id = localStorage.getItem("user_id");
     let type_user = localStorage.getItem("type_user");
@@ -55,7 +55,7 @@ const UsersState = ({ children }) => {
         });
     }
   };
-  //Agrega un usuario el admin
+  // Esta función agrega un nuevo usuario en el admin
   const AddUser = (data) => {
     let url = "/users";
     MethodPost(url, data)
@@ -78,8 +78,7 @@ const UsersState = ({ children }) => {
         });
       });
   };
-
-  //Edita un usuario
+  // Esta función edita la información de un usuario existente
   const ChangeUser = (data) => {
     let url = "/updateTypeUser/" + data.id;
     MethodPut(url, data)
@@ -102,8 +101,7 @@ const UsersState = ({ children }) => {
         });
       });
   };
-
-  //Edita la infromacion de un asesor
+  // Esta función edita la información de un asesor existente
   const ChangeUserInm = (data) => {
     let url = "/editUserInm/" + data.id;
     MethodPost(url, data)
@@ -126,8 +124,7 @@ const UsersState = ({ children }) => {
         });
       });
   };
-
-  //Elimina un usuario
+  // Esta función elimina un usuario del sistema
   const DeleteUsers = (id) => {
     Swal.fire({
       title: t("estasSeguro"),
@@ -163,8 +160,7 @@ const UsersState = ({ children }) => {
       }
     });
   };
-
-  //Elimina un asesor
+  // Esta función elimina un asesor del sistema
   const DeleteUsersInm = (id) => {
     Swal.fire({
       title: t("estasSeguro"),

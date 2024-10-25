@@ -15,7 +15,7 @@ import MethodGet, {
 } from "../../config/service";
 import Swal from "sweetalert2";
 const CategoryState = ({ children }) => {
-  //estado inicial
+  // Estado inicial
   const initialState = {
     categories: [],
     category: null,
@@ -23,7 +23,7 @@ const CategoryState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(CategoryReducer, initialState);
-  //Consulta las categorias
+  // Esta función consulta las categorías
   const GetCategories = () => {
     let url = "/categories";
     MethodGet(url)
@@ -37,7 +37,7 @@ const CategoryState = ({ children }) => {
         console.log(error);
       });
   };
-  //Agrega una categoria
+  // Esta función registra las categorías
   const AddCategory = (data) => {
     let url = "/categories";
     MethodPost(url, data)
@@ -60,7 +60,7 @@ const CategoryState = ({ children }) => {
         });
       });
   };
-  //Edita una categoria
+  // Esta función edita las categorías
   const ChangeCategory = (data) => {
     let url = `/categories/${data.id}`;
     MethodPut(url, data)
@@ -83,7 +83,7 @@ const CategoryState = ({ children }) => {
         });
       });
   };
-  //Elimina una categoria
+  // Esta función elimina las categorías
   const DeleteCategory = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",

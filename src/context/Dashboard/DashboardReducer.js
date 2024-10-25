@@ -9,30 +9,35 @@ import {
 
 const DashboardReducer = (state, action) => {
   switch (action.type) {
+    // Case para consultar el total de propiedades
     case TOTAL_PROPERTIES:
       return {
         ...state,
         total_properties: action.payload,
         ErrorsAPI: [],
       };
+    // Case para consultar el total de inmuebles en renta
     case TOTAL_PROPERTIES_RENT:
       return {
         ...state,
         total_properties_rent: action.payload,
         ErrorsAPI: [],
       };
+    // Case para consultar el total de inmuebles en venta
     case TOTAL_PROPERTIES_SOLD:
       return {
         ...state,
         total_properties_sold: action.payload,
         ErrorsAPI: [],
       };
+    // Case para consultar el total de usuarios
     case TOTAL_USER:
       return {
         ...state,
         total_users: action.payload,
         ErrorsAPI: [],
       };
+    // Case para consultar el total de asesores por inmobiliaria
     case TOTAL_USER_INM:
       return {
         ...state,

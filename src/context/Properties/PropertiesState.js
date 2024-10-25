@@ -28,6 +28,7 @@ import {
 } from "../../types";
 import Swal from "sweetalert2";
 import PropertiesContext from "./PropertiesContext";
+// Estado inicial
 const PropertiesState = ({ children }) => {
   const { t } = useTranslation();
   const initialState = {
@@ -37,7 +38,7 @@ const PropertiesState = ({ children }) => {
     success: false,
   };
   const [state, dispatch] = useReducer(PropertiesReducer, initialState);
-  //Consulta todas las propiedades publicadas
+  // Esta función consulta todas las propiedades que están publicadas
   const GetPropertiesPublish = () => {
     dispatch({
       type: CLEAN_PROPERTIES,
@@ -70,7 +71,7 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
-  //Consulta todas las propiedades en venta
+  // Esta función consulta todas las propiedades que están en venta
   const GetPropertiesPublishSold = () => {
     dispatch({
       type: CLEAN_PROPERTIES,
@@ -103,7 +104,7 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
-  //Consulta todas las propiedades rentadas
+  // Esta función consulta todas las propiedades que están rentadas
   const GetPropertiesPublishRent = () => {
     dispatch({
       type: CLEAN_PROPERTIES,
@@ -136,7 +137,7 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
-  //Consulta las propiedades para buscar por filtros
+  // Esta función consulta las propiedades publicadas en el módulo de búsqueda de propiedades
   const GetPropertiesPublishSearch = () => {
     dispatch({
       type: CLEAN_PROPERTIES,
@@ -161,7 +162,7 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
-  //Consulta todas las propiedades en pendiente
+  // Esta función consulta todas las propiedades que están en estado pendiente
   const GetPropertiesPending = () => {
     dispatch({
       type: CLEAN_PROPERTIES,
@@ -199,7 +200,7 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
-  //Agrega una propiedad
+  // Esta función agrega una nueva propiedad al sistema
   const AddProperty = (data) => {
     let url = "/properties";
     let type_user = localStorage.getItem("type_user");
@@ -252,6 +253,7 @@ const PropertiesState = ({ children }) => {
         });
     }
   };
+  // Esta función consulta las propiedades según los filtros de búsqueda aplicados
   const SearchProperties = (data) => {
     let url = `/properties`;
     MethodGet(url, {
@@ -278,7 +280,7 @@ const PropertiesState = ({ children }) => {
         });
       });
   };
-  //Edita una propiedad
+  // Esta función edita una propiedad existente
   const UpdateProperty = (data) => {
     let url = "/update/p/" + data.id;
     MethodPost(url, data)
@@ -303,7 +305,7 @@ const PropertiesState = ({ children }) => {
         });
       });
   };
-  //Descarga una ficha tecnica de la propiedad
+  // Esta función descarga la ficha técnica de la propiedad
   const DownloadPDF = (id) => {
     Swal.fire({
       title: t("estasSeguro"),
@@ -337,7 +339,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
-  //Agrega las fotos de la propiedad
+  // Esta función agrega las fotos asociadas a la propiedad
   const AddMultimediaProperty = (data) => {
     Swal.fire({
       title: t("agregarImagen"),
@@ -377,7 +379,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
-  //Elimina una propiedad
+  // Esta función elimina una propiedad del sistema
   const DeleteProperty = (id) => {
     Swal.fire({
       title: t("estasSeguro"),
@@ -413,7 +415,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
-  // Publica una propiedad
+  // Esta función publica una nueva propiedad en el sistema
   const PublishProperty = (id) => {
     Swal.fire({
       title: t("estasSeguro"),
@@ -453,7 +455,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
-  //Regresa la propiedad a pendiente
+  // Esta función regresa la propiedad al estado de pendiente
   const BackPendingProperty = (id) => {
     Swal.fire({
       title: t("estasSeguro"),
@@ -493,7 +495,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
-  // Pasa la propiedad a vendida
+  // Esta función marca la propiedad como vendida
   const SoldProperty = (id) => {
     Swal.fire({
       title: t("estasSeguro"),
@@ -533,7 +535,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
-  // Pasa la propiedad a rentada
+  // Esta función marca la propiedad como rentada
   const RentProperty = (id) => {
     Swal.fire({
       title: t("estasSeguro"),
@@ -573,8 +575,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
-
-  // Pasa la propiedad de vendida a publicada
+  // Esta función regresa la propiedad de vendida a estado publicado
   const SoldToPublished = (id) => {
     Swal.fire({
       title: t("estasSeguro"),
@@ -614,8 +615,7 @@ const PropertiesState = ({ children }) => {
       }
     });
   };
-
-  // Pasa la propiedad de rentada  a publicada
+  // Esta función regresa la propiedad de rentada a estado publicado
   const RentedToPublished = (id) => {
     Swal.fire({
       title: t("estasSeguro"),
