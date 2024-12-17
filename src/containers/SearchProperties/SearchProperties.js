@@ -35,6 +35,12 @@ export default function SearchProperties() {
     SearchProperties(data);
   }, [name, category, service, state, municipality]);
 
+  useEffect(() => {
+    if (!state) {
+      setMunicipality("");
+    }
+  }, [state]);
+
   const renderSearchCategory = service !== undefined && service !== "";
 
   return (
@@ -64,12 +70,14 @@ export default function SearchProperties() {
                     <Grid item xs={12} md={6} lg={4}>
                       <SearchState detectarCambiosState={setState} />
                     </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
-                      <SearchMunicipality
-                        state_id={state}
-                        detectarCambiosMunicipality={setMunicipality}
-                      />
-                    </Grid>
+                    {state && (
+                      <Grid item xs={12} md={6} lg={4}>
+                        <SearchMunicipality
+                          state_id={state}
+                          detectarCambiosMunicipality={setMunicipality}
+                        />
+                      </Grid>
+                    )}
                   </Grid>
                   <TabsProperties />
                 </TabPanel>

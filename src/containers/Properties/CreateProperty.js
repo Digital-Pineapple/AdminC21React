@@ -327,13 +327,29 @@ const PropertiesCreate = () => {
               display="flex"
               justifyContent="center"
             >
+              <RemodelOptions
+                selectedValueRemodel={selectedValueRemodel}
+                setSelectedValueRemodel={setSelectedValueRemodel}
+                handleChangeRemodel={handleChangeRemodel}
+              />
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={2}
+              xl={2}
+              display="flex"
+              justifyContent="center"
+            >
               <ParkingOptions
                 setSelectedValueParking={setSelectedValueParking}
                 selectedValueParking={selectedValueParking}
                 handleChangeParking={handleChangeParking}
               />
             </Grid>
-            {/* {selectedValueParking === "si" && (
+            {selectedValueParking === "si" && (
               <Grid item xs={12} sm={12} md={6} lg={2} xl={2}>
                 <TextField
                   fullWidth
@@ -359,23 +375,7 @@ const PropertiesCreate = () => {
                   })}
                 />
               </Grid>
-            )} */}
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={2}
-              xl={2}
-              display="flex"
-              justifyContent="center"
-            >
-              <RemodelOptions
-                selectedValueRemodel={selectedValueRemodel}
-                setSelectedValueRemodel={setSelectedValueRemodel}
-                handleChangeRemodel={handleChangeRemodel}
-              />
-            </Grid>
+            )}
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Divider>
                 <Chip
@@ -463,7 +463,7 @@ const PropertiesCreate = () => {
                   fullWidth
                   variant="outlined"
                   type="text"
-                  label={t("quePorcentajeCompartir")}
+                  label={t("comisiónCompartida")}
                   name="commission"
                   error={errors.commission ? true : false}
                   helperText={errors?.commission?.message}

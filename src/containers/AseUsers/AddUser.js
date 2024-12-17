@@ -53,11 +53,12 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function NewUser({ modal, handleClose }) {
+export default function NewUser({ modal, handleClose, id }) {
   const { t } = useTranslation();
   const { NewUserInm } = React.useContext(AuthContext);
   const [role, saveRole] = React.useState(null);
   const user_id = localStorage.getItem("user_id");
+  const type_user = localStorage.getItem("type_user");
 
   const detectarCambiosRole = (value) => {
     saveRole(value);
@@ -104,7 +105,11 @@ export default function NewUser({ modal, handleClose }) {
   };
   const onSubmit = (data, e) => {
     data.type_user = role;
-    data.user_id = user_id;
+    if (type_user === "1") {
+      data.user_id = id;
+    } else if (type_user === "2") {
+      data.user_id = user_id;
+    }
     NewUserInm(data);
     handleClose();
   };

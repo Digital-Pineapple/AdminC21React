@@ -11,6 +11,15 @@ import NoDataComponent from "../../components/loading/NoDataComponent";
 const UsersInm = (props) => {
   const { id } = props.match.params;
   const [users, saveUsers] = useState([]);
+  const [openModal, setOpenModal] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenModal(false);
+  };
 
   useEffect(() => {
     let url = `/indexInm/${id}`;
@@ -38,6 +47,23 @@ const UsersInm = (props) => {
               : "No hay Asesores disponibles"}
           </Typography>
         </Grid>
+        <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
+          <Button
+            variant="contained"
+            fullWidth
+            onClick={handleClickOpen}
+            sx={{
+              color: "black",
+              backgroundColor: "#ffb734",
+              "&:hover": {
+                color: "black",
+                backgroundColor: "#ffb734 ",
+              },
+            }}
+          >
+            Agregar Asesor
+          </Button>
+        </Grid>
         {users.length > 0 ? (
           users.map((user) => (
             <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
@@ -49,6 +75,7 @@ const UsersInm = (props) => {
             <NoDataComponent />
           </Grid>
         )}
+        <AddUser id={id} modal={openModal} handleClose={handleClose} />
       </Grid>
     </Layout>
   );
