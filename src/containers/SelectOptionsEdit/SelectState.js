@@ -1,3 +1,13 @@
+/**
+ * `SelectState` es un componente que permite seleccionar un estado de una lista obtenida a través de una API.
+ * 
+ * Realiza una solicitud para cargar los estados disponibles y actualiza el estado seleccionado basado en el `address` proporcionado.
+ * Al cambiar el estado, se llama a `detectarCambiosState` para notificar el cambio.
+ * 
+ * Propiedades:
+ * - `detectarCambiosState`: Función para manejar el cambio de estado seleccionado.
+ * - `address`: Dirección con un ID que puede coincidir con un estado de la lista.
+ */
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";

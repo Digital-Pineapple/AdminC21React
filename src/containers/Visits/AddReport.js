@@ -1,3 +1,13 @@
+/**
+ * Componente `AddReport` que maneja la creación de un reporte de visita en un modal.
+ * - El modal contiene un formulario que permite ingresar varios detalles sobre la propiedad, como ubicación, espacios, estado, distribución, funcionalidad, precio, servicio, etc.
+ * - Cada opción de selección se maneja mediante un componente específico (por ejemplo, `OptionsReportLocation`, `OptionsReportEspacios`).
+ * - El formulario también incluye campos de texto como "¿Por qué?", "Comentarios" y "Observaciones" que deben ser completados por el usuario.
+ * - Los valores seleccionados para cada campo se gestionan con el estado del componente.
+ * - Los datos se envían al contexto `ReportContext` usando la función `AddReportVisits` al enviar el formulario.
+ * - El modal se controla mediante el estado `modal` que indica si está abierto o cerrado, y se cierra con `handleClose`.
+ * - El formulario se valida utilizando `react-hook-form`, y se muestran mensajes de error si no se completan los campos requeridos.
+ */
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";

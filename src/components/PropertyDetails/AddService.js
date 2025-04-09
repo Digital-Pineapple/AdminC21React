@@ -1,3 +1,15 @@
+/**
+ * El componente `AddService` es un formulario de diálogo que permite agregar un nuevo 
+ * servicio a una propiedad específica. El formulario incluye un campo de texto para 
+ * ingresar el nombre del servicio y se valida utilizando `react-hook-form`. 
+ * 
+ * Cuando el formulario se envía correctamente, se realiza una solicitud `POST` para 
+ * agregar el servicio mediante la función `MethodPost`. Si la solicitud es exitosa, 
+ * se muestra una alerta de éxito usando `Swal.fire`. En caso de error, se registra el 
+ * error en la consola. El formulario también está traducido utilizando `react-i18next` 
+ * para los textos. El componente se cierra después de que se guarda el servicio y se 
+ * reinicia el campo de texto para permitir la adición de otro servicio si es necesario.
+ */
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";

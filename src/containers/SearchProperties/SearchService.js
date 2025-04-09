@@ -1,3 +1,14 @@
+/**
+ * `SearchService` es un componente que permite a los usuarios seleccionar uno o más tipos de operación para la búsqueda de propiedades.
+ * - Los tipos de operación disponibles son "Renta", "Venta" y "Preventa", que son traducidos dinámicamente mediante `useTranslation` de `react-i18next`.
+ * - Utiliza un componente `Select` de Material-UI con la opción de seleccionar múltiples elementos.
+ * - Al seleccionar o deseleccionar un tipo de operación, se actualiza el estado local `personName` y se envía el valor actualizado al componente padre a través de la función `cambio`.
+ * - La lista de opciones se presenta con `Checkbox` para que el usuario pueda seleccionar múltiples operaciones a la vez.
+ * 
+ * Funcionalidades:
+ * - El valor seleccionado se muestra como una lista separada por comas utilizando `renderValue`.
+ * - El menú de selección se ajusta a un tamaño máximo de 250px y se permite un máximo de 4 elementos visibles sin desplazamiento.
+ */
 import * as React from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";

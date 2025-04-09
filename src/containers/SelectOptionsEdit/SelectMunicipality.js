@@ -1,3 +1,14 @@
+/**
+ * `SelectMunicipality` es un componente que permite seleccionar un municipio según el estado seleccionado.
+ * 
+ * Realiza una solicitud a la API para obtener los municipios de un estado y permite al usuario elegir uno.
+ * Al seleccionar un municipio, se llama a `detectarCambiosMunicipality` para notificar el cambio.
+ * 
+ * Propiedades:
+ * - `state_id` o `state`: ID del estado para cargar los municipios.
+ * - `municipality_id`: ID del municipio seleccionado por defecto.
+ * - `detectarCambiosMunicipality`: Función para manejar el cambio de municipio.
+ */
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";

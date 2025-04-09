@@ -1,3 +1,11 @@
+/**
+ * `AddRolesSelect` es un componente de selección que permite elegir el tipo de usuario (rol) de una lista predefinida.
+ * - Utiliza el componente `Select` de Material-UI para renderizar un desplegable con las opciones de rol.
+ * - Los roles disponibles son: "Inquilino (Rentar/Comprar)", "Asesor (Individual)", "Inmobiliaria" y "Admin", cada uno con un valor numérico correspondiente.
+ * - Al seleccionar un rol, el valor seleccionado es enviado a través de la función `detectarCambiosRole`, que es pasada como prop desde el componente padre.
+ * 
+ * El componente está diseñado para permitir que el usuario elija entre diferentes tipos de roles en una aplicación.
+ */
 import React, { useEffect, useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import MethodGet from "../../config/service";

@@ -1,3 +1,13 @@
+/**
+ * El componente `EditVisit` muestra un modal para editar los detalles de una visita. 
+ * Al cargar, obtiene los datos de la visita a través de una solicitud GET (`MethodGet`) usando el `id` de la visita.
+ * 
+ * Funcionalidad:
+ * 1. Recupera los datos de la visita mediante la API y los guarda en el estado `visitsClien`.
+ * 2. Usa `react-hook-form` para gestionar el formulario y validar los campos (nombre, apellido, teléfono, email, mensaje).
+ * 3. Al enviar el formulario, los datos modificados se envían a través del contexto `VisitContext` utilizando la función `EditVisit`.
+ * 4. El modal se controla con el prop `modal`, mostrando u ocultando el formulario de edición.
+ */
 import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";

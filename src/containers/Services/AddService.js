@@ -1,3 +1,18 @@
+/**
+ * `AddService` es un componente que muestra un cuadro de diálogo para agregar un nuevo servicio.
+ * 
+ * El formulario contiene un campo de texto donde el usuario puede ingresar el nombre del servicio. El formulario está validado para asegurar que el nombre no esté vacío, tenga una longitud mínima de 4 caracteres y una longitud máxima de 255 caracteres.
+ * 
+ * Al enviar el formulario, el servicio se agrega utilizando el contexto de `ServicesContext`, luego se cierra el cuadro de diálogo y se restablece el valor del campo de texto.
+ * 
+ * Propiedades:
+ * - `modal`: Indica si el cuadro de diálogo debe estar abierto o cerrado.
+ * - `handleClose`: Función que cierra el cuadro de diálogo.
+ * 
+ * Dependencias:
+ * - `ServicesContext`: Contexto que maneja la adición de servicios.
+ * - `react-hook-form`: Se utiliza para la gestión y validación del formulario.
+ */
 import * as React from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";

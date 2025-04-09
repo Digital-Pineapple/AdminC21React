@@ -1,3 +1,15 @@
+/**
+ * Componente `Perfil` que muestra la información del usuario y permite editarla.
+ * - Utiliza `useState`, `useEffect`, y `useContext` para gestionar el estado del usuario.
+ * - Permite cambiar la foto de perfil, editar la información, cambiar la contraseña y eliminar la cuenta.
+ * - Ofrece la opción de cambiar el idioma entre español y chino utilizando `i18next`.
+ * - Muestra un saludo personalizado según la hora del día.
+ * 
+ * Componentes clave:
+ * - `AttachFileMultimedia`: Modal para agregar multimedia al perfil.
+ * - `ResetPassword`: Modal para cambiar la contraseña.
+ * - `EditInfo`: Modal para editar información personal.
+ */
 import {
   Avatar,
   Box,

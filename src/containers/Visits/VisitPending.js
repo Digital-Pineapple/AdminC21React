@@ -1,3 +1,12 @@
+/**
+ * El componente `VisitPending` muestra la lista de visitas pendientes de aprobación.
+ * 
+ * Funcionalidad:
+ * 1. Recupera las visitas pendientes mediante el contexto `VisitContext` al cargar el componente.
+ * 2. Muestra el título "Solicitudes Visitas" utilizando `react-i18next` para la traducción.
+ * 3. Si existen visitas pendientes, las muestra en una tabla con el componente `TableVisit`.
+ * 4. Si no hay visitas pendientes, muestra un componente de carga `NoDataComponent`.
+ */
 import Layout from "../../components/layout/Layout";
 import { Grid, Typography } from "@mui/material";
 import TableVisit from "../../components/Cards/TableVisit";

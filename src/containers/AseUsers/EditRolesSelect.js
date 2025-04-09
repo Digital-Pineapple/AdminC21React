@@ -1,3 +1,12 @@
+/**
+ * `RolesSelect` es un componente que permite seleccionar el rol de un usuario (Admin, Asesor, Inmobiliaria, Inquilino).
+ * Utiliza un `Select` de Material-UI para mostrar las opciones y llama a la función `detectarCambiosRole` cada vez que se realiza una selección.
+ * El componente también utiliza `useEffect` para establecer el valor seleccionado cuando cambia el `type_user`.
+ * 
+ * Propiedades:
+ * - `detectarCambiosRole`: función que se llama cuando cambia el rol seleccionado.
+ * - `type_user`: rol del usuario que se debe establecer como valor inicial.
+ */
 import React, { useEffect, useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { array } from "yup";

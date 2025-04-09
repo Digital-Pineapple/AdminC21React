@@ -1,3 +1,10 @@
+/**
+ * El componente `MapsLoading` muestra una animación de carga personalizada para el mapa. 
+ * Utiliza el `Box` de MUI para centrar el contenido de manera vertical y horizontal, 
+ * y dentro de él, renderiza una imagen GIF de carga (`maps_loading.gif`). 
+ * El componente también utiliza el hook `makeStyles` para aplicar estilos personalizados 
+ * a la imagen y al texto en la vista.
+ */
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";

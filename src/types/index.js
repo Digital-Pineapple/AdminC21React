@@ -1,4 +1,4 @@
-//login e inicio de sesion
+// Inicio de sesion
 export const types = {
   MOSTRAR_ALERTA: "[AUTH] mostrar alerta",
   OCULTAR_ALERTA: "[AUTH] ocultar alerta",
@@ -9,20 +9,19 @@ export const types = {
   INICIAR_SESION: "[AUTH] inicia sesion",
   USER_CHANGEPASSWORD: "[AUTH] USER_CHANGEPASSWORD",
 };
-
-//Errors API
+// Errores Api
 export const SHOW_ERRORS_API = "SHOW_ERRORS_API";
-//categories
+// Categorias
 export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
 export const ADD_CATEGORY = "ADD_CATEGORY";
 export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
 export const DELETE_CATEGORY = "DELETE_CATEGORY";
-//services
+// Servicios
 export const GET_ALL_SERVICES = "GET_ALL_SERVICES";
 export const ADD_SERVICE = "ADD_SERVICE";
 export const UPDATE_SERVICE = "UPDATE_SERVICE";
 export const DELETE_SERVICE = "DELETE_SERVICE";
-//visits
+// Visitas
 export const GET_ALL_VISITS = "GET_ALL_VISITS";
 export const DELETE_VISITS = "DELETE_VISITS";
 export const ACCEPT_VISIT = "ACCEPT_VISIT";
@@ -30,13 +29,13 @@ export const BACK_PENDING_VISIT = "BACK_PENDING_VISIT";
 export const GET_ALL_VISITS_CLIENT = "GET_ALL_VISITS_CLIENT";
 export const UPDATE_VISIT = "UPDATE_VISIT";
 export const DELETE_VISITS_CLIENT = "DELETE_VISITS_CLIENT";
-//Reportes
+// Reportes
 export const ADD_REPORT = "ADD_REPORT";
 export const UPDATE_REPORT = "UPDATE_REPORT";
 export const GET_ALL_REPORT = "GET_ALL_REPORT";
 export const ACCEPT_VISIT_CLIENT = "ACCEPT_VISIT_CLIENT";
 export const NOT_ACCEPT_VISIT_CLIENT = "NOT_ACCEPT_VISIT_CLIENT";
-//users
+// Usuarios
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const ADD_USERS = "ADD_USERS";
 export const UPDATE_USERS = "UPDATE_USERS";
@@ -45,7 +44,7 @@ export const DELETE_USERS = "DELETE_USERS";
 export const GET_USER_ME = "GET_USER_ME";
 export const UPDATE_INFO = "UPDATE_INFO";
 export const USER_CHANGEPHOTO = "USER_CHANGEPHOTO";
-//properties
+// Propiedades
 export const CLEAN_PROPERTIES = "CLEAN_PROPERTIES";
 export const GET_ALL_PROPERTIES_PUBLISH = "GET_ALL_PROPERTIES_PUBLISH";
 export const GET_ALL_PROPERTIES_PENDING = "GET_ALL_PROPERTIES_PENDING";
@@ -61,7 +60,7 @@ export const RENT_PROPERTY = "RENT_PROPERTY";
 export const SOLD_PROPERTY = "SOLD_PROPERTY";
 export const SOLD_TO_PUBLISHED = "SOLD_TO_PUBLISHED";
 export const RENTED_TO_PUBLISHED = "RENTED_TO_PUBLISHED";
-//dashboard
+// Estadisticas
 export const TOTAL_USER = "TOTAL_USERS";
 export const TOTAL_USER_INM = "TOTAL_USER_INM";
 export const TOTAL_PROPERTIES = "TOTAL_PROPERTIES";

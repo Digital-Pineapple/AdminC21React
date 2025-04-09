@@ -1,3 +1,21 @@
+/**
+ * Componente CardProperty:
+ * Este componente representa una tarjeta que muestra la información de una propiedad junto con varias acciones disponibles según el estado de la propiedad.
+ * Las acciones incluyen:
+ * - Ver detalles de la propiedad.
+ * - Editar la propiedad.
+ * - Agregar servicios y vistas 3D.
+ * - Agregar multimedia (imágenes).
+ * - Eliminar, publicar, o cambiar el estado de la propiedad (por ejemplo, vender o rentar).
+ * 
+ * El estado de la propiedad puede ser:
+ * - Por Aprobar (estado 2): Permite agregar multimedia y publicar la propiedad.
+ * - Publicada (estado 3): Permite cambiar la propiedad a vendida o rentada, y deshacer la publicación.
+ * - Vendida (estado 4) y Rentada (estado 5): Permite cancelar la venta o renta y volver a publicar la propiedad.
+ * 
+ * También se muestra una imagen de la propiedad con un fondo predeterminado si no tiene imágenes asociadas.
+ * Se utilizan modales para agregar servicios, vistas 3D y multimedia a la propiedad.
+ */
 import {
   Alert,
   Box,

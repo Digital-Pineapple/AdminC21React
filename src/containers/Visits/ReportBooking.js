@@ -1,3 +1,13 @@
+/**
+ * El componente `ReportBooking` muestra los detalles de un reporte de una propiedad,
+ * incluyendo la ubicación, espacios, estado, funcionalidad, precio, comentarios, y más.
+ * 
+ * Funcionalidad:
+ * 1. Muestra la información del reporte con iconos representativos para cada campo.
+ * 2. Permite la edición del reporte a través de un modal que se abre con el botón "Editar Reporte".
+ * 3. Los usuarios con ciertos permisos (Admin, Agencias, Asesores, y Asesores de Agencias) pueden editar el reporte y descargarlo en formato PDF.
+ * 4. Usa la función `getRatingText` para mostrar los valores de las calificaciones de forma legible.
+ */
 import React, { useContext } from "react";
 import { Grid, Typography, Button } from "@mui/material";
 import EditNoteIcon from "@mui/icons-material/EditNote";

@@ -1,3 +1,11 @@
+/**
+ * `ServicesProperty` muestra los servicios disponibles para una propiedad, usando una cuadrícula de MUI.
+ * Recibe una lista de servicios, cada uno con un nombre, y los muestra junto a un ícono de configuración.
+ * Si no hay servicios, no se renderiza nada. Utiliza `react-i18next` para la traducción de los textos.
+ * 
+ * Propiedades:
+ * - `services`: arreglo de objetos con el nombre de cada servicio.
+ */
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";

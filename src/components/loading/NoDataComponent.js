@@ -1,3 +1,9 @@
+/**
+ * El componente `NoDataComponent` muestra una animación GIF personalizada para indicar 
+ * que no hay datos disponibles. Utiliza `Grid` de MUI para una disposición flexible 
+ * y centrar la imagen de carga. La imagen (`noData.gif`) se adapta al tamaño máximo de 450px 
+ * y mantiene su proporción con la clase `imgbuilding`, que se define con `makeStyles`.
+ */
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
@@ -35,7 +41,7 @@ export default function NoDataComponent() {
       >
         <div>
           <img
-            src={require("../../assets/gif/NoData.gif")}
+            src={require("../../assets/gif/noData.gif")}
             alt="spinner"
             className={classes.imgbuilding}
           />

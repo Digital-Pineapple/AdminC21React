@@ -1,3 +1,15 @@
+/**
+ * Componente EditInfo:
+ * Este componente muestra un formulario dentro de un cuadro de diálogo para editar la información del usuario (nombre, apellido, teléfono, email).
+ * Utiliza `react-hook-form` para gestionar la validación de los campos y `AuthContext` para actualizar los datos del usuario.
+ * Los campos están validados para asegurar que se ingresen correctamente y los errores se muestran al usuario.
+ * También usa `react-i18next` para traducir los textos.
+ * 
+ * Props:
+ * - **modal**: Controla si el cuadro de diálogo está visible.
+ * - **handleClose**: Función para cerrar el cuadro de diálogo.
+ * - **User**: Datos del usuario a editar.
+ */
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";

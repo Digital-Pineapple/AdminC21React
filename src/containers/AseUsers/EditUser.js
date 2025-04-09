@@ -1,3 +1,14 @@
+/**
+ * `EditUser` es un componente de diálogo para editar la información de un usuario, incluyendo nombre, apellido, teléfono, email y contraseñas.
+ * Utiliza `react-hook-form` para manejar los formularios y `Material-UI` para los componentes UI.
+ * Permite mostrar/ocultar contraseñas y valida los campos con mensajes de error.
+ * 
+ * Propiedades:
+ * - `open`: determina si el diálogo está abierto o cerrado.
+ * - `handleClose`: función para cerrar el diálogo.
+ * - `id`: ID del usuario a editar.
+ * - `User`: datos del usuario a editar.
+ */
 import * as React from "react";
 import Button from "@mui/material/Button";
 import { Grid, TextField } from "@mui/material";

@@ -1,3 +1,13 @@
+/**
+ * El componente `AttachFileMultimedia` permite al usuario adjuntar una imagen para una propiedad.
+ * 
+ * Funcionalidad:
+ * 1. Abre un cuadro de diálogo que permite seleccionar y cargar una imagen.
+ * 2. La imagen seleccionada se muestra en una vista previa antes de enviarla.
+ * 3. Usa un `useDebounce` para gestionar el cambio de la imagen y evitar solicitudes innecesarias.
+ * 4. Al seleccionar la imagen, se guarda y se envía a través del contexto `PropertiesContext` usando el método `AddMultimediaProperty`.
+ * 5. Si se selecciona una imagen, se cierra el diálogo automáticamente y se sube la imagen.
+ */
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";

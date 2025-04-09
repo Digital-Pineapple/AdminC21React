@@ -1,3 +1,11 @@
+/**
+ * `CategoriesSelect` es un componente de selección que permite elegir una categoría de una lista de categorías obtenida desde el contexto `CategoryContext`.
+ * - Utiliza el componente `Select` de Material-UI para renderizar un desplegable con las categorías disponibles.
+ * - Las categorías son recuperadas mediante el hook `useContext` y la función `GetCategories`, la cual se ejecuta al montar el componente.
+ * - El valor de la categoría seleccionada se guarda en el estado `selectedCategory` y se pasa al componente padre mediante la función `detectarCambiosCategory`.
+ * 
+ * El componente permite que el usuario seleccione una categoría de una lista dinámica que es gestionada desde el contexto, lo que facilita su actualización global en la aplicación.
+ */
 import React, { useContext, useEffect, useState } from "react";
 import CategoryContext from "../../context/Categories/CategoryContext";
 import { InputLabel, FormControl, Select, MenuItem } from "@mui/material";

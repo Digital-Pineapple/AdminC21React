@@ -1,3 +1,14 @@
+/**
+ * `EditCategory` es un componente de formulario en un diálogo modal para editar una categoría existente.
+ * Realiza una solicitud GET para obtener los detalles de la categoría con el ID proporcionado y pre-carga el campo de texto.
+ * Utiliza `react-hook-form` para la gestión de formularios y validación de los campos.
+ * 
+ * Funciones:
+ * - `onSubmit`: Llama a la función `ChangeCategory` del contexto para actualizar la categoría y luego cierra el modal.
+ * - `reset`: Limpia el valor del campo del formulario después de un envío exitoso.
+ * 
+ * Utiliza un componente de diálogo con botones de cancelar y actualizar.
+ */
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";

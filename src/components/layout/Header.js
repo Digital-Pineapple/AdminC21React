@@ -1,3 +1,14 @@
+/**
+ * Este código define un componente `Header` que representa una barra lateral (drawer) y una barra de navegación (app bar)
+ * utilizando Material-UI. La barra lateral se puede expandir o contraer, y contiene diferentes opciones de navegación
+ * que se muestran dependiendo del tipo de usuario (por ejemplo, Administrador, Inmobiliaria, Asesor).
+ * Además, se utilizan íconos (de la librería Material-UI) y herramientas como Tooltips y Badges para mejorar la accesibilidad y
+ * la interacción visual con el usuario. El estado de la barra lateral (abierta o cerrada) se maneja con `useState`.
+ * También se gestionan las visitas pendientes a través de un contexto (`VisitContext`) y la traducción de textos con `react-i18next`.
+ * La funcionalidad incluye la manipulación de rutas con `react-router-dom` y permite a los usuarios acceder a diferentes
+ * secciones del sistema como propiedades, visitas, perfil, etc.
+ * El componente también incluye funcionalidades como un botón de menú (hamburguesa) y un cierre de sesión.
+ */
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";

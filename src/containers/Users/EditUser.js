@@ -1,3 +1,16 @@
+/**
+ * Componente EditUser:
+ * Muestra un cuadro de diálogo para editar los datos del usuario (nombre, apellido, teléfono, correo, rol y contraseña).
+ * Utiliza `react-hook-form` para manejar la validación y `UsersContext` para actualizar los datos del usuario.
+ * Incluye la funcionalidad para mostrar/ocultar las contraseñas y valida que los campos cumplan con los requisitos.
+ * Los roles se gestionan mediante el componente `RolesSelect` y los cambios se envían al contexto con la función `ChangeUser`.
+ * 
+ * Props:
+ * - **open**: Controla si el diálogo está visible.
+ * - **handleClose**: Función para cerrar el cuadro de diálogo.
+ * - **id**: ID del usuario a editar.
+ * - **User**: Datos actuales del usuario a editar.
+ */
 import * as React from "react";
 import Button from "@mui/material/Button";
 import { Grid, TextField } from "@mui/material";

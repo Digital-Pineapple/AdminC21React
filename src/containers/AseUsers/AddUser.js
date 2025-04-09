@@ -1,3 +1,13 @@
+/**
+ * `NewUser` es un formulario para registrar un nuevo asesor. Permite ingresar datos como nombre, apellido, teléfono, email, y contraseña.
+ * Utiliza un `Dialog` de Material-UI y validación con `react-hook-form`. 
+ * También gestiona la visibilidad de las contraseñas y permite seleccionar el rol del usuario.
+ * 
+ * Propiedades:
+ * - `modal`: control de la visibilidad del modal.
+ * - `handleClose`: función para cerrar el modal.
+ * - `id`: ID del usuario.
+ */
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";

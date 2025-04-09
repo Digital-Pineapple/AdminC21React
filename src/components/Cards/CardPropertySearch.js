@@ -1,3 +1,17 @@
+/**
+ * Componente CardPropertySearch:
+ * Este componente representa una tarjeta que muestra la información básica de una propiedad en los resultados de búsqueda.
+ * Dependiendo del estado de la propiedad, se muestra un mensaje con el nombre de la propiedad:
+ * - Si la propiedad está en estado 2 (Por Aprobar), se muestra un alerta de color naranja con el nombre de la propiedad.
+ * - Si la propiedad está en estado 3 (Publicada), se muestra un alerta de color verde con el nombre de la propiedad.
+ * 
+ * Si la propiedad no tiene imágenes, se muestra una imagen predeterminada. Si tiene imágenes, se muestra la primera imagen asociada.
+ * 
+ * El componente también incluye un botón de "Más Detalles" que redirige al usuario a la página de detalles de la propiedad, 
+ * donde se puede ver más información sobre la propiedad.
+ * 
+ * El componente utiliza `react-modal-image-responsive` para mostrar las imágenes de las propiedades de manera adaptable.
+ */
 import {
   Alert,
   Box,

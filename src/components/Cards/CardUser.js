@@ -1,3 +1,19 @@
+/**
+ * Componente CardUser:
+ * Este componente representa una tarjeta para mostrar los detalles de un usuario, con opciones para editar o eliminar el usuario.
+ *
+ * La tarjeta muestra información clave del usuario, como su nombre, apellido, tipo de usuario, teléfono y correo electrónico.
+ * Dependiendo del tipo de usuario, si el usuario es de tipo inmobiliaria, se habilita un botón para mostrar a los asesores de la inmobiliaria.
+ *
+ * Al hacer clic en el ícono de editar, se abre un modal que permite editar los detalles del usuario seleccionado.
+ * La función `handleClickOpen` se encarga de abrir el modal y guardar el ID del usuario para poder editarlo.
+ * Al hacer clic en el ícono de eliminar, el usuario seleccionado es eliminado mediante la función `DeleteUsers` del contexto `UsersContext`.
+ *
+ * El componente utiliza Material-UI para la estructura de la tarjeta y los iconos, y el componente `EditUser` maneja la edición de los detalles del usuario.
+ *
+ * Propiedades:
+ * - `user`: Objeto que contiene los detalles del usuario, como su nombre, apellido, tipo de usuario, teléfono y correo electrónico.
+ */
 import * as React from "react";
 import { useState } from "react";
 import Card from "@mui/material/Card";

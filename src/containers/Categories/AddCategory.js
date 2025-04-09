@@ -1,3 +1,14 @@
+/**
+ * `AddCategory` es un componente de formulario en un diálogo modal para agregar una nueva categoría.
+ * Utiliza `react-hook-form` para la gestión de formularios y validación de los campos.
+ * El formulario tiene un solo campo de texto para el nombre de la categoría, con validaciones de longitud y requerimiento.
+ * 
+ * Funciones:
+ * - `onSubmit`: Llama a la función `AddCategory` del contexto para agregar la categoría y luego cierra el modal.
+ * - `reset`: Limpia el valor del campo del formulario después de un envío exitoso.
+ * 
+ * Utiliza un componente de diálogo personalizado `BootstrapDialog` con un botón de cierre.
+ */
 import * as React from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";

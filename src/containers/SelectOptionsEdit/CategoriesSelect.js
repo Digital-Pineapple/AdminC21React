@@ -1,3 +1,13 @@
+/**
+ * `CategoriesSelect` es un componente que permite seleccionar una categoría de una lista de categorías.
+ * - Utiliza el contexto `CategoryContext` para obtener las categorías disponibles a través de la función `GetCategories`.
+ * - La lista de categorías se almacena en el estado `cachedCategories` para evitar realizar múltiples solicitudes a la API.
+ * - El valor de la categoría seleccionada se guarda en el estado `selectedOption` y se pasa al componente padre mediante la prop `detectarCambiosCategory`.
+ * - Cuando cambia la propiedad `category_id`, se actualiza el valor seleccionado, y se busca la categoría correspondiente en la lista de categorías.
+ * - El componente solo muestra las categorías cargadas en el caché, y realiza la actualización de la lista cuando cambia la propiedad `categories`.
+ * 
+ * Este componente es útil para que los usuarios seleccionen una categoría de una lista disponible en una plataforma, como por ejemplo, en un sistema de administración de propiedades inmobiliarias.
+ */
 import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";

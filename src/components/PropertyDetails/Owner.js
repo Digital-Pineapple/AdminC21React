@@ -1,3 +1,24 @@
+/**
+ * El componente `Owner` muestra la información de contacto de un propietario, como su nombre, apellido, 
+ * correo electrónico y número de teléfono. Los datos se presentan en un diseño de cuadrícula utilizando 
+ * los componentes de MUI (Material-UI) y están acompañados de iconos correspondientes para cada tipo de 
+ * información, como el nombre, correo electrónico y teléfono.
+ * 
+ * El componente recibe un objeto `owner` como propiedad, que debe contener las claves `name`, `last_name`, 
+ * `email` y `phone_number`. Estos datos se despliegan en una serie de tarjetas con iconos para mejorar la 
+ * accesibilidad y el diseño visual. Además, se utiliza la librería `react-i18next` para traducir los textos 
+ * a diferentes idiomas.
+ * 
+ * Propiedades recibidas:
+ * - `owner`: Un objeto que contiene la información del propietario, que incluye:
+ *    - `name`: El nombre del propietario.
+ *    - `last_name`: El apellido del propietario.
+ *    - `email`: El correo electrónico del propietario.
+ *    - `phone_number`: El número de teléfono del propietario.
+ * 
+ * El componente presenta la información en un formato responsivo, mostrando una cuadrícula que se adapta 
+ * a diferentes tamaños de pantalla, con íconos coloridos para facilitar la lectura y la interacción del usuario.
+ */
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";

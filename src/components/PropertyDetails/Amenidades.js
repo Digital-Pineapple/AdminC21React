@@ -1,3 +1,23 @@
+/**
+ * El componente `Amenidades` muestra una serie de características de una propiedad,
+ * tales como antigüedad, habitaciones, estacionamiento, remodelación, baños completos,
+ * medios baños y dimensiones, todo esto usando Material-UI.
+ *
+ * Cada atributo se presenta con un ícono y texto, además de estar traducido
+ * dinámicamente usando `react-i18next` para soportar múltiples idiomas.
+ *
+ * El componente recibe las propiedades de `details`, que contienen la información
+ * que se mostrará en la interfaz. Si los detalles están disponibles, se genera
+ * un `Grid` de Material-UI con los distintos atributos de la propiedad.
+ *
+ * Los atributos presentados incluyen:
+ * - Edad de la propiedad
+ * - Número de habitaciones
+ * - Disponibilidad de estacionamiento
+ * - Si la propiedad ha sido remodelada
+ * - Número de baños completos y medios baños
+ * - Tamaños de la propiedad (metros construidos y metros totales)
+ */
 import { Grid, Typography, Chip } from "@mui/material";
 import React from "react";
 import EventIcon from "@mui/icons-material/Event";

@@ -1,3 +1,14 @@
+/**
+ * `AseUsers` es el componente que muestra la lista de asesores inmobiliarios.
+ * Incluye un botón para agregar nuevos asesores y muestra tarjetas de cada uno de los asesores existentes.
+ * Si no hay asesores, se muestra un componente de "sin datos".
+ * 
+ * Funciones:
+ * - `handleClickOpen`: abre el modal para agregar un nuevo asesor.
+ * - `handleClose`: cierra el modal.
+ * 
+ * Utiliza el contexto `UsersContext` para obtener la lista de usuarios y el componente `AddUser` para agregar nuevos usuarios.
+ */
 import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";

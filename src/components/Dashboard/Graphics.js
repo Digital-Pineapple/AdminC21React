@@ -1,3 +1,19 @@
+/**
+ * Componente Bars:
+ * Muestra un gráfico de barras utilizando Chart.js para visualizar datos estadísticos sobre propiedades y usuarios.
+ * El gráfico incluye métricas como el total de inmuebles, inmuebles en venta, inmuebles en renta y el total de asesores.
+ * Dependiendo del tipo de usuario, también se incluye el total de usuarios.
+ * 
+ * Este componente obtiene los datos necesarios del contexto `DashboardContext` y se actualiza al cargar con `useEffect`.
+ * Los datos se pasan a un gráfico de barras con opciones personalizadas, como colores y configuración de escalas.
+ * 
+ * Propiedades:
+ * - No tiene propiedades explícitas, pero depende de los datos del contexto `DashboardContext`.
+ * 
+ * Uso:
+ * - Es útil para mostrar estadísticas clave en un dashboard de administración.
+ * - El gráfico de barras se adapta a diferentes tamaños de pantalla gracias a la propiedad `responsive` de Chart.js.
+ */
 import React, { useEffect, useContext } from "react";
 import DashboardContext from "../../context/Dashboard/DashboardContext";
 import { Bar } from "react-chartjs-2";

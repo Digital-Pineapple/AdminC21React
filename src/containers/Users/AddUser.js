@@ -1,3 +1,18 @@
+/**
+ * El componente `NewUser` muestra un cuadro de diálogo para registrar un nuevo usuario.
+ * Utiliza el formulario con validaciones mediante `react-hook-form` para garantizar que los campos sean correctos antes de enviarlos.
+ * Los usuarios deben completar información como nombre, apellido, teléfono, correo electrónico, rol y contraseña.
+ * Además, se incluye un campo para confirmar la contraseña y un campo de rol selectivo.
+ * 
+ * Propiedades:
+ * - `modal`: Controla la visibilidad del cuadro de diálogo.
+ * - `handleClose`: Función para cerrar el cuadro de diálogo.
+ * 
+ * Funcionalidad:
+ * - Se utiliza `useState` para gestionar los valores del rol y las contraseñas.
+ * - Al enviar el formulario, los datos del nuevo usuario se envían al contexto de autenticación mediante la función `NewUser`.
+ * - La contraseña y su confirmación se gestionan con visibilidad toggle.
+ */
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";

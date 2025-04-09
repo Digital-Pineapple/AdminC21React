@@ -1,3 +1,10 @@
+/**
+ * Componente `TableUsers` para mostrar una tabla de usuarios con sus detalles.
+ * - Utiliza Material-UI para la tabla estilizada y los íconos de editar y eliminar.
+ * - Los usuarios se pasan como prop y se muestran en filas de la tabla.
+ * - Los botones de editar y eliminar permiten interactuar con los usuarios, con la acción de eliminar implementada mediante el contexto `UsersContext`.
+ * - La tabla presenta columnas para Id, Usuario, Correo, Roles y Opciones (editar/eliminar).
+ */
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";

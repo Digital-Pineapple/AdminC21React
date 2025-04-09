@@ -1,3 +1,19 @@
+/**
+ * Componente TableVisitClient:
+ * Muestra una tabla con las visitas realizadas por los clientes, incluyendo detalles como nombre, teléfono, correo, fecha, mensaje y estado.
+ * Permite realizar acciones como ver detalles, editar o eliminar una visita.
+ * La tabla es responsiva, ajustando su presentación para pantallas pequeñas.
+ * 
+ * Propiedades:
+ * - `visitsClient`: Lista de visitas de los clientes con información relevante.
+ * 
+ * Acciones disponibles:
+ * 1. Ver detalles de la visita.
+ * 2. Editar visita si tiene un estado pendiente.
+ * 3. Eliminar visita si está en estado pendiente.
+ * 
+ * Las fechas se formatean con `date-fns` en español.
+ */
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";

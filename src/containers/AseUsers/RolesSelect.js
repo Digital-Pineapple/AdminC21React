@@ -1,3 +1,10 @@
+/**
+ * `RolesSelect` es un componente de selección para elegir un tipo de usuario.
+ * Utiliza `Material-UI` para la UI y `react-i18next` para la traducción.
+ * 
+ * Propiedades:
+ * - `detectarCambiosRole`: función que recibe el valor seleccionado cuando cambia el rol.
+ */
 import React, { useEffect, useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import MethodGet from "../../config/service";

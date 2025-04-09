@@ -1,3 +1,16 @@
+/**
+ * Componente de Login
+ *
+ * Este componente permite a los usuarios iniciar sesión en la aplicación.
+ * Utiliza React, Material-UI, Formik y Yup para manejar el formulario y su validación.
+ *
+ * Funcionalidades:
+ * - Validación de email y contraseña.
+ * - Mostrar/ocultar contraseña.
+ * - Cambio de idioma (español / chino).
+ * - Enlaces a registro y recuperación de contraseña.
+ * - Uso del contexto de autenticación (AuthContext).
+ */
 import {
   Box,
   Button,

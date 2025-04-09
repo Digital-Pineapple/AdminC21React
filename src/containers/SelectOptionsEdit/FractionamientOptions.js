@@ -1,3 +1,11 @@
+/**
+ * `FractionamientOptions` es un componente que permite seleccionar si una propiedad pertenece a un fraccionamiento.
+ * - Utiliza el estado `parkingOption` para almacenar el valor de la opción seleccionada, que puede ser "Sí" o "No".
+ * - El valor seleccionado se actualiza a través de la función `handleChange` cuando el usuario interactúa con el `Select`.
+ * - El componente se utiliza para recopilar información sobre la ubicación de una propiedad, específicamente si se encuentra en un fraccionamiento.
+ * 
+ * Este componente es útil en formularios donde se necesita que el usuario seleccione si la propiedad pertenece o no a un fraccionamiento, por ejemplo, en un sistema de ventas de propiedades.
+ */
 import React, { useState } from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 

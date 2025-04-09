@@ -1,3 +1,15 @@
+/**
+ * `SearchState` es un componente que permite a los usuarios seleccionar un estado de una lista de estados disponibles.
+ * - Al montar el componente, realiza una solicitud GET a la API para obtener todos los estados mediante `MethodGet`.
+ * - Los estados se guardan en el estado local `states` y se muestran en un componente `Select` de Material-UI.
+ * - Los usuarios pueden seleccionar un estado de la lista desplegable, lo que actualizará el estado local `selectedState`.
+ * - Al seleccionar un estado, el valor seleccionado se pasa al componente padre a través de la función `detectarCambiosState`.
+ * 
+ * Funcionalidades:
+ * - Se muestra un `InputLabel` y un `Select` con los estados disponibles.
+ * - La lista de estados se obtiene dinámicamente desde la API, y cada estado se presenta como un `MenuItem` en el componente `Select`.
+ * - El valor seleccionado se pasa como argumento al componente padre cada vez que se realiza un cambio.
+ */
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";

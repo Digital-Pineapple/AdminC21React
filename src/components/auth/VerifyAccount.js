@@ -1,3 +1,10 @@
+/**
+ * Componente VerifyAccount:
+ * Este componente permite a los usuarios ingresar un código de verificación para activar su cuenta.
+ * Utiliza `react-hook-form` para la validación del código y se conecta con el `AuthContext` para verificar el código ingresado.
+ * Los errores de validación se muestran en tiempo real, y el formulario es reseteado después de un intento exitoso.
+ * Además, el componente previene el envío al presionar la tecla "Enter" para evitar un comportamiento no deseado.
+ */
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -41,7 +48,7 @@ const VerifyAccount = () => {
   const classes = useStyles();
   const { VerifyCode } = React.useContext(AuthContext);
   const token = localStorage.getItem("mi token");
- 
+
   const reset = () => {
     setValue("code", "", { shouldDirty: true });
   };

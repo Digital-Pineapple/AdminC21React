@@ -1,3 +1,17 @@
+/**
+ * Componente CardServices:
+ * Este componente representa una tarjeta para mostrar un servicio con opciones para editar o eliminar el servicio.
+ * 
+ * La tarjeta muestra el nombre del servicio en un formato destacado, junto con una imagen de fondo. 
+ * Al hacer clic en el ícono de editar, se abre un modal que permite editar los detalles del servicio seleccionado. 
+ * La función `handleClickOpen` se encarga de abrir el modal y guardar el ID del servicio para poder editarlo.
+ * Al hacer clic en el ícono de eliminar, el servicio seleccionado es eliminado mediante la función `DeleteService` del contexto `ServicesContext`.
+ * 
+ * El componente utiliza Material-UI para la estructura de la tarjeta, y el `EditService` es un contenedor que maneja la edición del servicio.
+ * 
+ * Propiedades:
+ * - `service`: Objeto que contiene los detalles del servicio, como su nombre e ID.
+ */
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";

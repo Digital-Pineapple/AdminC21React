@@ -1,3 +1,14 @@
+/**
+ * Componente CardProperties:
+ * Muestra una tarjeta que presenta el total de propiedades, utilizando un ícono de ciudad y un contador con el número total de propiedades.
+ * La tarjeta tiene un fondo de color naranja y está diseñada para mostrar el total de propiedades de manera destacada.
+ * Es útil para mostrar métricas clave en la interfaz de usuario.
+ * 
+ * Propiedades:
+ * - `total_properties`: Número total de propiedades que se mostrarán en la tarjeta.
+ * 
+ * El componente es responsivo y utiliza Material-UI para los estilos y componentes.
+ */
 import { Card, Hidden, Typography } from "@mui/material";
 import React from "react";
 import StoreIcon from "@mui/icons-material/Store";

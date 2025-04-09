@@ -1,3 +1,11 @@
+/**
+ * Componente CardCategory:
+ * Este componente representa una tarjeta de categoría que muestra el nombre de la categoría junto con opciones para editar o eliminarla.
+ * Utiliza Material-UI para el diseño de la tarjeta, que incluye un fondo, título y botones de acción con iconos.
+ * Al hacer clic en el botón de editar, se abre un formulario de edición para la categoría seleccionada.
+ * Al hacer clic en el botón de eliminar, la categoría seleccionada se elimina mediante la función `DeleteCategory` del contexto `CategoryContext`.
+ * El estado de edición se maneja a través de `useState` para controlar la visualización del componente `EditCategory`.
+ */
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";

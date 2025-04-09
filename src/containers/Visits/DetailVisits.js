@@ -1,3 +1,14 @@
+/**
+ * Componente DetailVisits:
+ * Muestra los detalles de una visita a una propiedad, incluyendo la información de la propiedad, el cliente y la visita.
+ * Permite marcar la visita como asistida o no asistida si el usuario tiene los permisos adecuados (admin, asesor, agencia, cliente final).
+ * Utiliza `useEffect` para cargar los datos de la visita y `useContext` para obtener los reportes desde el contexto de ReportContext.
+ * 
+ * Dependencias:
+ * - MUI para los componentes de interfaz.
+ * - Date-fns para formateo de fechas.
+ * - i18next para traducciones.
+ */
 import React, { useEffect, useContext } from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";

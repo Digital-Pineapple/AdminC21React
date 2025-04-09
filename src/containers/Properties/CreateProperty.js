@@ -1,3 +1,14 @@
+/*
+  Este componente, `PropertiesCreate`, permite a los usuarios crear nuevas propiedades en el sistema. 
+  Utiliza Material-UI para la interfaz y React Hook Form para la validación de formularios.
+
+  Funcionalidad principal:
+  - Los usuarios pueden seleccionar opciones como categoría de la propiedad, características adicionales (estacionamiento, cuarto de lavado, etc.), y ubicación (estado y municipio).
+  - Se usan estados locales para manejar los valores del formulario y `useContext` para interactuar con el contexto de propiedades.
+  - Al enviar el formulario, los datos se envían a través de la función `AddProperty` para ser procesados y almacenados en el sistema.
+
+  Este componente facilita la creación de propiedades mediante un formulario validado y opciones configurables.
+*/
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";

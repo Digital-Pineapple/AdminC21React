@@ -1,3 +1,14 @@
+/**
+ * El componente `AddService` es un formulario de diálogo utilizado para agregar una 
+ * URL de una vista 3D de una propiedad. El formulario contiene un campo de texto 
+ * para ingresar la URL, que se valida mediante `react-hook-form`. 
+ * 
+ * Al enviar el formulario, se realiza una solicitud `POST` a la URL `/View3D` 
+ * para registrar la vista 3D de la propiedad. Si la solicitud es exitosa, se 
+ * muestra una alerta de éxito utilizando `Swal.fire`. Si ocurre un error, 
+ * se registra en la consola. El componente también cierra el modal y reinicia 
+ * el campo de texto después de guardar los datos.
+ */
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";

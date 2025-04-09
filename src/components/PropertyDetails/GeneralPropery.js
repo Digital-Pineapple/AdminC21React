@@ -1,3 +1,24 @@
+/**
+ * El componente `GeneralProperty` muestra los detalles generales de una propiedad, 
+ * incluyendo descripción, precios, y comisiones asociadas a la operación. 
+ * 
+ * Utiliza Material-UI para organizar y presentar la información de manera estructurada. 
+ * Los detalles son traducidos utilizando `react-i18next` para soportar múltiples idiomas.
+ * 
+ * El componente recibe las siguientes propiedades:
+ * - `name`: Nombre de la propiedad (aunque no se usa explícitamente en este código).
+ * - `description`: Descripción de la propiedad.
+ * - `rules`: Reglas relacionadas con la propiedad, incluyendo comisiones y precios.
+ * - `category`: Categoría de la propiedad (aunque no se usa explícitamente en este código).
+ * 
+ * Los elementos presentados incluyen:
+ * - Descripción de la propiedad.
+ * - Tipo de operación (venta, renta, etc.).
+ * - Precio de renta o venta.
+ * - Cálculo de comisiones, si existe alguna. Si la propiedad comparte comisión, se muestra un cálculo con el porcentaje y el monto.
+ * 
+ * El componente también maneja el formato adecuado para los precios utilizando `Intl.NumberFormat` para dar formato en pesos mexicanos (MXN).
+ */
 import { Grid, Typography } from "@mui/material";
 import React from "react";
 import PercentIcon from "@mui/icons-material/Percent";

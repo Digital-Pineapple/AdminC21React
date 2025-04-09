@@ -1,3 +1,13 @@
+/**
+ * `UserPropSelect` es un componente que permite seleccionar un asesor de propiedad desde una lista de usuarios.
+ * 
+ * Obtiene la lista de usuarios mediante un contexto y muestra las opciones en un `Select`. Si no hay usuarios, muestra un mensaje deshabilitado.
+ * Al seleccionar un usuario, llama a `detectarCambiosUserInm` para notificar el cambio.
+ * 
+ * Propiedades:
+ * - `userInm_id`: ID del asesor de propiedad seleccionado.
+ * - `detectarCambiosUserInm`: Función para manejar el cambio de asesor seleccionado.
+ */
 import React, { useContext, useEffect, useState } from "react";
 import { InputLabel, FormControl, Select, MenuItem } from "@mui/material";
 import PropTypes from "prop-types";

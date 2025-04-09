@@ -1,3 +1,19 @@
+/**
+ * `SearchProperties` es un componente que permite a los usuarios realizar búsquedas avanzadas de propiedades mediante diversos filtros.
+ * - Utiliza `Tabs` para gestionar diferentes vistas de la interfaz, permitiendo un filtro por nombre, servicio, categoría, estado y municipio.
+ * - Los datos de búsqueda se gestionan a través de estados locales, y las búsquedas se realizan en función de los cambios en estos estados.
+ * - Cada filtro se maneja a través de componentes de búsqueda específicos:
+ *   - `SearchService`: Filtra por tipo de servicio.
+ *   - `SearchCategory`: Filtra por categoría de propiedad.
+ *   - `SearchName`: Filtra por nombre o dirección de la propiedad.
+ *   - `SearchState`: Filtra por estado.
+ *   - `SearchMunicipality`: Filtra por municipio, que solo se activa si se selecciona un estado.
+ * 
+ * Funcionalidades:
+ * - La búsqueda de propiedades se activa automáticamente cada vez que el usuario cambia algún filtro.
+ * - Los filtros seleccionados se pasan al contexto `PropertiesContext`, y la función `SearchProperties` se ejecuta para realizar la búsqueda.
+ * - La vista de los filtros se adapta dinámicamente según los valores de los filtros previos (por ejemplo, el filtro de municipio solo se muestra si se ha seleccionado un estado).
+ */
 import React, { useEffect, useState, useContext } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";

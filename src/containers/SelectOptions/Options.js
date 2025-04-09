@@ -1,3 +1,11 @@
+/**
+ * `OptionsSelect` es un componente de selección que permite elegir un tipo de servicio (renta, venta o preventa).
+ * - Utiliza el componente `Select` de Material-UI para renderizar un desplegable con las opciones disponibles.
+ * - Las opciones (renta, venta, preventa) están definidas como un array de objetos con `value` y `name`.
+ * - La función `detectarCambiosOption` se ejecuta cuando el usuario selecciona una opción, y pasa el valor seleccionado al componente padre a través de la prop `detectarCambiosOption`.
+ * 
+ * Este componente es útil cuando necesitas seleccionar entre varias opciones predeterminadas y pasar el valor seleccionado a un componente superior para su procesamiento.
+ */
 import React from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { useTranslation } from "react-i18next";

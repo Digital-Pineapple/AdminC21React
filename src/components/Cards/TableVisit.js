@@ -1,3 +1,19 @@
+/**
+ * Componente TableVisit:
+ * Muestra una tabla con las visitas registradas, incluyendo detalles como nombre, teléfono, correo, fecha, comentarios y estado.
+ * Permite realizar acciones como ver detalles, aceptar o rechazar visitas, crear reportes y eliminar visitas.
+ * La tabla es responsiva, mostrando los datos de manera vertical en pantallas pequeñas.
+ * 
+ * Propiedades:
+ * - `visits`: Lista de visitas con información relevante.
+ * 
+ * Acciones disponibles:
+ * 1. Ver detalles de la visita.
+ * 2. Aceptar, cancelar o crear reporte de una visita.
+ * 3. Eliminar una visita.
+ * 
+ * Las acciones son gestionadas mediante el contexto `VisitContext` y las fechas son formateadas con `date-fns` en español.
+ */
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";

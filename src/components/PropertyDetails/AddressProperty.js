@@ -1,3 +1,14 @@
+/**
+ * El componente `AddressProperty` muestra la dirección de una propiedad, incluyendo 
+ * detalles como calle, colonia, código postal, estado, municipio, número exterior 
+ * e interior, y referencias en un mapa. Utiliza los iconos de MUI para representar cada 
+ * sección de la dirección con colores personalizados. Además, el componente es completamente 
+ * traducible utilizando `react-i18next` para los textos, como "ubicación", "calle", etc.
+ * 
+ * Las direcciones están organizadas en una cuadrícula de MUI (`Grid`) que responde a 
+ * diferentes tamaños de pantalla, asegurando que se muestren correctamente en dispositivos 
+ * móviles y de escritorio. El mapa se muestra usando un iframe insertado dinámicamente.
+ */
 import { Grid, Typography } from "@mui/material";
 import React from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";

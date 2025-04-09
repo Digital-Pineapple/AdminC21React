@@ -1,3 +1,19 @@
+/**
+ * Componente de Registro
+ *
+ * Este componente permite a los usuarios registrarse en la aplicación. Utiliza
+ * React, Material-UI, React Hook Form, y las bibliotecas de i18next para
+ * traducir los textos. Además, se implementan validaciones para los campos
+ * del formulario, incluyendo nombre, apellido, teléfono, email, y contraseñas.
+ *
+ * Características:
+ * - Campos de entrada para nombre, apellido, teléfono, email y contraseñas.
+ * - Validación de campos utilizando React Hook Form y Yup.
+ * - Control de visibilidad de contraseñas.
+ * - Selección de roles de usuario mediante un componente personalizado (`RolesSelect`).
+ * - Aceptación de términos y condiciones a través de un `Checkbox`.
+ * - Enlaces de navegación a la página de inicio de sesión y página de términos y condiciones.
+ */
 import {
   Box,
   Button,

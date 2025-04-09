@@ -1,3 +1,13 @@
+/**
+ * `OptionsReportServicio` es un componente que permite al usuario seleccionar una opción para evaluar el servicio recibido.
+ * 
+ * Muestra cuatro opciones para valorar el servicio: Muy Bien, Bien, Regular y Mal.
+ * Recibe el valor seleccionado y la función `handleChangeServicio` para manejar los cambios en la selección.
+ * 
+ * Propiedades:
+ * - `selectedValueServicio`: Valor seleccionado actualmente (1 para "Muy Bien", 2 para "Bien", 3 para "Regular", 4 para "Mal").
+ * - `handleChangeServicio`: Función que se ejecuta cuando se cambia la selección.
+ */
 import * as React from "react";
 import Radio from "@mui/material/Radio";
 

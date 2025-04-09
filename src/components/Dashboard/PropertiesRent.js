@@ -1,3 +1,18 @@
+/**
+ * Componente PropertiesRent:
+ * Muestra una tarjeta que presenta el total de propiedades en renta.
+ * Esta tarjeta incluye un ícono visual de "Llave" para representar propiedades en renta y muestra la cantidad total de propiedades en renta en la interfaz.
+ * Los datos son pasados como una propiedad `total_properties_rent`.
+ * 
+ * El componente utiliza Material-UI para el diseño de la tarjeta y la tipografía, y se traduce utilizando la librería `react-i18next` para internacionalización.
+ * 
+ * Propiedades:
+ * - `total_properties_rent`: número total de propiedades en renta a mostrar.
+ * 
+ * Uso:
+ * - Ideal para mostrar un resumen de propiedades en renta en una sección del dashboard.
+ * - El diseño se adapta bien en pantallas grandes y pequeñas, gracias al uso de `sx` para estilo y `makeStyles` para personalización.
+ */
 import { Card, Hidden, Typography } from "@mui/material";
 import React from "react";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";

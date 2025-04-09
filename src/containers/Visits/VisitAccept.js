@@ -1,3 +1,12 @@
+/**
+ * El componente `VisitAccept` muestra la lista de visitas solicitadas por el cliente.
+ * 
+ * Funcionalidad:
+ * 1. Recupera las visitas solicitadas mediante el contexto `VisitContext` al cargar el componente.
+ * 2. Muestra el título "Visita Solicitada" utilizando `react-i18next` para la traducción.
+ * 3. Si existen visitas, las muestra en una tabla con el componente `TableVisitClient`.
+ * 4. Si no hay visitas disponibles, muestra un componente de carga `NoDataComponent`.
+ */
 import Layout from "../../components/layout/Layout";
 import { Grid, Typography } from "@mui/material";
 import TableVisitClient from "../../components/Cards/TableVisitClient";

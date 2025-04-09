@@ -1,3 +1,14 @@
+/*
+  El componente `EditProperty` permite editar los detalles de una propiedad existente.
+  Utiliza Material-UI para la interfaz y `react-hook-form` para la validación del formulario.
+
+  Funcionalidad principal:
+  - Recupera los datos de la propiedad desde la API utilizando `MethodGet` y los carga en el estado del componente.
+  - Los usuarios pueden editar información como categoría, servicios, ubicación, estacionamiento, remodelación, etc.
+  - Al enviar el formulario, los datos actualizados se envían a través de la función `UpdateProperty` para actualizar la propiedad en el sistema.
+
+  Este componente facilita la edición de las propiedades mediante un formulario prellenado con los datos actuales y opciones configurables.
+*/
 import {
   Button,
   Chip,

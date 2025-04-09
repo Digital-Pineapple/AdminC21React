@@ -1,3 +1,14 @@
+/*
+  El componente `DetailProperty` muestra los detalles de una propiedad específica.
+  Utiliza Material-UI para el diseño y hace una solicitud HTTP mediante `MethodGet` para obtener la información de la propiedad y los servicios relacionados.
+
+  Funcionalidad principal:
+  - Obtiene la información de la propiedad (como descripción, imágenes, reglas, dirección, propietario, etc.) desde una API cuando el componente se monta.
+  - Muestra diferentes secciones de la propiedad, incluyendo multimedia, descripción, amenidades, dirección, propietario y servicios, utilizando componentes específicos para cada sección.
+  - Permite generar un PDF con los detalles de la propiedad a través del componente `GeneratePDF`.
+
+  Este componente se encarga de presentar toda la información relevante de una propiedad en una interfaz estructurada.
+*/
 import * as React from "react";
 import { Card, Grid, Typography } from "@mui/material";
 import MethodGet from "../../config/service";

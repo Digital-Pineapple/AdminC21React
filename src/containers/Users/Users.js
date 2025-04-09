@@ -1,3 +1,10 @@
+/**
+ * Componente `Users` que muestra una lista de usuarios y permite agregar nuevos usuarios.
+ * - Muestra el título "Mis Usuarios" y un botón para abrir un modal de adición de usuarios.
+ * - Los usuarios se obtienen del contexto `UsersContext` y se muestran en tarjetas (`CardUser`).
+ * - Si no hay usuarios, muestra un componente `NoDataComponent` para indicar la ausencia de datos.
+ * - El modal de agregar usuario se controla con el estado `openModal` y se cierra al ejecutar `handleClose`.
+ */
 import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";

@@ -1,4 +1,7 @@
 {
+  "coment": "Traducción a español para la aplicación Yo Comparto",
+  "comentarios": "Este archivo contiene todas las cadenas de texto utilizadas en la aplicación, traducidas a español",
+  
   "logo": "Yo Comparto",
   "login": "Inicia sesión",
   "email": "Correo electrónico",

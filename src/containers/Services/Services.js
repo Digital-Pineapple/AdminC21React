@@ -1,3 +1,14 @@
+/**
+ * El componente `Services` muestra una lista de servicios y permite agregar nuevos servicios mediante un cuadro de diálogo.
+ * Utiliza `ServicesContext` para obtener los servicios y `AddService` para agregar uno nuevo.
+ * Si no hay servicios disponibles, muestra un mensaje de "sin datos".
+ * 
+ * Propiedades:
+ * - `services`: Lista de servicios.
+ * - `openModal`: Estado para controlar la visibilidad del cuadro de diálogo.
+ * - `handleClickOpen`: Abre el cuadro de diálogo.
+ * - `handleClose`: Cierra el cuadro de diálogo.
+ */
 import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";

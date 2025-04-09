@@ -1,3 +1,21 @@
+/**
+ * `EditService` es un componente que muestra un cuadro de diálogo para editar un servicio existente.
+ * 
+ * El componente realiza una solicitud GET para obtener los detalles del servicio usando el `id` proporcionado, y luego muestra los datos actuales del servicio en un formulario de edición.
+ * 
+ * El formulario contiene un campo de texto donde el usuario puede modificar el nombre del servicio. El formulario está validado para asegurar que el nombre no esté vacío, tenga una longitud mínima de 4 caracteres y una longitud máxima de 255 caracteres.
+ * 
+ * Al enviar el formulario, se actualizan los datos del servicio mediante el contexto `ServicesContext` y luego se cierra el cuadro de diálogo.
+ * 
+ * Propiedades:
+ * - `open`: Indica si el cuadro de diálogo debe estar abierto o cerrado.
+ * - `handleClose`: Función que cierra el cuadro de diálogo.
+ * - `id`: El identificador del servicio que se va a editar.
+ * 
+ * Dependencias:
+ * - `ServicesContext`: Contexto que maneja la actualización de servicios.
+ * - `react-hook-form`: Se utiliza para la gestión y validación del formulario.
+ */
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";

@@ -1,3 +1,20 @@
+/**
+ * `RolesSelect` es un componente que permite seleccionar el tipo de usuario en un formulario.
+ * 
+ * Funcionalidad:
+ * - El componente muestra un `Select` con opciones predefinidas para seleccionar el tipo de usuario, como "Inquilino (Rentar/Comprar)", "Asesor (Individual)", "Inmobiliaria" y "Admin".
+ * - Al seleccionar una opción, se actualiza el estado `Type_user` con el valor seleccionado.
+ * - El componente invoca la función `detectarCambiosRole` para notificar a un componente superior sobre el cambio de selección.
+ * 
+ * Estado:
+ * - `Type_user`: Mantiene la opción seleccionada, que representa el tipo de usuario.
+ * 
+ * Efectos:
+ * - Se configura la opción seleccionada inicialmente según el valor de `type_user` proporcionado como prop.
+ * - Cuando el valor de `type_user` cambia, se actualiza el estado local y se notifica al componente superior a través de `detectarCambiosRole`.
+ * 
+ * Este componente es útil para formularios donde se necesita seleccionar un tipo de usuario entre varias opciones predefinidas.
+ */
 import React, { useEffect, useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { array } from "yup";

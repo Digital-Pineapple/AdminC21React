@@ -1,3 +1,9 @@
+/**
+ * Componente ResetPassword:
+ * Este componente permite a los usuarios restablecer su contraseña mediante un formulario que solicita su correo electrónico.
+ * Utiliza `react-hook-form` para la validación del formulario y se conecta con el `AuthContext` para realizar el restablecimiento.
+ * Los errores de validación se muestran en tiempo real y el formulario es reseteado después de un intento exitoso.
+ */
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";

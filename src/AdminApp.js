@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import AuthState from "./context/auth/AuthState";
 import AppRouter from "./routes/AppRouter";
@@ -11,6 +10,7 @@ import VisitState from "./context/Visits/VisitState";
 import ReportState from "./context/ReportVisits/ReportState";
 function AdminApp() {
   return (
+    // Encapsula la aplicación en varios proveedores de estado para manejar el estado global.
     <AuthState>
       <UsersState>
         <CategoryState>
@@ -19,7 +19,8 @@ function AdminApp() {
               <VisitState>
                 <ReportState>
                   <DashboardState>
-                    <AppRouter />
+                    // Configura y renderiza las rutas dentro del panel de administración.
+                    <AppRouter /> 
                   </DashboardState>
                 </ReportState>
               </VisitState>
@@ -28,22 +29,6 @@ function AdminApp() {
         </CategoryState>
       </UsersState>
     </AuthState>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
   );
 }
 

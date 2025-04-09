@@ -1,3 +1,10 @@
+/**
+ * `UserInm` muestra la información de un asesor, como nombre, apellido, email y teléfono.
+ * Utiliza Material-UI para la disposición y traducción de textos con `react-i18next`.
+ * 
+ * Propiedades:
+ * - `user_inm`: objeto que contiene los datos del asesor bajo la propiedad `owner`.
+ */
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";

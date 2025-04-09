@@ -1,3 +1,11 @@
+/**
+ * Componente `UsersInm` que muestra una lista de asesores asociados a un propietario específico.
+ * - El título de la página se adapta dinámicamente según los usuarios disponibles, mostrando el nombre del propietario o un mensaje de "No hay Asesores disponibles".
+ * - Permite agregar un nuevo asesor mediante un botón que abre un modal.
+ * - Los asesores se obtienen desde un API usando la función `MethodGet` y se almacenan en el estado `users`.
+ * - Si hay asesores, se muestran en tarjetas (`CardUserInm`); de lo contrario, se muestra el componente `NoDataComponent`.
+ * - El modal para agregar un asesor se controla con el estado `openModal` y se cierra con `handleClose`.
+ */
 import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";

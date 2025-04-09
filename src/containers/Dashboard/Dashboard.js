@@ -1,3 +1,13 @@
+/**
+ * `Dashboard` es el componente principal que muestra las estadísticas generales del panel de administración.
+ * Presenta información de usuarios, propiedades vendidas, propiedades en alquiler y gráficos, con diferentes vistas según el tipo de usuario.
+ * Utiliza el contexto `DashboardContext` para obtener datos y actualizarlos mediante hooks de efecto (`useEffect`).
+ * 
+ * Funcionalidades:
+ * - Muestra componentes como `TotalUsers`, `PropertiesSold`, `PropertiesRent`, `CardProperties` y `TotalUsersInm` para cada tipo de dato.
+ * - Utiliza `Graphics` para mostrar gráficos sobre tendencias.
+ * - Controla la visibilidad de ciertos datos en función del tipo de usuario (`type_user`).
+ */
 import React, { useEffect, useContext } from "react";
 import Layout from "../../components/layout/Layout";
 import TotalUsers from "../../components/Dashboard/TotalUsers";

@@ -1,3 +1,13 @@
+/**
+ * `SearchCategory` es un componente que permite seleccionar múltiples categorías mediante un `Select` de Material-UI.
+ * Las categorías disponibles se encuentran en el array `names`. El usuario puede elegir una o varias categorías, las cuales se muestran como opciones con casillas de verificación.
+ * 
+ * Funcionalidades:
+ * - Utiliza un `Select` con el atributo `multiple` para permitir la selección de varias categorías.
+ * - Cada categoría está representada por un `MenuItem` con un `Checkbox` para indicar si está seleccionada.
+ * - El valor seleccionado se guarda en el estado local `personName` y se pasa a través de la función `cambio` que se recibe como prop.
+ * - El valor de las categorías seleccionadas se muestra como una cadena de texto separada por comas.
+ */
 import React, { useState } from "react";
 import {
   FormControl,

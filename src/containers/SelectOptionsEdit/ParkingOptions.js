@@ -1,3 +1,20 @@
+/**
+ * `ParkingOptions` es un componente que permite seleccionar si una propiedad cuenta o no con estacionamiento.
+ * 
+ * Funcionalidad:
+ * - El componente muestra un `Select` con dos opciones: "Sí cuenta con estacionamiento" y "No cuenta con estacionamiento".
+ * - Al seleccionar una opción, se actualiza el estado `Parking` con el valor seleccionado.
+ * - El componente también invoca la función `detectarCambios` para notificar a un componente superior sobre el cambio de selección.
+ * 
+ * Estado:
+ * - `Parking`: Mantiene la opción seleccionada, que puede ser 0 (No cuenta con estacionamiento) o 1 (Sí cuenta con estacionamiento).
+ * 
+ * Efectos:
+ * - Se configura la opción seleccionada inicialmente según el valor de `parking` proporcionado como prop.
+ * - Cuando el valor de `parking` cambia, se actualiza el estado local y se notifica al componente superior a través de `detectarCambios`.
+ * 
+ * Este componente es útil para formularios donde se necesita conocer si una propiedad tiene estacionamiento.
+ */
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";

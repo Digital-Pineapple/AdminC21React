@@ -1,3 +1,14 @@
+/**
+ * `Categories` es el componente que muestra la lista de categorías disponibles.
+ * Incluye un botón para agregar nuevas categorías y muestra tarjetas de cada una de las categorías existentes.
+ * Si no hay categorías, se muestra un componente de "sin datos".
+ * 
+ * Funciones:
+ * - `handleClickOpen`: abre el modal para agregar una nueva categoría.
+ * - `handleClose`: cierra el modal.
+ * 
+ * Utiliza el contexto `CategoryContext` para obtener la lista de categorías y el componente `AddCategory` para agregar nuevas categorías.
+ */
 import { Button, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";

@@ -1,3 +1,15 @@
+/**
+ * El componente `AttachFileMultimedia` permite a los usuarios seleccionar y cargar una imagen.
+ * Utiliza `useDebounce` para retrasar la actualización del archivo seleccionado antes de realizar la acción de carga.
+ * El componente muestra una imagen de vista previa y permite seleccionar una nueva imagen desde el sistema de archivos.
+ * 
+ * Propiedades:
+ * - `open`: Controla la visibilidad del cuadro de diálogo.
+ * - `handleClose`: Función para cerrar el cuadro de diálogo.
+ * - `id`: ID de la propiedad asociada a la imagen.
+ * 
+ * Al seleccionar una imagen, esta se envía al contexto de autenticación para su procesamiento.
+ */
 import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";

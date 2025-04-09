@@ -1,3 +1,14 @@
+/**
+ * Componente EditReport:
+ * Abre un diálogo para editar un reporte de visitas, permitiendo modificar diversos atributos como ubicación, espacios, estado, distribución, funcionalidad, precio, servicio, y comentarios.
+ * Utiliza `react-hook-form` para la gestión de formularios y `ReportContext` para realizar la edición del reporte.
+ * Las opciones de los diferentes campos son gestionadas mediante componentes `OptionsReport`, y se valida el formulario antes de enviar los cambios.
+ * 
+ * Dependencias:
+ * - MUI para los componentes de interfaz.
+ * - react-hook-form para la gestión de formularios.
+ * - i18next para traducciones.
+ */
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";

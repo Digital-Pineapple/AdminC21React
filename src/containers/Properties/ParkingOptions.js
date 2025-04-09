@@ -1,3 +1,13 @@
+/*
+  El componente `ParkingOptions` permite al usuario seleccionar si la propiedad cuenta con estacionamiento, usando dos botones de opción (radio buttons).
+
+  Funcionalidad principal:
+  - La pregunta "¿Cuenta con estacionamiento?" se renderiza dinámicamente usando `t("cuentaConEstacionamiento")` para la internacionalización del texto, permitiendo que el componente sea traducido a diferentes idiomas.
+  - Las opciones "Si" y "No" están implementadas usando los componentes `Radio` de Material-UI. Los valores se gestionan mediante el estado `selectedValueParking` y se actualizan a través de la función `handleChangeParking`.
+  - La traducción de las opciones "Si" y "No" también se maneja a través de `t("si")` y `t("no")` para asegurar la compatibilidad multilingüe.
+
+  Este componente facilita la recolección de datos sobre la disponibilidad de estacionamiento en una propiedad y es completamente compatible con la internacionalización de la aplicación.
+*/
 import * as React from "react";
 import Radio from "@mui/material/Radio";
 import { useTranslation } from "react-i18next";

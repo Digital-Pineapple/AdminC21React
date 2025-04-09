@@ -1,3 +1,11 @@
+/**
+ * Componente `ChangePasswordUser` para cambiar la contraseña del usuario.
+ * - Utiliza `react-hook-form` para manejar el formulario y la validación de las contraseñas.
+ * - Permite mostrar/ocultar las contraseñas utilizando los íconos de visibilidad.
+ * - Utiliza un `Dialog` de Material-UI para mostrar el formulario en una ventana emergente.
+ * - Integra `i18next` para la traducción de los textos de la interfaz.
+ * - Al enviar el formulario, se ejecuta el cambio de contraseña mediante el contexto `AuthContext`.
+ */
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
