@@ -19,7 +19,7 @@ function AdminApp() {
               <VisitState>
                 <ReportState>
                   <DashboardState>
-                    // Configura y renderiza las rutas dentro del panel de administración.
+                    {/* Configura y renderiza las rutas dentro del panel de administración. */}
                     <AppRouter /> 
                   </DashboardState>
                 </ReportState>
